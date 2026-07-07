@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everything You Need to Know About the Microbiome</title>
+<style>
+:root{
+  --bg:#f8f6f1; --card:#ffffff; --border:#ddd9d0; --accent:#8b6914;
+  --wood:#2e7d32; --fire:#c62828; --earth:#e65100; --metal:#455a64; --water:#1565c0;
+  --text:#2c2c2c; --text2:#6b6b6b; --muted:#9e9e9e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Apple SD Gothic Neo','Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;}
+a{color:var(--water);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.layout{display:flex;max-width:1280px;margin:0 auto;gap:0;align-items:flex-start;}
+/* sidebar */
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;width:290px;flex-shrink:0;
+  background:linear-gradient(180deg,#fdf9ef 0%,#f3edd8 100%);border-right:2px solid var(--accent);
+  padding:24px 18px 40px;}
+.sidebar h2{font-size:15px;color:var(--accent);font-weight:800;letter-spacing:1px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+.toc-list{list-style:none;}
+.toc-list .toc-list{margin-left:12px;border-left:1px solid var(--border);padding-left:10px;}
+.toc-list li{margin:2px 0;}
+.toc-h2>a{font-weight:700;font-size:13.5px;color:var(--text);display:block;padding:5px 6px;border-radius:6px;}
+.toc-h3>a{font-weight:500;font-size:12px;color:var(--text2);display:block;padding:3px 6px;border-radius:6px;}
+.toc-list a:hover{background:#fffdf5;text-decoration:none;color:var(--accent);}
+.toc-list a.active{background:var(--accent);color:#fff;font-weight:700;}
+/* content */
+.content{flex:1;min-width:0;padding:0 8px;}
+.container{background:var(--card);border-radius:16px;box-shadow:0 2px 24px rgba(0,0,0,.06);overflow:hidden;margin:20px 12px;}
+.header{background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.header h1{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px;line-height:1.4;}
+.header .tags{margin-top:6px;}
+.body-wrap{padding:8px 34px 40px;}
+.body-wrap h2{font-size:20px;font-weight:800;margin:40px 0 18px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);
+  background:linear-gradient(90deg,#fdf9ef,transparent);color:var(--text);scroll-margin-top:12px;border-radius:0 8px 8px 0;}
+.body-wrap h2:first-child{margin-top:16px;}
+.body-wrap h3{font-size:16px;font-weight:700;margin:26px 0 10px;color:var(--accent);scroll-margin-top:12px;
+  padding-bottom:5px;border-bottom:1px dashed var(--border);}
+.body-wrap h4{font-size:14.5px;font-weight:700;margin:18px 0 8px;color:var(--metal);}
+.body-wrap p{margin:12px 0;font-size:14.5px;}
+.body-wrap ul,.body-wrap ol{margin:12px 0 12px 24px;font-size:14.5px;}
+.body-wrap li{margin:6px 0;}
+.body-wrap strong{color:#1a1a1a;font-weight:700;}
+.body-wrap em{color:var(--water);font-style:italic;}
+.body-wrap code{background:#f3edd8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#7a5a10;
+  font-family:'SF Mono',Menlo,monospace;}
+hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
+/* blockquote -> callout */
+.body-wrap blockquote{background:#fff8e1;border-left:4px solid var(--earth);padding:14px 20px;margin:18px 0;
+  border-radius:0 10px 10px 0;font-size:14px;color:#5a4a20;}
+.body-wrap blockquote p{margin:8px 0;}
+.body-wrap blockquote strong{color:#8a5a00;}
+/* tables */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px;}
+.body-wrap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+th{background:#f3edd8;padding:11px 14px;text-align:left;font-weight:700;color:#5a4a10;
+  border-bottom:2px solid var(--accent);white-space:nowrap;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:#faf8f3;}
+tbody tr:hover{background:#fffdf5;}
+/* susceptibility badges */
+.sr{display:inline-block;min-width:20px;text-align:center;padding:1px 8px;border-radius:11px;font-weight:800;font-size:12px;}
+.sr-S{background:#e8f5e9;color:#2e7d32;}
+.sr-R{background:#fce4ec;color:#c62828;}
+.sr-I{background:#fff8e1;color:#f57f17;}
+.tag{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;margin:2px 3px 2px 0;}
+.tag-blue{background:#e3f2fd;color:#1565c0;}
+.footer{padding:22px 34px;text-align:center;font-size:12px;color:var(--text2);border-top:1px solid var(--border);background:var(--bg);}
+.top-btn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--accent);
+  color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transition:.25s;z-index:50;}
+.top-btn.show{opacity:.9;}
+.mobile-toc-btn{display:none;}
+@media(max-width:900px){
+  .sidebar{position:fixed;left:0;top:0;z-index:100;transform:translateX(-100%);transition:.3s;box-shadow:4px 0 20px rgba(0,0,0,.2);}
+  .sidebar.open{transform:translateX(0);}
+  .mobile-toc-btn{display:block;position:fixed;left:14px;top:14px;z-index:60;background:var(--accent);color:#fff;
+    border:none;border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+  .content{padding:0;}
+  .container{margin:8px;}
+  .header{padding:56px 20px 26px;}
+  .body-wrap{padding:8px 18px 40px;}
+}
+</style>
+</head>
+<body>
+<button class="mobile-toc-btn" id="mtoc">☰ Contents</button>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <h2>CONTENTS</h2>
+    <ul class="toc-list">
+<li class="toc-h2"><a href="#_1">Overview</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#4">Share of the 4 major classes in the healthy adult gut</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#phylum">Phylum-level classification master table — where every bacterium sits at the phylum level</a>
+</li>
+<li class="toc-h2"><a href="#1-gpac">1. GPAC — Gram-Positive Anaerobic Cocci</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5">5 representative species</a>
+</li>
+<li class="toc-h3"><a href="#5_1">5 major associated diseases</a>
+</li>
+<li class="toc-h3"><a href="#5_2">5 examples of foods that may be contaminated</a>
+</li>
+<li class="toc-h3"><a href="#_2">Antibiotic susceptibility</a>
+</li>
+<li class="toc-h3"><a href="#finegoldia-magna-gpac">Deep dive — Finegoldia magna: the clinically representative GPAC pathogen</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#2-gpab">2. GPAB — Gram-Positive Anaerobic Bacilli</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5_3">5 representative species</a>
+</li>
+<li class="toc-h3"><a href="#5_4">5 major associated diseases</a>
+</li>
+<li class="toc-h3"><a href="#5_5">5 examples of foods that may be contaminated</a>
+</li>
+<li class="toc-h3"><a href="#_3">Antibiotic susceptibility</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#3-gnac">3. GNAC — Gram-Negative Anaerobic Cocci</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5_6">5 representative species</a>
+</li>
+<li class="toc-h3"><a href="#5_7">5 major associated diseases</a>
+</li>
+<li class="toc-h3"><a href="#5_8">5 examples of foods that may be contaminated</a>
+</li>
+<li class="toc-h3"><a href="#_4">Antibiotic susceptibility</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#4-gnab">4. GNAB — Gram-Negative Anaerobic Bacilli</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5_9">5 representative species</a>
+</li>
+<li class="toc-h3"><a href="#5_10">5 major associated diseases</a>
+</li>
+<li class="toc-h3"><a href="#fusobacterium-nucleatum-crc">⭐ Fusobacterium nucleatum and its link to colorectal cancer (CRC)</a>
+</li>
+<li class="toc-h3"><a href="#porphyromonas-gingivalis">⭐ Porphyromonas gingivalis and systemic disease — diabetes, fatty liver, vascular disease</a>
+</li>
+<li class="toc-h3"><a href="#5_11">5 examples of foods that may be contaminated</a>
+</li>
+<li class="toc-h3"><a href="#_5">Antibiotic susceptibility</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#_6">Comprehensive summary: anaerobic bacteria antibiotic susceptibility at a glance</a>
+</li>
+<li class="toc-h2"><a href="#penicillin-lactam-4">Deep dive: Are penicillin/β-lactams "effective against almost all anaerobes"? — detailed comparison of 4 agents</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_7">Verdict: the terminology must be distinguished</a>
+</li>
+<li class="toc-h3"><a href="#-lactamase">Key mechanism: β-lactamase</a>
+</li>
+<li class="toc-h3"><a href="#4penicillin">Detailed comparison of the 4 agents (+penicillin)</a>
+</li>
+<li class="toc-h3"><a href="#_8">One-line conclusion</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#metronidazole">Deep dive: Does metronidazole work against "almost all anaerobes"? — anaerobes where it weakens or fails</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_9">The big picture</a>
+</li>
+<li class="toc-h3"><a href="#_10">Why it fails — the activation mechanism is key</a>
+</li>
+<li class="toc-h3"><a href="#1-r">① Definitely ineffective / resistant (R) — a clinically important gap</a>
+</li>
+<li class="toc-h3"><a href="#2-ir">② Reduced or variable susceptibility (I–R, low reliability)</a>
+</li>
+<li class="toc-h3"><a href="#3-gpac-metronidazole-yes-100">③ Does metronidazole work well on GPAC (Gram-positive anaerobic cocci)? → mostly YES (but not 100%)</a>
+</li>
+<li class="toc-h3"><a href="#_11">One-line summary</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#actinomyces-metronidazole">Deep dive: Actinomyces — the classic "anaerobe that metronidazole doesn't work on"</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#filamentous-bacillus">Identity: an anaerobic–microaerophilic Gram-positive filamentous bacillus</a>
+</li>
+<li class="toc-h3"><a href="#metronidazole_1">Why metronidazole doesn't work (linked to the previous section)</a>
+</li>
+<li class="toc-h3"><a href="#3">The 3 major clinical forms (by site of involvement)</a>
+</li>
+<li class="toc-h3"><a href="#_12">Characteristic findings</a>
+</li>
+<li class="toc-h3"><a href="#penicillin-1">Treatment — penicillin first-line, long-term high-dose</a>
+</li>
+<li class="toc-h3"><a href="#_13">One-line summary</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#aggregatibacter-actinomycetemcomitans">Deep dive: Aggregatibacter actinomycetemcomitans — the Gram-negative "companion" of Actinomyces</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#4_1">Identity: the name looks like an actinomycete but it's Gram-negative — a microaerophile outside the 4 major classes</a>
+</li>
+<li class="toc-h3"><a href="#2">2 major diseases</a>
+</li>
+<li class="toc-h3"><a href="#halitosis">Relationship to halitosis — not a direct producer, but the upstream pathogen that "sets the stage"</a>
+</li>
+<li class="toc-h3"><a href="#clarithromycinmacrolide">Antibiotic susceptibility — clarithromycin/macrolides are "conditionally effective"</a>
+</li>
+<li class="toc-h3"><a href="#ciprofloxacinfluoroquinolone-aggregatibacter">Ciprofloxacin/fluoroquinolone — active against Aggregatibacter (the exact opposite of anaerobes)</a>
+</li>
+<li class="toc-h3"><a href="#clarithromycin">One-line note on clarithromycin</a>
+</li>
+<li class="toc-h3"><a href="#actinomyces">Relationship to Actinomyces — don't confuse them</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#_14">Deep dive: bacteria abundant in the gut that are NOT anaerobes — the "facultative anaerobe" minority</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_15">The big picture: the gut is overwhelmingly an anaerobic world</a>
+</li>
+<li class="toc-h3"><a href="#facultative-anaerobe">The core group (facultative anaerobes)</a>
+</li>
+<li class="toc-h3"><a href="#_16">The "gray zone" bacteria with ambiguous oxygen requirements</a>
+</li>
+<li class="toc-h3"><a href="#vs-4">Key points distinguishing "anaerobe vs facultative anaerobe" (linked to the 4 major classes above)</a>
+</li>
+<li class="toc-h3"><a href="#_17">Why this distinction matters clinically</a>
+</li>
+<li class="toc-h3"><a href="#4-ciprofloxacin">Antibiotic susceptibility — facultative anaerobes outside the 4 major classes (ciprofloxacin's real stage)</a>
+</li>
+<li class="toc-h3"><a href="#_18">One-line summary</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#vsc-halitosis">Deep dive: VSC (volatile sulfur compound)-producing bacteria — the causative organisms of halitosis</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#vsc">What VSCs are — the chemical reality of halitosis</a>
+</li>
+<li class="toc-h3"><a href="#vsc_1">Bacteria contributing to VSC production — in order of contribution</a>
+</li>
+<li class="toc-h3"><a href="#porphyromonas-gingivalis-vsc">Porphyromonas gingivalis deep dive — a key VSC/periodontitis pathogen</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#vsc_2">Antibiotic susceptibility of VSC-producing bacteria</a>
+</li>
+<li class="toc-h2"><a href="#vsc-substrate">Foods that serve as substrates for VSC production</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#1-cysteinemethionine">① Animal/high-protein sulfur substrates = foods rich in sulfur-containing amino acids (cysteine, methionine)</a>
+</li>
+<li class="toc-h3"><a href="#2_1">② Plant-based organosulfur foods (both directly volatile on chewing + bacterial substrate after swallowing)</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#h2s-3-1">Deep dive: the 3 major pathways of H₂S (hydrogen sulfide) production · the leader by site · quantitative total re-appraisal</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#a-h2s-3">A. The 3 major biochemical pathways that make H₂S</a>
+</li>
+<li class="toc-h3"><a href="#b-h2s">B. Sulfur-substrate preference by bacterium (who eats what to release H₂S)</a>
+</li>
+<li class="toc-h3"><a href="#c-h2s-1">C. The "H₂S leader" differs by site</a>
+</li>
+<li class="toc-h3"><a href="#d-h2s-1-srb">D. ★Quantitative total re-appraisal — "total H₂S leader = SRB" is the old view</a>
+</li>
+<li class="toc-h3"><a href="#e">E. One-line summary</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#sibo-rifaximin-vs-ciprofloxacin-4">Deep dive: SIBO / gut bacterial overgrowth treatment — the 4-class meaning of rifaximin vs ciprofloxacin</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_19">Coverage comparison</a>
+</li>
+<li class="toc-h3"><a href="#rifaximin">rifaximin — "broad anaerobic coverage that acts only within the gut"</a>
+</li>
+<li class="toc-h3"><a href="#ciprofloxacin-sibo">ciprofloxacin — powerless against anaerobes, but a legitimate target for "classic coliform SIBO"</a>
+</li>
+<li class="toc-h3"><a href="#rifaximin-1-cipro">The key contrast — why rifaximin is first-line and cipro is a later-line alternative</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#f">Deep dive F — relationship to neurodegenerative diseases (Parkinson's, Alzheimer's)</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#1-porphyromonas-gingivalis">1) Porphyromonas gingivalis → Alzheimer's disease (oral–brain axis, gingipain hypothesis)</a>
+</li>
+<li class="toc-h3"><a href="#2-fusobacterium-nucleatum">2) Fusobacterium nucleatum → Alzheimer's disease (neuroinflammation, oral–gut–brain axis)</a>
+</li>
+<li class="toc-h3"><a href="#3-desulfovibrio-">3) Desulfovibrio → Parkinson's disease (hydrogen sulfide, α-synuclein aggregation)</a>
+</li>
+<li class="toc-h3"><a href="#_20">Summary — comparing the neurodegenerative contribution of the three bacteria</a>
+</li>
+</ul>
+</li>
+</ul>
+  </nav>
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <h1>Everything You Need to Know About the Microbiome</h1>
+        <div class="tags"><span class="tag tag-blue">#bacteria</span> <span class="tag tag-blue">#gram-staining</span> <span class="tag tag-blue">#anaerobes</span> <span class="tag tag-blue">#antibiotics</span> <span class="tag tag-blue">#foodborne</span> <span class="tag tag-blue">#clinical-infection</span></div>
+      </div>
+      <div class="body-wrap">
+        <p><em>Author — Junsang Yang, Family Medicine physician</em></p>
+<h2 id="_1">Overview</h2>
+<p>A reference document that divides anaerobic bacteria into the <strong>four major classes GPAC / GPAB / GNAC / GNAB</strong> based on Gram stain + morphology (cocci/bacilli), and organizes each group's representative species, associated diseases, potentially contaminated foods, and antibiotic susceptibility.</p>
+<table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Full name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPAC</strong></td>
+<td>Gram-Positive Anaerobic <strong>C</strong>occi</td>
+<td>Gram-positive anaerobic <strong>cocci</strong></td>
+</tr>
+<tr>
+<td><strong>GPAB</strong></td>
+<td>Gram-Positive Anaerobic <strong>B</strong>acilli</td>
+<td>Gram-positive anaerobic <strong>bacilli</strong></td>
+</tr>
+<tr>
+<td><strong>GNAC</strong></td>
+<td>Gram-Negative Anaerobic <strong>C</strong>occi</td>
+<td>Gram-negative anaerobic <strong>cocci</strong></td>
+</tr>
+<tr>
+<td><strong>GNAB</strong></td>
+<td>Gram-Negative Anaerobic <strong>B</strong>acilli</td>
+<td>Gram-negative anaerobic <strong>bacilli</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">Share of the 4 major classes in the healthy adult gut</h3>
+<p>More than <strong>99% of gut bacteria are anaerobic</strong>, and at the phylum level Bacillota (formerly Firmicutes) + Bacteroidota (formerly Bacteroidetes) account for ~90%. Converting this into the four major Gram/morphology classes (by relative abundance):</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Representative genera</th>
+<th>Main phylum</th>
+<th>Approximate range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPAB</strong> (Gram+ bacilli)</td>
+<td><em>Faecalibacterium</em>·<em>Clostridium</em>·<em>Eubacterium</em>·<em>Roseburia</em>·<em>Bifidobacterium</em></td>
+<td>Bacillota + Actinomycetota</td>
+<td><strong>~50–75%</strong> (most dominant)</td>
+</tr>
+<tr>
+<td><strong>GNAB</strong> (Gram– bacilli)</td>
+<td><em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em></td>
+<td>Bacteroidota + Fusobacteriota</td>
+<td><strong>~15–40%</strong> (2nd)</td>
+</tr>
+<tr>
+<td><strong>GPAC</strong> (Gram+ cocci)</td>
+<td><em>Peptostreptococcus</em>·<em>Peptoniphilus</em>·<em>Finegoldia</em>·<em>Ruminococcus</em> (some)</td>
+<td>Bacillota</td>
+<td><strong>~1–5%</strong> (minority)</td>
+</tr>
+<tr>
+<td><strong>GNAC</strong> (Gram– cocci)</td>
+<td><em>Veillonella</em>·<em>Megasphaera</em>·<em>Acidaminococcus</em></td>
+<td>Bacillota (Negativicutes)</td>
+<td><strong>~&lt;1–2%</strong> (very small)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caveats (why the ranges are wide)</strong>
+- <strong>Individual variation / F/B ratio fluctuation</strong>: the Bacillota/Bacteroidota ratio varies greatly with diet, age, and region → wide ranges.
+- <strong>Culture vs metagenomics</strong>: old culture data and 16S/shotgun sequencing estimates differ. The values above are by relative abundance.
+- <strong>GPAB dominance</strong>: the main butyrate producers (<em>Faecalibacterium</em>·<em>Roseburia</em>·<em>Clostridium</em> clusters) are concentrated here, taking more than half.
+- <strong>Cocci (GPAC·GNAC) are a minority</strong>: even combined they are usually around 5%. <em>Veillonella</em> is common but low in abundance.
+- <strong>GNAC pitfall (reconfirmed)</strong>: it stains Gram-negative but phylogenetically belongs to Bacillota (Negativicutes).</p>
+<hr />
+<h2 id="phylum">Phylum-level classification master table — where every bacterium sits at the phylum level</h2>
+<blockquote>
+<p><strong>Note</strong>: the Gram-stain-based 4 major classes (GPAC/GPAB/GNAC/GNAB) and <strong>phylogenetic classification (phylum) are separate axes</strong>. In particular, <strong>GNAC stains Gram-negative but phylogenetically belongs to Firmicutes (Bacillota)</strong> (class Negativicutes) — a classic case where appearance (staining) and evolutionary lineage disagree. The 2021 ICNP revision changed the phylum names, so <strong>both old and new names are shown</strong>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>New phylum (2021–)</th>
+<th>Old phylum</th>
+<th>Bacteria in this document</th>
+<th>Gram stain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bacillota</strong></td>
+<td><strong>Firmicutes</strong></td>
+<td>All GPAC (<em>Peptostreptococcus</em>·<em>Finegoldia</em>·<em>Parvimonas</em>·<em>Peptoniphilus</em>·<em>Anaerococcus</em>), the GPAB <em>Clostridium</em>/<em>Clostridioides</em>, <strong>all GNAC</strong> (<em>Veillonella</em>·<em>Acidaminococcus</em>·<em>Megasphaera</em>·<em>Anaeroglobus</em> — Gram-negative staining but phylogenetically Firmicutes), <em>Enterococcus</em>·<em>Streptococcus</em>·<em>Staphylococcus</em>·<em>Lactobacillus</em></td>
+<td>Positive (GNAC negative only)</td>
+</tr>
+<tr>
+<td><strong>Actinomycetota</strong></td>
+<td><strong>Actinobacteria</strong></td>
+<td>The GPAB <em>Actinomyces israelii</em>·<em>Cutibacterium (Propionibacterium) acnes</em>·<em>Bifidobacterium</em></td>
+<td>Positive</td>
+</tr>
+<tr>
+<td><strong>Bacteroidota</strong></td>
+<td><strong>Bacteroidetes</strong></td>
+<td>The GNAB <em>Bacteroides fragilis</em>·<em>Prevotella</em>·<em>Porphyromonas</em></td>
+<td>Negative</td>
+</tr>
+<tr>
+<td><strong>Fusobacteriota</strong></td>
+<td><strong>Fusobacteria</strong></td>
+<td>The GNAB <em>Fusobacterium nucleatum</em>·<em>F. necrophorum</em></td>
+<td>Negative</td>
+</tr>
+<tr>
+<td><strong>Pseudomonadota</strong></td>
+<td><strong>Proteobacteria</strong></td>
+<td><em>Aggregatibacter actinomycetemcomitans</em> (Gammaproteobacteria), Enterobacteriaceae (<em>E. coli</em>·<em>Klebsiella</em>·<em>Enterobacter</em>·<em>Citrobacter</em>·<em>Proteus</em>·<em>Serratia</em>·<em>Morganella</em>), <em>Campylobacter</em>·<em>Helicobacter</em> (Epsilonproteobacteria)</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td><strong>Thermodesulfobacteriota</strong></td>
+<td><strong>Proteobacteria (formerly Deltaproteobacteria)</strong></td>
+<td>Sulfate-reducing bacteria (SRB): <em>Desulfovibrio</em>·<em>Bilophila wadsworthia</em> — dissimilatory sulfate reduction (SO₄²⁻→H₂S)</td>
+<td>Negative</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insights of the phylogenetic axis</strong>
+- <strong>Anaerobic Gram-positive bacteria (GPAC+GPAB) are effectively either Bacillota or Actinomycetota</strong> — cocci and <em>Clostridium</em> are Bacillota; filamentous forms (<em>Actinomyces</em>), <em>Cutibacterium</em>, and <em>Bifidobacterium</em> are Actinomycetota (high-G+C Gram-positives).
+- <strong>Anaerobic Gram-negative bacteria (GNAB) are either Bacteroidota (the <em>Bacteroides</em> lineage) or Fusobacteriota (<em>Fusobacterium</em>)</strong> — different phyla.
+- <strong>The GNAC pitfall</strong>: outwardly Gram-negative but phylogenetically <strong>Bacillota (Firmicutes)</strong>. Thin peptidoglycan, presence/absence of LPS, etc. make them stain negative, but evolutionarily they are class Negativicutes within the Gram-positive lineage.
+- <strong>Facultatively anaerobic / microaerophilic Gram-negatives</strong> (Enterobacteriaceae·<em>Aggregatibacter</em>·<em>Campylobacter</em>) are mostly <strong>Pseudomonadota (Proteobacteria)</strong>.</p>
+<hr />
+<h2 id="1-gpac">1. GPAC — Gram-Positive Anaerobic Cocci</h2>
+<h3 id="5">5 representative species</h3>
+<p><em>(Phylogeny: all </em><em>Bacillota</em><em> (formerly Firmicutes) — classes Clostridia/Tissierellia)</em>
+1. <em>Peptostreptococcus anaerobius</em> — Bacillota
+2. <em>Finegoldia magna</em> (formerly <em>Peptostreptococcus magnus</em>) — Bacillota
+3. <em>Parvimonas micra</em> (formerly <em>Peptostreptococcus micros</em>) — Bacillota
+4. <em>Peptoniphilus asaccharolyticus</em> — Bacillota
+5. <em>Anaerococcus prevotii</em> — Bacillota</p>
+<h3 id="5_1">5 major associated diseases</h3>
+<ol>
+<li>Head and neck infections such as chronic sinusitis and otitis media</li>
+<li>Dental/periodontal abscess</li>
+<li>Skin/soft tissue infections and diabetic foot ulcers</li>
+<li>Osteomyelitis and prosthetic joint infection (<em>Finegoldia magna</em>)</li>
+<li>Female genital tract infections such as pelvic infection and endometritis</li>
+</ol>
+<h3 id="5_2">5 examples of foods that may be contaminated</h3>
+<ol>
+<li>Vacuum-packed meats</li>
+<li>Cold-stored cooked foods</li>
+<li>Dairy products (soft cheeses)</li>
+<li>Fermented sauces</li>
+<li>Cooked foods left at room temperature</li>
+</ol>
+<p>※ GPAC infections are mostly endogenous, arising from normal oral/gut/vaginal flora, so the proportion of foodborne infection is low.</p>
+<h3 id="_2">Antibiotic susceptibility</h3>
+<table>
+<thead>
+<tr>
+<th>Antibiotic</th>
+<th>Susceptibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Penicillin G</td>
+<td>Generally susceptible (S)</td>
+</tr>
+<tr>
+<td>Ampicillin</td>
+<td>Susceptible (S)</td>
+</tr>
+<tr>
+<td>Metronidazole</td>
+<td>Susceptible (S), though some <em>Finegoldia/Peptoniphilus</em> may be resistant</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td>Susceptible but with a rising resistance trend (S/R)</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>Intermediate–susceptible (I/S); unsuitable as empirical monotherapy</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>Variable (S/R); macrolide resistance common</td>
+</tr>
+<tr>
+<td>Vancomycin</td>
+<td>Susceptible (S)</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>Unsuitable/resistant (R)</strong> — older-generation FQs cover anaerobes and Gram-positive cocci poorly</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>Susceptible (S) — gut-selective, covers GPAC in the intestinal lumen; unsuitable for systemic infection (non-absorbed)</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI combination</td>
+<td>Susceptible (S)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="finegoldia-magna-gpac">Deep dive — <em>Finegoldia magna</em>: the clinically representative GPAC pathogen</h3>
+<p>GPAC constitute the largest anaerobic group, accounting for <strong>about 25–30% of all anaerobes</strong> isolated from clinical specimens, and among them <em>Finegoldia magna</em> (formerly <em>Peptostreptococcus magnus</em>) is <strong>the most commonly isolated and most virulent species</strong> (Neumann et al., <em>Front Microbiol</em> 2020; Boyanova et al., 2016, PMID 27756620). Although it is normal flora of the skin and mucosa, it becomes a prominent opportunistic pathogen once host defenses are breached.</p>
+<p><strong>Major infections</strong></p>
+<ul>
+<li>Skin/soft tissue infections (SSTI), <strong>diabetic foot ulcers</strong></li>
+<li><strong>Orthopedic implant-associated infection</strong> — a cause of slow-growing, low-virulence delayed infection (<em>J Clin Microbiol</em> 2017, 00866-17)</li>
+<li>Osteomyelitis, septic arthritis</li>
+<li><strong>The most commonly isolated anaerobe in non-puerperal breast abscess</strong></li>
+<li>Female genital tract infections such as pelvic infection and endometritis</li>
+</ul>
+<p><strong>Virulence factors</strong></p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Protein L</strong></td>
+<td>Binds immunoglobulin light chains (κ) → acts as a B-cell superantigen, disrupting host antibody defenses</td>
+</tr>
+<tr>
+<td><strong>Protein FAF</strong> (Finegoldia adhesion factor)</td>
+<td>Promotes surface adhesion and bacterial aggregation, aiding tissue colonization</td>
+</tr>
+<tr>
+<td><strong>SufA</strong> (a subtilisin-family serine protease)</td>
+<td><strong>Degrades the host antimicrobial peptide LL-37</strong> → evasion of innate immunity</td>
+</tr>
+<tr>
+<td><strong>Neutrophil activation</strong></td>
+<td>Induces ROS (reactive oxygen species) bursts and NET release → amplifies local inflammation (Neumann 2020)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Antibiotic susceptibility</strong> — generally <strong>susceptible (S)</strong> to β-lactams (penicillin, ampicillin), metronidazole, vancomycin, and linezolid. However, clinical isolates report <strong>clindamycin resistance of ~9.5% and penicillin resistance of ~2.4%</strong> (<em>Ann Clin Microbiol Antimicrob</em>, PMC10127037), and multidrug-resistant strains are gradually emerging, so susceptibility testing is recommended in severe and implant-associated infections. <strong>Older-generation FQs such as ciprofloxacin are unsuitable (R)</strong>.</p>
+<hr />
+<h2 id="2-gpab">2. GPAB — Gram-Positive Anaerobic Bacilli</h2>
+<h3 id="5_3">5 representative species</h3>
+<p><em>(Phylogeny: the 3 </em>Clostridium<em> species = </em><em>Bacillota</em><em> / </em>Actinomyces<em>·</em>Cutibacterium<em> = </em><em>Actinomycetota</em><em> (formerly Actinobacteria))</em>
+1. <em>Clostridium perfringens</em> — Bacillota
+2. <em>Clostridioides (Clostridium) difficile</em> — Bacillota
+3. <em>Clostridium botulinum</em> — Bacillota
+4. <em>Actinomyces israelii</em> — <strong>Actinomycetota</strong>
+5. <em>Cutibacterium (Propionibacterium) acnes</em> — <strong>Actinomycetota</strong></p>
+<h3 id="5_4">5 major associated diseases</h3>
+<ol>
+<li>Gas gangrene / food poisoning (<em>C. perfringens</em>)</li>
+<li>Pseudomembranous colitis (<em>C. difficile</em>)</li>
+<li>Botulism (<em>C. botulinum</em>)</li>
+<li>Actinomycosis / cervical abscess (<em>Actinomyces</em>)</li>
+<li>Acne / implant and shunt infection (<em>C. acnes</em>)</li>
+</ol>
+<p>※ Note: <em>C. tetani</em> → tetanus</p>
+<h3 id="5_5">5 examples of foods that may be contaminated</h3>
+<ol>
+<li>Inadequately reheated meats/gravy (<em>C. perfringens</em>)</li>
+<li>Home-canned/bottled foods (<em>C. botulinum</em>)</li>
+<li>Smoked/salted fish (<em>C. botulinum type E</em>)</li>
+<li>Vacuum-packed low-oxygen foods</li>
+<li>Honey (infant botulism risk, <em>C. botulinum</em> spores)</li>
+</ol>
+<h3 id="_3">Antibiotic susceptibility</h3>
+<table>
+<thead>
+<tr>
+<th>Antibiotic</th>
+<th>Susceptibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Penicillin G</td>
+<td><em>Clostridium</em> (most)·<em>Actinomyces</em> susceptible (S)</td>
+</tr>
+<tr>
+<td>Metronidazole</td>
+<td><em>C. perfringens</em>, <em>C. difficile</em> susceptible (S); <strong><em>Actinomyces</em>/<em>Cutibacterium</em> resistant (R)</strong></td>
+</tr>
+<tr>
+<td>Vancomycin (oral)</td>
+<td>Standard treatment for <em>C. difficile</em> (S)</td>
+</tr>
+<tr>
+<td>Fidaxomicin</td>
+<td><em>C. difficile</em> susceptible (S)</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td>Variable; a trigger for <em>C. difficile</em> → unsuitable</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>Variable (I/S); some <em>C. perfringens</em> susceptible</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>Variable (S/R); generally susceptible for <em>Cutibacterium acnes</em>·<em>Actinomyces</em> (S)</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>Unsuitable/resistant (R)</strong> — poor anaerobic coverage; unreliable for <em>Clostridium</em>·<em>Actinomyces</em> (moxifloxacin has some activity)</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>Susceptible (S) — covers luminal <em>Clostridium</em> (some evidence as adjunct for reducing <em>C. difficile</em> recurrence); gut-selective, unsuitable for systemic infection</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI·Carbapenem</td>
+<td>Susceptible (S)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-gnac">3. GNAC — Gram-Negative Anaerobic Cocci</h2>
+<h3 id="5_6">5 representative species</h3>
+<p><em>(Phylogeny: </em><em>all Bacillota</em><em> (formerly Firmicutes) — class Negativicutes. ⚠️ They stain Gram-negative but evolutionarily belong to the Gram-positive lineage)</em>
+1. <em>Veillonella parvula</em> — Bacillota (Negativicutes)
+2. <em>Veillonella dispar</em> — Bacillota (Negativicutes)
+3. <em>Acidaminococcus fermentans</em> — Bacillota (Negativicutes)
+4. <em>Megasphaera elsdenii</em> — Bacillota (Negativicutes)
+5. <em>Anaeroglobus geminatus</em> — Bacillota (Negativicutes)</p>
+<h3 id="5_7">5 major associated diseases</h3>
+<ol>
+<li>Periodontitis, odontogenic infections, and oral abscess</li>
+<li>Osteomyelitis / discitis (<em>Veillonella</em> bacteremia)</li>
+<li>Head and neck infections such as sinusitis and peritonsillar abscess</li>
+<li>Prosthetic valve endocarditis (rare)</li>
+<li>Aspiration pneumonia / lung abscess</li>
+</ol>
+<h3 id="5_8">5 examples of foods that may be contaminated</h3>
+<ol>
+<li>Fermented dairy products</li>
+<li>Shared foods that may be saliva-contaminated</li>
+<li>Cold-fermented foods</li>
+<li>Cooked foods left at room temperature</li>
+<li>Contaminated drinking water</li>
+</ol>
+<p>※ GNAC infections are likewise mostly endogenous, arising from oral/gut flora.</p>
+<h3 id="_4">Antibiotic susceptibility</h3>
+<table>
+<thead>
+<tr>
+<th>Antibiotic</th>
+<th>Susceptibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metronidazole</td>
+<td>Susceptible (S)</td>
+</tr>
+<tr>
+<td>Penicillin/Ampicillin</td>
+<td>Generally susceptible (S); some β-lactamase-producing strains resistant</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI combination</td>
+<td>Susceptible (S)</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td>Generally susceptible (S)</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>Intermediate (I); unreliable alone</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>Variable (S/R)</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>Unsuitable/resistant (R)</strong> — older-generation FQs cover anaerobes poorly</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>Susceptible (S) — gut-selective, covers luminal GNAC; unsuitable for systemic infection (non-absorbed)</td>
+</tr>
+<tr>
+<td>Carbapenem</td>
+<td>Susceptible (S)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-gnab">4. GNAB — Gram-Negative Anaerobic Bacilli</h2>
+<h3 id="5_9">5 representative species</h3>
+<p><em>(Phylogeny: </em>Bacteroides<em>·</em>Prevotella<em>·</em>Porphyromonas<em> = </em><em>Bacteroidota</em><em> (formerly Bacteroidetes) / the 2 </em>Fusobacterium<em> species = </em><em>Fusobacteriota</em><em> (formerly Fusobacteria))</em>
+1. <em>Bacteroides fragilis</em> — <strong>Bacteroidota</strong>
+2. <em>Prevotella melaninogenica</em> — <strong>Bacteroidota</strong>
+3. <em>Porphyromonas gingivalis</em> — <strong>Bacteroidota</strong>
+4. <em>Fusobacterium nucleatum</em> — <strong>Fusobacteriota</strong>
+5. <em>Fusobacterium necrophorum</em> — <strong>Fusobacteriota</strong></p>
+<blockquote>
+<p><strong>+ <em>Desulfovibrio</em> spp. (sulfate-reducing bacteria, SRB)</strong> — being Gram-negative, obligate anaerobic curved rods, they <strong>belong to GNAB</strong>. However, their lineage is <strong>Thermodesulfobacteriota</strong> (the old Proteobacteria Deltaproteobacteria), different from the two phyla above, and their pathogenic mechanism is not amino-acid degradation but <strong>dissimilatory sulfate reduction (SO₄²⁻→H₂S)</strong>, so they are treated separately from the 3 GNAB genera commonly dealt with clinically (<em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em>). They inhabit the gut, periodontal pockets, and tongue coating, contributing to halitosis and gut mucosal damage through H₂S production (same phylum as <em>Bilophila wadsworthia</em>).</p>
+</blockquote>
+<h3 id="5_10">5 major associated diseases</h3>
+<ol>
+<li>Intra-abdominal abscess / peritonitis (<em>B. fragilis</em>) — the most common clinical anaerobic infection</li>
+<li>Aspiration pneumonia / lung abscess (<em>Prevotella</em>, <em>Fusobacterium</em>)</li>
+<li>Periodontitis (<em>P. gingivalis</em>)</li>
+<li>Lemierre's syndrome (suppurative thrombophlebitis of the internal jugular vein) (<em>F. necrophorum</em>)</li>
+<li>Bacteremia/sepsis and postoperative wound infection</li>
+</ol>
+<h3 id="fusobacterium-nucleatum-crc">⭐ <em>Fusobacterium nucleatum</em> and its link to colorectal cancer (CRC)</h3>
+<p><em>F. nucleatum</em> (Fusobacteriota, GNAB), an oral commensal anaerobe, has recently drawn attention as a <strong>tumor-promoting bacterium in colorectal cancer (CRC)</strong>.</p>
+<ul>
+<li><strong>Tumor-tissue-specific enrichment</strong>: <em>F. nucleatum</em> DNA is detected significantly higher in CRC tissue than in adjacent normal mucosa (Kostic 2012·Castellarin 2012, <em>Genome Res</em>), and it has been reported to co-metastasize to the tumor site and even liver metastatic lesions.</li>
+<li><strong>Adhesion/invasion — FadA adhesin</strong>: FadA binds <strong>E-cadherin on colonic epithelium → activating β-catenin/Wnt signaling</strong>, promoting cell proliferation and tumor growth (Rubinstein 2013, <em>Cell Host Microbe</em>).</li>
+<li><strong>Immune evasion — Fap2 lectin</strong>: Fap2 binds tumor-cell <strong>Gal-GalNAc</strong> to colonize the tumor, while simultaneously binding the inhibitory receptor <strong>TIGIT</strong> on NK cells and T cells to suppress antitumor immunity (Gur 2015, <em>Immunity</em>).</li>
+<li><strong>Shaping the tumor microenvironment</strong>: reported to recruit tumor-infiltrating myeloid cells, induce inflammatory cytokines, and confer <strong>chemotherapy resistance (5-FU/oxaliplatin resistance via the autophagy pathway)</strong> (Yu 2017, <em>Cell</em>).</li>
+<li><strong>Clinical implications</strong>: a high intratumoral <em>F. nucleatum</em> burden is associated with <strong>poor prognosis and recurrence</strong>. Fecal detection is being studied as a candidate <strong>non-invasive CRC screening biomarker</strong>. Causality is not yet established (evidence favors association/promotion; whether it is a "driver" remains debated).</li>
+</ul>
+<blockquote>
+<p>Summary: <em>F. nucleatum</em> is best understood not as a <strong>sole cause</strong> of CRC but as an <strong>oncomicrobe that accelerates tumor progression</strong> through <strong>adhesion (FadA), immune evasion (Fap2), and chemoresistance</strong> within an already-formed tumor microenvironment.</p>
+</blockquote>
+<h3 id="porphyromonas-gingivalis">⭐ <em>Porphyromonas gingivalis</em> and systemic disease — diabetes, fatty liver, vascular disease</h3>
+<p><em>P. gingivalis</em> (Bacteroidota, GNAB), the key pathogen of periodontitis, is a "keystone pathogen" that <strong>spreads systemically beyond the periodontal pocket via bacteremia, virulence factors, and oral ingestion</strong>, and is bidirectionally entangled with the metabolic and vascular diseases below. Its common virulence factors are <strong>gingipains (Rgp/Kgp — cysteine proteases), fimbriae (FimA), and LPS</strong>, and <strong>outer membrane vesicles (OMVs)</strong> that carry bacterial products serve as the vehicle for long-range delivery.</p>
+<p><strong>① Type 2 diabetes — a bidirectional relationship</strong>
+- Periodontitis and type 2 diabetes are well established as a <strong>bidirectional association that worsens each other</strong>. Periodontal treatment significantly improves HbA1c.
+- Mechanism: <em>P. gingivalis</em>-derived <strong>gingipain directly proteolytically cleaves the insulin receptor (IR) → blocking insulin signaling → causing insulin resistance</strong> (Liu 2024, PMC11291925). <strong>Systemic low-grade inflammation (TNF-α·IL-6)</strong> from LPS/bacteremia worsens both insulin resistance and pancreatic β-cell dysfunction (Jia 2023, PMC10373507).</p>
+<p><strong>② Non-alcoholic fatty liver disease (NAFLD/NASH) — the oral–gut–liver axis</strong>
+- <em>P. gingivalis</em> is swallowed and reaches the GI tract, causing <strong>gut dysbiosis and increased intestinal permeability</strong> → allowing bacteria/LPS to enter the liver via the portal vein ("oral-gut-liver axis").
+- In animal models, oral/periodontal infection <strong>worsens hepatic steatosis, inflammation, and fibrosis (NASH)</strong> (PMC5839206), <strong>promotes hepatocyte fat accumulation via CD36–PPARγ axis upregulation</strong> (high-fat-diet mice), and is further reported as a risk factor for liver injury via the <strong>ferroptosis (iron-dependent cell death)</strong> pathway (<em>J Microbiol Immunol Infect</em> series, S1286457922001101).</p>
+<p><strong>③ Cardiovascular / atherosclerosis</strong>
+- <em>P. gingivalis</em> DNA/antigen is <strong>detected in atheromas</strong>, reaching the vessel wall via bacteremia.
+- Mechanism: <strong>FimA and gingipain adhere to and invade vascular endothelial cells and macrophages → promoting endothelial dysfunction, foam cell formation, and inflammatory atheroma progression</strong>. Systemic inflammation from chronic bacteremia raises the risk of atherosclerosis and coronary artery disease (periodontitis–ASCVD epidemiologic association).</p>
+<blockquote>
+<p>Summary: <em>P. gingivalis</em> is understood not to stop at local periodontal infection but to be a representative bacterium linking to systemic disease, <strong>promoting and worsening insulin resistance (diabetes), hepatic steatosis and fibrosis (NAFLD/NASH), and atherosclerosis (vascular disease)</strong> via <strong>gingipain·FimA·LPS·OMVs</strong> (some causality is at the animal-model/epidemiologic level, still being established).</p>
+</blockquote>
+<h3 id="5_11">5 examples of foods that may be contaminated</h3>
+<ol>
+<li>Fecally contaminated meat / raw meat</li>
+<li>Poorly sanitized cooked foods</li>
+<li>Contaminated vegetables / salads</li>
+<li>Unpasteurized dairy products</li>
+<li>Contaminated drinking water</li>
+</ol>
+<p>※ GNAB (especially <em>Bacteroides</em>) are the largest gut commensals; the key point is that they cause endogenous infection from events such as bowel perforation.</p>
+<h3 id="_5">Antibiotic susceptibility</h3>
+<table>
+<thead>
+<tr>
+<th>Antibiotic</th>
+<th>Susceptibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metronidazole</td>
+<td>Susceptible (S) — first choice for GNAB</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI (piperacillin-tazobactam, amox-clav)</td>
+<td>Susceptible (S)</td>
+</tr>
+<tr>
+<td>Carbapenem (imipenem, meropenem)</td>
+<td>Susceptible (S)</td>
+</tr>
+<tr>
+<td>Penicillin/Ampicillin alone</td>
+<td><strong>Resistant (R)</strong> — β-lactamase (cepA etc.) production</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td><strong>Rising resistance (R)</strong>; <em>B. fragilis</em> 20–40% resistant</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>Intermediate (I/S); some <em>Prevotella</em>·<em>Fusobacterium</em> susceptible, but unreliable for <em>B. fragilis</em></td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>Variable (S/R); <em>B. fragilis</em> generally resistant; some <em>Fusobacterium</em> and oral <em>Prevotella</em> susceptible</td>
+</tr>
+<tr>
+<td>Cefoxitin</td>
+<td>Intermediate (I/S); rising resistance</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>Resistant (R)</strong> — older-generation FQs are ineffective against GNAB such as <em>B. fragilis</em></td>
+</tr>
+<tr>
+<td>Moxifloxacin</td>
+<td>Variable (I/R) — the only FQ with anaerobic activity, but reliability is declining due to rising resistance</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>Variable (S/R) — <em>B. fragilis</em> has a high MIC so it is variable; however, high luminal concentrations provide practical coverage in SIBO. Unsuitable for systemic infection / intra-abdominal abscess</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">Comprehensive summary: anaerobic bacteria antibiotic susceptibility at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Antibiotic</th>
+<th style="text-align: center;">GPAC</th>
+<th style="text-align: center;">GPAB</th>
+<th style="text-align: center;">GNAC</th>
+<th style="text-align: center;">GNAB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metronidazole</td>
+<td style="text-align: center;">S¹</td>
+<td style="text-align: center;">S²</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>S (1st-line)</strong></td>
+</tr>
+<tr>
+<td>Penicillin G</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S³</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>R⁴</strong></td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI combination</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+</tr>
+<tr>
+<td>Carbapenem</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td style="text-align: center;">S/R</td>
+<td style="text-align: center;">variable</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">R↑</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td style="text-align: center;">I/S</td>
+<td style="text-align: center;">variable</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">I/S⁶</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td style="text-align: center;">S/R</td>
+<td style="text-align: center;">variable⁷</td>
+<td style="text-align: center;">variable</td>
+<td style="text-align: center;">R⁸</td>
+</tr>
+<tr>
+<td>Vancomycin</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S⁵</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R⁹</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">variable¹⁰</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Footnotes</strong>
+1. Some GPAC (<em>Finegoldia</em>, <em>Peptoniphilus</em>) may be metronidazole-resistant
+2. <em>Actinomyces</em>·<em>Cutibacterium</em> are metronidazole <strong>resistant</strong>
+3. <em>Clostridium</em>·<em>Actinomyces</em> are penicillin-susceptible
+4. GNAB such as <em>Bacteroides</em> are <strong>resistant</strong> to penicillin alone due to β-lactamase
+5. Vancomycin (oral) is standard treatment for <em>C. difficile</em>
+6. Doxycycline: some <em>Prevotella</em>·<em>Fusobacterium</em> susceptible, but unreliable for <em>B. fragilis</em> → unsuitable as monotherapy
+7. Clarithromycin (macrolide) is generally susceptible for <em>Cutibacterium acnes</em>·<em>Actinomyces</em>
+8. <em>B. fragilis</em> is generally clarithromycin-resistant; only some <em>Fusobacterium</em>·oral <em>Prevotella</em> susceptible
+9. <strong>Ciprofloxacin (older-generation FQ) is unsuitable/resistant across all 4 anaerobic classes</strong> — poor anaerobic coverage. Among FQs, only <strong>moxifloxacin</strong> has anaerobic activity, but its reliability is declining due to rising resistance. In contrast, cipro is actually the <strong>mainstay drug for facultatively anaerobic Gram-negatives (Enterobacteriaceae)</strong> (see the facultative-anaerobe section below).
+10. <strong>Rifaximin</strong> is a gut-selective, non-absorbed rifamycin-class agent → provides broad Gram±/aerobic/anaerobic coverage in the intestinal <strong>lumen</strong> (GPAC/GPAB/GNAC generally S). However, <em>B. fragilis</em> (GNAB) has a high MIC so its verdict is <strong>variable</strong>, and because systemic absorption is almost nil (&lt;0.4%), it is <strong>unsuitable for systemic infection / intra-abdominal abscess</strong>. It is optimal for luminal-targeted treatment such as SIBO·IBS-D·hepatic encephalopathy (see the SIBO deep dive below).</p>
+<p><strong>Key clinical principles</strong>
+- <strong>Metronidazole</strong>: most reliable against Gram-negative anaerobes (GNAB). But ineffective against the Gram-positive bacilli <em>Actinomyces</em>·<em>Cutibacterium</em>.
+- <strong>β-lactam/β-lactamase-inhibitor combinations</strong> and <strong>carbapenems</strong>: cover almost all anaerobes → the backbone of empirical treatment for broad anaerobic infections.
+- <strong>Penicillin alone</strong>: effective against oral anaerobes but ineffective against <em>Bacteroides</em>.
+- <strong>Clindamycin</strong>: rising <em>B. fragilis</em> resistance reduces its reliability as empirical monotherapy.
+- <strong>Ciprofloxacin</strong>: unsuitable across anaerobes (older-generation FQ). If anaerobic coverage is needed, use moxifloxacin or a metronidazole / β-lactam-BLI combination. Cipro's real stage is facultatively anaerobic Gram-negatives (Enterobacteriaceae).</p>
+<hr />
+<h2 id="penicillin-lactam-4">Deep dive: Are penicillin/β-lactams "effective against almost all anaerobes"? — detailed comparison of 4 agents</h2>
+<h3 id="_7">Verdict: the terminology must be distinguished</h3>
+<ul>
+<li><strong>"β-lactam/BLI combinations (amox-clav, pip-tazo)·carbapenems cover almost all anaerobes"</strong> → ✅ true</li>
+<li><strong>"Penicillin alone is effective against almost all anaerobes"</strong> → ❌ false</li>
+<li><strong>Penicillin G/ampicillin alone is ineffective against a large fraction of Gram-negative anaerobic bacilli (GNAB)</strong>. Lumping penicillin together with "β-lactam/BLI combinations" causes misunderstanding.</li>
+</ul>
+<h3 id="-lactamase">Key mechanism: β-lactamase</h3>
+<p>Almost the entire <em>Bacteroides fragilis</em> group, and a large fraction of <em>Prevotella</em>·<em>Porphyromonas</em>, produce <strong>β-lactamase (cepA, cfiA, etc.)</strong> → cleaving penicillin's β-lactam ring and inactivating it.
+- <strong>Penicillin alone</strong> → <strong>resistant (R)</strong> to GNAB (especially <em>B. fragilis</em>)
+- <strong>Amoxicillin + clavulanate</strong> → clavulanate inhibits β-lactamase → <strong>susceptible again (S)</strong></p>
+<h3 id="4penicillin">Detailed comparison of the 4 agents (+penicillin)</h3>
+<table>
+<thead>
+<tr>
+<th>Antibiotic</th>
+<th style="text-align: center;">GPAC (Gram+ cocci)</th>
+<th style="text-align: center;">GPAB (Gram+ bacilli)</th>
+<th style="text-align: center;">GNAC (Gram– cocci)</th>
+<th style="text-align: center;">GNAB (<em>B. fragilis</em>)</th>
+<th style="text-align: center;">Broad anaerobic coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metronidazole</strong></td>
+<td style="text-align: center;">S¹</td>
+<td style="text-align: center;">S (<em>Actino</em>/<em>Cutibacterium</em> <strong>R</strong>)</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>S (1st-line)</strong></td>
+<td style="text-align: center;">◎ (only the actinomycetes are a gap)</td>
+</tr>
+<tr>
+<td><strong>Amoxicillin-clavulanate</strong></td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>S</strong></td>
+<td style="text-align: center;">◎ (broadest)</td>
+</tr>
+<tr>
+<td><strong>Penicillin alone</strong></td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S (<em>Clostridium</em>/<em>Actino</em>)</td>
+<td style="text-align: center;">Generally S</td>
+<td style="text-align: center;"><strong>R</strong> (β-lactamase)</td>
+<td style="text-align: center;">△ (GNAB vulnerable)</td>
+</tr>
+<tr>
+<td><strong>Doxycycline</strong></td>
+<td style="text-align: center;">I/S</td>
+<td style="text-align: center;">variable</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">I/S (reliability↓)</td>
+<td style="text-align: center;">✕ (adjunct only)</td>
+</tr>
+<tr>
+<td><strong>Clarithromycin</strong></td>
+<td style="text-align: center;">S/R</td>
+<td style="text-align: center;">variable (<em>Cutibacterium</em>/<em>Actino</em> S)</td>
+<td style="text-align: center;">variable</td>
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">✕ (only specific Gram-positives)</td>
+</tr>
+<tr>
+<td><strong>Rifaximin</strong> (gut-selective)</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">variable (<em>B. fragilis</em> MIC↑)</td>
+<td style="text-align: center;">◐ (luminal only, systemic ✕)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. Metronidazole — king of Gram-negative anaerobes</strong>
+- Strengths: the most reliable bactericidal activity across GNAB including <em>B. fragilis</em>, first-line for intra-abdominal infection/abscess. Independent of β-lactamase (DNA-damage mechanism).
+- Critical gap: <strong>ineffective (R) against actinomycetes (<em>Actinomyces</em>)·<em>Cutibacterium acnes</em>·<em>Propionibacterium</em></strong> — being aerotolerant/microaerophilic, the anaerobic activation mechanism does not engage.
+- Some GPAC (<em>Finegoldia</em>·<em>Peptoniphilus</em>) may be resistant. For <em>C. difficile</em>, oral vancomycin/fidaxomicin are preferred.</p>
+<p><strong>2. Amoxicillin-clavulanate — the broadest β-lactam</strong>
+- Strengths: clavulanate blocks β-lactamase → covering penicillin's only weakness (GNAB). All 4 major classes including <em>B. fragilis</em> are generally susceptible → <strong>effectively the broadest anaerobic coverage</strong>.
+- <strong>Also effective against actinomycetes</strong> (penicillin class) → covers the gap that metronidazole misses.
+- Weakness: cfiA (metallo-β-lactamase)-producing <em>B. fragilis</em> strains are not inhibited by clavulanate (rare) → carbapenem needed.</p>
+<p><strong>3. Penicillin alone — OK for oral anaerobes, no for GNAB</strong>
+- Strengths: excellent against <em>Clostridium</em> (most)·<em>Actinomyces</em>·oral Gram-positive anaerobes. First-line for actinomycosis.
+- Weakness: <strong>ineffective against <em>B. fragilis</em> and many <em>Prevotella</em></strong> due to β-lactamase → "almost all anaerobes" is false.</p>
+<p><strong>4. Doxycycline — adjunct; unsuitable as empirical monotherapy</strong>
+- Some <em>Prevotella</em>·<em>Fusobacterium</em> susceptible, but high <em>B. fragilis</em> resistance rates make it unreliable → unsuitable as empirical monotherapy, useful only as a combination adjunct.</p>
+<p><strong>5. Clarithromycin (macrolide) — unsuitable for broad anaerobic coverage</strong>
+- <em>Cutibacterium acnes</em>·<em>Actinomyces</em> generally susceptible → an alternative for acne and some actinomycetes. However <strong><em>B. fragilis</em> is generally resistant</strong> and macrolide resistance is common overall → unsuitable for broad anaerobic coverage.</p>
+<h3 id="_8">One-line conclusion</h3>
+<p><strong>Broad anaerobic coverage: Amoxicillin-clavulanate ≈ Metronidazole &gt; Penicillin alone (GNAB vulnerable) &gt; Doxycycline / Clarithromycin (adjunct / limited)</strong>
+- Broadest and safest → <strong>Amox-clav</strong> (both actinomycetes + GNAB)
+- First-line for GNAB (intra-abdominal infection) → <strong>Metronidazole</strong> (but ineffective against actinomycetes)
+- Practical standard: <strong>Metronidazole + a β-lactam (amox-clav etc.) combination</strong> — each covers the other's gap (metro = actinomycetes / β-lactam = some resistant strains).
+- <strong>Penicillin alone</strong> is not a "cure-all". <strong>Doxycycline·Clarithromycin</strong> are not mainstays of broad anaerobic coverage.</p>
+<hr />
+<h2 id="metronidazole">Deep dive: Does metronidazole work against "almost all anaerobes"? — anaerobes where it weakens or fails</h2>
+<h3 id="_9">The big picture</h3>
+<p>Metronidazole is the <strong>strongest card against typical (strict) anaerobes</strong>, especially <strong>Gram-negative anaerobic bacilli (<em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em>), with almost no resistance (≈0–2%)</strong>. But the qualifier "<strong>almost</strong>" is key — there is clearly a group that is structurally unresponsive or has reduced susceptibility.</p>
+<h3 id="_10">Why it fails — the activation mechanism is key</h3>
+<p>Metronidazole is itself an <strong>inactive prodrug</strong>. The bacterium's internal <strong>low-redox anaerobic metabolism</strong> (pyruvate:ferredoxin oxidoreductase, PFOR, etc.) must reduce the nitro group (-NO₂) for it to become the active metabolite that damages DNA.
+→ <strong>The stronger the strict anaerobic metabolism, the better it works; if the organism is aerotolerant/microaerophilic and this reduction mechanism is weak, the drug is not activated and is ineffective.</strong> This is the common cause of the "gaps" below.</p>
+<h3 id="1-r">① Definitely ineffective / resistant (R) — a clinically important gap</h3>
+<table>
+<thead>
+<tr>
+<th>Organism</th>
+<th>Class</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Actinomyces</em></strong></td>
+<td>GPAB (Gram+ bacilli)</td>
+<td>aerotolerant, weak nitro-reduction mechanism → <strong>R</strong>. Penicillin is first-line for actinomycosis</td>
+</tr>
+<tr>
+<td><strong><em>Cutibacterium (Propionibacterium) acnes</em></strong></td>
+<td>GPAB</td>
+<td>aerotolerant, lacks nitroreductase → <strong>R</strong>. β-lactam/clindamycin for acne/device-related infection</td>
+</tr>
+<tr>
+<td><strong><em>Lactobacillus</em></strong> (many)</td>
+<td>GPAB</td>
+<td>a large fraction intrinsically <strong>R</strong> (especially aerotolerant species)</td>
+</tr>
+<tr>
+<td><strong><em>Bifidobacterium</em></strong></td>
+<td>GPAB</td>
+<td>susceptibility <strong>variable–R</strong>, low reliability</td>
+</tr>
+<tr>
+<td><strong><em>Propionibacterium</em> spp. in general</strong></td>
+<td>GPAB</td>
+<td>R in the same context as <em>Cutibacterium</em> above</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>Pattern: aerotolerant members among the Gram-positive "bacilli (GPAB)" are metronidazole's main blind spot.</strong> The key contrast is that it is strongest against GNAB (Gram-negative bacilli) yet vulnerable against some GPAB.</p>
+<h3 id="2-ir">② Reduced or variable susceptibility (I–R, low reliability)</h3>
+<table>
+<thead>
+<tr>
+<th>Organism</th>
+<th>Class</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Parvimonas micra</em></strong></td>
+<td>GPAC</td>
+<td><strong>microaerophilic</strong> tendency → elevated MIC, relatively less susceptible among the species</td>
+</tr>
+<tr>
+<td><strong><em>Finegoldia magna</em></strong></td>
+<td>GPAC</td>
+<td>generally S but a few resistant strains reported, MIC varies by species</td>
+</tr>
+<tr>
+<td><strong><em>Peptoniphilus</em></strong> spp.</td>
+<td>GPAC</td>
+<td>some may be resistant (frequently cited as a textbook exception)</td>
+</tr>
+<tr>
+<td>microaerophilic <em>Streptococcus</em> (<em>S. anginosus</em> group, etc.)</td>
+<td>—</td>
+<td>strictly not an anaerobe, metronidazole <strong>unsuitable</strong> — an abscess-causing organism that the drug does not engage</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-gpac-metronidazole-yes-100">③ Does metronidazole work well on GPAC (Gram-positive anaerobic cocci)? → <strong>mostly YES (but not 100%)</strong></h3>
+<ul>
+<li><strong>Multicenter studies combined: metronidazole resistance ~0–10%.</strong></li>
+<li>UK/Wales sentinel study: <strong>0% resistance</strong> to metronidazole in GPAC (on par with piperacillin/tazobactam·imipenem)</li>
+<li>Turkish university hospital: metronidazole and tigecycline showed <strong>high in vitro activity → suitable for empirical treatment</strong></li>
+<li>FEMS review: GPAC metronidazole resistance around <strong>5–10%</strong> (favorable compared with penicillin 7–10%, clindamycin 7–20%)</li>
+<li><strong>Conclusion: metronidazole works fairly well on GPAC and is suitable as empirical treatment.</strong> However:</li>
+<li>species-level variation exists (especially a few resistant strains of <em>Parvimonas micra</em>·some <em>Peptoniphilus</em>·<em>Finegoldia</em>)</li>
+<li>this matches exactly the "S¹" footnote in the top table (some <em>Finegoldia</em>·<em>Peptoniphilus</em> may be R)</li>
+<li>it is not "nearly 100%" the way it is for GNAB, so for empirical treatment of deep infections it is safer to supplement with a β-lactam/BLI combination</li>
+</ul>
+<h3 id="_11">One-line summary</h3>
+<ul>
+<li><strong>Metronidazole's strongest domain</strong>: Gram-negative anaerobic bacilli (GNAB, <em>Bacteroides</em> etc.) — resistance ≈0%</li>
+<li><strong>Works fairly well</strong>: GPAC (Gram-positive anaerobic cocci) — resistance 0–10%, empirically suitable but not 100%</li>
+<li><strong>Structural blind spot</strong>: aerotolerant Gram-positive bacilli — <strong><em>Actinomyces</em>·<em>Cutibacterium acnes</em>·<em>Lactobacillus</em>·<em>Bifidobacterium</em></strong> <em>(R due to absent nitro-reduction mechanism)</em></li>
+<li><strong>Unsuitable</strong>: microaerophilic <em>Streptococcus</em> (<em>S. anginosus</em> group, etc.) — not a true anaerobe</li>
+<li><strong>Practical</strong>: understand metronidazole as "dedicated to Gram-negative anaerobes", and fill the Gram-positive coverage (including actinomycetes) with a <strong>β-lactam (amox-clav etc.) combination</strong> as the standard.</li>
+</ul>
+<hr />
+<h2 id="actinomyces-metronidazole">Deep dive: Actinomyces — the classic "anaerobe that metronidazole doesn't work on"</h2>
+<h3 id="filamentous-bacillus">Identity: an anaerobic–microaerophilic Gram-positive filamentous bacillus</h3>
+<ul>
+<li><strong>Gram-positive bacillus (GPAB)</strong>, with a <strong>filamentous</strong> branching morphology → looks fungus-like in tissue but is a <strong>bacterium</strong> (non-acid-fast; differentiating point from <em>Nocardia</em>: Nocardia is partially acid-fast and aerobic).</li>
+<li><strong>Anaerobic to microaerophilic</strong> — this "aerotolerant" character is the clinical key.</li>
+<li><strong>Normal flora</strong> of the oral cavity, GI tract, and genitourinary tract. Low virulence, so it invades only when there is <strong>mucosal injury + tissue necrosis</strong>.</li>
+<li>Representative species: <strong><em>Actinomyces israelii</em></strong>. Often a <strong>polymicrobial infection</strong> — found together with companion bacteria (e.g., <em>Aggregatibacter actinomycetemcomitans</em>).</li>
+</ul>
+<h3 id="metronidazole_1">Why metronidazole doesn't work (linked to the previous section)</h3>
+<p>Metronidazole is a prodrug activated by strict anaerobic metabolism (nitro-group reduction), but <em>Actinomyces</em> is <strong>aerotolerant/microaerophilic, so this reduction mechanism is weak → the drug is not activated → resistant (R)</strong>. Thus it is the classic <strong>exception</strong> to the formula "anaerobe = metronidazole".</p>
+<h3 id="3">The 3 major clinical forms (by site of involvement)</h3>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Frequency</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cervicofacial ("lumpy jaw")</strong></td>
+<td><strong>50–70%</strong></td>
+<td>After dental infection, extraction, or oral trauma. A firm mass of the jaw/neck → chronic progression</td>
+</tr>
+<tr>
+<td><strong>Thoracic</strong></td>
+<td>—</td>
+<td>Aspiration-related. Pneumonia, empyema, chest-wall involvement</td>
+</tr>
+<tr>
+<td><strong>Abdominopelvic</strong></td>
+<td><strong>10–20%</strong></td>
+<td>After appendiceal/diverticular mucosal rupture, surgery, or trauma. <strong>The pelvic form is strongly associated with long-term IUD use</strong> (1.6–11.6% colonization in IUD users)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">Characteristic findings</h3>
+<ul>
+<li><strong>Sulfur granules</strong>: yellow, round ≤1mm granules visible to the naked eye in drained pus = bacterial colony aggregates. <strong>However, not specific to <em>Actinomyces</em></strong> — also seen in <em>Nocardia</em> and botryomycosis (Splendore-Hoeppli phenomenon).</li>
+<li><strong>Chronic/subacute course</strong>: contiguous spread ignoring fascial planes, with multiple abscesses + <strong>sinus tracts</strong> → frequently confused with tumor or fungal infection.</li>
+<li>Diagnosis is by <strong>culture (fastidious, anaerobic, prolonged)</strong> + tissue biopsy. Early misdiagnosis is common.</li>
+</ul>
+<h3 id="penicillin-1">Treatment — penicillin first-line, long-term high-dose</h3>
+<ul>
+<li><strong>First-line: penicillin G or amoxicillin, high-dose and long-term.</strong> For tissue/abscess penetration, <strong>6–12 months</strong> (may be shortened to 3 months with optimal surgical resection).</li>
+<li>Some cases report penicillin G 12 MU/day + metronidazole combination, but <strong>metronidazole is ineffective against <em>Actinomyces</em> itself</strong> — this combination targets the <strong>accompanying anaerobes (GNAB etc.) of the polymicrobial infection</strong>, not the actinomycete itself.</li>
+<li><strong>Pelvic form (IUD-related)</strong>: <strong>IUD removal + penicillin</strong>. Drain large abscesses.</li>
+<li><strong>Penicillin-allergy alternatives</strong>: doxycycline, clindamycin, ceftriaxone, erythromycin/clarithromycin (<em>Actinomyces</em> is generally macrolide-susceptible), etc.</li>
+<li>Surgery (abscess drainage, debridement of necrotic tissue, sinus tract excision) combined with antibiotics shortens treatment duration and reduces recurrence.</li>
+</ul>
+<h3 id="_13">One-line summary</h3>
+<ul>
+<li><strong><em>Actinomyces</em></strong> = an anaerobic–microaerophilic Gram-positive <strong>filamentous bacillus</strong>, oral commensal, invades on mucosal injury → chronic mass, sinus tracts, sulfur granules.</li>
+<li><strong>Metronidazole R (aerotolerant mechanism)</strong> → the classic exception to the "if anaerobe then metro" formula.</li>
+<li><strong>Treatment = high-dose penicillin/amoxicillin long-term (6–12 months) + surgery if needed</strong>; IUD removal for the pelvic form.</li>
+<li>Related: directly linked to footnotes ①·② in the top table (metro is ineffective against <em>Actinomyces</em>·<em>Cutibacterium</em>) and to the "GPAB" class.</li>
+</ul>
+<hr />
+<h2 id="aggregatibacter-actinomycetemcomitans">Deep dive: <em>Aggregatibacter actinomycetemcomitans</em> — the Gram-negative "companion" of Actinomyces</h2>
+<h3 id="4_1">Identity: the name looks like an actinomycete but it's Gram-negative — a microaerophile outside the 4 major classes</h3>
+<ul>
+<li><strong>Phylogeny: Pseudomonadota (formerly Proteobacteria), class Gammaproteobacteria, family Pasteurellaceae.</strong> ⚠️ The "actinomyceto-" in the name only means it <strong>coexists</strong> with <em>Actinomyces</em> (phylum Actinomycetota); its lineage is a completely different phylum.</li>
+<li><strong>A Gram-negative coccobacillus.</strong> Its old name <em>Actinobacillus actinomycetemcomitans</em> → the species epithet "actinomycetem<strong>comitans</strong>" (<strong>accompanying</strong> the actinomycetes) derives from being frequently co-isolated with <em>Actinomyces</em> in actinomycosis lesions.</li>
+<li><strong>Microaerophilic/capnophilic (requires CO₂), fastidious (hard to culture)</strong> — <strong>not a true anaerobe</strong> → treated as a separate organism outside this document's 4 major classes (GPAC/GPAB/GNAC/GNAB).</li>
+<li>The "A" of the <strong>HACEK group</strong>: <em>Haemophilus/Aggregatibacter</em> → <em>Aggregatibacter</em>·<em>Cardiobacterium</em>·<em>Eikenella</em>·<em>Kingella</em>. The leading cause of Gram-negative endocarditis (up to ~5% of native valve endocarditis; HACEK as a whole ~10% of IE).</li>
+<li>Oral commensal → invades through mucosal injury and periodontal tissue.</li>
+</ul>
+<h3 id="2">2 major diseases</h3>
+<table>
+<thead>
+<tr>
+<th>Disease</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Invasive/aggressive periodontitis (aggressive/localized juvenile periodontitis)</strong></td>
+<td>The representative disease of <em>A. actinomycetemcomitans</em>. Young age, rapid alveolar bone loss. Virulence factors such as leukotoxin are involved</td>
+</tr>
+<tr>
+<td><strong>Endocarditis (HACEK endocarditis)</strong></td>
+<td>Subacute course, arising from dental procedures/oral commensals. Slow-growing, so prolonged blood culture is needed</td>
+</tr>
+<tr>
+<td>(rare) Brain/soft-tissue abscess, accompanying polymicrobial actinomycosis lesions</td>
+<td>Found as a companion of <em>Actinomyces</em> infection</td>
+</tr>
+</tbody>
+</table>
+<h3 id="halitosis">Relationship to halitosis — not a direct producer, but the upstream pathogen that "sets the stage"</h3>
+<p>The chemical reality of halitosis is <strong>volatile sulfur compounds (VSC)</strong> — hydrogen sulfide (H₂S)·methyl mercaptan (CH₃SH)·dimethyl sulfide ((CH₃)₂S) — with H₂S and CH₃SH making up about 90% of total VSC. Aa is <strong>not a main direct producer</strong> of these VSCs.</p>
+<ul>
+<li><strong>Direct contribution (weak):</strong> in the "most active VSC producers" table of a review synthesizing 40 years and 106 papers (Lee &amp; Hong, <em>Front Oral Health</em> 2023;4:1229145), <strong><em>Aggregatibacter</em> is not included.</strong> The representative strong H₂S producers are <em>Fusobacterium</em>·<em>Neisseria</em>·<em>Porphyromonas</em>; for CH₃SH they are <em>Atopobium</em>·<em>Megasphaera</em>·<em>Prevotella</em>·<em>Selenomonas</em>·<em>Veillonella</em>. The true VSC leads are the <strong>red complex (<em>P. gingivalis</em>·<em>T. denticola</em>·<em>T. forsythia</em>)</strong> and the <em>Fusobacterium</em>·<em>Bacteroides</em>·<em>Peptostreptococcus</em> lineages.</li>
+<li><strong>Indirect contribution (substantial):</strong> Aa is <strong>a representative pathogen of localized aggressive periodontitis (LAP)</strong>, disrupting host immunity with leukotoxin (LtxA)·CDT (cytolethal distending toxin) and destroying periodontal tissue. This destruction <strong>creates the anaerobic habitat of deep periodontal pockets</strong>, setting the stage for the true VSC producers (red complex·<em>F. nucleatum</em>) to flourish. With at least one pocket &gt;5mm deep, VSC values increase about 30% versus normal.</li>
+<li><strong>Vicious cycle:</strong> CH₃SH has high oral-mucosal permeability (more cytotoxic than H₂S), accelerating periodontitis → which in turn deepens pockets and increases VSC. Aa sits <strong>upstream</strong> in this cycle.</li>
+<li><strong>Epidemiologic marker:</strong> in tongue-coating microbiota comparison studies, the halitosis group showed no phylum-level difference but a significant increase at the <strong>genus/species level of <em>Aggregatibacter</em>·<em>Campylobacter</em>·<em>Capnocytophaga</em>·<em>Prevotella</em>·<em>Treponema</em>.</strong> The same-genus <em>Aggregatibacter segnis</em> is also reported as a tongue-coating-associated species.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Aa's position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strong direct VSC (H₂S·CH₃SH) production</td>
+<td>✗ not a main producer (absent from the VSC-producer table)</td>
+</tr>
+<tr>
+<td>Periodontitis pathogenicity</td>
+<td>✓ strong — LAP causative organism, LtxA·CDT</td>
+</tr>
+<tr>
+<td>Indirect contribution (creates anaerobic pockets, promotes red complex)</td>
+<td>✓ substantial</td>
+</tr>
+<tr>
+<td>Increased in halitosis patients' tongue coating</td>
+<td>✓ significant (genus-level marker)</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>One-line summary:</strong> Aa is not a bacterium that <em>directly emits</em> halitosis, but an upstream pathogen that destroys and anaerobizes periodontal pockets, <em>creating the environment in which the true VSC producers flourish</em>. This is why VSC and halitosis rise together in the tongue coating/pockets of people with abundant Aa (especially aggressive periodontitis patients).</p>
+<h3 id="clarithromycinmacrolide">Antibiotic susceptibility — clarithromycin/macrolides are "conditionally effective"</h3>
+<p>As correctly noted, <strong>there is clearly a context where macrolides are effective, but the nuance matters</strong>.</p>
+<ul>
+<li><strong>The strength of macrolides (azithromycin·clarithromycin) = killing intracellularly invasive bacteria.</strong></li>
+<li><em>A. actinomycetemcomitans</em> <strong>invades</strong> the gingival epithelium and tissue, and azithromycin <strong>accumulates</strong> well in many mammalian cells, <strong>killing even bacteria hidden inside tissue/cells</strong> (the <em>Azithromycin Kills Invasive A. actinomycetemcomitans</em> study). An advantage over β-lactams, which cannot reach intracellular bacteria.</li>
+<li>High periodontal-tissue concentration makes it useful in local/adjunctive treatment.</li>
+<li><strong>However, in vitro susceptibility is variable — not "always S".</strong></li>
+<li>Some oral-isolate studies observed <strong>intermediate resistance to azithromycin·clindamycin</strong> → efficacy may be limited if relied on alone.</li>
+<li>That is, there is <strong>individual/strain variation</strong>, so macrolides are positioned as an <strong>adjunct/alternative to standard combination therapy</strong> rather than monotherapy.</li>
+<li><strong>Standard periodontitis regimen = amoxicillin + metronidazole combination</strong> (in addition to mechanical treatment such as scaling/root planing).</li>
+<li>Why combined? <em>A. actinomycetemcomitans</em> is microaerophilic, so <strong>metronidazole alone is insufficient</strong> → <strong>amoxicillin is the mainstay, metronidazole covers the accompanying anaerobes</strong>. The <strong>synergy</strong> of the two raises the eradication rate.</li>
+<li>When β-lactamase-producing strains are present, use <strong>amoxicillin-clavulanate</strong>.</li>
+<li><strong>Endocarditis (HACEK) = ceftriaxone first-line</strong> (3rd-generation cephalosporin), IV for 4–6 weeks. Ampicillin (if susceptibility confirmed)·fluoroquinolone as alternatives. Because of possible β-lactamase production, avoid empirical penicillin/ampicillin monotherapy.</li>
+<li>Other: <strong>doxycycline/tetracycline S</strong> (periodontal local/systemic), fluoroquinolone S.</li>
+</ul>
+<h3 id="ciprofloxacinfluoroquinolone-aggregatibacter">Ciprofloxacin/fluoroquinolone — active against <em>Aggregatibacter</em> (the exact opposite of anaerobes)</h3>
+<ul>
+<li><strong>Unlike anaerobes, HACEK organisms (including <em>Aggregatibacter</em>) are generally fluoroquinolone-susceptible (S).</strong> Ciprofloxacin·levofloxacin·moxifloxacin are all active.</li>
+<li><strong>Endocarditis alternative</strong>: when a β-lactam (ceftriaxone) cannot be used (allergy, etc.), <strong>FQs such as ciprofloxacin are accepted as an alternative option</strong> (presuming confirmed susceptibility).</li>
+<li>But <strong>ceftriaxone remains first-line</strong> — FQs are an alternative. In periodontitis, too, the standard is amox+metro and FQs are not usually first-line.</li>
+<li><strong>Key contrast</strong>: even among Gram-negatives, <strong>cipro is ineffective (R) against anaerobes (<em>Bacteroides</em> etc.)</strong> but effective (S) against <em>Aggregatibacter</em> (microaerophilic) → so it is not "Gram-negative = cipro OK", but rather that <em>oxygen metabolism (aerobic/microaerophilic vs strict anaerobic) determines FQ susceptibility</em>.</li>
+</ul>
+<h3 id="clarithromycin">One-line note on clarithromycin</h3>
+<ul>
+<li><strong>Correct — macrolides (clarithromycin, especially azithromycin) are effective at killing intracellularly invasive <em>A. actinomycetemcomitans</em>, so they are useful in periodontitis</strong>.</li>
+<li><strong>However, in vitro resistance is variable</strong>, so it is more accurate to view them as an <strong>adjunct/alternative to the standard amoxicillin (+metronidazole) combination</strong> rather than monotherapy.</li>
+<li><strong>For endocarditis, ceftriaxone is first-line</strong>, not a macrolide.</li>
+</ul>
+<h3 id="actinomyces">Relationship to Actinomyces — don't confuse them</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th><em>Actinomyces</em> (e.g., <em>A. israelii</em>)</th>
+<th><em>Aggregatibacter actinomycetemcomitans</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gram</td>
+<td><strong>Positive</strong> filamentous bacillus (GPAB)</td>
+<td><strong>Negative</strong> coccobacillus (HACEK)</td>
+</tr>
+<tr>
+<td>Oxygen</td>
+<td>Anaerobic–microaerophilic</td>
+<td>Microaerophilic/capnophilic</td>
+</tr>
+<tr>
+<td>metronidazole</td>
+<td><strong>R</strong> (aerotolerant)</td>
+<td><strong>insufficient</strong> (alone), combine with amox</td>
+</tr>
+<tr>
+<td>First-line treatment</td>
+<td><strong>high-dose penicillin, long-term</strong></td>
+<td>periodontitis = amox+metro / endocarditis = ceftriaxone</td>
+</tr>
+<tr>
+<td>macrolide</td>
+<td>generally S (alternative)</td>
+<td>useful for intracellular killing but variable</td>
+</tr>
+<tr>
+<td>Relationship</td>
+<td>cause of actinomycosis</td>
+<td>the companion Gram-negative bacterium <strong>accompanying</strong> that lesion</td>
+</tr>
+</tbody>
+</table>
+<p>→ Confused because of the similar names, but they are <strong>separate organisms with different Gram stains and treatments</strong>. The species epithet "comitans (accompanying)" explains their clinical coexistence.</p>
+<hr />
+<h2 id="_14">Deep dive: bacteria abundant in the gut that are NOT anaerobes — the "facultative anaerobe" minority</h2>
+<h3 id="_15">The big picture: the gut is overwhelmingly an anaerobic world</h3>
+<ul>
+<li><strong>~99% of colonic commensals are obligate anaerobes</strong> — <em>Bacteroides</em>, <em>Bifidobacterium</em>, <em>Clostridium</em>, <em>Faecalibacterium</em>, <em>Eubacterium</em>, etc.</li>
+<li>The "non-anaerobe" bacteria discussed here are <strong>a minority of less than 1% by number</strong>, but <strong>clinically the leading players in UTI, bacteremia, intra-abdominal infection, and opportunistic infection</strong> → their presence looms large.</li>
+<li>Their precise oxygen classification is mostly <strong>obligate anaerobe ✗ / facultative anaerobe</strong> or <strong>aerotolerant</strong> → they grow with or without oxygen (fermenting when absent).</li>
+</ul>
+<h3 id="facultative-anaerobe">The core group (facultative anaerobes)</h3>
+<table>
+<thead>
+<tr>
+<th>Organism</th>
+<th>Phylum</th>
+<th>Gram</th>
+<th>Morphology</th>
+<th>Gut position/significance</th>
+<th>Representative infections</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Escherichia coli</em></strong></td>
+<td>Pseudomonadota</td>
+<td>Negative</td>
+<td>Bacillus</td>
+<td>Representative of Enterobacteriaceae. Normal commensal but with diverse pathogenic strains</td>
+<td>UTI (leading cause), bacteremia, neonatal meningitis, enteritis (ETEC/EHEC etc.)</td>
+</tr>
+<tr>
+<td><strong><em>Klebsiella</em> (K. pneumoniae etc.)</strong></td>
+<td>Pseudomonadota</td>
+<td>Negative</td>
+<td>Bacillus</td>
+<td>Enterobacteriaceae</td>
+<td>Pneumonia, UTI, bacteremia (multidrug-resistance concern)</td>
+</tr>
+<tr>
+<td><strong><em>Enterobacter</em>, <em>Citrobacter</em>, <em>Proteus</em>, <em>Serratia</em>, <em>Morganella</em></strong></td>
+<td>Pseudomonadota</td>
+<td>Negative</td>
+<td>Bacillus</td>
+<td>Enterobacteriaceae</td>
+<td>Nosocomial infection, UTI, intra-abdominal infection</td>
+</tr>
+<tr>
+<td><strong>Enterococci (<em>Enterococcus faecalis</em>, <em>E. faecium</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td><strong>Positive</strong></td>
+<td>Cocci (pairs/chains)</td>
+<td>Representative gut-commensal Gram-positive facultative anaerobe</td>
+<td>UTI, endocarditis, bacteremia, <strong>VRE (vancomycin-resistant)</strong></td>
+</tr>
+<tr>
+<td><strong>Some streptococci (<em>Streptococcus</em> group, <em>S. gallolyticus/bovis</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td>Positive</td>
+<td>Cocci</td>
+<td>Gut commensal</td>
+<td>Endocarditis (reported association with colorectal cancer)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_16">The "gray zone" bacteria with ambiguous oxygen requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Organism</th>
+<th>Phylum</th>
+<th>Classification</th>
+<th>Gut significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lactobacilli (<em>Lactobacillus</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td><strong>Aerotolerant/microaerophilic</strong>, generally fermentative</td>
+<td>Normal commensal. Not an obligate anaerobe</td>
+</tr>
+<tr>
+<td><strong>Staphylococci (<em>Staphylococcus</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td>Facultative anaerobe</td>
+<td>Few in the gut. Mainly skin/nasal. Food poisoning (enterotoxin)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vs-4">Key points distinguishing "anaerobe vs facultative anaerobe" (linked to the 4 major classes above)</h3>
+<ul>
+<li><strong>Obligate anaerobe</strong>: oxygen = poison. <em>Bacteroides</em>, <em>Clostridium</em>, <em>Fusobacterium</em>, etc. → <strong>the subject of this document's 4 major classes (GPAC/GPAB/GNAC/GNAB)</strong>.</li>
+<li><strong>Facultative anaerobe</strong>: respires with oxygen, ferments without → <strong>the Enterobacteriaceae/enterococci in the table above</strong> → <strong>outside the 4 major classes</strong>. Easy to culture (ordinary aerobic media) and commonly isolated.</li>
+<li><strong>Microaerophilic</strong>: prefers low oxygen concentration → <em>Campylobacter</em>, <em>Helicobacter</em>, and the <em>Aggregatibacter</em> discussed earlier.</li>
+<li><strong>Aerotolerant</strong>: cannot respire with oxygen but tolerates it → <em>Lactobacillus</em>, and exceptionally <em>Actinomyces</em>.</li>
+</ul>
+<h3 id="_17">Why this distinction matters clinically</h3>
+<ul>
+<li><strong>Culture</strong>: facultative anaerobes grow well in ordinary aerobic blood media → no special anaerobic culture needed as with obligate anaerobes. Rapidly detected in clinical specimens.</li>
+<li><strong>Empirical antibiotics</strong>: in polymicrobial infections mixing "anaerobes + facultative anaerobes", such as intra-abdominal infection, <strong>both must be covered</strong> → e.g., a 3rd-generation cephalosporin/carbapenem for facultatively anaerobic Gram-negatives (Enterobacteriaceae), and metronidazole for obligate anaerobes → hence the logic of <strong>"cephalosporin + metronidazole"</strong> or a <strong>single broad-spectrum agent (piperacillin-tazobactam, carbapenem)</strong>.</li>
+<li><strong>Metronidazole is ineffective against facultative anaerobes</strong> (nitro-reduction fails in the presence of oxygen) → not used for Enterobacteriaceae/enterococcal infection. This extends the logic seen earlier with <em>Actinomyces</em>·<em>Aggregatibacter</em>.</li>
+</ul>
+<h3 id="4-ciprofloxacin">Antibiotic susceptibility — facultative anaerobes outside the 4 major classes (ciprofloxacin's real stage)</h3>
+<p>In the 4 anaerobic classes cipro was "unsuitable", but <strong>here, among facultatively anaerobic Gram-negatives, cipro is the traditional mainstay</strong>. The contrast is the key.</p>
+<table>
+<thead>
+<tr>
+<th>Organism (phylum)</th>
+<th>Ciprofloxacin</th>
+<th>First-line/mainstay</th>
+<th>Resistance/caution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>E. coli</em> / Enterobacteriaceae</strong> (Pseudomonadota)</td>
+<td><strong>Active (S)</strong> but <strong>surging resistance</strong></td>
+<td>3rd-gen cephalosporin·pip-tazo·carbapenem</td>
+<td><strong>ESBL·FQ resistance</strong> 20–40%+ regionally → declining reliability of empirical cipro alone. <strong>If ESBL, carbapenem</strong></td>
+</tr>
+<tr>
+<td><strong><em>Klebsiella</em></strong> (Pseudomonadota)</td>
+<td>Active but resistance common</td>
+<td>3rd-gen ceph·carbapenem</td>
+<td>ESBL·<strong>CRE (carbapenem-resistant)</strong> spread</td>
+</tr>
+<tr>
+<td><strong><em>Pseudomonas aeruginosa</em></strong> (Pseudomonadota, few in gut)</td>
+<td><strong>Active (S), anti-pseudomonal FQ</strong></td>
+<td>cipro/levo·ceftazidime·pip-tazo·carbapenem</td>
+<td>FQ is <strong>one of the few oral drugs with anti-pseudomonal activity</strong> → high clinical value. But resistance emerges fast</td>
+</tr>
+<tr>
+<td><strong><em>Proteus</em>, <em>Enterobacter</em>, <em>Citrobacter</em>, <em>Serratia</em></strong> (Pseudomonadota)</td>
+<td>Active (S), variable</td>
+<td>3rd-gen ceph·carbapenem·pip-tazo</td>
+<td><em>Enterobacter</em>·<em>Serratia</em>: beware inducible <strong>AmpC</strong> resistance</td>
+</tr>
+<tr>
+<td><strong>Enterococcus <em>E. faecalis</em></strong> (Bacillota)</td>
+<td><strong>Variable/unreliable</strong> (I/R), not first-line</td>
+<td>ampicillin (faecalis susceptible)</td>
+<td>FQ not recommended outside UTI</td>
+</tr>
+<tr>
+<td><strong>Enterococcus <em>E. faecium</em> / VRE</strong> (Bacillota)</td>
+<td><strong>Resistant (R)</strong></td>
+<td>linezolid·daptomycin (VRE)</td>
+<td>ampicillin·vancomycin frequently R</td>
+</tr>
+<tr>
+<td><strong>Streptococcus (<em>S. gallolyticus</em>)</strong> (Bacillota)</td>
+<td>Variable activity, not first-line</td>
+<td>penicillin</td>
+<td>FQ is adjunct</td>
+</tr>
+<tr>
+<td><strong><em>Lactobacillus</em></strong> (Bacillota, gray zone)</td>
+<td>Often resistant (R)</td>
+<td>(infection rare) penicillin·clindamycin</td>
+<td>FQ generally ineffective</td>
+</tr>
+<tr>
+<td><strong><em>Staphylococcus</em></strong> (Bacillota, gray zone)</td>
+<td>Variable activity, <strong>MRSA often R</strong></td>
+<td>(MSSA) cefazolin·nafcillin / (MRSA) vancomycin</td>
+<td>FQ alone → rapid resistance emergence → avoid</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key clinical principles (facultative anaerobes)</strong>
+- <strong>Ciprofloxacin = the traditional mainstay for Gram-negative facultative anaerobes (especially Enterobacteriaceae·<em>Pseudomonas</em>)</strong>. High oral bioavailability makes it useful for outpatient UTI and oral step-down in intra-abdominal infection.
+- But <strong>FQ resistance is surging worldwide</strong> (especially <em>E. coli</em>) → <strong>declining reliability of empirical cipro alone</strong>; choose based on regional susceptibility data/culture results.
+- <strong>Cipro has almost no anaerobic coverage</strong> → when anaerobes are mixed in (as in intra-abdominal infection), <strong>a metronidazole combination is essential</strong> ("cipro + metronidazole" is the classic oral combination for intra-abdominal infection).
+- <strong>Cipro is unreliable against Gram-positives (enterococci·staphylococci)</strong> → not used for enterococci·MRSA.
+- <strong>One-sentence summary</strong>: cipro is a <strong>"drug for Gram-negative aerobes/facultative anaerobes"</strong>. R against anaerobes (the 4 classes), S against Gram-negative facultative anaerobes (but rising resistance), unsuitable for Gram-positives.</p>
+<h3 id="_18">One-line summary</h3>
+<ul>
+<li>The gut is a <strong>99% obligate-anaerobe</strong> world; the remaining minority is <strong>facultative anaerobes (Enterobacteriaceae E. coli·Klebsiella + enterococci)</strong> and <strong>aerotolerant (<em>Lactobacillus</em>)</strong>.</li>
+<li>These are <strong>outside the 4 anaerobic classes</strong>, <strong>detected by ordinary aerobic culture</strong>, and <strong>metronidazole-ineffective</strong>.</li>
+<li>Few in number but <strong>the real leading players in UTI·bacteremia·endocarditis·intra-abdominal infection</strong> → large clinical weight.</li>
+</ul>
+<hr />
+<h2 id="vsc-halitosis">Deep dive: VSC (volatile sulfur compound)-producing bacteria — the causative organisms of halitosis</h2>
+<h3 id="vsc">What VSCs are — the chemical reality of halitosis</h3>
+<ul>
+<li><strong>VSC (Volatile Sulfur Compounds)</strong> = the <strong>main culprit (80–90%)</strong> of oral malodor. Three are key.</li>
+<li><strong>Hydrogen sulfide H₂S</strong> — rotten-egg smell. Mainly produced from <strong>L-cysteine</strong> degradation.</li>
+<li><strong>Methyl mercaptan CH₃SH</strong> — rotten-cabbage/periodontal-pus smell. Mainly produced from <strong>L-methionine</strong> degradation. <strong>A malodor marker of periodontal disease</strong> — the higher the CH₃SH/H₂S ratio, the more severe the periodontitis.</li>
+<li><strong>Dimethyl sulfide (CH₃)₂S</strong> — relatively larger contribution in systemic (blood-borne) halitosis.</li>
+<li><strong>Mechanism</strong>: anaerobic Gram-negative bacteria degrade sulfur-containing amino acids using <strong>desulfhydrating enzymes (cysteine desulfhydrase, methionine-γ-lyase/mgl)</strong> → releasing VSC. The main production sites are the posterior tongue (tongue coating) and periodontal pockets.</li>
+<li><strong>Study data</strong>: H₂S (~90–100 ppb)·CH₃SH in gingivitis/periodontitis patients are significantly higher than in the healthy group (H₂S ~15 ppb). Halitosis prevalence: healthy 3% vs gingivitis 39.5% vs periodontitis 42.9%.</li>
+</ul>
+<h3 id="vsc_1">Bacteria contributing to VSC production — in order of contribution</h3>
+<p>Periodontal anaerobes (especially the red complex) are at the top. Further down, the roles are more auxiliary and the mechanisms differ (e.g., SRB).</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Bacterium (phylum)</th>
+<th>Gram/morphology</th>
+<th>Main VSC produced·mechanism</th>
+<th>4-class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong><em>Porphyromonas gingivalis</em></strong> (Bacteroidota)</td>
+<td>Negative bacillus</td>
+<td><strong>Strongest CH₃SH·H₂S producer</strong>. methionine-γ-lyase (mgl): methionine→CH₃SH, cysteine→H₂S. Core of the red complex</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong><em>Treponema denticola</em></strong> (Spirochaetota)</td>
+<td>Negative spirochete</td>
+<td>cysteine desulfhydrase → H₂S·CH₃SH. red complex</td>
+<td>(spirochete, outside the 4 classes)</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong><em>Tannerella forsythia</em></strong> (Bacteroidota)</td>
+<td>Negative bacillus</td>
+<td>VSC production, deep periodontal pocket. red complex</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong><em>Fusobacterium nucleatum</em></strong> (Fusobacteriota)</td>
+<td>Negative fusiform bacillus</td>
+<td><strong>Large H₂S production</strong>, cysteine degradation. Plaque "bridge" organism</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong><em>Prevotella intermedia</em></strong> (Bacteroidota)</td>
+<td>Negative bacillus</td>
+<td>Black-pigmented anaerobe, H₂S·VSC</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong><em>Solobacterium moorei</em></strong> (Bacillota)</td>
+<td><strong>Positive</strong> bacillus</td>
+<td>Representative tongue-coating halitosis organism. β-galactosidase·H₂S. H₂S↑ when coexisting with <em>F. nucleatum</em>·<em>T. forsythia</em></td>
+<td>(close to GPAB but treated separately)</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong><em>Veillonella</em> spp.</strong> (Bacillota, Negativicutes)</td>
+<td>Negative cocci</td>
+<td>Tongue-coating commensal, auxiliary H₂S production</td>
+<td><strong>GNAC</strong></td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong><em>Desulfovibrio</em> spp.</strong> (Thermodesulfobacteriota)</td>
+<td>Negative curved rod</td>
+<td><strong>Sulfate reduction (SO₄²⁻→H₂S)</strong> — H₂S via <strong>dissimilatory sulfate reduction (SRB)</strong>, not amino-acid degradation. Inhabits periodontal pockets, tongue coating, and gut</td>
+<td>(SRB, belongs to GNAB — but outside the 3 clinically common genera)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key summary</strong>
+- <strong>Ranks 1–5 = periodontal anaerobes</strong> (especially <em>P. gingivalis</em>·<em>T. denticola</em>·<em>T. forsythia</em> = the <strong>red complex</strong>) produce most VSC by amino-acid desulfuration.
+- <strong>Rank 6 <em>Solobacterium moorei</em></strong> = strongly associated with halitosis despite being unusually <strong>Gram-positive</strong> — detected in tongue coating/saliva, amplifying H₂S in coexistence with other bacteria.
+- <strong>Rank 8 <em>Desulfovibrio</em></strong> = has a <strong>different mechanism</strong> from the rest: it produces H₂S by <strong>reducing sulfate as an electron acceptor</strong> (dissimilatory sulfate reduction), not from amino acids. A sulfate-reducing bacterium (SRB) that inhabits not only periodontal pockets/oral cavity but also the gut.</p>
+<h3 id="porphyromonas-gingivalis-vsc"><em>Porphyromonas gingivalis</em> deep dive — a key VSC/periodontitis pathogen</h3>
+<ul>
+<li><strong>Identity</strong>: Gram-negative anaerobic bacillus, <strong>Bacteroidota</strong> (formerly Bacteroidetes), black-pigmented colonies. <strong>One of this document's 5 representative GNAB species</strong> (see section 4 above).</li>
+<li><strong>Core of the red complex</strong>: together with <em>T. denticola</em>·<em>T. forsythia</em>, the <strong>3-organism complex of chronic periodontitis (red complex)</strong>. Dominant in deep periodontal pockets and mature plaque.</li>
+<li><strong>Especially strong VSC production</strong>: using <strong>methionine-γ-lyase (mgl)</strong>, it produces large amounts of <strong>CH₃SH</strong> from methionine and <strong>H₂S</strong> from cysteine → the main culprit of the characteristic periodontal-pus malodor. Large H₂S·CH₃SH also confirmed in oral isolates from animals (dogs).</li>
+<li><strong>Virulence</strong>: tissue invasion and immune evasion via gingipains (proteases)·LPS·fimbriae. As a "keystone pathogen", it collapses periodontal microbial balance.</li>
+<li><strong>Systemic associations</strong>: periodontitis → active research on links to atherosclerosis·rheumatoid arthritis·Alzheimer's (reported brain gingipain detection), etc.</li>
+</ul>
+<hr />
+<h2 id="vsc_2">Antibiotic susceptibility of VSC-producing bacteria</h2>
+<p>Susceptibility of the 8 species listed in the VSC section. The common principle is that <strong>most anaerobes are susceptible to metronidazole·β-lactam-BLI·clindamycin, and resistant (R) to ciprofloxacin</strong>. However, periodontitis is founded on <strong>mechanical treatment (scaling/root planing)</strong> rather than systemic antibiotics, with antibiotics as an adjunct.</p>
+<table>
+<thead>
+<tr>
+<th>Bacterium</th>
+<th>Metronidazole</th>
+<th>β-lactam / BLI</th>
+<th>Clindamycin</th>
+<th>Tetracycline (doxy)</th>
+<th>Macrolide</th>
+<th>Ciprofloxacin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>P. gingivalis</em></strong></td>
+<td><strong>S</strong> (1st-line)</td>
+<td>penicillin <strong>R</strong> (β-lactamase possible)·<strong>amox-clav S</strong></td>
+<td>S</td>
+<td>I/S (useful periodontal-local)</td>
+<td>azithro adjunct</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>T. denticola</em></strong></td>
+<td><strong>S</strong> (presumed, hard to culture)</td>
+<td>β-lactam variable</td>
+<td>S</td>
+<td>doxy adjunct</td>
+<td>limited data</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>T. forsythia</em></strong></td>
+<td><strong>S</strong></td>
+<td>amox-clav S</td>
+<td>S</td>
+<td>doxy S</td>
+<td>variable</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>F. nucleatum</em></strong></td>
+<td><strong>S</strong> (reliable)</td>
+<td>penicillin generally S·amox-clav S</td>
+<td>S</td>
+<td>doxy some S</td>
+<td>variable (some S)</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>P. intermedia</em></strong></td>
+<td><strong>S</strong></td>
+<td><strong>penicillin R</strong> (β-lactamase common)·<strong>amox-clav S</strong></td>
+<td>S</td>
+<td>doxy some S</td>
+<td>variable</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>Solobacterium moorei</em></strong></td>
+<td><strong>S</strong> (anaerobic Gram-positive)</td>
+<td>penicillin·amox S (generally)</td>
+<td>S (generally)</td>
+<td>doxy variable</td>
+<td>variable</td>
+<td><strong>R</strong> (Gram-positive + anaerobe, unsuitable)</td>
+</tr>
+<tr>
+<td><strong><em>Veillonella</em></strong></td>
+<td><strong>S</strong></td>
+<td>penicillin variable·amox-clav S</td>
+<td>S</td>
+<td>doxy variable</td>
+<td>variable</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>Desulfovibrio</em></strong> (SRB)</td>
+<td><strong>S</strong> (anaerobe, generally susceptible)</td>
+<td>β-lactam <strong>variable</strong> (limited data)</td>
+<td>variable</td>
+<td>limited data</td>
+<td>limited data</td>
+<td><strong>R</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Footnotes/cautions</strong>
+- <strong>red complex (<em>P. gingivalis</em>·<em>T. denticola</em>·<em>T. forsythia</em>) standard adjunctive periodontitis regimen = amoxicillin + metronidazole combination</strong> (in addition to scaling/root planing). Their synergy raises the eradication rate of deep-pocket bacteria.
+- <strong><em>P. gingivalis</em>·<em>P. intermedia</em> have β-lactamase (cepA etc.)-producing strains</strong> → penicillin alone R, overcome with amoxicillin-clavulanate.
+- <strong><em>Desulfovibrio</em> (SRB)</strong>: in clinical infection (bacteremia/intra-abdominal), <strong>metronidazole susceptibility</strong> is frequently reported, but <strong>a standard regimen is not established and culture/susceptibility data are limited</strong>. β-lactam response is strain-variable. → susceptibility-testing-based treatment recommended.
+- <strong><em>Solobacterium moorei</em></strong>: an anaerobic Gram-positive bacillus, generally susceptible to penicillin·metronidazole·clindamycin. However, <strong>the first-line for halitosis is not antibiotics but tongue cleaning·mechanical plaque removal·oral hygiene</strong>.
+- <strong>Common</strong>: all 8 species are <strong>ciprofloxacin-unsuitable (R)</strong> — poor anaerobic/Gram-positive coverage. FQs are not used for halitosis/periodontitis treatment (consistent with the top-of-document principle).
+- <strong>Non-antibiotic management</strong>: for reducing VSC, <strong>tongue cleaners, CHX (chlorhexidine)·CPC rinses, ZnCl₂-containing products (zinc binds sulfur to neutralize VSC)</strong>, and tongue-coating management are practically important.</p>
+<hr />
+<h2 id="vsc-substrate">Foods that serve as substrates for VSC production</h2>
+<p>VSCs are ultimately made by bacteria <strong>degrading sulfur-containing amino acids/sulfur compounds</strong>. Therefore, eating foods that are <strong>sulfur sources</strong> increases the substrate and worsens halitosis.</p>
+<blockquote>
+<p><strong>⚠️ Key principle — "direct volatilization vs bacterial substrate" are not mutually exclusive</strong>
+Plant sulfur foods like garlic, onion, and cabbage <strong>serve both as "direct volatilization on chewing" and as "bacterial substrate after swallowing".</strong> The only part that smells purely without bacteria is a tiny fraction that is absorbed and exhaled through the lungs (AMS), and even that involves bacteria in its production. <strong>It is not only animal protein (cysteine·methionine) that is a bacterial substrate — the plant-based organosulfur of alliums, cruciferous vegetables, and leafy greens all become bacterial substrates too.</strong> See both ① (animal) and ② (plant) below.</p>
+</blockquote>
+<p>Broadly divided into ① animal sulfur substrates, ② plant sulfur substrates (both direct volatilization + bacterial substrate), and ③ environment-shaping (indirect).</p>
+<h3 id="1-cysteinemethionine">① Animal/high-protein sulfur substrates = foods rich in sulfur-containing amino acids (cysteine·methionine)</h3>
+<p>Because bacteria degrade <strong>cysteine→H₂S, methionine→CH₃SH</strong>, high-protein foods rich in these amino acids are the key substrate. <strong>Quantitatively the largest source of the body's total H₂S</strong> (see deep dive D above).</p>
+<table>
+<thead>
+<tr>
+<th>Food group</th>
+<th>Examples</th>
+<th>Amino acids/mechanism involved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Meat/fish</strong></td>
+<td>Beef·pork·chicken, tuna·salmon</td>
+<td>Rich in cysteine·methionine → H₂S·CH₃SH substrate. Persists if residue remains between teeth/in tongue coating. Animal fat·bile <strong>taurine → <em>Bilophila</em> H₂S</strong> (Devkota 2012)</td>
+</tr>
+<tr>
+<td><strong>Eggs</strong></td>
+<td>Especially the yolk</td>
+<td>Abundant sulfur amino acids → H₂S (the prototype of the "rotten egg" smell)</td>
+</tr>
+<tr>
+<td><strong>Dairy/cheese</strong></td>
+<td>Milk, aged cheese</td>
+<td>Casein protein degradation + lactose creates an acidic environment. Aged cheese already contains mercaptans</td>
+</tr>
+<tr>
+<td><strong>Legumes/nuts</strong></td>
+<td>Soybeans, lentils, nuts</td>
+<td>Plant high-protein, supplies sulfur amino acids</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_1">② Plant organosulfur foods (both direct volatilization on chewing + bacterial substrate after swallowing)</h3>
+<p>They release volatile sulfur via their own enzymes, but <strong>after swallowing, the residual sulfur compounds become additional substrate for colonic bacteria</strong> and are reconverted into H₂S·methyl sulfides. Viewing them only as "direct malodor without bacteria" is only half correct.</p>
+<table>
+<thead>
+<tr>
+<th>Food (classification)</th>
+<th>Direct (enzyme·volatilization)</th>
+<th>Bacterial substrate (colonic re-degradation)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Garlic</strong> (Allium)</td>
+<td>alliin→allicin→<strong>AMS (allyl methyl sulfide)</strong>, absorbed and exhaled via lungs (blood-borne, not removed by brushing)</td>
+<td>AMS·residual organosulfur·γ-glutamyl peptides are <strong>metabolized by gut bacteria such as Fusobacterium</strong> — garlic halitosis is largely a <strong>bacterial metabolic product</strong> (see the Fusobacterium note)</td>
+</tr>
+<tr>
+<td><strong>Onion·chives·scallion</strong> (Allium)</td>
+<td>propyl-series sulfides (pungent·volatile)</td>
+<td>Residual organosulfur becomes gut-bacterial substrate → H₂S·mercaptans</td>
+</tr>
+<tr>
+<td><strong>Cabbage·broccoli·cauliflower·radish·mustard·horseradish</strong> (cruciferous)</td>
+<td>myrosinase converts glucosinolate→<strong>isothiocyanate</strong> (on chewing)</td>
+<td><strong>Swallowed residual glucosinolate is degraded by colonic-bacterial β-thioglucosidase → regenerating H₂S·methyl sulfides·ITC.</strong> The main mechanism of increased flatus/colonic H₂S after cruciferous intake</td>
+</tr>
+<tr>
+<td><strong>Durian·asafoetida</strong></td>
+<td>Directly contain strong sulfur compounds</td>
+<td>Residue degraded by bacteria</td>
+</tr>
+<tr>
+<td><strong>Lettuce·spinach</strong> (leafy greens)</td>
+<td>(almost no direct volatilization)</td>
+<td><strong>SQ (sulfoquinovose)→<em>E. rectale</em> fermentation→<em>Bilophila</em> desulfonation→H₂S</strong> (separate box below)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>⚠️ The sulfur in lettuce (iceberg·romaine etc., <em>Lactuca sativa</em>) is a different kind from the foods above — organized separately</strong>
+- <strong>Fundamentally different from cruciferous (glucosinolate)·Allium (allyl sulfide)</strong>: lettuce is in the <strong>daisy family (Asteraceae)</strong> and has <strong>no special volatile organosulfur secondary metabolites</strong> like garlic's alliin/allyl compounds or the glucosinolates of cabbage/broccoli. That is, it is <strong>not a food that "emits a sulfur smell on its own".</strong>
+- <strong>Lettuce's main sulfur = a "sulfur-sugar" called sulfoquinovose (SQ)</strong>: the sulfur in leafy greens is not inorganic sulfate but, quantitatively the largest, the <strong>SQ (6-deoxy-6-sulfo-D-glucose)</strong> head group of the chloroplast thylakoid membrane lipid <strong>sulfoquinovosyldiacylglycerol (SQDG)</strong>. SQ makes up about <strong>a quarter of the leaf's polar-lipid mass</strong> (across photosynthetic organisms). There are also sulfur amino acids (cysteine·methionine)·glutathione·a small amount of inorganic sulfate. In short, the core of lettuce's sulfur is the <strong>"glycoside with sulfur attached to a sugar (SQ)"</strong>, not inorganic SO₄²⁻. (Ref: Hanson BT et al. 2021, <em>ISME J</em> 15(9):2779–2791, PMID 33790426)
+- <strong>→ SQ becomes H₂S via a gut-bacterial relay (cross-feeding)</strong>: SQ itself cannot be used by <em>Desulfovibrio</em> alone. <strong>① <em>Eubacterium rectale</em> etc. ferment SQ (sulfoglycolysis)</strong> → releasing organosulfur intermediates such as <strong>DHPS (2,3-dihydroxypropane-1-sulfonate)·3-sulfolactate</strong> → <strong>② <em>Bilophila wadsworthia</em> strips sulfur from these intermediates (desulfonation) to produce H₂S</strong>. <em>Desulfovibrio</em> is a side player. <strong>That is, the lead of the lettuce SQ→H₂S pathway is <em>Bilophila wadsworthia</em>, not <em>Desulfovibrio</em>.</strong>
+- <strong>Summary</strong>: lettuce's sulfur is neither the volatile organosulfur of garlic/cruciferous nor simple inorganic sulfate — quantitatively and in the literature, the core is <strong>SQ (derived from a sulfur-sugar lipid)</strong>. This SQ converges to H₂S in the colon through <strong>polymicrobial cooperation (<em>E. rectale</em> fermentation → <em>Bilophila</em> desulfonation)</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="h2s-3-1">Deep dive: the 3 major pathways of H₂S (hydrogen sulfide) production · the leader by site · quantitative total reassessment</h2>
+<p>In discussions of halitosis/gut health, the question "which bacterium makes the most hydrogen sulfide?" has a different answer depending on <strong>which substrate, at which site, and whether cell counts are considered</strong>. The common textbook simplification ("H₂S = SRB (<em>Desulfovibrio</em>)") has been corrected by recent metagenomics.</p>
+<h3 id="a-h2s-3">A. The 3 major biochemical pathways by which H₂S is made</h3>
+<p>All three ultimately converge to H₂S, but their <strong>substrates·enzymes·lead bacteria are entirely different.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pathway</th>
+<th>Substrate</th>
+<th>Key enzyme</th>
+<th>Reaction summary</th>
+<th>Representative bacteria · foods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① Cysteine desulfhydration</strong></td>
+<td><strong>L-cysteine</strong> (sulfur amino acid)</td>
+<td>cysteine desulfhydrase</td>
+<td>cysteine → <strong>H₂S</strong> + pyruvate + ammonia</td>
+<td>Broad gut bacteria·<em>F. nucleatum</em>·<em>P. gingivalis</em> / <strong>meat·eggs·dairy</strong> (protein-putrefactive type)</td>
+</tr>
+<tr>
+<td><strong>② SQ sulfoglycolysis</strong></td>
+<td><strong>Sulfoquinovose (SQ)</strong> — from a sulfur-sugar lipid (SQDG)</td>
+<td>SQ isomerization/cleavage enzymes (sulfoglycolysis operon) → secondary desulfuration</td>
+<td>SQ fermentation → DHPS·3-sulfolactate → <strong>H₂S via secondary sulfur removal</strong> (cross-feeding)</td>
+<td><em>Eubacterium rectale</em> (fermentation) → <em>Bilophila wadsworthia</em> (desulfonation) / <strong>leafy greens (lettuce·spinach)</strong></td>
+</tr>
+<tr>
+<td><strong>③ Dissimilatory sulfate reduction</strong></td>
+<td><strong>Inorganic sulfate SO₄²⁻</strong></td>
+<td>dsrAB (dissimilatory sulfite reductase)</td>
+<td>Anaerobic respiration using SO₄²⁻ as electron acceptor → <strong>SO₄²⁻ → H₂S</strong></td>
+<td>SRB — <em>Desulfovibrio</em>·<em>Bilophila</em> / processed-meat sulfites·sulfate-rich drinking water</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>① is the protein-putrefactive type</strong>, <strong>② is the glycolipid-derived relay type (cross-feeding)</strong>, <strong>③ is the inorganic-ion anaerobic-respiration type</strong>. Only the final product H₂S is the same; the metabolisms are entirely different.</li>
+</ul>
+<h3 id="b-h2s">B. Sulfur-substrate preference by bacterium (who eats what to make H₂S)</h3>
+<table>
+<thead>
+<tr>
+<th>Bacterium (phylum)</th>
+<th>Inorganic SO₄²⁻ (pathway③)</th>
+<th>SQ (pathway②)</th>
+<th>cysteine (pathway①)</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Desulfovibrio</em> spp.</strong> (Thermodesulfobacteriota)</td>
+<td><strong>★★★ direct·mainstay</strong></td>
+<td>★ indirect (can't use alone)</td>
+<td>☆ negligible</td>
+<td>Typical SRB. Inorganic-sulfate respiration is its main job. SQ is a side role on intermediates made by others</td>
+</tr>
+<tr>
+<td><strong><em>Bilophila wadsworthia</em></strong> (Thermodesulfobacteriota)</td>
+<td>★ (limited)</td>
+<td><strong>★★★ relay lead</strong> (intermediate desulfonation)</td>
+<td>☆</td>
+<td>Uses <strong>animal taurine (bile)</strong> directly as a sulfur source → surges on meat/animal-fat diets (Devkota et al. 2012, <em>Nature</em>)</td>
+</tr>
+<tr>
+<td><strong><em>Fusobacterium nucleatum</em></strong> (Fusobacteriota)</td>
+<td>—</td>
+<td>—</td>
+<td><strong>★★★ cysteine desulfhydration</strong></td>
+<td>The representative oral H₂S producer. Amino-acid-putrefactive type</td>
+</tr>
+<tr>
+<td><strong><em>Porphyromonas gingivalis</em></strong> (Bacteroidota)</td>
+<td>—</td>
+<td>—</td>
+<td><strong>★★★ (+methionine→CH₃SH)</strong></td>
+<td>Core of the red complex. Also large CH₃SH via mgl</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>Desulfovibrio</em>'s direct food is inorganic SO₄²⁻</strong> (processed-meat sulfites·water) and H₂/lactate. <strong>The lead for lettuce SQ is <em>Bilophila</em></strong>, not <em>Desulfovibrio</em>.</li>
+<li><strong><em>Bilophila wadsworthia</em> converts meat/animal fat → bile taurine secretion → the sulfur of taurine into H₂S</strong> (Devkota 2012 <em>Nature</em>). That is, the pathway by which "meat increases SRB-type H₂S" goes through <strong>animal taurine</strong>, not inorganic sulfate.</li>
+</ul>
+<h3 id="c-h2s-1">C. The "H₂S leader" differs by site</h3>
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th>H₂S leader</th>
+<th>Basis·note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Oral cavity (bad breath)</strong></td>
+<td><strong><em>Fusobacterium nucleatum</em></strong> (+<em>P. gingivalis</em>·<em>Prevotella</em>)</td>
+<td>Large H₂S via cysteine desulfhydration. <em>P. gingivalis</em> also makes CH₃SH → <strong>the higher the CH₃SH/H₂S ratio, the more severe the periodontitis marker</strong></td>
+</tr>
+<tr>
+<td><strong>Gut (colon)</strong></td>
+<td>(old textbook) <strong>SRB — <em>Desulfovibrio</em>·<em>Bilophila</em></strong></td>
+<td>Dissimilatory sulfate reduction. <strong>But see the quantitative reassessment in D below — the total-amount leader is not SRB</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-h2s-1-srb">D. ★Quantitative total reassessment — "H₂S total-amount leader = SRB" is an old view</h3>
+<ul>
+<li><strong>Textbook orthodoxy</strong>: the No.1 producer of the body's total H₂S is sulfate-reducing bacteria (SRB, <em>Desulfovibrio</em>). ← <strong>an outdated simplification.</strong></li>
+<li><strong>Recent reversal (quantitative)</strong>: the <strong>capacity for cysteine degradation (pathway①) is virtually ubiquitous across all gut bacteria</strong>, and multiplying by cell count·universality, <strong>the cysteine desulfhydration pathway dominates the gut's total H₂S</strong>. SRB is low-density and limited in distribution, so <strong>in total amount it is a supporting player</strong>.</li>
+<li>Basis: <strong>"The Capacity to Produce H₂S via Cysteine Degradation Is Ubiquitous in the Human Gut Microbiome" (Front Microbiol 2021; PMC8564485).</strong><ul>
+<li>Among <strong>4,644 UHGG genomes</strong>, cysteine-degradation genes are broadly present.</li>
+<li><strong>100% detected in 6,623 healthy individuals</strong>, <strong>100% expressed in 736 metatranscriptome samples</strong> — common across healthy·IBD·CRC.</li>
+<li>Cell counts·expression of cysteine-degrading bacteria <strong>overwhelm SRB.</strong></li>
+<li>(supporting: bioRxiv 2021.03.24.436781, HAL hal-02627096)</li>
+</ul>
+</li>
+<li><strong>Corrected conclusion</strong>:</li>
+<li>❌ "body-wide H₂S leader = <em>Desulfovibrio</em> (SRB)" — old view.</li>
+<li>✅ <strong>quantitative total leader = the cysteine-degradation pathway (a broad gut-bacterial population)</strong>. SRB is local/supporting.</li>
+<li>✅ <strong>The largest quantitative H₂S source is the cysteine of animal protein</strong> — this actually reinforces the Neo-Skepticism thesis of "sulfur intake → H₂S → gut/systemic effects" (high protein is quantitatively larger than leafy-green SQ).</li>
+<li><em>Fusobacterium</em>·<em>P. gingivalis</em> are merely <strong>the representatives of the oral cavity/specific pathologies</strong>, not a single "star organism". The answer for gut total amount is the <strong>cysteine-degrading gut-bacterial population</strong>.</li>
+</ul>
+<h3 id="e">E. One-line summary</h3>
+<blockquote>
+<p><strong>By site</strong>, oral = <em>Fusobacterium nucleatum</em>, gut (old view) = SRB. <strong>But the body-wide quantitative total is dominated by the cysteine-degradation pathway (ubiquitous gut bacteria)</strong> (Front Microbiol 2021), with SRB as a supporting player. Leafy greens like lettuce follow a separate relay pathway of <strong>SQ→(<em>E. rectale</em> fermentation → <em>Bilophila</em> desulfonation)→H₂S</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="sibo-rifaximin-vs-ciprofloxacin-4">Deep dive: SIBO/small intestinal bacterial overgrowth treatment — the 4-class meaning of rifaximin vs ciprofloxacin</h2>
+<p>When treating small intestinal bacterial overgrowth (SIBO, including SIFO) with antibiotics, <strong>which of the 4 major classes is covered</strong> is the key to drug choice. The two drugs have opposite characters.</p>
+<h3 id="_19">Coverage comparison</h3>
+<table>
+<thead>
+<tr>
+<th>4-class (gut proportion)</th>
+<th>rifaximin</th>
+<th>ciprofloxacin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPAB</strong> (Gram+ bacilli, ~50–75%)</td>
+<td><strong>Covered</strong> (broad anaerobic Gram-positive)</td>
+<td><strong>Barely covers (R)</strong> — poor anaerobic coverage</td>
+</tr>
+<tr>
+<td><strong>GNAB</strong> (Gram– bacilli, ~15–40%)</td>
+<td><strong>Covered</strong> (<em>Bacteroides</em> etc. anaerobic Gram-negative)</td>
+<td><strong>Barely covers (R)</strong> — anaerobes R</td>
+</tr>
+<tr>
+<td><strong>GPAC</strong> (Gram+ cocci, ~1–5%)</td>
+<td>Covered</td>
+<td>Doesn't cover (R)</td>
+</tr>
+<tr>
+<td><strong>GNAC</strong> (Gram– cocci, ~&lt;1–2%)</td>
+<td>Covered</td>
+<td>Doesn't cover (R)</td>
+</tr>
+<tr>
+<td>(ref) facultatively anaerobic Gram-negative Enterobacteriaceae <em>E. coli</em>·<em>Klebsiella</em> etc.</td>
+<td>Partial (luminal)</td>
+<td><strong>Covers (S)</strong> — the FQ's forte</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rifaximin">rifaximin — "broad anaerobic coverage that works only inside the gut"</h3>
+<ul>
+<li><strong>Non-absorbable rifamycin class</strong> — even taken orally, <strong>systemic absorption &lt;0.4%</strong>; the drug <strong>stays in the intestinal lumen.</strong> Inhibits RNA polymerase.</li>
+<li><strong>4-class perspective</strong>: <strong>broadly covers aerobes·anaerobes, Gram-positive·negative</strong> → touches <strong>all of GPAB·GNAB·GPAC·GNAC.</strong> The key is that it simultaneously hits <strong>GPAB (most dominant) and GNAB (2nd)</strong>, which make up most of gut overgrowth.</li>
+<li><strong>Why it's first-line for SIBO</strong>:</li>
+<li>Low systemic side effects·resistance pressure (luminal action), relatively low <em>C. difficile</em> risk.</li>
+<li>Especially effective for hydrogen (H₂) SIBO — meta-analyses show eradication·symptom improvement.</li>
+<li>For <strong>the methane type (IMO, involving <em>Methanobrevibacter</em>)</strong>, low efficacy alone → <strong>combine with neomycin (or metronidazole)</strong>.</li>
+<li><strong>Limitations</strong>: fundamentally a <strong>temporary biomass reduction</strong>; recurs without correcting diet·motility (MMC)·underlying disease. Regrows if bile·SQ·cysteine substrates keep coming in.</li>
+</ul>
+<h3 id="ciprofloxacin-sibo">ciprofloxacin — powerless against anaerobes, but a legitimate target for "classic coliform SIBO"</h3>
+<ul>
+<li><strong>Fluoroquinolone (FQ)</strong>, inhibits DNA gyrase/topo IV. <strong>Broad systemic absorption·tissue distribution</strong> (the opposite of rifaximin).</li>
+<li><strong>4-class perspective (anaerobes)</strong>: <strong>essentially resistant (R) to all anaerobes (GPAB·GNAB·GPAC·GNAC).</strong> The principle repeated throughout this document — <strong>FQs are unsuitable for pure anaerobic infections such as halitosis/periodontal organisms.</strong> This part is exactly correct.</li>
+<li><strong>Where cipro works well</strong>: facultatively anaerobic·aerobic <strong>Gram-negative Enterobacteriaceae (<em>E. coli</em>·<em>Klebsiella</em>·<em>Enterobacter</em> etc.)</strong>·some Gram-negative bacilli. Representative targets include urinary·intra-abdominal·biliary tract·traveler's diarrhea (enterotoxigenic E. coli).</li>
+<li><strong>⚠️ Important correction — don't assume SIBO is "overwhelmingly anaerobic"</strong>: SIBO's bacterial composition <strong>looks opposite depending on the definition method.</strong></li>
+<li><strong>Classic SIBO defined by culture (jejunal aspirate culture) is instead dominated by Gram-negative aerobic "coliforms".</strong> The standard textbook/guideline definition itself is <em>"coliforms (Gram-negative aerobes) abnormally increased in the small intestine"</em> (ACG·Merck: <em>"predominantly gram-negative bacteria that ferment carbohydrates"</em>), and the most dominant species in aspirate culture are repeatedly reported as <strong><em>Escherichia coli</em>·<em>Klebsiella pneumoniae</em>·<em>Enterococcus</em>·<em>Streptococcus viridans</em>·<em>Pseudomonas aeruginosa</em></strong> (Gutierrez 2012). In Choung 2011 (jejunal aspirate, n=675), it was <strong>aerobes 83.3% vs anaerobes 4.6%</strong>, overwhelmingly aerobic Gram-negatives.</li>
+<li>On the other hand, <strong>SIBO/IMO defined by breath testing (H₂/CH₄)</strong> highlights the contribution of fermentative·hydrogen-producing anaerobes·archaea, so it "looks anaerobe-dominant". <strong>That is, "SIBO = anaerobic GPAB/GNAB dominance" is only one facet from the breath-test perspective; from the culture perspective, the Gram-negative aerobic coliforms that cipro precisely targets are the leads.</strong></li>
+<li><strong>The actual position of cipro/norfloxacin historically·evidentially</strong>:</li>
+<li><strong>Before rifaximin appeared, the standard SIBO treatment was in fact norfloxacin·ciprofloxacin·amoxicillin-clavulanate.</strong> A systemic FQ targeting coliforms was the logical·empirical first-line.</li>
+<li>In comparative trials, <strong>the eradication rate of ciprofloxacin/norfloxacin is broadly the same range as rifaximin</strong> (Chilean IBS-SIBO study: cipro 53% vs rifaximin 59% eradication), so it is <strong>not a "miss" but a valid alternative.</strong> Only in the synthesis of head-to-head meta-analyses is rifaximin slightly superior with better safety, which is why it was pushed to first-line.</li>
+</ul>
+<h3 id="rifaximin-1-cipro">Key contrast — why rifaximin is first-line and cipro is a lower-priority alternative</h3>
+<blockquote>
+<ul>
+<li><strong>The identity of gut overgrowth depends on the "definition method"</strong>: by culture criteria, <strong>Gram-negative aerobic coliforms (<em>E. coli</em>·<em>Klebsiella</em> etc.)</strong> dominate; by breath-test (H₂/CH₄) criteria, the contribution of fermentative anaerobes·archaea is highlighted. <strong>"Overwhelmingly anaerobic" is a half-truth.</strong></li>
+<li><strong>rifaximin = a broad-spectrum drug that suppresses anaerobes·aerobes, Gram± broadly at the luminal level</strong> → covers most under either definition, low systemic toxicity → <strong>SIBO first-line.</strong></li>
+<li><strong>ciprofloxacin = can't catch anaerobes (R) but precisely targets Gram-negative aerobic coliforms</strong> → actually effective (eradication rate in a similar range to rifaximin) for culture-dominant coliform SIBO, but ① leaves the anaerobic component in mixed types and ② carries systemic FQ toxicity (tendon rupture·QT·CNS·aortic aneurysm·<em>C. difficile</em>) → a <strong>lower-priority alternative</strong>.</li>
+<li>Ultimately, rifaximin wins <strong>not because "cipro misses the target" but because its coverage is broader and its systemic safety superior</strong>. Cipro is legitimate as a coliform-targeting drug and remains a reasonable alternative when rifaximin is unresponsive·unavailable.</li>
+</ul>
+</blockquote>
+<p><strong>Additional clinical points</strong>
+- <strong>Methane type (IMO)</strong>: archaea (<em>Methanobrevibacter smithii</em>) are not bacteria and are outside the 4 classes — rifaximin+neomycin combination is customary.
+- <strong>Hydrogen sulfide (H₂S) SIBO</strong>: linked to the cysteine-degradation ubiquity·SRB of deep dive D above. Rifaximin reduces anaerobic biomass and thus lowers H₂S, but <strong>persistence requires concurrent substrate management (high protein·SQ·bile taurine).</strong>
+- <strong>Fungal overgrowth (SIFO)</strong>: antifungals separately — antibiotics (both) ineffective.</p>
+<hr />
+<h2 id="f">Deep dive F — relationship with neurodegenerative diseases (Parkinson's·Alzheimer's)</h2>
+<p>Evidence is accumulating that oral·gut anaerobes contribute to neurodegeneration via the <strong>gut–brain axis</strong> and the <strong>oral–brain axis</strong>. The 3 key genera — <em>Porphyromonas gingivalis</em> (Bacteroidota, GNAB), <em>Fusobacterium nucleatum</em> (Fusobacteriota, GNAB), <em>Desulfovibrio</em> (Thermodesulfobacteriota, GNAB) — all belong to this document's GNAB (Gram-negative anaerobic bacilli) group and contribute to Alzheimer's disease (AD)·Parkinson's disease (PD) through different pathways.</p>
+<h3 id="1-porphyromonas-gingivalis">1) <em>Porphyromonas gingivalis</em> → Alzheimer's disease (oral–brain axis, gingipain hypothesis)</h3>
+<ul>
+<li><strong>Key finding</strong>: Dominy et al. (2019, <em>Science Advances</em> 5:eaau3333) detected <em>P. gingivalis</em> and its toxic protease <strong>gingipains (Kgp·RgpA·RgpB)</strong> in postmortem AD brains, showing that gingipain concentration <strong>correlated with tau·ubiquitin pathology</strong>. Multiple reports confirmed gingipains in 90–100% of AD brains.</li>
+<li><strong>Mechanism</strong>:</li>
+<li><em>P. gingivalis</em> oral infection → mouse brain colonization → <strong>increased amyloid-β (Aβ1–42) production</strong> (hypothesis that Aβ, as an antimicrobial peptide, may be a defense response to infection).</li>
+<li><strong>Gingipains</strong> cleave·hyperphosphorylate tau → promoting neurofibrillary tangle formation.</li>
+<li>Chronic neuroinflammation from LPS·OMVs (outer membrane vesicles).</li>
+<li><strong>Therapeutic attempt</strong>: a small-molecule gingipain inhibitor (COR388/atuzaginstat) reduced brain colonization·Aβ1–42 production·neuroinflammation and protected hippocampal neurons in mice → advanced to human trials (basis for the hypothesis that infection is upstream of the other pathologies).</li>
+</ul>
+<h3 id="2-fusobacterium-nucleatum">2) <em>Fusobacterium nucleatum</em> → Alzheimer's disease (neuroinflammation·oral–gut–brain axis)</h3>
+<ul>
+<li><strong>Epidemiology</strong>: <em>F. nucleatum</em> is a representative bridging organism that overgrows in periodontitis and is <strong>detected in the serum</strong> of AD·cognitive-impairment patients.</li>
+<li><strong>Animal evidence</strong>: <em>F. nucleatum</em>-induced periodontitis caused <strong>worsened cognitive impairment·Aβ accumulation·increased tau phosphorylation</strong> in 5XFAD mice (Frontiers Aging Neurosci 2022;14:912709). Oral infection contributes to cognitive/brain-pathology abnormalities in AD-like rats and alters gut microbiota composition·metabolism (PMID 36188448).</li>
+<li><strong>Mechanism</strong>: induction of systemic·neuroinflammation, indirect effects via gut microbial dysbiosis. A separate axis from <em>F. nucleatum</em>'s contribution to colorectal cancer (FadA·Fap2 adhesins) discussed in this document, but sharing the common pattern of "periodontal lesion → systemic dissemination → distant-organ pathology".</li>
+</ul>
+<h3 id="3-desulfovibrio-">3) <em>Desulfovibrio</em> → Parkinson's disease (hydrogen sulfide·α-synuclein aggregation)</h3>
+<ul>
+<li><strong>Epidemiology</strong>: Murros et al. (2021, <em>Front Cell Infect Microbiol</em> 11:652617) <strong>detected <em>Desulfovibrio</em> in the stool of all 20 PD patients</strong>, present at <strong>higher levels</strong> than healthy controls and more abundant with more severe PD.</li>
+<li><strong>Mechanism</strong>:</li>
+<li><em>Desulfovibrio</em>, a <strong>sulfate-reducing bacterium (SRB)</strong>, produces <strong>hydrogen sulfide (H₂S)</strong> and <strong>LPS</strong>, and some strains synthesize <strong>magnetite</strong> — all of which can <strong>induce oligomerization·aggregation of α-synuclein</strong>.</li>
+<li>PD's α-synuclein aggregates (Lewy bodies) accumulate not only in the brain but also in the <strong>digestive tract·autonomic nervous system</strong>, and the hypothesis is that gut-formed aggregates <strong>propagate to the brain along the vagus nerve in a prion-like manner</strong> (consistent with the Braak hypothesis).</li>
+<li>Huynh et al. (2023, <em>Front Cell Infect Microbiol</em> 13:1181315): <em>Desulfovibrio</em> strains isolated from PD-patient stool induced <strong>larger and more numerous α-synuclein aggregates</strong> than controls (spouse stool) in a <em>C. elegans</em> model — the pathogenicity difference may be related to H₂S-producing capacity.</li>
+<li><strong>Connection to this document</strong>: among the <strong>3 H₂S pathways</strong> covered in deep dive D (cysteine desulfhydrase / SQ sulfoglycolysis / dsr sulfate reduction), <em>Desulfovibrio</em>'s dsr sulfate reduction is pointed to as the main source of PD-related H₂S. This is the junction where the VSC (halitosis) and SRB axes extend even to neurodegeneration.</li>
+</ul>
+<h3 id="_20">Summary — comparison of the 3 bacteria's neurodegeneration contributions</h3>
+<table>
+<thead>
+<tr>
+<th>Species</th>
+<th>Phylum/group</th>
+<th>Target disease</th>
+<th>Main mechanism</th>
+<th>Key evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>P. gingivalis</em></td>
+<td>Bacteroidota / GNAB</td>
+<td>Alzheimer's disease</td>
+<td>gingipains → tau cleavage·Aβ induction, oral–brain axis</td>
+<td>Dominy 2019 <em>Sci Adv</em></td>
+</tr>
+<tr>
+<td><em>F. nucleatum</em></td>
+<td>Fusobacteriota / GNAB</td>
+<td>Alzheimer's disease</td>
+<td>neuroinflammation·Aβ·tau phosphorylation, oral–gut–brain axis</td>
+<td>Front Aging Neurosci 2022</td>
+</tr>
+<tr>
+<td><em>Desulfovibrio</em></td>
+<td>Thermodesulfobacteriota / GNAB</td>
+<td>Parkinson's disease</td>
+<td>H₂S·LPS·magnetite → α-syn aggregation, vagal propagation</td>
+<td>Murros 2021 · Huynh 2023</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>One-line summary</strong>: all three are GNAB (Gram-negative anaerobic bacilli); <em>P. gingivalis</em>·<em>F. nucleatum</em> contribute to neurodegeneration via <strong>oral lesion → AD</strong>, and <em>Desulfovibrio</em> via <strong>gut H₂S → PD</strong> — two axes. This is why oral hygiene and gut sulfur-metabolism management connect to neurological health.</p>
+</blockquote>
+<hr />
+<p><em>Author — Junsang Yang, Family Medicine physician</em></p>
+<p>© 2026 Junsang Yang. All rights reserved. No part of this document may be reproduced, distributed, transmitted, or used commercially without the author's prior written consent. When citing, please indicate the source (author·document title).</p>
+      </div>
+      <div class="footer">Obsidian NS vault · light theme · auto-generated</div>
+    </div>
+  </div>
+</div>
+<button class="top-btn" id="topBtn">↑</button>
+<script>
+// build S/R/I badges inside tables (cells that are exactly S, R, I, S/R, I/S, etc.)
+document.querySelectorAll('table td').forEach(td=>{
+  const t=td.textContent.trim();
+  if(/^(S|R|I|S\/R|I\/S|R\/S|S\/I)$/.test(t)){
+    const cls = t.includes('R') && !t.includes('S') ? 'sr-R'
+              : t.includes('R') ? 'sr-R'
+              : t.includes('I') && !t.includes('S') ? 'sr-I'
+              : t.startsWith('I') ? 'sr-I'
+              : 'sr-S';
+    td.innerHTML='<span class="sr '+cls+'">'+t+'</span>';
+  }
+});
+// wrap tables for horizontal scroll
+document.querySelectorAll('.body-wrap table').forEach(tb=>{
+  if(tb.parentElement.classList.contains('tbl-wrap'))return;
+  const w=document.createElement('div');w.className='tbl-wrap';
+  tb.parentNode.insertBefore(w,tb);w.appendChild(tb);
+});
+// scrollspy
+const links=[...document.querySelectorAll('.toc-list a')];
+const map={};links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
+const heads=[...document.querySelectorAll('.body-wrap h2, .body-wrap h3')];
+const spy=()=>{
+  let cur=null;const y=window.scrollY+90;
+  for(const h of heads){if(h.offsetTop<=y)cur=h.id;}
+  links.forEach(a=>a.classList.remove('active'));
+  if(cur&&map[cur]){map[cur].classList.add('active');
+    map[cur].scrollIntoView({block:'nearest'});}
+};
+window.addEventListener('scroll',spy);spy();
+// top button
+const tb=document.getElementById('topBtn');
+window.addEventListener('scroll',()=>{tb.classList.toggle('show',window.scrollY>400);});
+tb.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+// mobile toc toggle
+const sb=document.getElementById('sidebar'),mb=document.getElementById('mtoc');
+mb.onclick=()=>sb.classList.toggle('open');
+document.querySelectorAll('.toc-list a').forEach(a=>a.onclick=()=>sb.classList.remove('open'));
+</script>
+</body>
+</html>
