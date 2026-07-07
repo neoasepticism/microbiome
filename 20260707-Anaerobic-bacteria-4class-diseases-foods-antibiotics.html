@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마이크로바이옴에 대해 알아야 할 모든 것</title>
+<style>
+:root{
+  --bg:#f8f6f1; --card:#ffffff; --border:#ddd9d0; --accent:#8b6914;
+  --wood:#2e7d32; --fire:#c62828; --earth:#e65100; --metal:#455a64; --water:#1565c0;
+  --text:#2c2c2c; --text2:#6b6b6b; --muted:#9e9e9e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Apple SD Gothic Neo','Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;}
+a{color:var(--water);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.layout{display:flex;max-width:1280px;margin:0 auto;gap:0;align-items:flex-start;}
+/* sidebar */
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;width:290px;flex-shrink:0;
+  background:linear-gradient(180deg,#fdf9ef 0%,#f3edd8 100%);border-right:2px solid var(--accent);
+  padding:24px 18px 40px;}
+.sidebar h2{font-size:15px;color:var(--accent);font-weight:800;letter-spacing:1px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+.toc-list{list-style:none;}
+.toc-list .toc-list{margin-left:12px;border-left:1px solid var(--border);padding-left:10px;}
+.toc-list li{margin:2px 0;}
+.toc-h2>a{font-weight:700;font-size:13.5px;color:var(--text);display:block;padding:5px 6px;border-radius:6px;}
+.toc-h3>a{font-weight:500;font-size:12px;color:var(--text2);display:block;padding:3px 6px;border-radius:6px;}
+.toc-list a:hover{background:#fffdf5;text-decoration:none;color:var(--accent);}
+.toc-list a.active{background:var(--accent);color:#fff;font-weight:700;}
+/* content */
+.content{flex:1;min-width:0;padding:0 8px;}
+.container{background:var(--card);border-radius:16px;box-shadow:0 2px 24px rgba(0,0,0,.06);overflow:hidden;margin:20px 12px;}
+.header{background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.header h1{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px;line-height:1.4;}
+.header .tags{margin-top:6px;}
+.body-wrap{padding:8px 34px 40px;}
+.body-wrap h2{font-size:20px;font-weight:800;margin:40px 0 18px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);
+  background:linear-gradient(90deg,#fdf9ef,transparent);color:var(--text);scroll-margin-top:12px;border-radius:0 8px 8px 0;}
+.body-wrap h2:first-child{margin-top:16px;}
+.body-wrap h3{font-size:16px;font-weight:700;margin:26px 0 10px;color:var(--accent);scroll-margin-top:12px;
+  padding-bottom:5px;border-bottom:1px dashed var(--border);}
+.body-wrap h4{font-size:14.5px;font-weight:700;margin:18px 0 8px;color:var(--metal);}
+.body-wrap p{margin:12px 0;font-size:14.5px;}
+.body-wrap ul,.body-wrap ol{margin:12px 0 12px 24px;font-size:14.5px;}
+.body-wrap li{margin:6px 0;}
+.body-wrap strong{color:#1a1a1a;font-weight:700;}
+.body-wrap em{color:var(--water);font-style:italic;}
+.body-wrap code{background:#f3edd8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#7a5a10;
+  font-family:'SF Mono',Menlo,monospace;}
+hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
+/* blockquote -> callout */
+.body-wrap blockquote{background:#fff8e1;border-left:4px solid var(--earth);padding:14px 20px;margin:18px 0;
+  border-radius:0 10px 10px 0;font-size:14px;color:#5a4a20;}
+.body-wrap blockquote p{margin:8px 0;}
+.body-wrap blockquote strong{color:#8a5a00;}
+/* tables */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px;}
+th{background:#f3edd8;padding:11px 14px;text-align:left;font-weight:700;color:#5a4a10;
+  border-bottom:2px solid var(--accent);white-space:nowrap;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:#faf8f3;}
+tbody tr:hover{background:#fffdf5;}
+/* susceptibility badges */
+.sr{display:inline-block;min-width:20px;text-align:center;padding:1px 8px;border-radius:11px;font-weight:800;font-size:12px;}
+.sr-S{background:#e8f5e9;color:#2e7d32;}
+.sr-R{background:#fce4ec;color:#c62828;}
+.sr-I{background:#fff8e1;color:#f57f17;}
+.tag{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;margin:2px 3px 2px 0;}
+.tag-blue{background:#e3f2fd;color:#1565c0;}
+.footer{padding:22px 34px;text-align:center;font-size:12px;color:var(--text2);border-top:1px solid var(--border);background:var(--bg);}
+.top-btn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--accent);
+  color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transition:.25s;z-index:50;}
+.top-btn.show{opacity:.9;}
+.mobile-toc-btn{display:none;}
+@media(max-width:900px){
+  .sidebar{position:fixed;left:0;top:0;z-index:100;transform:translateX(-100%);transition:.3s;box-shadow:4px 0 20px rgba(0,0,0,.2);}
+  .sidebar.open{transform:translateX(0);}
+  .mobile-toc-btn{display:block;position:fixed;left:14px;top:14px;z-index:60;background:var(--accent);color:#fff;
+    border:none;border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+  .content{padding:0;}
+  .container{margin:8px;}
+  .header{padding:56px 20px 26px;}
+  .body-wrap{padding:8px 18px 40px;}
+}
+</style>
+</head>
+<body>
+<button class="mobile-toc-btn" id="mtoc">☰ 목차</button>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <h2>목 차</h2>
+    <ul class="toc-list">
+<li class="toc-h2"><a href="#_1">개요</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#4">건강 성인 장내에서 4대 분류가 차지하는 비율</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#phylum">계통(phylum) 분류 종합표 — 모든 세균의 문(門) 수준 위치</a>
+</li>
+<li class="toc-h2"><a href="#1-gpac">1. GPAC — 그람양성 혐기성 구균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5">대표 세균 5종</a>
+</li>
+<li class="toc-h3"><a href="#5_1">주요 관련 질병 5가지</a>
+</li>
+<li class="toc-h3"><a href="#5_2">오염 가능 식품 예 5가지</a>
+</li>
+<li class="toc-h3"><a href="#_2">항생제 감수성</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#2-gpab">2. GPAB — 그람양성 혐기성 간균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5_3">대표 세균 5종</a>
+</li>
+<li class="toc-h3"><a href="#5_4">주요 관련 질병 5가지</a>
+</li>
+<li class="toc-h3"><a href="#5_5">오염 가능 식품 예 5가지</a>
+</li>
+<li class="toc-h3"><a href="#_3">항생제 감수성</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#3-gnac">3. GNAC — 그람음성 혐기성 구균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5_6">대표 세균 5종</a>
+</li>
+<li class="toc-h3"><a href="#5_7">주요 관련 질병 5가지</a>
+</li>
+<li class="toc-h3"><a href="#5_8">오염 가능 식품 예 5가지</a>
+</li>
+<li class="toc-h3"><a href="#_4">항생제 감수성</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#4-gnab">4. GNAB — 그람음성 혐기성 간균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#5_9">대표 세균 5종</a>
+</li>
+<li class="toc-h3"><a href="#5_10">주요 관련 질병 5가지</a>
+</li>
+<li class="toc-h3"><a href="#fusobacterium-nucleatum-crc">⭐ Fusobacterium nucleatum 와 대장암(CRC) 연관성</a>
+</li>
+<li class="toc-h3"><a href="#porphyromonas-gingivalis">⭐ Porphyromonas gingivalis 와 전신질환 — 당뇨·지방간·혈관질환</a>
+</li>
+<li class="toc-h3"><a href="#5_11">오염 가능 식품 예 5가지</a>
+</li>
+<li class="toc-h3"><a href="#_5">항생제 감수성</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#_6">종합 요약: 혐기성 세균 항생제 감수성 한눈에 보기</a>
+</li>
+<li class="toc-h2"><a href="#penicillin-lactam-4">심화: Penicillin·β-lactam은 &quot;거의 모든 혐기균에 효과&quot;인가? — 4제 상세 비교</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_7">판정: 용어를 구분해야 한다</a>
+</li>
+<li class="toc-h3"><a href="#-lactamase">핵심 기전: β-lactamase</a>
+</li>
+<li class="toc-h3"><a href="#4penicillin">4제(+penicillin) 상세 비교</a>
+</li>
+<li class="toc-h3"><a href="#_8">한 줄 결론</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#metronidazole">심화: Metronidazole은 &quot;거의 모든 혐기균&quot;에 듣는가? — 약해지거나 안 듣는 혐기균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_9">큰 그림</a>
+</li>
+<li class="toc-h3"><a href="#_10">왜 안 듣나 — 활성화 기전이 관건</a>
+</li>
+<li class="toc-h3"><a href="#1-r">① 확실히 무효 / 내성 (R) — 임상적으로 중요한 구멍</a>
+</li>
+<li class="toc-h3"><a href="#2-ir">② 감수성이 떨어지거나 가변적 (I~R, 신뢰도 낮음)</a>
+</li>
+<li class="toc-h3"><a href="#3-gpac-metronidazole-yes-100">③ GPAC(그람양성 혐기구균)은 metronidazole이 잘 듣나? → 대체로 YES (단, 100%는 아님)</a>
+</li>
+<li class="toc-h3"><a href="#_11">한 줄 정리</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#actinomyces-metronidazole">심화: 방선균(Actinomyces) — &quot;혐기균인데 metronidazole이 안 듣는&quot; 대표 균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#filamentous-bacillus">정체: 혐기~미세호기성 그람양성 사상균(filamentous bacillus)</a>
+</li>
+<li class="toc-h3"><a href="#metronidazole_1">왜 metronidazole이 안 듣나 (앞 섹션과 연결)</a>
+</li>
+<li class="toc-h3"><a href="#3">임상 3대 병형 (침범 부위별)</a>
+</li>
+<li class="toc-h3"><a href="#_12">특징적 소견</a>
+</li>
+<li class="toc-h3"><a href="#penicillin-1">치료 — penicillin이 1차, 장기 고용량</a>
+</li>
+<li class="toc-h3"><a href="#_13">한 줄 정리</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#aggregatibacter-actinomycetemcomitans">심화: Aggregatibacter actinomycetemcomitans — 방선균과 &quot;동행&quot;하는 그람음성균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#4_1">정체: 이름은 방선균 같지만 그람음성 — 4대 분류 밖의 미세호기성균</a>
+</li>
+<li class="toc-h3"><a href="#2">2대 질병</a>
+</li>
+<li class="toc-h3"><a href="#halitosis">구취(halitosis)와의 관계 — 직접 생성균 아님, &quot;무대를 까는&quot; 상류 병원체</a>
+</li>
+<li class="toc-h3"><a href="#clarithromycinmacrolide">항생제 감수성 — clarithromycin/macrolide는 &quot;조건부 효과&quot;</a>
+</li>
+<li class="toc-h3"><a href="#ciprofloxacinfluoroquinolone-aggregatibacter">Ciprofloxacin/fluoroquinolone — Aggregatibacter엔 활성 있음 (혐기균과 정반대)</a>
+</li>
+<li class="toc-h3"><a href="#clarithromycin">clarithromycin 관련 한 줄 정리</a>
+</li>
+<li class="toc-h3"><a href="#actinomyces">방선균(Actinomyces)과의 관계 — 헷갈리지 말 것</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#_14">심화: 혐기균이 아니면서 장에 많은 세균들 — &quot;통성혐기성&quot; 소수파</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_15">큰 그림: 장은 압도적으로 혐기균 세상</a>
+</li>
+<li class="toc-h3"><a href="#facultative-anaerobe">핵심 그룹 (통성혐기성 = facultative anaerobe)</a>
+</li>
+<li class="toc-h3"><a href="#_16">산소 요구가 애매한 &quot;회색지대&quot; 균</a>
+</li>
+<li class="toc-h3"><a href="#vs-4">&quot;혐기균 vs 통성혐기균&quot; 구분 포인트 (앞 4대 분류와 연결)</a>
+</li>
+<li class="toc-h3"><a href="#_17">왜 이 구분이 임상에서 중요한가</a>
+</li>
+<li class="toc-h3"><a href="#4-ciprofloxacin">항생제 감수성 — 4대 분류 밖 통성혐기균 (ciprofloxacin의 진짜 무대)</a>
+</li>
+<li class="toc-h3"><a href="#_18">한 줄 정리</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#vsc-halitosis">심화: VSC(휘발성 황화합물) 생성 세균 — 구취(halitosis)의 원인균</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#vsc">VSC란 — 구취의 화학적 실체</a>
+</li>
+<li class="toc-h3"><a href="#vsc_1">VSC 생성 기여 세균 — 기여도 순서</a>
+</li>
+<li class="toc-h3"><a href="#porphyromonas-gingivalis-vsc">Porphyromonas gingivalis 심화 — VSC·치주염의 핵심 병원체</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#vsc_2">VSC 생성 세균별 항생제 감수성</a>
+</li>
+<li class="toc-h2"><a href="#vsc-substrate">VSC의 기질(substrate)이 되는 원인 음식</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#1-cysteinemethionine">① 동물성·고단백 황 기질 = 황 함유 아미노산(cysteine·methionine)이 풍부한 식품</a>
+</li>
+<li class="toc-h3"><a href="#2_1">② 식물성 유기황 식품 (씹을 때 직접 휘발 + 삼킨 뒤 세균 기질 = 둘 다)</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#h2s-3-1">심화: H₂S(황화수소) 생성의 3대 경로 · 부위별 1등 · 정량 총량 재정립</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#a-h2s-3">A. H₂S가 만들어지는 3대 생화학 경로</a>
+</li>
+<li class="toc-h3"><a href="#b-h2s">B. 세균별 황 기질 선호 (누가 무엇을 먹고 H₂S를 내는가)</a>
+</li>
+<li class="toc-h3"><a href="#c-h2s-1">C. 부위별 &quot;H₂S 1등&quot;은 다르다</a>
+</li>
+<li class="toc-h3"><a href="#d-h2s-1-srb">D. ★정량 총량 재정립 — &quot;H₂S 총량 1등 = SRB&quot;는 옛 관점</a>
+</li>
+<li class="toc-h3"><a href="#e">E. 한 줄 요약</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#sibo-rifaximin-vs-ciprofloxacin-4">심화: SIBO/장내세균 과증식 치료 — rifaximin vs ciprofloxacin의 4대 분류적 의미</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#_19">커버리지 비교</a>
+</li>
+<li class="toc-h3"><a href="#rifaximin">rifaximin — &quot;장 안에서만 작동하는 광범위 혐기 커버&quot;</a>
+</li>
+<li class="toc-h3"><a href="#ciprofloxacin">ciprofloxacin — &quot;혐기균을 못 잡는&quot; 플루오로퀴놀론</a>
+</li>
+<li class="toc-h3"><a href="#rifaximin-cipro">핵심 대비 — 왜 rifaximin이고 왜 cipro가 아닌가</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2"><a href="#f">심화 F — 신경퇴행성 질환(파킨슨병·알츠하이머병)과의 관계</a>
+<ul class="toc-list">
+<li class="toc-h3"><a href="#1-porphyromonas-gingivalis">1) Porphyromonas gingivalis → 알츠하이머병 (구강–뇌축, 진지페인 가설)</a>
+</li>
+<li class="toc-h3"><a href="#2-fusobacterium-nucleatum">2) Fusobacterium nucleatum → 알츠하이머병 (신경염증·구강–장–뇌축)</a>
+</li>
+<li class="toc-h3"><a href="#3-desulfovibrio-">3) Desulfovibrio → 파킨슨병 (황화수소·α-시누클레인 응집)</a>
+</li>
+<li class="toc-h3"><a href="#_20">요약 — 세 균의 신경퇴행 기여 비교</a>
+</li>
+</ul>
+</li>
+</ul>
+  </nav>
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <h1>마이크로바이옴에 대해 알아야 할 모든 것</h1>
+        <div class="tags"><span class="tag tag-blue">#bacteria</span> <span class="tag tag-blue">#gram-staining</span> <span class="tag tag-blue">#anaerobes</span> <span class="tag tag-blue">#antibiotics</span> <span class="tag tag-blue">#foodborne</span> <span class="tag tag-blue">#clinical-infection</span></div>
+      </div>
+      <div class="body-wrap">
+        <p><em>저자 — 가정의학과 의사 양준상</em></p>
+<h2 id="_1">개요</h2>
+<p>혐기성 세균을 그람염색 + 형태(구균/간균)에 따라 <strong>GPAC / GPAB / GNAC / GNAB</strong> 4대 분류로 나누고, 각 군의 대표 세균·관련 질병·오염 가능 식품·항생제 감수성을 정리한 참조 문서.</p>
+<table>
+<thead>
+<tr>
+<th>약어</th>
+<th>정식 명칭</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPAC</strong></td>
+<td>Gram-Positive Anaerobic <strong>C</strong>occi</td>
+<td>그람양성 혐기성 <strong>구균</strong></td>
+</tr>
+<tr>
+<td><strong>GPAB</strong></td>
+<td>Gram-Positive Anaerobic <strong>B</strong>acilli</td>
+<td>그람양성 혐기성 <strong>간균</strong></td>
+</tr>
+<tr>
+<td><strong>GNAC</strong></td>
+<td>Gram-Negative Anaerobic <strong>C</strong>occi</td>
+<td>그람음성 혐기성 <strong>구균</strong></td>
+</tr>
+<tr>
+<td><strong>GNAB</strong></td>
+<td>Gram-Negative Anaerobic <strong>B</strong>acilli</td>
+<td>그람음성 혐기성 <strong>간균</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">건강 성인 장내에서 4대 분류가 차지하는 비율</h3>
+<p>장내 세균은 <strong>99% 이상이 혐기성</strong>이고, 문(phylum) 기준 Bacillota(구 Firmicutes) + Bacteroidota(구 Bacteroidetes)가 ~90%를 차지한다. 이를 4대 그람/형태 분류로 환산하면(상대존재비 기준):</p>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>대표 균속</th>
+<th>주 계통(phylum)</th>
+<th>대략 비율 범위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPAB</strong> (그람+ 간균)</td>
+<td><em>Faecalibacterium</em>·<em>Clostridium</em>·<em>Eubacterium</em>·<em>Roseburia</em>·<em>Bifidobacterium</em></td>
+<td>Bacillota + Actinomycetota</td>
+<td><strong>약 50~75%</strong> (최우세)</td>
+</tr>
+<tr>
+<td><strong>GNAB</strong> (그람– 간균)</td>
+<td><em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em></td>
+<td>Bacteroidota + Fusobacteriota</td>
+<td><strong>약 15~40%</strong> (2위)</td>
+</tr>
+<tr>
+<td><strong>GPAC</strong> (그람+ 구균)</td>
+<td><em>Peptostreptococcus</em>·<em>Peptoniphilus</em>·<em>Finegoldia</em>·<em>Ruminococcus</em>(일부)</td>
+<td>Bacillota</td>
+<td><strong>약 1~5%</strong> (소수)</td>
+</tr>
+<tr>
+<td><strong>GNAC</strong> (그람– 구균)</td>
+<td><em>Veillonella</em>·<em>Megasphaera</em>·<em>Acidaminococcus</em></td>
+<td>Bacillota(Negativicutes)</td>
+<td><strong>약 &lt;1~2%</strong> (극소수)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>주의점 (범위가 넓은 이유)</strong>
+- <strong>개인차·F/B ratio 변동</strong>: Bacillota/Bacteroidota 비율은 식이·연령·지역에 따라 크게 변동 → 범위가 넓음.
+- <strong>배양 vs 메타지노믹스</strong>: 옛 배양 데이터와 16S/shotgun 시퀀싱 추정치가 다름. 위 값은 상대존재비 기준.
+- <strong>GPAB 압도</strong>: 부티르산 생성 주력(<em>Faecalibacterium</em>·<em>Roseburia</em>·<em>Clostridium</em> 클러스터)이 여기 몰려 절반 이상 차지.
+- <strong>알균(GPAC·GNAC)은 소수</strong>: 둘 합쳐도 보통 5% 안팎. _Veillonella_는 흔하나 존재비는 낮음.
+- <strong>GNAC 함정 재확인</strong>: 그람음성으로 염색되나 계통상 Bacillota(Negativicutes).</p>
+<hr />
+<h2 id="phylum">계통(phylum) 분류 종합표 — 모든 세균의 문(門) 수준 위치</h2>
+<blockquote>
+<p><strong>주의</strong>: 그람염색 기반 4대 분류(GPAC/GPAB/GNAC/GNAB)와 <strong>계통분류(phylum)는 별개 축</strong>이다. 특히 <strong>GNAC는 그람음성으로 염색되지만 계통상 Firmicutes(Bacillota)</strong> 소속(Negativicutes 강) — 겉보기(염색)와 진화 계통이 어긋나는 대표 사례. 2021년 ICNP 개정으로 phylum 명칭이 바뀌어 <strong>구명/신명 병기</strong>한다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>신 phylum (2021~)</th>
+<th>구 phylum</th>
+<th>본 문서 해당 세균</th>
+<th>그람 염색</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bacillota</strong></td>
+<td><strong>Firmicutes</strong></td>
+<td>GPAC 전부(<em>Peptostreptococcus</em>·<em>Finegoldia</em>·<em>Parvimonas</em>·<em>Peptoniphilus</em>·<em>Anaerococcus</em>), GPAB의 <em>Clostridium</em>/<em>Clostridioides</em>, <strong>GNAC 전부</strong>(<em>Veillonella</em>·<em>Acidaminococcus</em>·<em>Megasphaera</em>·<em>Anaeroglobus</em> — 그람음성 염색이나 계통상 Firmicutes), <em>Enterococcus</em>·<em>Streptococcus</em>·<em>Staphylococcus</em>·<em>Lactobacillus</em></td>
+<td>양성(GNAC만 음성)</td>
+</tr>
+<tr>
+<td><strong>Actinomycetota</strong></td>
+<td><strong>Actinobacteria</strong></td>
+<td>GPAB의 <em>Actinomyces israelii</em>·<em>Cutibacterium (Propionibacterium) acnes</em>·<em>Bifidobacterium</em></td>
+<td>양성</td>
+</tr>
+<tr>
+<td><strong>Bacteroidota</strong></td>
+<td><strong>Bacteroidetes</strong></td>
+<td>GNAB의 <em>Bacteroides fragilis</em>·<em>Prevotella</em>·<em>Porphyromonas</em></td>
+<td>음성</td>
+</tr>
+<tr>
+<td><strong>Fusobacteriota</strong></td>
+<td><strong>Fusobacteria</strong></td>
+<td>GNAB의 <em>Fusobacterium nucleatum</em>·<em>F. necrophorum</em></td>
+<td>음성</td>
+</tr>
+<tr>
+<td><strong>Pseudomonadota</strong></td>
+<td><strong>Proteobacteria</strong></td>
+<td><em>Aggregatibacter actinomycetemcomitans</em>(Gammaproteobacteria), 장내세균과(<em>E. coli</em>·<em>Klebsiella</em>·<em>Enterobacter</em>·<em>Citrobacter</em>·<em>Proteus</em>·<em>Serratia</em>·<em>Morganella</em>), <em>Campylobacter</em>·<em>Helicobacter</em>(Epsilonproteobacteria)</td>
+<td>음성</td>
+</tr>
+<tr>
+<td><strong>Thermodesulfobacteriota</strong></td>
+<td><strong>Proteobacteria(구 Deltaproteobacteria)</strong></td>
+<td>황산염환원균(SRB): <em>Desulfovibrio</em>·<em>Bilophila wadsworthia</em> — 이화적 황산염 환원(SO₄²⁻→H₂S)</td>
+<td>음성</td>
+</tr>
+</tbody>
+</table>
+<p><strong>계통 축의 핵심 통찰</strong>
+- <strong>혐기성 그람양성균(GPAC+GPAB)은 사실상 Bacillota 아니면 Actinomycetota 둘 중 하나</strong> — 구균/<em>Clostridium</em>은 Bacillota, 사상형(<em>Actinomyces</em>)·<em>Cutibacterium</em>·<em>Bifidobacterium</em>은 Actinomycetota(고 G+C 그람양성).
+- <strong>혐기성 그람음성균(GNAB)은 Bacteroidota(<em>Bacteroides</em> 계열) 아니면 Fusobacteriota(<em>Fusobacterium</em>)</strong> — 서로 다른 문.
+- <strong>GNAC의 함정</strong>: 겉은 그람음성이지만 계통상 <strong>Bacillota(Firmicutes)</strong>. 얇은 펩티도글리칸·LPS 유무 등으로 음성 염색되나 진화적으로는 그람양성 계통 안의 Negativicutes 강.
+- <strong>통성혐기·미세호기 그람음성균</strong>(장내세균과·<em>Aggregatibacter</em>·<em>Campylobacter</em>)은 대부분 <strong>Pseudomonadota(Proteobacteria)</strong>.</p>
+<hr />
+<h2 id="1-gpac">1. GPAC — 그람양성 혐기성 구균</h2>
+<h3 id="5">대표 세균 5종</h3>
+<p><em>(계통: 전부 </em><em>Bacillota</em><em>(구 Firmicutes) — Clostridia/Tissierellia 강)</em>
+1. <em>Peptostreptococcus anaerobius</em> — Bacillota
+2. <em>Finegoldia magna</em> (구 <em>Peptostreptococcus magnus</em>) — Bacillota
+3. <em>Parvimonas micra</em> (구 <em>Peptostreptococcus micros</em>) — Bacillota
+4. <em>Peptoniphilus asaccharolyticus</em> — Bacillota
+5. <em>Anaerococcus prevotii</em> — Bacillota</p>
+<h3 id="5_1">주요 관련 질병 5가지</h3>
+<ol>
+<li>만성 부비동염·중이염 등 두경부 감염</li>
+<li>치성 농양(dental/periodontal abscess)</li>
+<li>피부·연조직 감염 및 당뇨발 궤양(diabetic foot)</li>
+<li>골수염 및 인공관절 감염(<em>Finegoldia magna</em>)</li>
+<li>골반내 감염·자궁내막염 등 여성 생식기 감염</li>
+</ol>
+<h3 id="5_2">오염 가능 식품 예 5가지</h3>
+<ol>
+<li>진공포장 육류</li>
+<li>저온 저장 조리식품</li>
+<li>유제품(연질치즈)</li>
+<li>발효 소스류</li>
+<li>상온 방치된 조리 후 식품</li>
+</ol>
+<p>※ GPAC는 주로 정상 구강·장·질 상재균 유래 내인성 감염이 많아, 식품 매개 감염 비중은 낮음.</p>
+<h3 id="_2">항생제 감수성</h3>
+<table>
+<thead>
+<tr>
+<th>항생제</th>
+<th>감수성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Penicillin G</td>
+<td>대체로 감수성 (S)</td>
+</tr>
+<tr>
+<td>Ampicillin</td>
+<td>감수성 (S)</td>
+</tr>
+<tr>
+<td>Metronidazole</td>
+<td>감수성 (S), 단 일부 <em>Finegoldia/Peptoniphilus</em> 내성 가능</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td>감수성이나 내성 증가 추세 (S/R)</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>중등도~감수성 (I/S), 경험적 단독은 부적합</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>가변적 (S/R), macrolide 내성 흔함</td>
+</tr>
+<tr>
+<td>Vancomycin</td>
+<td>감수성 (S)</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>부적합/내성 (R)</strong> — 구세대 FQ는 혐기균 및 그람양성 구균 커버 빈약</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>감수성 (S) — gut-selective, 장관 내강에서 GPAC 커버; 전신 감염엔 부적합(비흡수)</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI 병합</td>
+<td>감수성 (S)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-gpab">2. GPAB — 그람양성 혐기성 간균</h2>
+<h3 id="5_3">대표 세균 5종</h3>
+<p><em>(계통: </em>Clostridium<em> 3종 = </em><em>Bacillota</em><em> / </em>Actinomyces<em>·</em>Cutibacterium<em> = </em><em>Actinomycetota</em><em>(구 Actinobacteria))</em>
+1. <em>Clostridium perfringens</em> — Bacillota
+2. <em>Clostridioides (Clostridium) difficile</em> — Bacillota
+3. <em>Clostridium botulinum</em> — Bacillota
+4. <em>Actinomyces israelii</em> — <strong>Actinomycetota</strong>
+5. <em>Cutibacterium (Propionibacterium) acnes</em> — <strong>Actinomycetota</strong></p>
+<h3 id="5_4">주요 관련 질병 5가지</h3>
+<ol>
+<li>가스괴저(gas gangrene)·식중독 (<em>C. perfringens</em>)</li>
+<li>위막성 대장염(pseudomembranous colitis) (<em>C. difficile</em>)</li>
+<li>보툴리누스 중독(botulism) (<em>C. botulinum</em>)</li>
+<li>방선균증(actinomycosis)·경부 농양 (<em>Actinomyces</em>)</li>
+<li>여드름·인공삽입물/션트 감염 (<em>C. acnes</em>)</li>
+</ol>
+<p>※ 참고: <em>C. tetani</em> → 파상풍(tetanus)</p>
+<h3 id="5_5">오염 가능 식품 예 5가지</h3>
+<ol>
+<li>재가열 부실한 육류·그레이비 (<em>C. perfringens</em>)</li>
+<li>가정용 통조림·병조림 (<em>C. botulinum</em>)</li>
+<li>훈제·염장 생선 (<em>C. botulinum type E</em>)</li>
+<li>진공포장 저산소 식품</li>
+<li>벌꿀(영아 보툴리즘 위험, <em>C. botulinum</em> 아포)</li>
+</ol>
+<h3 id="_3">항생제 감수성</h3>
+<table>
+<thead>
+<tr>
+<th>항생제</th>
+<th>감수성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Penicillin G</td>
+<td><em>Clostridium</em>(대부분)·<em>Actinomyces</em> 감수성 (S)</td>
+</tr>
+<tr>
+<td>Metronidazole</td>
+<td><em>C. perfringens</em>, <em>C. difficile</em> 감수성 (S); <strong><em>Actinomyces</em>/<em>Cutibacterium</em> 내성 (R)</strong></td>
+</tr>
+<tr>
+<td>Vancomycin (경구)</td>
+<td><em>C. difficile</em> 치료 표준 (S)</td>
+</tr>
+<tr>
+<td>Fidaxomicin</td>
+<td><em>C. difficile</em> 감수성 (S)</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td>가변적, <em>C. difficile</em>는 유발원 → 부적합</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>가변적 (I/S), <em>C. perfringens</em> 일부 감수성</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>가변적 (S/R); <em>Cutibacterium acnes</em>·<em>Actinomyces</em>에는 대체로 감수성 (S)</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>부적합/내성 (R)</strong> — 혐기균 커버 빈약; <em>Clostridium</em>·<em>Actinomyces</em> 신뢰 불가 (moxifloxacin은 일부 활성)</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>감수성 (S) — 장관 내강 <em>Clostridium</em> 커버(<em>C. difficile</em> 재발 억제 보조 근거 有); gut-selective, 전신 감염엔 부적합</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI·Carbapenem</td>
+<td>감수성 (S)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-gnac">3. GNAC — 그람음성 혐기성 구균</h2>
+<h3 id="5_6">대표 세균 5종</h3>
+<p><em>(계통: </em><em>전부 Bacillota</em><em>(구 Firmicutes) — Negativicutes 강. ⚠️ 그람음성 염색이지만 진화적으로는 그람양성 계통 소속)</em>
+1. <em>Veillonella parvula</em> — Bacillota (Negativicutes)
+2. <em>Veillonella dispar</em> — Bacillota (Negativicutes)
+3. <em>Acidaminococcus fermentans</em> — Bacillota (Negativicutes)
+4. <em>Megasphaera elsdenii</em> — Bacillota (Negativicutes)
+5. <em>Anaeroglobus geminatus</em> — Bacillota (Negativicutes)</p>
+<h3 id="5_7">주요 관련 질병 5가지</h3>
+<ol>
+<li>치주염·치성 감염 및 구강 농양</li>
+<li>골수염·추간판염(<em>Veillonella</em> 균혈증)</li>
+<li>부비동염·편도주위 농양 등 두경부 감염</li>
+<li>인공심장판막 심내막염(드묾)</li>
+<li>흡인성 폐렴·폐농양</li>
+</ol>
+<h3 id="5_8">오염 가능 식품 예 5가지</h3>
+<ol>
+<li>발효 유제품</li>
+<li>타액 오염 가능 공유 음식</li>
+<li>저온 발효 식품</li>
+<li>상온 방치 조리식품</li>
+<li>오염된 음용수</li>
+</ol>
+<p>※ GNAC 역시 구강·장 상재균 유래 내인성 감염이 대부분.</p>
+<h3 id="_4">항생제 감수성</h3>
+<table>
+<thead>
+<tr>
+<th>항생제</th>
+<th>감수성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metronidazole</td>
+<td>감수성 (S)</td>
+</tr>
+<tr>
+<td>Penicillin/Ampicillin</td>
+<td>대체로 감수성 (S), 일부 β-lactamase 생산 주 내성</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI 병합</td>
+<td>감수성 (S)</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td>대체로 감수성 (S)</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>중등도 (I), 단독 신뢰 낮음</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>가변적 (S/R)</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>부적합/내성 (R)</strong> — 구세대 FQ 혐기균 커버 빈약</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>감수성 (S) — gut-selective, 장관 내강 GNAC 커버; 전신 감염엔 부적합(비흡수)</td>
+</tr>
+<tr>
+<td>Carbapenem</td>
+<td>감수성 (S)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-gnab">4. GNAB — 그람음성 혐기성 간균</h2>
+<h3 id="5_9">대표 세균 5종</h3>
+<p><em>(계통: </em>Bacteroides<em>·</em>Prevotella<em>·</em>Porphyromonas<em> = </em><em>Bacteroidota</em><em>(구 Bacteroidetes) / </em>Fusobacterium<em> 2종 = </em><em>Fusobacteriota</em><em>(구 Fusobacteria))</em>
+1. <em>Bacteroides fragilis</em> — <strong>Bacteroidota</strong>
+2. <em>Prevotella melaninogenica</em> — <strong>Bacteroidota</strong>
+3. <em>Porphyromonas gingivalis</em> — <strong>Bacteroidota</strong>
+4. <em>Fusobacterium nucleatum</em> — <strong>Fusobacteriota</strong>
+5. <em>Fusobacterium necrophorum</em> — <strong>Fusobacteriota</strong></p>
+<blockquote>
+<p><strong>+ <em>Desulfovibrio</em> spp. (황산염환원균, SRB)</strong> — 그람음성·절대혐기·곡간균이므로 <strong>GNAB에 속한다</strong>. 다만 계통은 위 두 문과 다른 <strong>Thermodesulfobacteriota</strong>(구 Proteobacteria의 Deltaproteobacteria)이고, 병원성 기전도 아미노산 분해가 아니라 <strong>이화적 황산염 환원(SO₄²⁻→H₂S)</strong> 이라 임상에서 흔히 다루는 GNAB 3속(<em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em>)과는 별개로 취급된다. 장·치주낭·설태에 서식하며 H₂S 생성으로 구취·장 점막 손상에 관여(<em>Bilophila wadsworthia</em>와 동일 문).</p>
+</blockquote>
+<h3 id="5_10">주요 관련 질병 5가지</h3>
+<ol>
+<li>복강내 농양·복막염 (<em>B. fragilis</em>) — 가장 흔한 임상 혐기성 감염</li>
+<li>흡인성 폐렴·폐농양 (<em>Prevotella</em>, <em>Fusobacterium</em>)</li>
+<li>치주염 (<em>P. gingivalis</em>)</li>
+<li>레미에르 증후군(Lemierre's syndrome, 경정맥 화농성 혈전정맥염) (<em>F. necrophorum</em>)</li>
+<li>균혈증·패혈증 및 수술 후 창상감염</li>
+</ol>
+<h3 id="fusobacterium-nucleatum-crc">⭐ <em>Fusobacterium nucleatum</em> 와 대장암(CRC) 연관성</h3>
+<p>구강 상재 혐기균인 <em>F. nucleatum</em>(Fusobacteriota, GNAB)은 최근 <strong>대장암(colorectal cancer, CRC)의 종양 촉진 세균</strong>으로 주목받는다.</p>
+<ul>
+<li><strong>종양 조직 특이 농축</strong>: CRC 조직에서 인접 정상 점막 대비 <em>F. nucleatum</em> DNA가 유의하게 높게 검출되며(Kostic 2012·Castellarin 2012, <em>Genome Res</em>), 종양 부위·간 전이 병소에까지 동반 전이됨이 보고됨.</li>
+<li><strong>부착·침입 — FadA adhesin</strong>: FadA가 대장상피의 <strong>E-cadherin에 결합 → β-catenin/Wnt 신호 활성화</strong>로 세포 증식·종양 성장을 촉진(Rubinstein 2013, <em>Cell Host Microbe</em>).</li>
+<li><strong>면역 회피 — Fap2 lectin</strong>: Fap2가 종양 세포의 <strong>Gal-GalNAc</strong>에 결합해 종양에 정착하고, 동시에 NK세포·T세포의 억제 수용체 <strong>TIGIT</strong>와 결합해 항종양 면역을 억제(Gur 2015, <em>Immunity</em>).</li>
+<li><strong>종양 미세환경 조성</strong>: 종양 침윤 골수세포 유입·염증성 사이토카인 유도, 그리고 <strong>화학요법 내성(autophagy 경로 통한 5-FU/옥살리플라틴 저항)</strong> 유발 보고(Yu 2017, <em>Cell</em>).</li>
+<li><strong>임상적 함의</strong>: 종양 내 <em>F. nucleatum</em> 고부하 = <strong>불량한 예후·재발</strong>과 연관. 분변 내 검출은 <strong>비침습 CRC 선별 바이오마커</strong> 후보로 연구 중. 인과성은 아직 확정 아님(연관·촉진 근거 우세, "driver" 여부 논쟁).</li>
+</ul>
+<blockquote>
+<p>정리: <em>F. nucleatum</em>은 CRC를 <strong>일으키는 단독 원인</strong>이라기보다, 이미 형성된 종양 미세환경에서 <strong>부착(FadA)·면역회피(Fap2)·항암제 내성</strong>을 통해 <strong>종양 진행을 가속하는 촉진 인자(oncomicrobe)</strong> 로 이해된다.</p>
+</blockquote>
+<h3 id="porphyromonas-gingivalis">⭐ <em>Porphyromonas gingivalis</em> 와 전신질환 — 당뇨·지방간·혈관질환</h3>
+<p>치주염의 핵심 병원체 <em>P. gingivalis</em>(Bacteroidota, GNAB)는 <strong>치주낭을 벗어나 균혈증·독성인자·경구섭취를 통해 전신에 파급</strong>되는 "keystone pathogen"으로, 아래 대사·혈관 질환과 양방향으로 얽힌다. 공통 병독 인자는 <strong>gingipain(Rgp/Kgp — 시스테인 단백분해효소)·fimbriae(FimA)·LPS</strong>이며, 세균 산물을 실어 나르는 <strong>외막소포(outer membrane vesicle, OMV)</strong> 가 원거리 전달의 매개가 된다.</p>
+<p><strong>① 당뇨병(2형) — 양방향 관계</strong>
+- 치주염–2형 당뇨는 <strong>서로 악화시키는 양방향 연관</strong>으로 잘 확립됨. 치주 치료 시 HbA1c가 유의하게 개선된다.
+- 기전: <em>P. gingivalis</em> 유래 <strong>gingipain이 인슐린 수용체(IR)를 직접 단백분해로 절단 → 인슐린 신호 차단 → 인슐린 저항성</strong> 유발(Liu 2024, PMC11291925). LPS·균혈증에 의한 <strong>전신 저강도 염증(TNF-α·IL-6)</strong> 이 인슐린 저항성과 췌장 β세포 기능 저하를 함께 악화(Jia 2023, PMC10373507).</p>
+<p><strong>② 비알코올성 지방간(NAFLD/NASH) — 구강–장–간 축</strong>
+- <em>P. gingivalis</em>는 삼켜져 위장관에 도달, <strong>장내세균 불균형(dysbiosis)·장 투과성 증가</strong> → 문맥을 통해 간으로 균·LPS 유입("oral-gut-liver axis").
+- 동물모델에서 경구/치주 감염이 <strong>간 지방증·염증·섬유화(NASH)를 악화</strong>시키고(PMC5839206), <strong>CD36–PPARγ 축 상향조절로 간세포 지방축적 촉진</strong>(고지방식 마우스), 나아가 <strong>ferroptosis(철-의존 세포사)</strong> 경로를 통한 간손상 위험인자로 보고됨(<em>J Microbiol Immunol Infect</em> 계열, S1286457922001101).</p>
+<p><strong>③ 심혈관·죽상경화(atherosclerosis)</strong>
+- <strong>죽상반(atheroma)에서 <em>P. gingivalis</em> DNA/항원이 검출</strong>되며, 균혈증을 통해 혈관벽에 도달.
+- 기전: <strong>FimA·gingipain이 혈관내피세포·대식세포에 부착·침입 → 내피 기능장애, foam cell 형성, 염증성 죽상반 진행</strong>을 촉진. 만성 균혈증에 의한 전신 염증이 죽상경화·관상동맥질환 위험을 높인다(치주염–ASCVD 역학 연관).</p>
+<blockquote>
+<p>정리: <em>P. gingivalis</em>는 국소 치주 감염에 그치지 않고 <strong>gingipain·FimA·LPS·OMV</strong>를 통해 <strong>인슐린 저항성(당뇨)·간 지방증과 섬유화(NAFLD/NASH)·죽상경화(혈관질환)</strong> 를 <strong>촉진·악화</strong>시키는 대표적 전신질환 연결 세균으로 이해된다(인과성 일부는 동물모델·역학 수준, 확정 진행 중).</p>
+</blockquote>
+<h3 id="5_11">오염 가능 식품 예 5가지</h3>
+<ol>
+<li>분변 오염된 육류·생고기</li>
+<li>위생 불량 조리식품</li>
+<li>오염된 채소·샐러드</li>
+<li>미살균 유제품</li>
+<li>오염된 음용수</li>
+</ol>
+<p>※ GNAB(특히 <em>Bacteroides</em>)는 장내 최대 상재균으로, 장 천공 등에서 내인성 감염을 일으키는 것이 핵심.</p>
+<h3 id="_5">항생제 감수성</h3>
+<table>
+<thead>
+<tr>
+<th>항생제</th>
+<th>감수성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metronidazole</td>
+<td>감수성 (S) — GNAB 1차 선택</td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI (piperacillin-tazobactam, amox-clav)</td>
+<td>감수성 (S)</td>
+</tr>
+<tr>
+<td>Carbapenem (imipenem, meropenem)</td>
+<td>감수성 (S)</td>
+</tr>
+<tr>
+<td>Penicillin/Ampicillin 단독</td>
+<td><strong>내성 (R)</strong> — β-lactamase(cepA 등) 생산</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td><strong>내성 증가 (R)</strong>, <em>B. fragilis</em> 20~40% 내성</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td>중등도 (I/S), <em>Prevotella</em>·<em>Fusobacterium</em> 일부 감수성이나 <em>B. fragilis</em> 신뢰 낮음</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td>가변적 (S/R), <em>B. fragilis</em> 대체로 내성; <em>Fusobacterium</em>·구강 <em>Prevotella</em> 일부 감수성</td>
+</tr>
+<tr>
+<td>Cefoxitin</td>
+<td>중등도 (I/S), 내성 증가</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td><strong>내성 (R)</strong> — 구세대 FQ는 <em>B. fragilis</em> 등 GNAB에 무효</td>
+</tr>
+<tr>
+<td>Moxifloxacin</td>
+<td>가변적 (I/R) — FQ 중 유일하게 혐기 활성 있으나 내성 증가로 신뢰 하락</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td>가변적 (S/R) — <em>B. fragilis</em>는 MIC 높아 가변; 그러나 장관 내강 고농도로 SIBO 시 실질 커버. 전신 감염·복강내 농양엔 부적합</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">종합 요약: 혐기성 세균 항생제 감수성 한눈에 보기</h2>
+<table>
+<thead>
+<tr>
+<th>항생제</th>
+<th style="text-align: center;">GPAC</th>
+<th style="text-align: center;">GPAB</th>
+<th style="text-align: center;">GNAC</th>
+<th style="text-align: center;">GNAB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metronidazole</td>
+<td style="text-align: center;">S¹</td>
+<td style="text-align: center;">S²</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>S (1차)</strong></td>
+</tr>
+<tr>
+<td>Penicillin G</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S³</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>R⁴</strong></td>
+</tr>
+<tr>
+<td>Beta-lactam/BLI 병합</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+</tr>
+<tr>
+<td>Carbapenem</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+</tr>
+<tr>
+<td>Clindamycin</td>
+<td style="text-align: center;">S/R</td>
+<td style="text-align: center;">가변</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">R↑</td>
+</tr>
+<tr>
+<td>Doxycycline</td>
+<td style="text-align: center;">I/S</td>
+<td style="text-align: center;">가변</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">I/S⁶</td>
+</tr>
+<tr>
+<td>Clarithromycin</td>
+<td style="text-align: center;">S/R</td>
+<td style="text-align: center;">가변⁷</td>
+<td style="text-align: center;">가변</td>
+<td style="text-align: center;">R⁸</td>
+</tr>
+<tr>
+<td>Vancomycin</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S⁵</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Ciprofloxacin</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R⁹</td>
+</tr>
+<tr>
+<td>Rifaximin</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">가변¹⁰</td>
+</tr>
+</tbody>
+</table>
+<p><strong>각주</strong>
+1. GPAC 일부(<em>Finegoldia</em>, <em>Peptoniphilus</em>)는 metronidazole 내성 가능
+2. <em>Actinomyces</em>·<em>Cutibacterium</em>는 metronidazole <strong>내성</strong>
+3. <em>Clostridium</em>·<em>Actinomyces</em>는 penicillin 감수성
+4. <em>Bacteroides</em> 등 GNAB는 β-lactamase로 penicillin 단독 <strong>내성</strong>
+5. Vancomycin(경구)은 <em>C. difficile</em> 치료 표준
+6. Doxycycline은 <em>Prevotella</em>·<em>Fusobacterium</em> 일부 감수성이나 <em>B. fragilis</em>는 신뢰 낮음 → 단독 부적합
+7. Clarithromycin(macrolide)은 <em>Cutibacterium acnes</em>·<em>Actinomyces</em>에 대체로 감수성
+8. <em>B. fragilis</em>는 clarithromycin 대체로 내성; 일부 <em>Fusobacterium</em>·구강 <em>Prevotella</em>만 감수성
+9. <strong>Ciprofloxacin(구세대 FQ)은 4대 혐기 분류 전반에 부적합/내성</strong> — 혐기 커버 빈약. FQ 중 <strong>moxifloxacin</strong>만 혐기 활성이 있으나 내성 증가로 신뢰 하락. cipro는 오히려 <strong>통성혐기 그람음성균(장내세균과)의 주력약</strong>이라 대비됨(아래 통성혐기 섹션 참조).
+10. <strong>Rifaximin</strong>은 gut-selective 비흡수 리파마이신계 → 장관 <strong>내강</strong>에서 그람±·호기·혐기 광범위 커버(GPAC/GPAB/GNAC 대체로 S). 단 <em>B. fragilis</em>(GNAB)는 MIC가 높아 판정 <strong>가변</strong>이며, 전신 흡수가 거의 없어(&lt;0.4%) <strong>전신 감염·복강내 농양엔 부적합</strong>. SIBO·IBS-D·간성뇌증처럼 장관 내강 표적 치료에 최적(아래 SIBO 심화 섹션 참조).</p>
+<p><strong>핵심 임상 원칙</strong>
+- <strong>Metronidazole</strong>: 그람음성 혐기균(GNAB)에 가장 신뢰. 단 그람양성 간균 중 <em>Actinomyces</em>·<em>Cutibacterium</em>엔 무효.
+- <strong>β-lactam/β-lactamase 억제제 병합</strong>과 <strong>carbapenem</strong>: 거의 모든 혐기균 커버 → 광범위 혐기성 감염 경험적 치료의 근간.
+- <strong>Penicillin 단독</strong>: 구강 혐기균엔 유효하나 <em>Bacteroides</em>엔 무효.
+- <strong>Clindamycin</strong>: <em>B. fragilis</em> 내성 증가로 단독 경험적 사용 신뢰도 하락.
+- <strong>Ciprofloxacin</strong>: 혐기균 전반에 부적합(구세대 FQ). 혐기 커버가 필요하면 moxifloxacin 또는 metronidazole/β-lactam-BLI 조합. cipro의 진짜 무대는 통성혐기 그람음성균(장내세균과)이다.</p>
+<hr />
+<h2 id="penicillin-lactam-4">심화: Penicillin·β-lactam은 "거의 모든 혐기균에 효과"인가? — 4제 상세 비교</h2>
+<h3 id="_7">판정: 용어를 구분해야 한다</h3>
+<ul>
+<li><strong>"β-lactam/BLI 병합(amox-clav, pip-tazo)·carbapenem이 거의 모든 혐기균 커버"</strong> → ✅ 맞음</li>
+<li><strong>"Penicillin 단독이 거의 모든 혐기균에 효과"</strong> → ❌ 틀림</li>
+<li><strong>Penicillin G/ampicillin 단독은 그람음성 혐기간균(GNAB)에 상당수 무효</strong>. penicillin과 "β-lactam/BLI 병합"을 뭉뚱그리면 오해가 생긴다.</li>
+</ul>
+<h3 id="-lactamase">핵심 기전: β-lactamase</h3>
+<p><em>Bacteroides fragilis</em> group은 거의 전부, 상당수 <em>Prevotella</em>·<em>Porphyromonas</em>가 <strong>β-lactamase(cepA, cfiA 등)</strong>를 생산 → penicillin의 β-lactam 고리를 절단해 무력화.
+- <strong>Penicillin 단독</strong> → GNAB(특히 <em>B. fragilis</em>)에 <strong>내성(R)</strong>
+- <strong>Amoxicillin + clavulanate</strong> → clavulanate가 β-lactamase 억제 → <strong>다시 감수성(S)</strong></p>
+<h3 id="4penicillin">4제(+penicillin) 상세 비교</h3>
+<table>
+<thead>
+<tr>
+<th>항생제</th>
+<th style="text-align: center;">GPAC (양성구균)</th>
+<th style="text-align: center;">GPAB (양성간균)</th>
+<th style="text-align: center;">GNAC (음성구균)</th>
+<th style="text-align: center;">GNAB (<em>B. fragilis</em>)</th>
+<th style="text-align: center;">광범위 혐기 커버</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metronidazole</strong></td>
+<td style="text-align: center;">S¹</td>
+<td style="text-align: center;">S (<em>Actino</em>/<em>Cutibacterium</em> <strong>R</strong>)</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>S (1차)</strong></td>
+<td style="text-align: center;">◎ (방선균류만 구멍)</td>
+</tr>
+<tr>
+<td><strong>Amoxicillin-clavulanate</strong></td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;"><strong>S</strong></td>
+<td style="text-align: center;">◎ (가장 넓음)</td>
+</tr>
+<tr>
+<td><strong>Penicillin 단독</strong></td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S(<em>Clostridium</em>/<em>Actino</em>)</td>
+<td style="text-align: center;">대체로 S</td>
+<td style="text-align: center;"><strong>R</strong> (β-lactamase)</td>
+<td style="text-align: center;">△ (GNAB 취약)</td>
+</tr>
+<tr>
+<td><strong>Doxycycline</strong></td>
+<td style="text-align: center;">I/S</td>
+<td style="text-align: center;">가변</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">I/S (신뢰↓)</td>
+<td style="text-align: center;">✕ (보조용)</td>
+</tr>
+<tr>
+<td><strong>Clarithromycin</strong></td>
+<td style="text-align: center;">S/R</td>
+<td style="text-align: center;">가변(<em>Cutibacterium</em>/<em>Actino</em> S)</td>
+<td style="text-align: center;">가변</td>
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">✕ (특정 그람양성만)</td>
+</tr>
+<tr>
+<td><strong>Rifaximin</strong> (gut-selective)</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">가변(<em>B.fragilis</em> MIC↑)</td>
+<td style="text-align: center;">◐ (장관 내강 한정, 전신 ✕)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. Metronidazole — 그람음성 혐기균의 왕</strong>
+- 강점: <em>B. fragilis</em> 포함 GNAB 전반 가장 신뢰도 높은 살균, 복강내 감염·농양 1차. β-lactamase와 무관(DNA 손상 기전).
+- 결정적 구멍: <strong>방선균류(<em>Actinomyces</em>)·<em>Cutibacterium acnes</em>·<em>Propionibacterium</em>에 무효(R)</strong> — aerotolerant/미세호기성이라 혐기환경 활성화 기전이 안 걸림.
+- 일부 GPAC(<em>Finegoldia</em>·<em>Peptoniphilus</em>) 내성 가능. <em>C. difficile</em>는 경구 vancomycin/fidaxomicin 우선.</p>
+<p><strong>2. Amoxicillin-clavulanate — 가장 넓은 β-lactam</strong>
+- 강점: clavulanate가 β-lactamase 차단 → penicillin의 유일한 약점(GNAB)을 보완. <em>B. fragilis</em> 포함 4대 분류 전부 대체로 감수성 → <strong>실질 최광범위 혐기 커버</strong>.
+- <strong>방선균류에도 유효</strong>(penicillin 계열) → metronidazole이 놓치는 구멍 커버.
+- 약점: cfiA(metallo-β-lactamase) 생산 <em>B. fragilis</em> 주는 clavulanate로 억제 안 됨(드묾) → carbapenem 필요.</p>
+<p><strong>3. Penicillin 단독 — 구강 혐기균엔 OK, GNAB엔 X</strong>
+- 강점: <em>Clostridium</em>(대부분)·<em>Actinomyces</em>·구강 그람양성 혐기균 우수. 방선균증 1차.
+- 약점: β-lactamase로 <strong><em>B. fragilis</em>·다수 _Prevotella_엔 무효</strong> → "거의 모든 혐기균"은 틀림.</p>
+<p><strong>4. Doxycycline — 보조·경험적 단독 부적합</strong>
+- <em>Prevotella</em>·<em>Fusobacterium</em> 일부 감수성이나 <em>B. fragilis</em> 내성률 높아 신뢰 불가 → 경험적 단독 부적합, 병용 보조용.</p>
+<p><strong>5. Clarithromycin (macrolide) — 혐기 광범위엔 부적합</strong>
+- <em>Cutibacterium acnes</em>·<em>Actinomyces</em> 대체로 감수성 → 여드름·일부 방선균류 대안. 그러나 <strong><em>B. fragilis</em> 대체로 내성</strong>, macrolide 내성 전반이 흔함 → 광범위 혐기 커버 부적합.</p>
+<h3 id="_8">한 줄 결론</h3>
+<p><strong>광범위 혐기 커버력: Amoxicillin-clavulanate ≈ Metronidazole &gt; Penicillin 단독(GNAB 취약) &gt; Doxycycline / Clarithromycin (보조·제한적)</strong>
+- 가장 넓게 안전 → <strong>Amox-clav</strong> (방선균류 + GNAB 둘 다)
+- GNAB(복강내 감염) 1차 → <strong>Metronidazole</strong> (단 방선균류엔 무효)
+- 실무 표준: <strong>Metronidazole + β-lactam(amox-clav 등) 병용</strong> — 서로의 구멍(metro=방선균류 / β-lactam=일부 내성주)을 보완.
+- <strong>Penicillin 단독</strong>은 "만능" 아님. <strong>Doxycycline·Clarithromycin</strong>은 혐기 광범위 주력약이 아님.</p>
+<hr />
+<h2 id="metronidazole">심화: Metronidazole은 "거의 모든 혐기균"에 듣는가? — 약해지거나 안 듣는 혐기균</h2>
+<h3 id="_9">큰 그림</h3>
+<p>Metronidazole은 <strong>전형적(strict) 혐기균</strong>, 특히 <strong>그람음성 혐기간균(<em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em>)에 대해 거의 내성이 없는(≈0~2%) 최강 카드</strong>다. 하지만 "<strong>거의</strong>"라는 단서가 핵심 — 구조적으로 안 듣거나 감수성이 떨어지는 무리가 분명히 존재한다.</p>
+<h3 id="_10">왜 안 듣나 — 활성화 기전이 관건</h3>
+<p>Metronidazole은 그 자체로는 <strong>불활성 전구약(prodrug)</strong>이다. 세균 내부의 <strong>저산화환원전위(low redox) 혐기 대사</strong>(pyruvate:ferredoxin oxidoreductase, PFOR 등)가 nitro기(-NO₂)를 환원시켜야 DNA를 손상시키는 활성 대사체가 된다.
+→ <strong>엄격 혐기 대사가 강할수록 잘 듣고, aerotolerant/미세호기성이라 이 환원 기전이 약하면 약이 활성화되지 않아 무효</strong>가 된다. 이것이 아래 "구멍"들의 공통 원인이다.</p>
+<h3 id="1-r">① 확실히 무효 / 내성 (R) — 임상적으로 중요한 구멍</h3>
+<table>
+<thead>
+<tr>
+<th>균</th>
+<th>분류</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Actinomyces</em></strong></td>
+<td>GPAB (그람양성 간균)</td>
+<td>aerotolerant, nitro환원 기전 약함 → <strong>R</strong>. 방선균증엔 penicillin이 1차</td>
+</tr>
+<tr>
+<td><strong><em>Cutibacterium (Propionibacterium) acnes</em></strong></td>
+<td>GPAB</td>
+<td>aerotolerant, nitroreductase 부족 → <strong>R</strong>. 여드름·기구 관련 감염엔 β-lactam/clindamycin</td>
+</tr>
+<tr>
+<td><strong><em>Lactobacillus</em></strong> (다수)</td>
+<td>GPAB</td>
+<td>상당수 본질적 <strong>R</strong> (특히 aerotolerant 종)</td>
+</tr>
+<tr>
+<td><strong><em>Bifidobacterium</em></strong></td>
+<td>GPAB</td>
+<td>감수성 <strong>가변~R</strong>, 신뢰 낮음</td>
+</tr>
+<tr>
+<td><strong><em>Propionibacterium</em> spp. 일반</strong></td>
+<td>GPAB</td>
+<td>위 <em>Cutibacterium</em>과 동일 맥락 R</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>패턴: 그람양성 "간균(GPAB)" 중 aerotolerant 무리가 metronidazole의 주된 사각지대.</strong> GNAB(그람음성 간균)엔 최강인데, GPAB 일부엔 취약한 대비가 핵심.</p>
+<h3 id="2-ir">② 감수성이 떨어지거나 가변적 (I~R, 신뢰도 낮음)</h3>
+<table>
+<thead>
+<tr>
+<th>균</th>
+<th>분류</th>
+<th>메모</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Parvimonas micra</em></strong></td>
+<td>GPAC</td>
+<td><strong>미세호기성</strong> 성향 → MIC 상승, 종 중 상대적으로 감수성 낮은 편</td>
+</tr>
+<tr>
+<td><strong><em>Finegoldia magna</em></strong></td>
+<td>GPAC</td>
+<td>대체로 S지만 소수 내성주 보고, 종별 MIC 차이</td>
+</tr>
+<tr>
+<td><strong><em>Peptoniphilus</em></strong> spp.</td>
+<td>GPAC</td>
+<td>일부 내성 가능 (교과서적 예외로 자주 언급)</td>
+</tr>
+<tr>
+<td>미세호기성 <em>Streptococcus</em> (<em>S. anginosus</em> group 등)</td>
+<td>—</td>
+<td>엄밀히는 혐기균 아님, metronidazole <strong>부적합</strong> — 농양 원인균이지만 약이 안 걸림</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-gpac-metronidazole-yes-100">③ GPAC(그람양성 혐기구균)은 metronidazole이 잘 듣나? → <strong>대체로 YES (단, 100%는 아님)</strong></h3>
+<ul>
+<li><strong>다기관 연구 종합: metronidazole 내성률 약 0~10%.</strong></li>
+<li>영국·웨일스 sentinel study: GPAC에 metronidazole <strong>내성 0%</strong> (piperacillin/tazobactam·imipenem과 동급 우수)</li>
+<li>터키 대학병원: metronidazole·tigecycline이 <strong>높은 in vitro 활성 → 경험적 치료 적합</strong></li>
+<li>FEMS 종설: GPAC의 metronidazole 내성 <strong>5~10%</strong> 수준 (penicillin 7~10%, clindamycin 7~20%와 비교해 양호)</li>
+<li><strong>결론: metronidazole은 GPAC에 잘 듣는 편이고 경험적 치료제로 적합.</strong> 다만</li>
+<li>종별 편차 존재 (특히 <em>Parvimonas micra</em>·일부 <em>Peptoniphilus</em>·<em>Finegoldia</em> 소수 내성주)</li>
+<li>문서 상단 표의 "S¹" 각주(<em>Finegoldia</em>·<em>Peptoniphilus</em> 일부 R 가능)와 정확히 일치</li>
+<li>GNAB만큼 "거의 100%"는 아니며, 심부 감염 경험적 치료 시 β-lactam/BLI 병용으로 보완하는 것이 안전</li>
+</ul>
+<h3 id="_11">한 줄 정리</h3>
+<ul>
+<li><strong>Metronidazole 최강 영역</strong>: 그람음성 혐기간균(GNAB, <em>Bacteroides</em> 등) — 내성 ≈0%</li>
+<li><strong>잘 듣는 편</strong>: GPAC(그람양성 혐기구균) — 내성 0~10%, 경험적 적합하나 100%는 아님</li>
+<li><strong>구조적 사각지대</strong>: aerotolerant 그람양성 간균 — <strong><em>Actinomyces</em>·<em>Cutibacterium acnes</em>·<em>Lactobacillus</em>·*Bifidobacterium</strong><em> (nitro 환원 기전 부재로 </em><em>R</em>*)</li>
+<li><strong>부적합</strong>: 미세호기성 <em>Streptococcus</em>(<em>S. anginosus</em> group 등) — 진성 혐기균 아님</li>
+<li><strong>실무</strong>: metronidazole은 "그람음성 혐기균 전담"으로 이해하고, 그람양성 커버(방선균류 포함)는 <strong>β-lactam(amox-clav 등) 병용</strong>으로 메우는 것이 표준.</li>
+</ul>
+<hr />
+<h2 id="actinomyces-metronidazole">심화: 방선균(<em>Actinomyces</em>) — "혐기균인데 metronidazole이 안 듣는" 대표 균</h2>
+<h3 id="filamentous-bacillus">정체: 혐기~미세호기성 그람양성 사상균(filamentous bacillus)</h3>
+<ul>
+<li><strong>그람양성 간균(GPAB)</strong>, 가지치기(branching)하는 <strong>사상형</strong> 형태 → 조직에서 곰팡이처럼 보이나 <strong>세균</strong>(non-acid-fast, <em>Nocardia</em>와 감별점: Nocardia는 부분 항산성·호기성).</li>
+<li><strong>혐기~미세호기성(anaerobic to microaerophilic)</strong> — 이 "aerotolerant" 성격이 임상 핵심.</li>
+<li>구강·위장관·비뇨생식기 <strong>정상 상재균</strong>. 독력이 약해 <strong>점막 손상 + 조직 괴사</strong>가 있어야 침투.</li>
+<li>대표종: <strong><em>Actinomyces israelii</em></strong>. 흔히 <strong>다균성(polymicrobial) 감염</strong> — companion bacteria(예: <em>Aggregatibacter actinomycetemcomitans</em>)와 함께 발견.</li>
+</ul>
+<h3 id="metronidazole_1">왜 metronidazole이 안 듣나 (앞 섹션과 연결)</h3>
+<p>metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구약인데, <em>Actinomyces</em>는 <strong>aerotolerant/미세호기성이라 이 환원 기전이 약함 → 약이 활성화 안 됨 → 내성(R)</strong>. 그래서 "혐기균 = metronidazole"이라는 공식의 대표적 <strong>예외</strong>다.</p>
+<h3 id="3">임상 3대 병형 (침범 부위별)</h3>
+<table>
+<thead>
+<tr>
+<th>병형</th>
+<th>빈도</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>경부안면형 (cervicofacial, "lumpy jaw")</strong></td>
+<td><strong>50~70%</strong></td>
+<td>치과 감염·발치·구강 외상 후. 턱·목의 단단한 종괴 → 만성 진행</td>
+</tr>
+<tr>
+<td><strong>흉부형 (thoracic)</strong></td>
+<td>—</td>
+<td>흡인(aspiration) 관련. 폐렴·농흉·흉벽 침범</td>
+</tr>
+<tr>
+<td><strong>복부·골반형 (abdominopelvic)</strong></td>
+<td><strong>10~20%</strong></td>
+<td>충수/게실 점막 파열·수술·외상 후. <strong>골반형은 장기 IUD 사용과 강한 연관</strong> (IUD 사용자 1.6~11.6% 집락)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">특징적 소견</h3>
+<ul>
+<li><strong>황 과립(sulfur granules)</strong>: 배농되는 고름 속 육안으로 보이는 노랗고 둥근 ≤1mm 과립 = 균 집락체. <strong>단, <em>Actinomyces</em>에 특이적이지 않음</strong> — <em>Nocardia</em>·botryomycosis에서도 관찰(Splendore-Hoeppli 현상).</li>
+<li><strong>만성·아급성 경과</strong>: 조직면(fascia)을 무시하고 연속 확산(contiguous spread), 다발성 농양 + <strong>누공(sinus tract)</strong> 형성 → 종양·진균 감염과 자주 혼동.</li>
+<li>진단은 <strong>배양(까다로움, 혐기·장시간)</strong> + 조직생검. 초기 오진 흔함.</li>
+</ul>
+<h3 id="penicillin-1">치료 — penicillin이 1차, 장기 고용량</h3>
+<ul>
+<li><strong>1차: penicillin G 또는 amoxicillin, 고용량·장기.</strong> 조직·농양 침투를 위해 <strong>6~12개월</strong> (최적 수술적 절제 시 3개월로 단축 가능).</li>
+<li>일부 사례: penicillin G 12 MU/일 + metronidazole 병용 보고도 있으나, <strong>metronidazole은 <em>Actinomyces</em> 자체엔 무효</strong> — 이 병용은 다균성 감염의 <strong>동반 혐기균(GNAB 등)을 겨냥</strong>한 것이지 방선균 자체 치료가 아님.</li>
+<li><strong>골반형(IUD 관련)</strong>: <strong>IUD 제거 + penicillin</strong>. 광범위 농양은 배농.</li>
+<li><strong>페니실린 알레르기 대안</strong>: doxycycline, clindamycin, ceftriaxone, erythromycin/clarithromycin(<em>Actinomyces</em>는 macrolide 대체로 감수성) 등.</li>
+<li>수술(농양 배농·괴사조직 제거·누공 절제)이 항생제와 병행되면 치료기간 단축·재발 감소.</li>
+</ul>
+<h3 id="_13">한 줄 정리</h3>
+<ul>
+<li><strong><em>Actinomyces</em></strong> = 혐기~미세호기성 그람양성 <strong>사상균</strong>, 구강 상재균, 점막 손상 시 침투 → 만성 종괴·누공·황 과립.</li>
+<li><strong>metronidazole R (aerotolerant 기전)</strong> → "혐기균이면 metro" 공식의 대표 예외.</li>
+<li><strong>치료 = 고용량 penicillin/amoxicillin 장기(6~12개월) + 필요 시 수술</strong>, 골반형은 IUD 제거.</li>
+<li>관련: 문서 상단 각주 ①·②(metro가 <em>Actinomyces</em>·<em>Cutibacterium</em>엔 무효) 및 "GPAB" 분류와 직접 연결.</li>
+</ul>
+<hr />
+<h2 id="aggregatibacter-actinomycetemcomitans">심화: <em>Aggregatibacter actinomycetemcomitans</em> — 방선균과 "동행"하는 그람음성균</h2>
+<h3 id="4_1">정체: 이름은 방선균 같지만 그람음성 — 4대 분류 밖의 미세호기성균</h3>
+<ul>
+<li><strong>계통: Pseudomonadota(구 Proteobacteria), Gammaproteobacteria 강, Pasteurellaceae 과.</strong> ⚠️ 이름의 "actinomyceto-"는 <em>Actinomyces</em>(Actinomycetota 문)와 <strong>동거</strong>한다는 뜻일 뿐, 계통은 완전히 다른 문.</li>
+<li><strong>그람음성 간구균(coccobacillus)</strong>. 구명 <em>Actinobacillus actinomycetemcomitans</em> → "actinomycetem<strong>comitans</strong>"(방선균과 <strong>동반</strong>한다)라는 종명 자체가 방선균증 병소에서 <em>Actinomyces</em>와 함께 자주 분리되는 데서 유래.</li>
+<li><strong>미세호기성/capnophilic(CO₂ 요구)·fastidious(까다로운 배양)</strong> — <strong>순수 혐기균이 아님</strong> → 본 문서 4대 분류(GPAC/GPAB/GNAC/GNAB) 밖의 별도 균으로 취급.</li>
+<li><strong>HACEK 그룹</strong>의 "A": <em>Haemophilus/Aggregatibacter</em> → <em>Aggregatibacter</em>·<em>Cardiobacterium</em>·<em>Eikenella</em>·<em>Kingella</em>. 그람음성균 심내막염의 최다 원인군(자연판막 심내막염의 최대 ~5%, HACEK 전체로는 IE의 ~10%).</li>
+<li>구강 상재균 → 점막 손상·치주 조직에서 침습.</li>
+</ul>
+<h3 id="2">2대 질병</h3>
+<table>
+<thead>
+<tr>
+<th>질병</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>침습성/공격성 치주염 (aggressive/localized juvenile periodontitis)</strong></td>
+<td><em>A. actinomycetemcomitans</em>의 대표 질환. 젊은 연령·급속한 치조골 소실. 백혈구독소(leukotoxin) 등 독력인자 관여</td>
+</tr>
+<tr>
+<td><strong>심내막염 (HACEK endocarditis)</strong></td>
+<td>아급성 경과, 치과 시술·구강 상재균 유래. 배양이 느려 혈액배양 장기 배양 필요</td>
+</tr>
+<tr>
+<td>(드묾) 뇌·연조직 농양, 다균성 방선균증 병소 동반</td>
+<td><em>Actinomyces</em> 감염의 companion으로 발견</td>
+</tr>
+</tbody>
+</table>
+<h3 id="halitosis">구취(halitosis)와의 관계 — 직접 생성균 아님, "무대를 까는" 상류 병원체</h3>
+<p>구취의 화학적 실체는 <strong>휘발성 황화합물(VSC)</strong> — 황화수소(H₂S)·메틸메르캅탄(CH₃SH)·디메틸설파이드((CH₃)₂S) — 로, H₂S와 CH₃SH가 전체 VSC의 약 90%를 차지한다. Aa는 이 VSC를 <strong>대량 직접 생성하는 주역이 아니다.</strong></p>
+<ul>
+<li><strong>직접 기여(약함):</strong> 40년·106편을 종합한 종설(Lee &amp; Hong, <em>Front Oral Health</em> 2023;4:1229145)의 "가장 활발한 VSC 생산균" 표에 <strong><em>Aggregatibacter</em>는 포함되지 않는다.</strong> H₂S 강생성 대표속은 <em>Fusobacterium</em>·<em>Neisseria</em>·<em>Porphyromonas</em>, CH₃SH는 <em>Atopobium</em>·<em>Megasphaera</em>·<em>Prevotella</em>·<em>Selenomonas</em>·<em>Veillonella</em>. VSC의 진짜 주역은 <strong>red complex(<em>P. gingivalis</em>·<em>T. denticola</em>·<em>T. forsythia</em>)</strong>와 <em>Fusobacterium</em>·<em>Bacteroides</em>·<em>Peptostreptococcus</em> 계열이다.</li>
+<li><strong>간접 기여(실질적):</strong> Aa는 <strong>국소성 침습성 치주염(LAP)의 대표 병원체</strong>로, leukotoxin(LtxA)·CDT(cytolethal distending toxin)로 숙주 면역을 교란하고 치주 조직을 파괴한다. 이 파괴가 <strong>깊은 치주낭(pocket)이라는 혐기 서식지를 조성</strong>하여 진짜 VSC 생성균(red complex·<em>F. nucleatum</em>)이 번성할 무대를 깐다. 깊이 5mm 초과 치주낭이 1개 이상이면 VSC 값이 정상 대비 약 30% 증가한다.</li>
+<li><strong>악순환 고리:</strong> CH₃SH는 구강점막 투과성이 높아(H₂S보다 세포독성 강함) 치주염을 가속 → 치주낭·VSC를 다시 키운다. Aa는 이 순환의 <strong>상류</strong>에 위치.</li>
+<li><strong>역학적 표지:</strong> 혀 설태(tongue coating) 미생물총 비교연구에서 구취 환자군은 phylum 수준 차이는 없었으나 <strong>속·종 수준에서 <em>Aggregatibacter</em>·<em>Campylobacter</em>·<em>Capnocytophaga</em>·<em>Prevotella</em>·<em>Treponema</em>가 유의하게 증가.</strong> 같은 속 <em>Aggregatibacter segnis</em>도 설태 연관종으로 보고.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Aa의 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>직접 VSC(H₂S·CH₃SH) 강생성</td>
+<td>✗ 주역 아님 (VSC 생산균 표 미포함)</td>
+</tr>
+<tr>
+<td>치주염 병원성</td>
+<td>✓ 강함 — LAP 원인균, LtxA·CDT</td>
+</tr>
+<tr>
+<td>간접 기여(혐기낭 조성·red complex 촉진)</td>
+<td>✓ 실질적</td>
+</tr>
+<tr>
+<td>구취 환자 설태 내 증가</td>
+<td>✓ 유의(genus-level marker)</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>한 줄 요약:</strong> Aa는 구취를 <em>직접 뿜는</em> 균이 아니라, 치주낭을 파괴·혐기화하여 <em>진짜 VSC 생산균이 번성할 환경을 만드는</em> 상류 병원체다. 그래서 Aa가 많은 사람(특히 침습성 치주염 환자)의 설태·치주낭에서 VSC와 구취가 동반 상승한다.</p>
+<h3 id="clarithromycinmacrolide">항생제 감수성 — clarithromycin/macrolide는 "조건부 효과"</h3>
+<p>사용자 지적대로 <strong>macrolide가 효과가 있는 맥락이 분명히 있으나, 뉘앙스가 중요</strong>하다.</p>
+<ul>
+<li><strong>Macrolide(azithromycin·clarithromycin)의 강점 = 세포내(intracellular) 침습균 사멸.</strong></li>
+<li><em>A. actinomycetemcomitans</em>는 치은 상피·조직 안으로 <strong>침습(invasion)</strong>하는데, azithromycin은 여러 포유류 세포에 잘 <strong>축적</strong>되어 <strong>조직·세포 내부에 숨은 균까지 죽인다</strong>(<em>Azithromycin Kills Invasive A. actinomycetemcomitans</em> 연구). β-lactam이 못 닿는 세포내 균에 대한 이점.</li>
+<li>치주 조직 농도가 높아 국소·보조 치료에서 유용.</li>
+<li><strong>단, in vitro 감수성은 가변적 — "항상 S"는 아님.</strong></li>
+<li>일부 oral isolate 연구: <strong>azithromycin·clindamycin에 중등도 내성</strong> 관찰 → 단독 의존 시 효과 제한 가능.</li>
+<li>즉 <strong>개체·균주별 편차</strong>가 있어 macrolide 단독보다 <strong>표준 병용요법의 보조/대체</strong> 위치.</li>
+<li><strong>치주염 표준요법 = amoxicillin + metronidazole 병용</strong> (scaling·root planing 등 기계적 치료에 더해).</li>
+<li>왜 병용? <em>A. actinomycetemcomitans</em>는 미세호기성이라 <strong>metronidazole 단독으론 불충분</strong> → <strong>amoxicillin이 주력, metronidazole이 동반 혐기균 커버</strong>. 두 약의 <strong>상승(synergy)</strong>이 근절률을 높임.</li>
+<li>β-lactamase 생산주 존재 시 <strong>amoxicillin-clavulanate</strong>.</li>
+<li><strong>심내막염(HACEK) = ceftriaxone이 1차</strong> (3세대 cephalosporin), 4~6주 정주. ampicillin(감수성 확인 시)·fluoroquinolone 대안. β-lactamase 생산 가능성 때문에 penicillin/ampicillin 단독 경험적 사용은 지양.</li>
+<li>기타: <strong>doxycycline/tetracycline S</strong>(치주 국소·전신), fluoroquinolone S.</li>
+</ul>
+<h3 id="ciprofloxacinfluoroquinolone-aggregatibacter">Ciprofloxacin/fluoroquinolone — <em>Aggregatibacter</em>엔 활성 있음 (혐기균과 정반대)</h3>
+<ul>
+<li><strong>혐기균과 달리 HACEK균(<em>Aggregatibacter</em> 포함)은 fluoroquinolone에 대체로 감수성(S).</strong> ciprofloxacin·levofloxacin·moxifloxacin 모두 활성.</li>
+<li><strong>심내막염 대안</strong>: β-lactam(ceftriaxone)을 못 쓰는 경우(알레르기 등) <strong>ciprofloxacin 등 FQ가 대체 옵션</strong>으로 인정됨(감수성 확인 전제).</li>
+<li>단 <strong>1차는 여전히 ceftriaxone</strong> — FQ는 대안. 치주염에서도 표준은 amox+metro이고 FQ는 통상 1차가 아님.</li>
+<li><strong>핵심 대비</strong>: 같은 그람음성이라도 <strong>혐기균(<em>Bacteroides<em> 등)엔 cipro가 무효(R)</em>*, </em></strong>Aggregatibacter<em>(미세호기성)엔 유효(S)</em><em> → "그람음성=cipro OK"가 아니라 </em><em>산소 대사(호기/미세호기 vs 절대혐기)가 FQ 감수성을 가름</em>*.</li>
+</ul>
+<h3 id="clarithromycin">clarithromycin 관련 한 줄 정리</h3>
+<ul>
+<li><strong>맞다 — macrolide(clarithromycin·특히 azithromycin)는 세포내 침습성 <em>A. actinomycetemcomitans</em> 사멸에 효과적이라 치주염에서 유용</strong>하다.</li>
+<li><strong>다만 in vitro 내성이 가변적</strong>이라 macrolide 단독보다 <strong>amoxicillin(+metronidazole) 표준 병용의 보조/대체 옵션</strong>으로 보는 것이 정확.</li>
+<li><strong>심내막염엔 ceftriaxone이 1차</strong>, macrolide는 아님.</li>
+</ul>
+<h3 id="actinomyces">방선균(<em>Actinomyces</em>)과의 관계 — 헷갈리지 말 것</h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th><em>Actinomyces</em> (예: <em>A. israelii</em>)</th>
+<th><em>Aggregatibacter actinomycetemcomitans</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>그람</td>
+<td><strong>양성</strong> 사상 간균 (GPAB)</td>
+<td><strong>음성</strong> 간구균 (HACEK)</td>
+</tr>
+<tr>
+<td>산소</td>
+<td>혐기~미세호기성</td>
+<td>미세호기성/capnophilic</td>
+</tr>
+<tr>
+<td>metronidazole</td>
+<td><strong>R</strong> (aerotolerant)</td>
+<td><strong>불충분</strong>(단독), amox와 병용</td>
+</tr>
+<tr>
+<td>1차 치료</td>
+<td><strong>penicillin 고용량 장기</strong></td>
+<td>치주=amox+metro / 심내막염=ceftriaxone</td>
+</tr>
+<tr>
+<td>macrolide</td>
+<td>대체로 S(대안)</td>
+<td>세포내 사멸 유용하나 가변</td>
+</tr>
+<tr>
+<td>관계</td>
+<td>방선균증 원인</td>
+<td>그 병소에 <strong>동반</strong>되는 companion 그람음성균</td>
+</tr>
+</tbody>
+</table>
+<p>→ 이름이 비슷해 혼동되지만 <strong>그람염색·치료가 다른 별개 균</strong>. 종명 "comitans(동반)"이 둘의 임상적 동거를 설명.</p>
+<hr />
+<h2 id="_14">심화: 혐기균이 아니면서 장에 많은 세균들 — "통성혐기성" 소수파</h2>
+<h3 id="_15">큰 그림: 장은 압도적으로 혐기균 세상</h3>
+<ul>
+<li>대장 상재균의 <strong>~99%는 절대 혐기균(obligate anaerobe)</strong> — <em>Bacteroides</em>, <em>Bifidobacterium</em>, <em>Clostridium</em>, <em>Faecalibacterium</em>, <em>Eubacterium</em> 등.</li>
+<li>여기서 다루는 "혐기균이 아닌" 균들은 <strong>수적으로는 1% 미만의 소수파</strong>지만, <strong>임상적으로는 요로감염·균혈증·복강내감염·기회감염의 주역</strong> → 존재감이 큼.</li>
+<li>이들의 정확한 산소 분류는 대개 <strong>절대 혐기 ✗ / 통성혐기성(facultative anaerobe)</strong> 또는 <strong>호기내성(aerotolerant)</strong> → 산소 있어도 자라고, 없어도 발효로 버팀.</li>
+</ul>
+<h3 id="facultative-anaerobe">핵심 그룹 (통성혐기성 = facultative anaerobe)</h3>
+<table>
+<thead>
+<tr>
+<th>균</th>
+<th>계통(phylum)</th>
+<th>그람</th>
+<th>형태</th>
+<th>장 내 위치·의의</th>
+<th>대표 감염</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>대장균 (<em>Escherichia coli</em>)</strong></td>
+<td>Pseudomonadota</td>
+<td>음성</td>
+<td>간균</td>
+<td>장내세균과의 대표. 정상 상재균이나 병원성주 다양</td>
+<td>UTI(최다 원인), 균혈증, 신생아 수막염, 장염(ETEC/EHEC 등)</td>
+</tr>
+<tr>
+<td><strong><em>Klebsiella</em> (K. pneumoniae 등)</strong></td>
+<td>Pseudomonadota</td>
+<td>음성</td>
+<td>간균</td>
+<td>장내세균과</td>
+<td>폐렴, UTI, 균혈증(다제내성 우려)</td>
+</tr>
+<tr>
+<td><strong><em>Enterobacter</em>, <em>Citrobacter</em>, <em>Proteus</em>, <em>Serratia</em>, *Morganella</strong>*</td>
+<td>Pseudomonadota</td>
+<td>음성</td>
+<td>간균</td>
+<td>장내세균과</td>
+<td>원내감염, UTI, 복강내감염</td>
+</tr>
+<tr>
+<td><strong>장구균 (<em>Enterococcus faecalis</em>, <em>E. faecium</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td><strong>양성</strong></td>
+<td>알균(쌍/사슬)</td>
+<td>장 상재 그람양성 통성혐기균의 대표</td>
+<td>UTI, 심내막염, 균혈증, <strong>VRE(반코마이신 내성)</strong></td>
+</tr>
+<tr>
+<td><strong>연쇄상구균 일부 (<em>Streptococcus</em> group, <em>S. gallolyticus/bovis</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td>양성</td>
+<td>알균</td>
+<td>장 상재</td>
+<td>심내막염(대장암과 연관 보고)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_16">산소 요구가 애매한 "회색지대" 균</h3>
+<table>
+<thead>
+<tr>
+<th>균</th>
+<th>계통(phylum)</th>
+<th>분류</th>
+<th>장 내 의의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>유산균 (<em>Lactobacillus</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td><strong>호기내성/미세호기성</strong>, 대체로 발효성</td>
+<td>정상 상재. 절대 혐기균 아님</td>
+</tr>
+<tr>
+<td><strong>포도상구균 (<em>Staphylococcus</em>)</strong></td>
+<td><strong>Bacillota</strong></td>
+<td>통성혐기성</td>
+<td>장엔 소수. 주로 피부·비강. 식중독(장독소)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vs-4">"혐기균 vs 통성혐기균" 구분 포인트 (앞 4대 분류와 연결)</h3>
+<ul>
+<li><strong>절대 혐기균(obligate anaerobe)</strong>: 산소 = 독. <em>Bacteroides</em>, <em>Clostridium</em>, <em>Fusobacterium</em> 등 → <strong>본 문서 4대 분류(GPAC/GPAB/GNAC/GNAB)의 대상</strong>.</li>
+<li><strong>통성혐기균(facultative anaerobe)</strong>: 산소 있으면 호흡, 없으면 발효 → <strong>위 표의 장내세균과·장구균</strong> → <strong>4대 분류 밖</strong>. 배양이 쉽고(일반 호기 배지) 흔히 분리됨.</li>
+<li><strong>미세호기성(microaerophilic)</strong>: 낮은 산소 농도 선호 → <em>Campylobacter</em>, <em>Helicobacter</em>, 그리고 앞서 다룬 <em>Aggregatibacter</em>.</li>
+<li><strong>호기내성(aerotolerant)</strong>: 산소로 호흡은 못 하지만 견딤 → <em>Lactobacillus</em>, 그리고 예외적으로 <em>Actinomyces</em>.</li>
+</ul>
+<h3 id="_17">왜 이 구분이 임상에서 중요한가</h3>
+<ul>
+<li><strong>배양</strong>: 통성혐기균은 일반 호기 혈액배지에서 잘 자람 → 절대 혐기균처럼 특수 혐기 배양이 불필요. 임상검체에서 빠르게 검출.</li>
+<li><strong>경험적 항생제</strong>: 복강내감염처럼 "혐기균 + 통성혐기균"이 섞인 다균성 감염에서는 <strong>양쪽을 다 커버</strong>해야 함 → 예) 통성혐기 그람음성(장내세균과)엔 3세대 cephalosporin/carbapenem, 절대 혐기균엔 metronidazole → 그래서 <strong>"cephalosporin + metronidazole"</strong> 또는 <strong>단독 광범위(piperacillin-tazobactam, carbapenem)</strong> 병용 논리가 성립.</li>
+<li><strong>metronidazole은 통성혐기균에 무효</strong>(산소 존재 시 nitro 환원 안 됨) → 장내세균과·장구균 감염엔 쓰지 않음. 이는 앞 <em>Actinomyces</em>·<em>Aggregatibacter</em>에서 본 논리의 연장.</li>
+</ul>
+<h3 id="4-ciprofloxacin">항생제 감수성 — 4대 분류 밖 통성혐기균 (ciprofloxacin의 진짜 무대)</h3>
+<p>혐기 4대 분류에선 cipro가 "부적합"이었지만, <strong>여기 통성혐기 그람음성균에서는 cipro가 전통적 주력약</strong>이다. 대비가 핵심.</p>
+<table>
+<thead>
+<tr>
+<th>균 (계통)</th>
+<th>Ciprofloxacin</th>
+<th>1차/주력</th>
+<th>내성·주의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>E. coli</em> / 장내세균과</strong> (Pseudomonadota)</td>
+<td><strong>활성 있음 (S)</strong> 이나 <strong>내성 급증</strong></td>
+<td>3세대 cephalosporin·pip-tazo·carbapenem</td>
+<td><strong>ESBL·FQ 내성</strong> 지역별 20~40%+ → 경험적 cipro 단독 신뢰 하락. <strong>ESBL이면 carbapenem</strong></td>
+</tr>
+<tr>
+<td><strong><em>Klebsiella</em></strong> (Pseudomonadota)</td>
+<td>활성 있으나 내성 흔함</td>
+<td>3세대 ceph·carbapenem</td>
+<td>ESBL·<strong>CRE(carbapenem 내성)</strong> 확산</td>
+</tr>
+<tr>
+<td><strong><em>Pseudomonas aeruginosa</em></strong> (Pseudomonadota, 장 소수)</td>
+<td><strong>활성 (S), 항녹농 FQ</strong></td>
+<td>cipro/levo·ceftazidime·pip-tazo·carbapenem</td>
+<td>FQ는 <strong>항녹농 활성 있는 몇 안 되는 경구약</strong> → 임상 가치 큼. 단 내성 발현 빠름</td>
+</tr>
+<tr>
+<td><strong><em>Proteus</em>, <em>Enterobacter</em>, <em>Citrobacter</em>, *Serratia</strong>* (Pseudomonadota)</td>
+<td>활성 (S), 가변</td>
+<td>3세대 ceph·carbapenem·pip-tazo</td>
+<td><em>Enterobacter</em>·<em>Serratia</em>는 <strong>AmpC</strong> 유도 내성 주의</td>
+</tr>
+<tr>
+<td><strong>장구균 <em>Enterococcus faecalis</em></strong> (Bacillota)</td>
+<td><strong>가변·신뢰 낮음</strong> (I/R), 1차 아님</td>
+<td>ampicillin (faecalis 감수)</td>
+<td>UTI 외엔 FQ 권장 안 함</td>
+</tr>
+<tr>
+<td><strong>장구균 <em>E. faecium</em> / VRE</strong> (Bacillota)</td>
+<td><strong>내성 (R)</strong></td>
+<td>linezolid·daptomycin (VRE)</td>
+<td>ampicillin·vancomycin 흔히 R</td>
+</tr>
+<tr>
+<td><strong>연쇄상구균 (<em>S. gallolyticus</em>)</strong> (Bacillota)</td>
+<td>활성 가변, 1차 아님</td>
+<td>penicillin</td>
+<td>FQ는 보조</td>
+</tr>
+<tr>
+<td><strong><em>Lactobacillus</em></strong> (Bacillota, 회색지대)</td>
+<td>흔히 내성 (R)</td>
+<td>(감염 드묾) penicillin·clindamycin</td>
+<td>FQ 대체로 무효</td>
+</tr>
+<tr>
+<td><strong><em>Staphylococcus</em></strong> (Bacillota, 회색지대)</td>
+<td>활성 가변, <strong>MRSA는 흔히 R</strong></td>
+<td>(MSSA) cefazolin·nafcillin / (MRSA) vancomycin</td>
+<td>FQ 단독은 내성 급속 발현 → 지양</td>
+</tr>
+</tbody>
+</table>
+<p><strong>핵심 임상 원칙 (통성혐기균)</strong>
+- <strong>Ciprofloxacin = 그람음성 통성혐기균(특히 장내세균과·<em>Pseudomonas</em>)의 전통적 주력</strong>. 경구 생체이용률 높아 외래 UTI·복강내감염 경구 전환에 유용.
+- 단 <strong>FQ 내성이 전 세계적으로 급증</strong>(특히 <em>E. coli</em>) → <strong>경험적 cipro 단독의 신뢰도 하락</strong>, 지역 감수성 데이터·배양 결과에 따라 선택.
+- <strong>cipro는 혐기 커버가 거의 없음</strong> → 복강내감염처럼 혐기균이 섞이면 <strong>metronidazole 병용 필수</strong>("cipro + metronidazole"이 고전적 복강내감염 경구 조합).
+- <strong>그람양성(장구균·포도상구균)엔 cipro 신뢰 낮음</strong> → 장구균·MRSA엔 쓰지 않음.
+- <strong>한 문장 요약</strong>: cipro는 <strong>"그람음성 호기/통성혐기균용"</strong> 약. 혐기균(4대 분류)엔 R, 통성혐기 그람음성엔 S(단 내성 증가), 그람양성엔 부적합.</p>
+<h3 id="_18">한 줄 정리</h3>
+<ul>
+<li>장은 <strong>99% 절대 혐기균</strong> 세상, 나머지 소수파가 <strong>통성혐기균(장내세균과 E. coli·Klebsiella + 장구균)</strong> 과 <strong>호기내성(<em>Lactobacillus</em>)</strong>.</li>
+<li>이들은 <strong>4대 혐기 분류 밖</strong>이고 <strong>일반 호기 배양으로 검출</strong>, <strong>metronidazole 무효</strong>.</li>
+<li>수는 적어도 <strong>UTI·균혈증·심내막염·복강내감염의 실질적 주역</strong> → 임상 비중은 큼.</li>
+</ul>
+<hr />
+<h2 id="vsc-halitosis">심화: VSC(휘발성 황화합물) 생성 세균 — 구취(halitosis)의 원인균</h2>
+<h3 id="vsc">VSC란 — 구취의 화학적 실체</h3>
+<ul>
+<li><strong>VSC(Volatile Sulfur Compounds, 휘발성 황화합물)</strong> = 구강 악취(oral malodor)의 <strong>주범(80~90%)</strong>. 세 가지가 핵심.</li>
+<li><strong>황화수소 H₂S</strong> — 썩은 달걀 냄새. 주로 <strong>L-cysteine(시스테인)</strong> 분해에서 생성.</li>
+<li><strong>메틸메르캅탄 CH₃SH (methyl mercaptan)</strong> — 썩은 양배추/치주농 냄새. 주로 <strong>L-methionine(메티오닌)</strong> 분해에서 생성. <strong>치주질환의 악취 지표</strong> — CH₃SH/H₂S 비율이 높을수록 치주염 중증.</li>
+<li><strong>디메틸설파이드 (CH₃)₂S</strong> — 전신성(혈행성) 구취에서 상대적 기여 큼.</li>
+<li><strong>기전</strong>: 혐기성 그람음성균이 <strong>탈황 효소(cysteine desulfhydrase, methionine-γ-lyase/mgl)</strong>로 황 함유 아미노산을 분해 → VSC 방출. 혀 뒤쪽(설태), 치주낭이 주 생성 부위.</li>
+<li><strong>연구 데이터</strong>: 치은염·치주염 환자의 H₂S(약 90~100 ppb)·CH₃SH가 건강군(H₂S ~15 ppb)보다 유의하게 높음. 구취 유병률: 건강군 3% vs 치은염 39.5% vs 치주염 42.9%.</li>
+</ul>
+<h3 id="vsc_1">VSC 생성 기여 세균 — 기여도 순서</h3>
+<p>치주 혐기균(특히 red complex)이 상위. 아래로 갈수록 보조적·기전이 다름(예: SRB).</p>
+<table>
+<thead>
+<tr>
+<th>순위</th>
+<th>세균 (계통 phylum)</th>
+<th>그람/형태</th>
+<th>주 생성 VSC·기전</th>
+<th>4대 분류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong><em>Porphyromonas gingivalis</em></strong> (Bacteroidota)</td>
+<td>음성 간균</td>
+<td><strong>CH₃SH·H₂S 최강 생성</strong>. methionine-γ-lyase(mgl)로 메티오닌→CH₃SH, cysteine→H₂S. red complex 핵심</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong><em>Treponema denticola</em></strong> (Spirochaetota)</td>
+<td>음성 나선균</td>
+<td>cysteine desulfhydrase로 H₂S·CH₃SH. red complex</td>
+<td>(spirochete, 4대 분류 밖)</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong><em>Tannerella forsythia</em></strong> (Bacteroidota)</td>
+<td>음성 간균</td>
+<td>VSC 생성·치주낭 심부. red complex</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong><em>Fusobacterium nucleatum</em></strong> (Fusobacteriota)</td>
+<td>음성 방추간균</td>
+<td><strong>H₂S 다량 생성</strong>, 시스테인 분해. 플라크 "bridge" 균</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong><em>Prevotella intermedia</em></strong> (Bacteroidota)</td>
+<td>음성 간균</td>
+<td>흑색소 생성 혐기균, H₂S·VSC</td>
+<td><strong>GNAB</strong></td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong><em>Solobacterium moorei</em></strong> (Bacillota)</td>
+<td><strong>양성</strong> 간균</td>
+<td>혀 설태 대표 구취균. β-galactosidase·H₂S. <em>F. nucleatum</em>·<em>T. forsythia</em>와 공존 시 H₂S ↑</td>
+<td>(GPAB에 가까우나 별개 취급)</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong><em>Veillonella</em> spp.</strong> (Bacillota, Negativicutes)</td>
+<td>음성 알균</td>
+<td>설태 상재, H₂S 보조 생성</td>
+<td><strong>GNAC</strong></td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong><em>Desulfovibrio</em> spp.</strong> (Thermodesulfobacteriota)</td>
+<td>음성 곡간균</td>
+<td><strong>황산염환원(SO₄²⁻→H₂S)</strong> — 아미노산 분해가 아닌 <strong>이화적 황산염 환원(SRB)</strong>으로 H₂S. 치주낭·설태·장 서식</td>
+<td>(SRB, GNAB 소속 — 단 임상 흔한 3속 밖)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>핵심 정리</strong>
+- <strong>1~5위 = 치주 혐기균</strong>(특히 <em>P. gingivalis</em>·<em>T. denticola</em>·<em>T. forsythia</em> = <strong>red complex</strong>)이 아미노산 탈황으로 VSC의 대부분 생성.
+- <strong>6위 <em>Solobacterium moorei</em></strong> = 드물게 <strong>그람양성</strong>인데도 강한 구취 연관 — 혀 설태·타액에서 검출, 다른 균과 공존해 H₂S 증폭.
+- <strong>8위 <em>Desulfovibrio</em></strong> = 나머지와 <strong>기전이 다름</strong>: 아미노산이 아니라 <strong>황산염을 전자수용체로 환원</strong>해 H₂S 생성(dissimilatory sulfate reduction). 치주낭·구강뿐 아니라 장에도 서식하는 황산염환원균(SRB).</p>
+<h3 id="porphyromonas-gingivalis-vsc"><em>Porphyromonas gingivalis</em> 심화 — VSC·치주염의 핵심 병원체</h3>
+<ul>
+<li><strong>정체</strong>: 그람음성 혐기성 간균, <strong>Bacteroidota</strong>(구 Bacteroidetes), 흑색소 형성(black-pigmented) 집락. <strong>본 문서 GNAB 대표 5종 중 하나</strong>(위 4번 섹션 참조).</li>
+<li><strong>red complex의 핵심</strong>: <em>T. denticola</em>·<em>T. forsythia</em>와 함께 <strong>만성 치주염의 3대 원인균 복합체(red complex)</strong>. 치주낭 심부·성숙 플라크에서 우세.</li>
+<li><strong>VSC 생성 능력이 특히 강함</strong>: <strong>methionine-γ-lyase(mgl)</strong>로 메티오닌→<strong>CH₃SH</strong>, 시스테인→<strong>H₂S</strong>를 대량 생성 → 치주농 특유의 악취 주범. 동물(개) 구강 분리주에서도 다량 H₂S·CH₃SH 확인.</li>
+<li><strong>독력</strong>: gingipain(단백분해효소)·LPS·섬모(fimbriae)로 조직 침습·면역 회피. "keystone pathogen"으로 치주 미생물 균형을 붕괴.</li>
+<li><strong>전신 연관</strong>: 치주염 → 죽상동맥경화·류마티스관절염·알츠하이머(뇌 gingipain 검출 보고) 등과의 연관 연구 활발.</li>
+</ul>
+<hr />
+<h2 id="vsc_2">VSC 생성 세균별 항생제 감수성</h2>
+<p>VSC 파트에 열거된 8종의 감수성을 정리. <strong>혐기균 대부분 metronidazole·β-lactam-BLI·clindamycin 감수, ciprofloxacin은 내성(R)</strong> 이 공통 원칙. 다만 치주염은 전신 항생제보다 <strong>기계적 치료(scaling/root planing)가 근간</strong>이고, 항생제는 보조.</p>
+<table>
+<thead>
+<tr>
+<th>세균</th>
+<th>Metronidazole</th>
+<th>β-lactam / BLI</th>
+<th>Clindamycin</th>
+<th>Tetracycline(doxy)</th>
+<th>Macrolide</th>
+<th>Ciprofloxacin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>P. gingivalis</em></strong></td>
+<td><strong>S</strong> (1차)</td>
+<td>penicillin <strong>R</strong>(β-lactamase 가능)·<strong>amox-clav S</strong></td>
+<td>S</td>
+<td>I/S(치주 국소 유용)</td>
+<td>azithro 보조</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>T. denticola</em></strong></td>
+<td><strong>S</strong>(추정, 배양난해)</td>
+<td>β-lactam 가변</td>
+<td>S</td>
+<td>doxy 보조</td>
+<td>자료 제한</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>T. forsythia</em></strong></td>
+<td><strong>S</strong></td>
+<td>amox-clav S</td>
+<td>S</td>
+<td>doxy S</td>
+<td>가변</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>F. nucleatum</em></strong></td>
+<td><strong>S</strong>(신뢰)</td>
+<td>penicillin 대체로 S·amox-clav S</td>
+<td>S</td>
+<td>doxy 일부 S</td>
+<td>가변(일부 S)</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>P. intermedia</em></strong></td>
+<td><strong>S</strong></td>
+<td><strong>penicillin R</strong>(β-lactamase 흔함)·<strong>amox-clav S</strong></td>
+<td>S</td>
+<td>doxy 일부 S</td>
+<td>가변</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>Solobacterium moorei</em></strong></td>
+<td><strong>S</strong>(혐기 그람양성)</td>
+<td>penicillin·amox S(대체로)</td>
+<td>S(대체로)</td>
+<td>doxy 가변</td>
+<td>가변</td>
+<td><strong>R</strong>(그람양성+혐기, 부적합)</td>
+</tr>
+<tr>
+<td><strong><em>Veillonella</em></strong></td>
+<td><strong>S</strong></td>
+<td>penicillin 가변·amox-clav S</td>
+<td>S</td>
+<td>doxy 가변</td>
+<td>가변</td>
+<td><strong>R</strong></td>
+</tr>
+<tr>
+<td><strong><em>Desulfovibrio</em></strong>(SRB)</td>
+<td><strong>S</strong>(혐기, 대체로 감수)</td>
+<td>β-lactam <strong>가변</strong>(자료 제한)</td>
+<td>가변</td>
+<td>자료 제한</td>
+<td>자료 제한</td>
+<td><strong>R</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>각주·주의</strong>
+- <strong>red complex(<em>P. gingivalis<em>·</em>T. denticola<em>·</em>T. forsythia<em>) 치주염 표준 보조요법 = amoxicillin + metronidazole 병용</em>*(scaling/root planing에 더해). 두 약의 상승효과로 치주낭 심부 균 근절률↑.
+- </em></strong>P. gingivalis<em>·</em>P. intermedia<em>는 β-lactamase(cepA 등) 생산주 존재</em><em> → </em><em>penicillin 단독 R, amoxicillin-clavulanate로 극복</em><em>.
+- </em><strong>Desulfovibrio<em>(SRB)<strong>: 임상 감염(균혈증·복강내) 시 </strong>metronidazole 감수<strong> 보고가 다수이나 </strong>표준 요법이 정립되지 않았고 배양·감수성 데이터가 제한적**. β-lactam 반응은 균주별 가변. → 감수성 검사 기반 치료 권장.
+- </em></strong>Solobacterium moorei<strong><em>: 혐기 그람양성 간균으로 penicillin·metronidazole·clindamycin 대체로 감수. 다만 </em>*구취 치료의 1차는 항생제가 아니라 혀 세정·기계적 치태 제거·구강위생</strong>.
+- <strong>공통</strong>: 8종 전부 <strong>ciprofloxacin 부적합(R)</strong> — 혐기·그람양성 커버 빈약. 구취/치주염 치료에 FQ는 쓰지 않음(문서 상단 원칙과 일치).
+- <strong>비항생제 관리</strong>: VSC 감소엔 <strong>혀 클리너, CHX(클로르헥시딘)·CPC 함수, ZnCl₂ 함유 제품(아연이 황과 결합해 VSC 중화)</strong>, 설태 관리가 실질적으로 중요.</p>
+<hr />
+<h2 id="vsc-substrate">VSC의 기질(substrate)이 되는 원인 음식</h2>
+<p>VSC는 결국 세균이 <strong>황 함유 아미노산·황 화합물을 분해</strong>해 만든다. 따라서 <strong>황 공급원이 되는 음식</strong>을 먹으면 기질이 늘어 구취가 심해진다.</p>
+<blockquote>
+<p><strong>⚠️ 핵심 원칙 — "직접 휘발 vs 세균 기질"은 배타적이지 않다</strong>
+마늘·양파·양배추 같은 식물성 황 식품은 <strong>"씹을 때 직접 휘발"과 "삼킨 뒤 세균 기질"을 겸한다.</strong> 순수하게 세균 없이 냄새 나는 건 흡수·폐 배출되는 극히 일부(AMS)뿐이고, 그마저 생성에 세균이 관여한다. <strong>동물성 단백질(cysteine·methionine)만 세균 기질인 게 아니라, 파속·십자화과·잎채소의 식물성 유기황도 전부 세균 기질이 된다.</strong> 아래 ①(동물성)·②(식물성)를 함께 볼 것.</p>
+</blockquote>
+<p>크게 ① 동물성 황 기질 ② 식물성 황 기질(직접 휘발 + 세균 기질 겸용) ③ 환경 조성(간접)으로 나뉜다.</p>
+<h3 id="1-cysteinemethionine">① 동물성·고단백 황 기질 = 황 함유 아미노산(cysteine·methionine)이 풍부한 식품</h3>
+<p>세균이 <strong>cysteine→H₂S, methionine→CH₃SH</strong>로 분해하므로, 이 아미노산이 많은 고단백 식품이 핵심 기질. <strong>정량적으로 몸 전체 H₂S 총량의 최대 소스</strong>(위 심화 D 참조).</p>
+<table>
+<thead>
+<tr>
+<th>식품군</th>
+<th>예</th>
+<th>관여 아미노산·기전</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>육류·생선</strong></td>
+<td>소·돼지·닭, 참치·연어</td>
+<td>cysteine·methionine 풍부 → H₂S·CH₃SH 기질. 잔여물이 치간·설태에 남으면 지속. 동물성 지방·담즙 <strong>taurine → <em>Bilophila</em> H₂S</strong>(Devkota 2012)</td>
+</tr>
+<tr>
+<td><strong>달걀</strong></td>
+<td>특히 노른자</td>
+<td>황 아미노산 다량 → H₂S("썩은 달걀" 냄새의 원형)</td>
+</tr>
+<tr>
+<td><strong>유제품·치즈</strong></td>
+<td>우유, 숙성 치즈</td>
+<td>카제인 단백 분해 + 유당이 산 환경 조성. 숙성 치즈는 이미 메르캅탄 함유</td>
+</tr>
+<tr>
+<td><strong>콩·견과</strong></td>
+<td>대두, 렌틸, 견과류</td>
+<td>식물성 고단백, 황 아미노산 공급</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_1">② 식물성 유기황 식품 (씹을 때 직접 휘발 + 삼킨 뒤 세균 기질 = 둘 다)</h3>
+<p>자체 효소로 휘발성 황을 내지만, <strong>삼킨 뒤 잔여 황화합물이 대장 세균의 추가 기질</strong>이 되어 H₂S·메틸설파이드로 재전환된다. "세균 없이 직접 악취"라고만 보면 절반만 맞다.</p>
+<table>
+<thead>
+<tr>
+<th>식품 (분류)</th>
+<th>직접(효소·휘발)</th>
+<th>세균 기질(대장 재분해)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>마늘</strong> (파속 Allium)</td>
+<td>alliin→allicin→<strong>AMS(allyl methyl sulfide)</strong>, 흡수·폐 배출(혈행성, 양치로 안 사라짐)</td>
+<td>AMS·잔여 유기황·γ-glutamyl 펩타이드를 <strong>후소박테리움 등 장내균이 대사</strong> — 마늘 구취는 상당 부분 <strong>세균 대사 산물</strong>(후소박테리움 노트 참조)</td>
+</tr>
+<tr>
+<td><strong>양파·부추·파</strong> (파속)</td>
+<td>propyl 계열 sulfide(자극·휘발)</td>
+<td>잔여 유기황이 장내균 기질 → H₂S·메르캅탄</td>
+</tr>
+<tr>
+<td><strong>양배추·브로콜리·콜리플라워·무·겨자·고추냉이</strong> (십자화과)</td>
+<td>myrosinase가 glucosinolate→<strong>isothiocyanate</strong>(씹을 때)</td>
+<td><strong>삼킨 잔여 glucosinolate를 대장 세균의 β-thioglucosidase가 분해 → H₂S·메틸설파이드·ITC 재생성.</strong> 십자화과 섭취 후 방귀·대장 H₂S 증가의 주 기전</td>
+</tr>
+<tr>
+<td><strong>두리안·아위(asafoetida)</strong></td>
+<td>강한 황화합물 직접 함유</td>
+<td>잔여분 세균 분해</td>
+</tr>
+<tr>
+<td><strong>상추·시금치</strong> (잎채소)</td>
+<td>(직접 휘발 거의 없음)</td>
+<td><strong>SQ(설포퀴노보스)→<em>E. rectale</em> 발효→<em>Bilophila</em> 탈황→H₂S</strong> (아래 별도 박스)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>⚠️ 상추(양상추·로메인 등 <em>Lactuca sativa</em>)의 황은 위 식품들과 종류가 다르다 — 별도 정리</strong>
+- <strong>십자화과(glucosinolate)·파속(allyl sulfide)과 근본적으로 다름</strong>: 상추는 <strong>국화과(Asteraceae)</strong>로, 마늘의 alliin/allyl 황화합물이나 양배추·브로콜리의 glucosinolate 같은 <strong>특수 휘발성 유기황 2차대사물이 없다.</strong> 즉 <strong>"자체적으로 황 냄새를 내뿜는" 음식이 아니다.</strong>
+- <strong>상추의 주력 황 = 설포퀴노보스(sulfoquinovose, SQ)라는 "황–당"</strong>: 잎채소의 황은 무기 황산염이 아니라, 엽록체 틸라코이드 막지질인 <strong>설포퀴노보실디아실글리세롤(SQDG)</strong>의 머리기 <strong>SQ(6-deoxy-6-sulfo-D-glucose)</strong>가 정량적으로 가장 크다. SQ는 잎 <strong>극성 지질 질량의 약 1/4</strong>을 차지한다(광합성 생물 전반). 그 밖에 황 함유 아미노산(cysteine·methionine)·글루타티온·소량의 무기 황산염이 있다. 즉 상추 황의 핵심은 <strong>"당에 황이 붙은 배당체(SQ)"</strong>이지 무기 SO₄²⁻이 아니다. (근거: Hanson BT et al. 2021, <em>ISME J</em> 15(9):2779–2791, PMID 33790426)
+- <strong>→ SQ는 장내 세균 릴레이(cross-feeding)로 H₂S가 된다</strong>: SQ 자체는 <em>Desulfovibrio</em> 가 혼자 쓰지 못한다. <strong>① <em>Eubacterium rectale</em> 등이 SQ를 발효(sulfoglycolysis)</strong> → <strong>DHPS(2,3-dihydroxypropane-1-sulfonate)·3-sulfolactate</strong> 같은 유기황 중간체 방출 → <strong>② <em>Bilophila wadsworthia</em> 가 이 중간체의 황을 떼어내(desulfonation) H₂S 생성</strong>. <em>Desulfovibrio</em> 는 곁다리 조역. <strong>즉 상추 SQ→H₂S 경로의 주역은 <em>Bilophila wadsworthia</em> 이지 <em>Desulfovibrio</em> 가 아니다.</strong>
+- <strong>정리</strong>: 상추의 황은 마늘·십자화과의 휘발성 유기황도, 단순 무기 황산염도 아니고 <strong>SQ(황–당지질 유래)</strong>가 정량·문헌상 핵심이다. 이 SQ가 <strong>다균 협력(<em>E. rectale</em> 발효 → <em>Bilophila</em> 탈황)</strong>을 거쳐 대장에서 H₂S로 수렴한다. 상추를 마늘/양파의 "황 냄새 음식" 줄에 두는 것도, "무기 황산염이 SRB 먹이"라는 단순화도 모두 부정확하다.</p>
+</blockquote>
+<hr />
+<h2 id="h2s-3-1">심화: H₂S(황화수소) 생성의 3대 경로 · 부위별 1등 · 정량 총량 재정립</h2>
+<p>구취·장 건강 논의에서 "황화수소를 제일 많이 만드는 균은?"이라는 질문은 <strong>어떤 기질에서, 어느 부위에서, 개체수까지 감안하느냐</strong>에 따라 답이 달라진다. 흔한 교과서식 단순화("H₂S = SRB(<em>Desulfovibrio</em>)")는 최신 메타지노믹스로 정정되었다.</p>
+<h3 id="a-h2s-3">A. H₂S가 만들어지는 3대 생화학 경로</h3>
+<p>셋 모두 최종적으로 H₂S로 수렴하지만 <strong>기질·효소·주역 세균이 전혀 다르다.</strong></p>
+<table>
+<thead>
+<tr>
+<th>경로</th>
+<th>기질</th>
+<th>핵심 효소</th>
+<th>반응 요약</th>
+<th>대표 세균 · 식품</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 시스테인 탈황 (cysteine desulfhydration)</strong></td>
+<td><strong>L-cysteine</strong> (황 함유 아미노산)</td>
+<td>cysteine desulfhydrase</td>
+<td>cysteine → <strong>H₂S</strong> + 피루브산 + 암모니아</td>
+<td>광범위 장내균·<em>F. nucleatum</em>·<em>P. gingivalis</em> / <strong>고기·달걀·유제품</strong>(단백 부패형)</td>
+</tr>
+<tr>
+<td><strong>② SQ 당분해 (sulfoglycolysis)</strong></td>
+<td><strong>설포퀴노보스(SQ)</strong> — 황–당지질(SQDG) 유래</td>
+<td>SQ 이성화·분해효소(sulfoglycolysis operon) → 2차 탈황</td>
+<td>SQ 발효 → DHPS·3-sulfolactate → <strong>2차 황 제거로 H₂S</strong> (cross-feeding)</td>
+<td><em>Eubacterium rectale</em>(발효) → <em>Bilophila wadsworthia</em>(탈황) / <strong>잎채소(상추·시금치)</strong></td>
+</tr>
+<tr>
+<td><strong>③ 이화적 황산염 환원 (dissimilatory sulfate reduction)</strong></td>
+<td><strong>무기 황산염 SO₄²⁻</strong></td>
+<td>dsrAB (dissimilatory sulfite reductase)</td>
+<td>SO₄²⁻ 을 전자수용체로 혐기 호흡 → <strong>SO₄²⁻ → H₂S</strong></td>
+<td>SRB — <em>Desulfovibrio</em>·<em>Bilophila</em> / 가공육 아황산염·황산염 풍부 식수·물</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>①은 단백 부패형(putrefactive)</strong>, <strong>②는 당지질 유래 릴레이형(cross-feeding)</strong>, <strong>③은 무기 이온 혐기 호흡형</strong>. 최종 산물만 H₂S로 같을 뿐 완전히 다른 대사다.</li>
+</ul>
+<h3 id="b-h2s">B. 세균별 황 기질 선호 (누가 무엇을 먹고 H₂S를 내는가)</h3>
+<table>
+<thead>
+<tr>
+<th>세균 (계통)</th>
+<th>무기 SO₄²⁻ (경로③)</th>
+<th>SQ (경로②)</th>
+<th>cysteine (경로①)</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>Desulfovibrio</em> spp.</strong> (Thermodesulfobacteriota)</td>
+<td><strong>★★★ 직접·주력</strong></td>
+<td>★ 간접(혼자 못 씀)</td>
+<td>☆ 미미</td>
+<td>전형적 SRB. 무기 황산염 호흡이 본업. SQ는 남이 만든 중간체에 곁다리</td>
+</tr>
+<tr>
+<td><strong><em>Bilophila wadsworthia</em></strong> (Thermodesulfobacteriota)</td>
+<td>★ (제한적)</td>
+<td><strong>★★★ 릴레이 주역</strong>(중간체 탈황)</td>
+<td>☆</td>
+<td><strong>동물성 taurine(담즙)</strong> 을 직접 황원으로 씀 → 고기·동물성 지방 식이에서 급증 (Devkota et al. 2012, <em>Nature</em>)</td>
+</tr>
+<tr>
+<td><strong><em>Fusobacterium nucleatum</em></strong> (Fusobacteriota)</td>
+<td>—</td>
+<td>—</td>
+<td><strong>★★★ 시스테인 탈황</strong></td>
+<td>구강 대표 H₂S 생성균. 아미노산 부패형</td>
+</tr>
+<tr>
+<td><strong><em>Porphyromonas gingivalis</em></strong> (Bacteroidota)</td>
+<td>—</td>
+<td>—</td>
+<td><strong>★★★ (+methionine→CH₃SH)</strong></td>
+<td>red complex 핵심. mgl로 CH₃SH도 대량</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>Desulfovibrio</em> 의 직접 먹이는 무기 SO₄²⁻</strong>(가공육 아황산염·물)와 H₂/젖산이다. <strong>상추 SQ의 주역은 <em>Bilophila</em></strong> 이지 <em>Desulfovibrio</em> 가 아님.</li>
+<li><strong><em>Bilophila wadsworthia</em> 는 고기·동물성 지방 → 담즙 taurine 분비 → taurine의 황을 H₂S로</strong> 전환(Devkota 2012 <em>Nature</em>). 즉 "고기가 SRB 계열 H₂S를 늘린다"는 경로는 무기 황산염이 아니라 <strong>동물성 taurine</strong> 을 통한다.</li>
+</ul>
+<h3 id="c-h2s-1">C. 부위별 "H₂S 1등"은 다르다</h3>
+<table>
+<thead>
+<tr>
+<th>부위</th>
+<th>H₂S 1등</th>
+<th>근거·비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>구강(입냄새)</strong></td>
+<td><strong><em>Fusobacterium nucleatum</em></strong> (+<em>P. gingivalis</em>·<em>Prevotella</em>)</td>
+<td>시스테인 탈황으로 H₂S 다량. <em>P. gingivalis</em> 는 CH₃SH까지 → <strong>CH₃SH/H₂S 비율이 높을수록 치주염 중증 지표</strong></td>
+</tr>
+<tr>
+<td><strong>장(대장)</strong></td>
+<td>(옛 교과서) <strong>SRB — <em>Desulfovibrio</em>·<em>Bilophila</em></strong></td>
+<td>이화적 황산염 환원. <strong>단, 아래 D의 정량 재정립을 볼 것 — 총량 1등은 SRB가 아니다</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-h2s-1-srb">D. ★정량 총량 재정립 — "H₂S 총량 1등 = SRB"는 옛 관점</h3>
+<ul>
+<li><strong>교과서 통설</strong>: 몸 전체 H₂S 생성 1등은 황산염환원균(SRB, <em>Desulfovibrio</em>). ← <strong>오래된 단순화.</strong></li>
+<li><strong>최신 반전(정량)</strong>: <strong>시스테인 분해(경로①) 능력이 사실상 모든 장내균에 편재(ubiquitous)</strong>하며, 개체수·보편성을 곱하면 <strong>cysteine desulfhydration 경로가 장내 H₂S 총량을 지배</strong>한다. SRB는 밀도가 낮고 분포가 제한적이어서 <strong>총량으로는 조역</strong>이다.</li>
+<li>근거: <strong>"The Capacity to Produce H₂S via Cysteine Degradation Is Ubiquitous in the Human Gut Microbiome" (Front Microbiol 2021; PMC8564485).</strong><ul>
+<li><strong>4,644개 UHGG 유전체</strong> 중 시스테인 분해 유전자 광범위 보유.</li>
+<li><strong>건강인 6,623명 100% 검출</strong>, <strong>metatranscriptome 736 샘플 100% 발현</strong> — 건강인·IBD·CRC 공통.</li>
+<li>시스테인 분해균 개체수·발현이 <strong>SRB를 압도.</strong></li>
+<li>(보조: bioRxiv 2021.03.24.436781, HAL hal-02627096)</li>
+</ul>
+</li>
+<li><strong>정정 결론</strong>:</li>
+<li>❌ "몸 전체 H₂S 1등 = <em>Desulfovibrio</em>(SRB)" — 옛 관점.</li>
+<li>✅ <strong>정량 총량 1등 = 시스테인 분해 경로(광범위 장내균 집단)</strong>. SRB는 국소·조역.</li>
+<li>✅ <strong>최대 정량 H₂S 소스는 동물성 단백질의 cysteine</strong> — 이는 "황 섭취 → H₂S → 장·전신 영향"이라는 Neo-Skepticism 논지를 오히려 강화한다(잎채소 SQ보다 고단백이 정량적으로 큼).</li>
+<li><em>Fusobacterium</em>·<em>P. gingivalis</em> 는 <strong>구강·특정 병태의 대표주자</strong>일 뿐 단일 "스타균"이 아니다. 장 총량의 답은 <strong>시스테인 분해 장내균 집단</strong>이다.</li>
+</ul>
+<h3 id="e">E. 한 줄 요약</h3>
+<blockquote>
+<p><strong>부위별로는</strong> 구강 = <em>Fusobacterium nucleatum</em>, 장(옛관) = SRB. <strong>하지만 몸 전체 정량 총량은 시스테인 분해 경로(편재성 장내균)가 지배</strong>하고(Front Microbiol 2021), SRB는 조역이다. 상추 등 잎채소는 <strong>SQ→(<em>E. rectale</em> 발효 → <em>Bilophila</em> 탈황)→H₂S</strong>의 별도 릴레이 경로를 탄다.</p>
+</blockquote>
+<hr />
+<h2 id="sibo-rifaximin-vs-ciprofloxacin-4">심화: SIBO/장내세균 과증식 치료 — rifaximin vs ciprofloxacin의 4대 분류적 의미</h2>
+<p>"장내 세균 과증식(SIBO/SIFO 포함)을 항생제로 잡는다"고 할 때, <strong>어떤 4대 분류를 커버하느냐</strong>가 약 선택의 핵심이다. 두 약은 정반대 성격이다.</p>
+<h3 id="_19">커버리지 비교</h3>
+<table>
+<thead>
+<tr>
+<th>4대 분류 (장내 비율)</th>
+<th>rifaximin</th>
+<th>ciprofloxacin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPAB</strong> (그람+ 간균, ~50~75%)</td>
+<td><strong>커버</strong> (혐기 그람양성 폭넓게)</td>
+<td><strong>거의 못 함(R)</strong> — 혐기균 커버 빈약</td>
+</tr>
+<tr>
+<td><strong>GNAB</strong> (그람– 간균, ~15~40%)</td>
+<td><strong>커버</strong> (<em>Bacteroides</em> 등 혐기 그람음성)</td>
+<td><strong>거의 못 함(R)</strong> — 혐기균 R</td>
+</tr>
+<tr>
+<td><strong>GPAC</strong> (그람+ 구균, ~1~5%)</td>
+<td>커버</td>
+<td>못 함(R)</td>
+</tr>
+<tr>
+<td><strong>GNAC</strong> (그람– 구균, ~&lt;1~2%)</td>
+<td>커버</td>
+<td>못 함(R)</td>
+</tr>
+<tr>
+<td>(참고) 통성혐기 그람음성 장내세균과 <em>E. coli</em>·<em>Klebsiella</em> 등</td>
+<td>부분(장관 국소)</td>
+<td><strong>커버(S)</strong> — FQ의 본령</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rifaximin">rifaximin — "장 안에서만 작동하는 광범위 혐기 커버"</h3>
+<ul>
+<li><strong>비흡수(nonabsorbable) 리파마이신계</strong> — 경구 투여해도 <strong>전신 흡수 &lt;0.4%</strong>, 약이 <strong>장관 내강에 머문다.</strong> RNA 중합효소 억제.</li>
+<li><strong>4대 분류 관점</strong>: <strong>호기·혐기, 그람양성·음성을 폭넓게 커버</strong> → GPAB·GNAB·GPAC·GNAC를 <strong>모두 건드린다.</strong> 장내 과증식의 대부분을 차지하는 <strong>GPAB(최우세)와 GNAB(2위)를 함께 잡는 게 핵심.</strong></li>
+<li><strong>SIBO 1차 약인 이유</strong>:</li>
+<li>전신 부작용·내성 압력이 낮고(장관 국소 작용), <em>C. difficile</em> 위험이 상대적으로 낮음.</li>
+<li>수소형(H₂) SIBO에 특히 효과 — 메타분석상 제균·증상 개선.</li>
+<li><strong>메탄형(IMO, <em>Methanobrevibacter</em> 관여)</strong> 엔 단독 효과 낮아 <strong>neomycin(또는 metronidazole) 병용</strong>.</li>
+<li><strong>한계</strong>: 근본적으로 <strong>일시적 biomass 감소</strong>이며 식이·운동성(MMC)·기저질환 교정 없으면 재발. 담즙·SQ·cysteine 기질이 계속 들어오면 다시 증식.</li>
+</ul>
+<h3 id="ciprofloxacin">ciprofloxacin — "혐기균을 못 잡는" 플루오로퀴놀론</h3>
+<ul>
+<li><strong>fluoroquinolone(FQ)</strong>, DNA gyrase/topo IV 억제. <strong>전신 흡수·조직 분포</strong>가 넓다(rifaximin과 정반대).</li>
+<li><strong>4대 분류 관점</strong>: <strong>혐기균(GPAB·GNAB·GPAC·GNAC) 전부 사실상 내성(R).</strong> 본 문서 전체에서 반복된 원칙 — <strong>구취균·치주균·SIBO 유발 혐기균에 FQ는 부적합.</strong></li>
+<li><strong>cipro가 잘 듣는 곳</strong>: 통성혐기·호기 <strong>그람음성 장내세균과(<em>E. coli</em>·<em>Klebsiella</em>·<em>Enterobacter</em> 등)</strong> 와 일부 그람음성 간균. 즉 <strong>"혐기 과증식"이 아니라 "그람음성 호기균 감염(요로·복강·담도·여행자설사 일부)"이 표적.</strong></li>
+<li><strong>장내세균 과증식 치료에서의 의미</strong>:</li>
+<li><strong>SIBO의 주범이 혐기균(GPAB·GNAB)이면 cipro는 헛방</strong> — 표적을 못 맞춘다.</li>
+<li>오히려 <strong>혐기균은 살리고 그람음성 호기균만 눌러 생태계를 왜곡</strong>, 통성혐기균 과증식·<em>C. difficile</em> 위험을 키울 수 있음.</li>
+<li>FQ의 전신 부작용(건파열·QT·중추신경·대동맥류)까지 감안하면 <strong>단순 장내 과증식엔 부적절한 선택.</strong></li>
+</ul>
+<h3 id="rifaximin-cipro">핵심 대비 — 왜 rifaximin이고 왜 cipro가 아닌가</h3>
+<blockquote>
+<ul>
+<li><strong>장내 과증식의 정체 = 압도적으로 혐기균(GPAB 최우세 + GNAB 2위).</strong></li>
+<li><strong>rifaximin = 이 혐기 판을 장관 국소에서 광범위하게 눌러주는 약</strong> → SIBO 1차.</li>
+<li><strong>ciprofloxacin = 혐기균을 못 잡고(R) 그람음성 호기균만 잡는 약</strong> → 혐기 과증식엔 표적 불일치·생태계 왜곡·전신 부작용.</li>
+<li>결국 <strong>"과증식을 이루는 4대 분류가 혐기 GPAB/GNAB냐, 아니면 그람음성 호기균이냐"</strong> 가 두 약의 갈림길이다. SIBO 대부분은 전자 → rifaximin.</li>
+</ul>
+</blockquote>
+<p><strong>부가 임상 포인트</strong>
+- <strong>메탄형(IMO)</strong>: 고세균(<em>Methanobrevibacter smithii</em>)은 세균이 아니라 4대 분류 밖 — rifaximin+neomycin 병용이 관례.
+- <strong>황화수소형(H₂S) SIBO</strong>: 위 심화 D의 cysteine 분해 편재성·SRB와 연결. rifaximin이 혐기 biomass를 줄여 H₂S도 낮추나, <strong>기질(고단백·SQ·담즙 taurine) 관리가 병행되어야</strong> 지속.
+- <strong>곰팡이 과증식(SIFO)</strong>: 항진균제 별도 — 항생제(둘 다) 무효.</p>
+<hr />
+<h2 id="f">심화 F — 신경퇴행성 질환(파킨슨병·알츠하이머병)과의 관계</h2>
+<p>구강·장내 혐기균이 <strong>뇌–장축(gut–brain axis)</strong> 과 <strong>구강–뇌축(oral–brain axis)</strong> 을 통해 신경퇴행에 관여한다는 증거가 축적되고 있다. 핵심 3속 — <em>Porphyromonas gingivalis</em>(Bacteroidota, GNAB), <em>Fusobacterium nucleatum</em>(Fusobacteriota, GNAB), <em>Desulfovibrio</em>(Thermodesulfobacteriota, GNAB) — 은 모두 본 문서의 GNAB(그람음성 혐기 간균) 군에 속하며, 서로 다른 경로로 알츠하이머병(AD)·파킨슨병(PD)에 기여한다.</p>
+<h3 id="1-porphyromonas-gingivalis">1) <em>Porphyromonas gingivalis</em> → 알츠하이머병 (구강–뇌축, 진지페인 가설)</h3>
+<ul>
+<li><strong>핵심 발견</strong>: Dominy 등(2019, <em>Science Advances</em> 5:eaau3333)은 AD 환자 사후 뇌에서 <em>P. gingivalis</em> 와 그 독성 단백분해효소 <strong>진지페인(gingipains: Kgp·RgpA·RgpB)</strong> 을 검출했고, 진지페인 농도가 <strong>타우(tau)·유비퀴틴 병리와 상관</strong>함을 보였다. 여러 보고에서 AD 뇌의 90~100%에서 진지페인이 확인됐다.</li>
+<li><strong>기전</strong>:</li>
+<li><em>P. gingivalis</em> 구강 감염 → 마우스 뇌 집락화 → <strong>아밀로이드-β(Aβ1–42) 생성 증가</strong>(Aβ는 항균 펩타이드로서 감염에 대한 방어 반응일 수 있다는 가설).</li>
+<li><strong>진지페인</strong>이 타우를 절단·과인산화 → 신경섬유매듭 형성 촉진.</li>
+<li>LPS·OMV(외막소포)에 의한 만성 신경염증.</li>
+<li><strong>치료 시도</strong>: 저분자 진지페인 억제제(COR388/atuzaginstat)가 마우스에서 뇌 집락·Aβ1–42 생성·신경염증을 줄이고 해마 신경을 보호 → 인체 임상으로 진행(감염이 다른 병리의 상류(upstream)라는 가설의 근거).</li>
+</ul>
+<h3 id="2-fusobacterium-nucleatum">2) <em>Fusobacterium nucleatum</em> → 알츠하이머병 (신경염증·구강–장–뇌축)</h3>
+<ul>
+<li><strong>역학</strong>: <em>F. nucleatum</em> 은 치주염에서 과증식하는 대표 교량균(bridging organism)이며, AD·인지장애 환자 <strong>혈청에서 검출</strong>된다.</li>
+<li><strong>동물 근거</strong>: <em>F. nucleatum</em> 유발 치주염이 5XFAD 마우스에서 <strong>인지장애 악화·Aβ 축적·타우 인산화 증가</strong>를 유발(Frontiers Aging Neurosci 2022;14:912709). 경구 감염이 AD 유사 랫트의 인지·뇌 병리 이상에 기여하며, 장내 미생물총 조성·대사를 변화시킴(PMID 36188448).</li>
+<li><strong>기전</strong>: 전신 염증·신경염증 유도, 장내 미생물 dysbiosis를 통한 간접 효과. 본 문서에서 다룬 <em>F. nucleatum</em> 의 대장암 기여(FadA·Fap2 부착소)와는 별개의 축이지만, "치주 병소 → 전신 파종 → 원격 장기 병리"라는 공통 패턴을 공유한다.</li>
+</ul>
+<h3 id="3-desulfovibrio-">3) <em>Desulfovibrio</em> → 파킨슨병 (황화수소·α-시누클레인 응집)</h3>
+<ul>
+<li><strong>역학</strong>: Murros 등(2021, <em>Front Cell Infect Microbiol</em> 11:652617)은 PD 환자 20명 <strong>전원의 대변에서 <em>Desulfovibrio</em> 를 검출</strong>했고, 건강 대조군보다 <strong>높은 수준</strong>으로 존재했으며 중증 PD일수록 더 많았다.</li>
+<li><strong>기전</strong>:</li>
+<li><em>Desulfovibrio</em> 는 <strong>황산염환원균(SRB)</strong> 으로 <strong>황화수소(H₂S)</strong> 와 <strong>LPS</strong>를 생성하고, 일부 균주는 <strong>마그네타이트(자철석)</strong> 를 합성 — 이들 모두 <strong>α-시누클레인(α-synuclein)의 올리고머화·응집을 유도</strong>할 수 있다.</li>
+<li>PD의 α-시누클레인 응집체(루이소체)는 뇌뿐 아니라 <strong>소화관·자율신경</strong>에도 축적되며, 장에서 형성된 응집체가 <strong>미주신경(vagus nerve)을 따라 프리온 유사 방식으로 뇌로 전파</strong>된다는 가설(Braak 가설과 정합).</li>
+<li>Huynh 등(2023, <em>Front Cell Infect Microbiol</em> 13:1181315): PD 환자 대변에서 분리한 <em>Desulfovibrio</em> 균주가 <em>C. elegans</em> 모델에서 대조군(배우자 대변)보다 <strong>더 크고 많은 α-시누클레인 응집체</strong>를 유발 — 병원성 차이가 H₂S 생성능과 관련될 가능성.</li>
+<li><strong>본 문서와의 연결</strong>: 심화 D에서 다룬 <strong>H₂S 3경로</strong>(cysteine desulfhydrase / SQ sulfoglycolysis / dsr 황산염환원) 중 <em>Desulfovibrio</em> 의 dsr 황산염환원이 PD 관련 H₂S의 주 공급원으로 지목된다. VSC(구취)와 SRB 축이 신경퇴행으로까지 이어지는 접점이다.</li>
+</ul>
+<h3 id="_20">요약 — 세 균의 신경퇴행 기여 비교</h3>
+<table>
+<thead>
+<tr>
+<th>균종</th>
+<th>문(phylum)/군</th>
+<th>표적 질환</th>
+<th>주 기전</th>
+<th>핵심 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>P. gingivalis</em></td>
+<td>Bacteroidota / GNAB</td>
+<td>알츠하이머병</td>
+<td>진지페인 → tau 절단·Aβ 유도, 구강–뇌축</td>
+<td>Dominy 2019 <em>Sci Adv</em></td>
+</tr>
+<tr>
+<td><em>F. nucleatum</em></td>
+<td>Fusobacteriota / GNAB</td>
+<td>알츠하이머병</td>
+<td>신경염증·Aβ·tau 인산화, 구강–장–뇌축</td>
+<td>Front Aging Neurosci 2022</td>
+</tr>
+<tr>
+<td><em>Desulfovibrio</em></td>
+<td>Thermodesulfobacteriota / GNAB</td>
+<td>파킨슨병</td>
+<td>H₂S·LPS·마그네타이트 → α-syn 응집, 미주신경 전파</td>
+<td>Murros 2021 · Huynh 2023</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>한 줄 요약</strong>: 세 균 모두 GNAB(그람음성 혐기 간균)이며, <em>P. gingivalis</em>·<em>F. nucleatum</em> 은 <strong>구강 병소 → AD</strong>, <em>Desulfovibrio</em> 는 <strong>장내 H₂S → PD</strong> 라는 두 축으로 신경퇴행에 기여한다. 구강 위생과 장내 황 대사 관리가 신경 건강과 연결되는 이유다.</p>
+</blockquote>
+<hr />
+<p><em>저자 — 가정의학과 의사 양준상</em></p>
+<p>© 2026 양준상. 이 문서의 저작권은 저자에게 있습니다. 저자의 사전 서면 동의 없이 무단 복제·배포·전재·상업적 이용을 금합니다. 인용 시 출처(저자·문서명)를 명시해 주십시오.</p>
+      </div>
+      <div class="footer">Obsidian NS vault · 라이트테마 · 자동 생성</div>
+    </div>
+  </div>
+</div>
+<button class="top-btn" id="topBtn">↑</button>
+<script>
+// build S/R/I badges inside tables (cells that are exactly S, R, I, S/R, I/S, etc.)
+document.querySelectorAll('table td').forEach(td=>{
+  const t=td.textContent.trim();
+  if(/^(S|R|I|S\/R|I\/S|R\/S|S\/I)$/.test(t)){
+    const cls = t.includes('R') && !t.includes('S') ? 'sr-R'
+              : t.includes('R') ? 'sr-R'
+              : t.includes('I') && !t.includes('S') ? 'sr-I'
+              : t.startsWith('I') ? 'sr-I'
+              : 'sr-S';
+    td.innerHTML='<span class="sr '+cls+'">'+t+'</span>';
+  }
+});
+// wrap tables for horizontal scroll
+document.querySelectorAll('.body-wrap table').forEach(tb=>{
+  if(tb.parentElement.classList.contains('tbl-wrap'))return;
+  const w=document.createElement('div');w.className='tbl-wrap';
+  tb.parentNode.insertBefore(w,tb);w.appendChild(tb);
+});
+// scrollspy
+const links=[...document.querySelectorAll('.toc-list a')];
+const map={};links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
+const heads=[...document.querySelectorAll('.body-wrap h2, .body-wrap h3')];
+const spy=()=>{
+  let cur=null;const y=window.scrollY+90;
+  for(const h of heads){if(h.offsetTop<=y)cur=h.id;}
+  links.forEach(a=>a.classList.remove('active'));
+  if(cur&&map[cur]){map[cur].classList.add('active');
+    map[cur].scrollIntoView({block:'nearest'});}
+};
+window.addEventListener('scroll',spy);spy();
+// top button
+const tb=document.getElementById('topBtn');
+window.addEventListener('scroll',()=>{tb.classList.toggle('show',window.scrollY>400);});
+tb.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+// mobile toc toggle
+const sb=document.getElementById('sidebar'),mb=document.getElementById('mtoc');
+mb.onclick=()=>sb.classList.toggle('open');
+document.querySelectorAll('.toc-list a').forEach(a=>a.onclick=()=>sb.classList.remove('open'));
+</script>
+</body>
+</html>
