@@ -55,7 +55,7 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 **계통 축의 핵심 통찰**
 - **혐기성 그람양성균(GPAC+GPAB)은 사실상 Bacillota 아니면 Actinomycetota 둘 중 하나** — 구균/*Clostridium*은 Bacillota, 사상형(*Actinomyces*)·*Cutibacterium*·*Bifidobacterium*은 Actinomycetota(고 G+C 그람양성).
-- **혐기성 그람음성균(GNAB)은 Bacteroidota(*Bacteroides* 계열) 아니면 Fusobacteriota(*Fusobacterium*)** — 서로 다른 문.
+- **혐기성 그람음성 간균(GNAB)은 Bacteroidota(*Bacteroides* 계열) 아니면 Fusobacteriota(*Fusobacterium*)** — 서로 다른 문.
 - **GNAC의 함정**: 겉은 그람음성이지만 계통상 **Bacillota(Firmicutes)**. 얇은 펩티도글리칸·LPS 유무 등으로 음성 염색되나 진화적으로는 그람양성 계통 안의 Negativicutes 강.
 - **통성혐기·미세호기 그람음성균**(장내세균과·*Aggregatibacter*·*Campylobacter*)은 대부분 **Pseudomonadota(Proteobacteria)**.
 
