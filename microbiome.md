@@ -367,6 +367,27 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ---
 
+## 산소 요구 분류: 호기–혐기 스펙트럼
+
+> *세균의 산소 관계는 "호기 vs 혐기" 이분법이 아니라 **연속 스펙트럼**이다. 그리고 이 문서 전체의 축 — **산소 대사가 항생제 감수성을 정한다** — 이 여기서 나온다.*
+
+| 분류 | O₂ 사용(호흡) | O₂ 견딤 | 대표균 | 항생제 함의 |
+|---|---|---|---|---|
+| 절대호기 | ✓ | ✓ | *Pseudomonas*·결핵균·*Nocardia*·*Acinetobacter* | aminoglycoside 감수 · **metronidazole 내성** |
+| 통성혐기 | ✓ (있으면) | ✓ | *E. coli*·*Salmonella*·*Vibrio*·*Staphylococcus* | 양쪽 성장 · 호기 모드서 aminoglycoside 흡수 |
+| 미세호기 | ✓ (저농도만) | 부분 (고농도 독성) | *Campylobacter*·*Helicobacter* | 특수 배양 필요 → 과소진단 |
+| 호기내성 혐기 | ✗ | ✓ | *Lactobacillus*·*Streptococcus*·*Cutibacterium* | 발효만 · aminoglycoside 흡수 약(β-lactam 시너지 필요) |
+| 절대혐기 | ✗ | ✗ | *Bacteroides*·*Clostridium*·*Fusobacterium*·*Faecalibacterium* | **metronidazole 감수** · aminoglycoside 무효 |
+| (호CO₂ capnophile) | — | — | *Haemophilus*·*Aggregatibacter*·*Neisseria*·*S. pneumoniae* | 5~10% CO₂ 요구(별도 축) |
+
+- **견딤 서열**: 절대호기 ≥ 통성혐기 > 호기내성혐기 > 절대혐기 (산소 견딤 높은 순). 단 **"쓴다(호흡)"는 절대호기·통성혐기만** — 호기내성·절대혐기는 "안 쓴다"는 점에선 동급이고, 갈리는 건 견딤뿐이다.
+- **서열의 실체 = 산소 해독 효소(SOD·catalase·peroxidase)**: 호기·통성은 풍부, 호기내성은 SOD는 있으나 catalase가 부족한 경우가 많고, 절대혐기는 결핍(초과산화물·H₂O₂ 축적 → 사멸).
+- **절대혐기 안에도 스펙트럼**: *B. fragilis*(SOD·catalase로 잠깐의 산소는 견딤) ↔ *Faecalibacterium prausnitzii*(수 초의 산소에도 사멸).
+- **미세호기는 직선 밖**: "조금은 필요하지만 많으면 독" — 중간에 최적점이 있는 산(peak) 모양이라 단순 서열에 안 얹힌다.
+- **항생제 거울 규칙(이 문서의 축)**: metronidazole = 혐기 환원 대사 필요(호기·통성의 호기 모드엔 무효) / aminoglycoside = 산소 호흡 필요(혐기·호기내성엔 무효, *Streptococcus*·*Enterococcus*는 β-lactam 시너지) / fluoroquinolone = 산소대사에 따라 갈림(*Aggregatibacter*).
+
+---
+
 ## 종합 요약: 혐기성 세균 항생제 감수성 한눈에 보기
 
 | 항생제                | GPAC | GPAB | GNAC |    GNAB    |
