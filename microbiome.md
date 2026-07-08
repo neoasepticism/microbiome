@@ -119,6 +119,15 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 | 4 | *Actinomyces israelii* | **Actinomycetota** |
 | 5 | *Cutibacterium (Propionibacterium) acnes* | **Actinomycetota** |
 
+> **➕ *Eggerthella lenta* — 약물을 대사하는 그람양성 혐기 간균 (GPAB, Actinomycetota)**
+>
+> 그람양성·절대혐기·비아포자 간균. **Actinomycetota문 / Eggerthellaceae과**(구 Coriobacteriaceae)로, 위 *Actinomyces*·*Cutibacterium*과 같은 문의 GPAB. 장·구강·비뇨생식기 상재균.
+>
+> - **임상 — 고사망 혐기 균혈증**: 최근 주목받는 혐기 균혈증 원인균. **1년 사망률 ~33%**(보고에 따라 20~40%), 대개 위장관 유래(충수염·천공)·다균성. **⚠️ 항생제 함정: piperacillin-tazobactam(TZP)에 MIC가 높아 TZP 단독 경험치료가 사망률↑와 연관** → amox-clav·cefoxitin·metronidazole·carbapenem이 신뢰 옵션.
+> - **★ 약물 대사 — 디곡신 불활성화**: **cgr operon(cgr1/cgr2, cardiac glycoside reductase)**으로 digoxin을 **불활성 dihydrodigoxin으로 환원** → 일부 환자에서 digoxin 효과 저하. **아르기닌(고단백 식이)이 이 반응을 억제**, 균주별 cgr 유무로 효과 편차 설명(Haiser·Turnbaugh, *Science* 2013).
+> - **★ 약물 대사 — 레보도파(파킨슨약)**: *Enterococcus faecalis*가 L-DOPA→도파민 탈탄산 후, **E. lenta가 몰리브덴 의존 dopamine dehydroxylase로 도파민→m-타이라민** 전환 → **레보도파 생체이용률 저하**·환자별 반응 편차(Maini Rekdal·Balskus, *Science* 2019). 뒤 신경퇴행·정신질환 섹션의 장–뇌·장–약물 축과 연결.
+> - **그 외**: 식이 폴리페놀·리그난을 enterolignan으로 대사.
+
 ### 주요 관련 질병 5가지
 1. 가스괴저(gas gangrene)·식중독 (*C. perfringens*)
 2. 위막성 대장염(pseudomembranous colitis) (*C. difficile*)
@@ -918,9 +927,6 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 ### 조현병·양극성
 - **조현병**: *Streptococcus vestibularis* 증가; 조현병 균총 FMT → 마우스 사회행동 악화·뇌 전사체 변화. 멘델 무작위화(MR) 연구는 인과에 대해 엇갈림.
 - **양극성**: BD 환자 FMT → 마우스 *TRANK1*(BD 연관 유전자) 발현 변화. FMT 소규모 RCT 진행 중.
-
-### 사이코바이오틱스(psychobiotics)
-- 특정 *Lactobacillus*·*Bifidobacterium* 균주가 GABA·serotonin 전구체·SCFA 생성, 장 장벽·염증 개선. 단 인간 임상은 **효과크기 modest·이질적**. "psychobiotic" 개념은 Cryan·Dinan.
 
 ### 비판적 평가 — 근거수준 종합
 - **연관 ≠ 인과**: 인간 데이터 대부분 단면 관찰.
