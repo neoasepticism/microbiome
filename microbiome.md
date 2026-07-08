@@ -216,7 +216,6 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 >
 > - **대표 감염**: **충수염** — 천공·괴저성 충수염 검체에서 **세 번째로 흔한 혐기균**(원래 Wadsworth VA에서 분리). 복강내 농양, 드물게 균혈증·간농양(복강내 악성종양·복부수술·이식 등 고위험).
 > - **식이–담즙–대장염 축**: 포화(우유)지방 → 간 **타우린 포합 담즙산(taurocholic acid)** ↑ → 유기황 공급 → *B. wadsworthia* 증식 → **H₂S**(유전독성) → TH1 염증 → 유전 감수성 숙주(*Il10*⁻/⁻)에서 **대장염**(Devkota, *Nature* 2012). H₂S는 IBD·대장암과도 연관.
-> - **대사 이상·지방간 (근거 강함)**: 고지방식이와 상승작용해 장 장벽 손상·담즙산 대사이상·**butyrate 감소** → **당대사 이상·간 지방증(hepatic steatosis)** 유발(gnotobiotic 마우스, *Nat Commun* 2018). probiotic *L. rhamnosus* CNCM I-3690로 완화 — 위 담즙 축과 같은 기전.
 > - **그 외 연관 (근거 제한적·emerging)**: 대장암(H₂S 유전독성), 급성 췌장염(장–췌장 축, AP 환자 장내 증가 + 마우스에서 악화), 파킨슨병(장–뇌축, PD 장내 증가·기저핵 위축 연관) — 모두 **연관/전임상 수준**이며 확립된 인과는 아니다.
 > - **항생제**: **β-lactamase 생산주가 흔해 penicillin·ampicillin 내성**. **metronidazole(유일하게 균일한 살균력)·carbapenem·β-lactam/BLI 병합(amox-clav·pip-tazo·amp-sulbactam)에 감수** → GNAB 표준 커버(혐기 metronidazole + β-lactamase엔 BLI) 논리와 일치.
 
