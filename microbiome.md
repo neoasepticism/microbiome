@@ -406,6 +406,8 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ## 심화: Penicillin·β-lactam은 "거의 모든 혐기균에 효과"인가? — 4제 상세 비교
 
+*▸ 논지 적용 — "β-lactam은 거의 모든 혐기균에 듣는다"가 어디서 약해지는지 4제로 해부.*
+
 ### 판정: 용어를 구분해야 한다
 - **"β-lactam/BLI 병합(amox-clav, pip-tazo)·carbapenem이 거의 모든 혐기균 커버"** → ✅ 맞음
 - **"Penicillin 단독이 거의 모든 혐기균에 효과"** → ❌ 틀림
@@ -458,6 +460,8 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ## 심화: Metronidazole은 "거의 모든 혐기균"에 듣는가? — 약해지거나 안 듣는 혐기균
 
+*▸ 논지 적용 — "혐기균 = metronidazole"이 깨지는 지점(호기내성·통성혐기).*
+
 ### 큰 그림
 Metronidazole은 **전형적(strict) 혐기균**, 특히 **그람음성 혐기간균(_Bacteroides_·_Prevotella_·_Fusobacterium_)에 대해 거의 내성이 없는(≈0~2%) 최강 카드**다. 하지만 "**거의**"라는 단서가 핵심 — 구조적으로 안 듣거나 감수성이 떨어지는 무리가 분명히 존재한다.
 
@@ -505,6 +509,8 @@ Metronidazole은 그 자체로는 **불활성 전구약(prodrug)**이다. 세균
 
 ## 심화: 방선균(*Actinomyces*) — "혐기균인데 metronidazole이 안 듣는" 대표 균
 
+*▸ 논지 적용 — "혐기균인데 metronidazole이 안 듣는" 대표 예외.*
+
 ### 정체: 혐기~미세호기성 그람양성 사상균(filamentous bacillus)
 - **그람양성 간균(GPAB)**, 가지치기(branching)하는 **사상형** 형태 → 조직에서 곰팡이처럼 보이나 **세균**(non-acid-fast, *Nocardia*와 감별점: Nocardia는 부분 항산성·호기성).
 - **혐기~미세호기성(anaerobic to microaerophilic)** — 이 "aerotolerant" 성격이 임상 핵심.
@@ -542,6 +548,8 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 ---
 
 ## 심화: *Aggregatibacter actinomycetemcomitans* — 방선균과 "동행"하는 그람음성균
+
+*▸ 논지 적용 — 그람음성 여부가 아니라 산소대사가 fluoroquinolone 감수성을 가른다.*
 
 ### 정체: 이름은 방선균 같지만 그람음성 — 4대 분류 밖의 미세호기성균
 - **계통: Pseudomonadota(구 Proteobacteria), Gammaproteobacteria 강, Pasteurellaceae 과.** ⚠️ 이름의 "actinomyceto-"는 *Actinomyces*(Actinomycetota 문)와 **동거**한다는 뜻일 뿐, 계통은 완전히 다른 문.
@@ -615,6 +623,8 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 
 ## 임상 심화: "특정 항생제에만 반응하는" 난치성 구취 — 원인균 감별
 
+*▸ 논지 적용 — 감수성 검사(MIC)만으론 안 보이는 것을 "무엇이 듣는가"로 역추적.*
+
 *(임상 관찰 기반 가설. 표준 기계적 치료·구강위생에 더해 통상적 항생제(doxycycline·metronidazole·amoxicillin-clavulanate·ciprofloxacin)에 반응하지 않던 구취 환자가 특정 약제에만 반응하는 경우가 있다. "무엇이 듣는가"는 "어떤 균이 어디에 숨어 있는가"를 역추적하는 단서다. H. pylori 등 위 유래 원인은 별도 검사로 배제한 전제.)*
 
 ### 왜 clarithromycin만 듣는가 — 세포내 은신 + macrolide 약동학
@@ -670,6 +680,8 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 ---
 
 ## 심화: VSC(휘발성 황화합물) 생성 세균 — 구취(halitosis)의 원인균
+
+*▸ 논지 적용 — 구취를 "냄새나는 균"이 아니라 대사 산물(VSC)로 재정의.*
 
 ### VSC란 — 구취의 화학적 실체
 - **VSC(Volatile Sulfur Compounds, 휘발성 황화합물)** = 구강 악취(oral malodor)의 **주범(80~90%)**. 세 가지가 핵심.
@@ -773,6 +785,8 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ## 심화: H₂S(황화수소) 생성의 3대 경로 · 부위별 1등 · 정량 총량 재정립
 
+*▸ 논지 적용 — "H₂S = 황산염환원균"이 아니라 경로·부위·정량으로 재정립.*
+
 구취·장 건강 논의에서 "황화수소를 제일 많이 만드는 균은?"이라는 질문은 **어떤 기질에서, 어느 부위에서, 개체수까지 감안하느냐**에 따라 답이 달라진다. 흔한 교과서식 단순화("H₂S = SRB(_Desulfovibrio_)")는 최신 메타지노믹스로 정정되었다.
 
 ### A. H₂S가 만들어지는 3대 생화학 경로
@@ -827,6 +841,8 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ## 심화: SIBO/장내세균 과증식 치료 — rifaximin vs ciprofloxacin의 4대 분류적 의미
 
+*▸ 논지 적용 — 4대 분류(산소대사) 논리가 rifaximin·ciprofloxacin 선택을 설명한다.*
+
 "장내 세균 과증식(SIBO/SIFO 포함)을 항생제로 잡는다"고 할 때, **어떤 4대 분류를 커버하느냐**가 약 선택의 핵심이다. 두 약은 정반대 성격이다.
 
 ### 커버리지 비교
@@ -872,6 +888,8 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ## 심화 — Clostridioides difficile 감염(CDI): 외래 항생제 위험의 균형 잡힌 관점
 
+*▸ 논지 적용 — "항생제 = C. diff 공포" 반사를 절대위험 근거로 교정.*
+
 > *CDI는 항생제 부작용 중 가장 두려워하는 대상이지만, **저위험 외래 환자의 단일 처방에서 절대위험은 낮아 막연한 공포는 과도**하다. 경계는 "모든 항생제·모든 환자"가 아니라 **고위험 항생제 × 고위험 환자**에 집중하면 된다.*
 
 ### 절대위험은 낮다 (숫자)
@@ -891,6 +909,8 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 ---
 
 ## 심화 — 신경퇴행성 질환(파킨슨병·알츠하이머병)과의 관계
+
+*▸ 논지 적용 — 구강·장 국소 감염을 뇌로 잇는 전신 축으로 확장.*
 
 구강·장내 혐기균이 **뇌–장축(gut–brain axis)** 과 **구강–뇌축(oral–brain axis)** 을 통해 신경퇴행에 관여한다는 증거가 축적되고 있다. 핵심 3속 — _Porphyromonas gingivalis_(Bacteroidota, GNAB), _Fusobacterium nucleatum_(Fusobacteriota, GNAB), _Desulfovibrio_(Thermodesulfobacteriota, GNAB) — 은 모두 본 문서의 GNAB(그람음성 혐기 간균) 군에 속하며, 서로 다른 경로로 알츠하이머병(AD)·파킨슨병(PD)에 기여한다.
 
@@ -932,6 +952,8 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ## 심화 — 정신질환과 마이크로바이옴 (장–뇌 축)
 
+*▸ 논지 적용 — "장–뇌 축"을 질환별 근거 강도로 구분(우울 강 / 자폐 논쟁).*
+
 > *장내미생물이 뇌·행동에 영향을 주는 **장–뇌 축(gut–brain axis)**. 정신질환 중 **근거가 가장 탄탄한 것은 우울·불안** — 대규모 코호트에서 특정 균 시그니처가 재현되고, 동물에서 표현형이 이식(FMT)으로 전달된다.*
 
 ### 장–뇌 축 — 어떻게 장이 뇌와 대화하나 (4대 경로)
@@ -964,6 +986,8 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 - **기전**: 자폐군 FMT는 마우스에서 **tryptophan–세로토닌·비타민 B6 대사**를 조절하며 행동에 영향. **프로피온산(propionic acid)** 등 미생물 대사물이 흥분/억제(E/I) 균형에 관여.
 
 ## 심화 — "대장 미생물은 다양할수록 좋다"는 통념 해체
+
+*▸ 논지 적용 — "다양성 = 건강" 도그마의 정면 해체.*
 
 > *대장에서 다양성이 **너무 낮으면** 문제인 건 맞다(정착저항·회복탄력성). 하지만 **"일정 수준 이상이면 높을수록 더 좋다"는 근거는 없다.** "저다양성=질병"은 일부만 참이고, "고다양성=건강"은 과장·상업화된 프레임이다.*
 
