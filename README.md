@@ -4,7 +4,7 @@ A clinical microbiology reference that **bridges the familiar Gram-stain/morphol
 
 ## Thesis / perspective
 
-As next-generation sequencing (NGS) and metagenomics entered the clinic, understanding bacteria at the **phylum level** suddenly mattered — yet most clinicians were never taught this framework (we memorized Gram stain and morphology), while the microbiome boom spread oversimplified claims such as *"diversity = health"* and *"Firmicutes/Bacteroidetes ratio = obesity."*
+Clinical microbiology is one of the fastest-moving areas in medicine. Next-generation sequencing (NGS) and metagenomics made **phylum-level** thinking the standard, and the taxonomy itself keeps being rewritten — e.g., the **2021 mass phylum renaming** (Firmicutes → Bacillota, and dozens more). At the same time, the microbiome boom spread oversimplified claims such as *"diversity = health"* and *"Firmicutes/Bacteroidetes ratio = obesity."*
 
 So this document does two things:
 
