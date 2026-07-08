@@ -272,6 +272,68 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ---
 
+## 5. 혐기균이 아니면서 장에 많은 세균들 — "통성혐기성" 소수파
+
+### 큰 그림: 장은 압도적으로 혐기균 세상
+- 대장 상재균의 **~99%는 절대 혐기균(obligate anaerobe)** — *Bacteroides*, *Bifidobacterium*, *Clostridium*, *Faecalibacterium*, *Eubacterium* 등.
+- 여기서 다루는 "혐기균이 아닌" 균들은 **수적으로는 1% 미만의 소수파**지만, **임상적으로는 요로감염·균혈증·복강내감염·기회감염의 주역** → 존재감이 큼.
+- 이들의 정확한 산소 분류는 대개 **절대 혐기 ✗ / 통성혐기성(facultative anaerobe)** 또는 **호기내성(aerotolerant)** → 산소 있어도 자라고, 없어도 발효로 버팀.
+
+### 핵심 그룹 (통성혐기성 = facultative anaerobe)
+| 균 | 계통(phylum) | 그람 | 형태 | 장 내 위치·의의 | 대표 감염 |
+| --- | --- | --- | --- | --- | --- |
+| **대장균 (*Escherichia coli*)** | Pseudomonadota | 음성 | 간균 | 장내세균과의 대표. 정상 상재균이나 병원성주 다양 | UTI(최다 원인), 균혈증, 신생아 수막염, 장염(ETEC/EHEC 등) |
+| ***Klebsiella* (K. pneumoniae 등)** | Pseudomonadota | 음성 | 간균 | 장내세균과 | 폐렴, UTI, 균혈증(다제내성 우려) |
+| ***Enterobacter*, *Citrobacter*, *Proteus*, *Serratia*, *Morganella*** | Pseudomonadota | 음성 | 간균 | 장내세균과 | 원내감염, UTI, 복강내감염 |
+| **장구균 (*Enterococcus faecalis*, *E. faecium*)** | **Bacillota** | **양성** | 알균(쌍/사슬) | 장 상재 그람양성 통성혐기균의 대표 | UTI, 심내막염, 균혈증, **VRE(반코마이신 내성)** |
+| **연쇄상구균 일부 (*Streptococcus* group, *S. gallolyticus/bovis*)** | **Bacillota** | 양성 | 알균 | 장 상재 | 심내막염(대장암과 연관 보고) |
+
+### 산소 요구가 애매한 "회색지대" 균
+| 균                            | 계통(phylum)    | 분류                      | 장 내 의의                    |
+| ---------------------------- | ------------- | ----------------------- | ------------------------- |
+| **유산균 (*Lactobacillus*)**    | **Bacillota** | **호기내성/미세호기성**, 대체로 발효성 | 정상 상재. 절대 혐기균 아님          |
+| **포도상구균 (*Staphylococcus*)** | **Bacillota** | 통성혐기성                   | 장엔 소수. 주로 피부·비강. 식중독(장독소) |
+
+### "혐기균 vs 통성혐기균" 구분 포인트 (앞 4대 분류와 연결)
+- **절대 혐기균(obligate anaerobe)**: 산소 = 독. *Bacteroides*, *Clostridium*, *Fusobacterium* 등 → **본 문서 4대 분류(GPAC/GPAB/GNAC/GNAB)의 대상**.
+- **통성혐기균(facultative anaerobe)**: 산소 있으면 호흡, 없으면 발효 → **위 표의 장내세균과·장구균** → **4대 분류 밖**. 배양이 쉽고(일반 호기 배지) 흔히 분리됨.
+- **미세호기성(microaerophilic)**: 낮은 산소 농도 선호 → *Campylobacter*, *Helicobacter*, 그리고 앞서 다룬 *Aggregatibacter*.
+- **호기내성(aerotolerant)**: 산소로 호흡은 못 하지만 견딤 → *Lactobacillus*, 그리고 예외적으로 *Actinomyces*.
+
+### 왜 이 구분이 임상에서 중요한가
+- **배양**: 통성혐기균은 일반 호기 혈액배지에서 잘 자람 → 절대 혐기균처럼 특수 혐기 배양이 불필요. 임상검체에서 빠르게 검출.
+- **경험적 항생제**: 복강내감염처럼 "혐기균 + 통성혐기균"이 섞인 다균성 감염에서는 **양쪽을 다 커버**해야 함 → 예) 통성혐기 그람음성(장내세균과)엔 3세대 cephalosporin/carbapenem, 절대 혐기균엔 metronidazole → 그래서 **"cephalosporin + metronidazole"** 또는 **단독 광범위(piperacillin-tazobactam, carbapenem)** 병용 논리가 성립.
+- **metronidazole은 통성혐기균에 무효**(산소 존재 시 nitro 환원 안 됨) → 장내세균과·장구균 감염엔 쓰지 않음. 이는 앞 *Actinomyces*·*Aggregatibacter*에서 본 논리의 연장.
+
+### 항생제 감수성 — 4대 분류 밖 통성혐기균 (ciprofloxacin의 진짜 무대)
+혐기 4대 분류에선 cipro가 "부적합"이었지만, **여기 통성혐기 그람음성균에서는 cipro가 전통적 주력약**이다. 대비가 핵심.
+
+| 균 (계통) | Ciprofloxacin | 1차/주력 | 내성·주의 |
+| --- | --- | --- | --- |
+| ***E. coli* / 장내세균과** (Pseudomonadota) | **활성 있음 (S)** 이나 **내성 급증** | 3세대 cephalosporin·pip-tazo·carbapenem | **ESBL·FQ 내성** 지역별 20~40%+ → 경험적 cipro 단독 신뢰 하락. **ESBL이면 carbapenem** |
+| ***Klebsiella*** (Pseudomonadota) | 활성 있으나 내성 흔함 | 3세대 ceph·carbapenem | ESBL·**CRE(carbapenem 내성)** 확산 |
+| ***Pseudomonas aeruginosa*** (Pseudomonadota, 장 소수) | **활성 (S), 항녹농 FQ** | cipro/levo·ceftazidime·pip-tazo·carbapenem | FQ는 **항녹농 활성 있는 몇 안 되는 경구약** → 임상 가치 큼. 단 내성 발현 빠름 |
+| ***Proteus*, *Enterobacter*, *Citrobacter*, *Serratia*** (Pseudomonadota) | 활성 (S), 가변 | 3세대 ceph·carbapenem·pip-tazo | *Enterobacter*·*Serratia*는 **AmpC** 유도 내성 주의 |
+| **장구균 *Enterococcus faecalis*** (Bacillota) | **가변·신뢰 낮음** (I/R), 1차 아님 | ampicillin (faecalis 감수) | UTI 외엔 FQ 권장 안 함 |
+| **장구균 *E. faecium* / VRE** (Bacillota) | **내성 (R)** | linezolid·daptomycin (VRE) | ampicillin·vancomycin 흔히 R |
+| **연쇄상구균 (*S. gallolyticus*)** (Bacillota) | 활성 가변, 1차 아님 | penicillin | FQ는 보조 |
+| ***Lactobacillus*** (Bacillota, 회색지대) | 흔히 내성 (R) | (감염 드묾) penicillin·clindamycin | FQ 대체로 무효 |
+| ***Staphylococcus*** (Bacillota, 회색지대) | 활성 가변, **MRSA는 흔히 R** | (MSSA) cefazolin·nafcillin / (MRSA) vancomycin | FQ 단독은 내성 급속 발현 → 지양 |
+
+**핵심 임상 원칙 (통성혐기균)**
+- **Ciprofloxacin = 그람음성 통성혐기균(특히 장내세균과·*Pseudomonas*)의 전통적 주력**. 경구 생체이용률 높아 외래 UTI·복강내감염 경구 전환에 유용.
+- 단 **FQ 내성이 전 세계적으로 급증**(특히 *E. coli*) → **경험적 cipro 단독의 신뢰도 하락**, 지역 감수성 데이터·배양 결과에 따라 선택.
+- **cipro는 혐기 커버가 거의 없음** → 복강내감염처럼 혐기균이 섞이면 **metronidazole 병용 필수**("cipro + metronidazole"이 고전적 복강내감염 경구 조합).
+- **그람양성(장구균·포도상구균)엔 cipro 신뢰 낮음** → 장구균·MRSA엔 쓰지 않음.
+- **한 문장 요약**: cipro는 **"그람음성 호기/통성혐기균용"** 약. 혐기균(4대 분류)엔 R, 통성혐기 그람음성엔 S(단 내성 증가), 그람양성엔 부적합.
+
+### 한 줄 정리
+- 장은 **99% 절대 혐기균** 세상, 나머지 소수파가 **통성혐기균(장내세균과 E. coli·Klebsiella + 장구균)** 과 **호기내성(*Lactobacillus*)**.
+- 이들은 **4대 혐기 분류 밖**이고 **일반 호기 배양으로 검출**, **metronidazole 무효**.
+- 수는 적어도 **UTI·균혈증·심내막염·복강내감염의 실질적 주역** → 임상 비중은 큼.
+
+---
+
 ## 종합 요약: 혐기성 세균 항생제 감수성 한눈에 보기
 
 | 항생제                | GPAC | GPAB | GNAC |    GNAB    |
@@ -570,68 +632,6 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 | *metronidazole·amox 등 표준에 반응* | 절대혐기 VSC 생산균(red complex·*Fusobacterium*·*Solobacterium* 등) | 표준 혐기 커버로 해결 |
 
 *(모두 임상 관찰 + 문헌 종합에 기반한 감별 **가설**이며, 균 배양·확증 없이 단정하지 않는다.)*
-
----
-
-## 심화: 혐기균이 아니면서 장에 많은 세균들 — "통성혐기성" 소수파
-
-### 큰 그림: 장은 압도적으로 혐기균 세상
-- 대장 상재균의 **~99%는 절대 혐기균(obligate anaerobe)** — *Bacteroides*, *Bifidobacterium*, *Clostridium*, *Faecalibacterium*, *Eubacterium* 등.
-- 여기서 다루는 "혐기균이 아닌" 균들은 **수적으로는 1% 미만의 소수파**지만, **임상적으로는 요로감염·균혈증·복강내감염·기회감염의 주역** → 존재감이 큼.
-- 이들의 정확한 산소 분류는 대개 **절대 혐기 ✗ / 통성혐기성(facultative anaerobe)** 또는 **호기내성(aerotolerant)** → 산소 있어도 자라고, 없어도 발효로 버팀.
-
-### 핵심 그룹 (통성혐기성 = facultative anaerobe)
-| 균 | 계통(phylum) | 그람 | 형태 | 장 내 위치·의의 | 대표 감염 |
-| --- | --- | --- | --- | --- | --- |
-| **대장균 (*Escherichia coli*)** | Pseudomonadota | 음성 | 간균 | 장내세균과의 대표. 정상 상재균이나 병원성주 다양 | UTI(최다 원인), 균혈증, 신생아 수막염, 장염(ETEC/EHEC 등) |
-| ***Klebsiella* (K. pneumoniae 등)** | Pseudomonadota | 음성 | 간균 | 장내세균과 | 폐렴, UTI, 균혈증(다제내성 우려) |
-| ***Enterobacter*, *Citrobacter*, *Proteus*, *Serratia*, *Morganella*** | Pseudomonadota | 음성 | 간균 | 장내세균과 | 원내감염, UTI, 복강내감염 |
-| **장구균 (*Enterococcus faecalis*, *E. faecium*)** | **Bacillota** | **양성** | 알균(쌍/사슬) | 장 상재 그람양성 통성혐기균의 대표 | UTI, 심내막염, 균혈증, **VRE(반코마이신 내성)** |
-| **연쇄상구균 일부 (*Streptococcus* group, *S. gallolyticus/bovis*)** | **Bacillota** | 양성 | 알균 | 장 상재 | 심내막염(대장암과 연관 보고) |
-
-### 산소 요구가 애매한 "회색지대" 균
-| 균                            | 계통(phylum)    | 분류                      | 장 내 의의                    |
-| ---------------------------- | ------------- | ----------------------- | ------------------------- |
-| **유산균 (*Lactobacillus*)**    | **Bacillota** | **호기내성/미세호기성**, 대체로 발효성 | 정상 상재. 절대 혐기균 아님          |
-| **포도상구균 (*Staphylococcus*)** | **Bacillota** | 통성혐기성                   | 장엔 소수. 주로 피부·비강. 식중독(장독소) |
-
-### "혐기균 vs 통성혐기균" 구분 포인트 (앞 4대 분류와 연결)
-- **절대 혐기균(obligate anaerobe)**: 산소 = 독. *Bacteroides*, *Clostridium*, *Fusobacterium* 등 → **본 문서 4대 분류(GPAC/GPAB/GNAC/GNAB)의 대상**.
-- **통성혐기균(facultative anaerobe)**: 산소 있으면 호흡, 없으면 발효 → **위 표의 장내세균과·장구균** → **4대 분류 밖**. 배양이 쉽고(일반 호기 배지) 흔히 분리됨.
-- **미세호기성(microaerophilic)**: 낮은 산소 농도 선호 → *Campylobacter*, *Helicobacter*, 그리고 앞서 다룬 *Aggregatibacter*.
-- **호기내성(aerotolerant)**: 산소로 호흡은 못 하지만 견딤 → *Lactobacillus*, 그리고 예외적으로 *Actinomyces*.
-
-### 왜 이 구분이 임상에서 중요한가
-- **배양**: 통성혐기균은 일반 호기 혈액배지에서 잘 자람 → 절대 혐기균처럼 특수 혐기 배양이 불필요. 임상검체에서 빠르게 검출.
-- **경험적 항생제**: 복강내감염처럼 "혐기균 + 통성혐기균"이 섞인 다균성 감염에서는 **양쪽을 다 커버**해야 함 → 예) 통성혐기 그람음성(장내세균과)엔 3세대 cephalosporin/carbapenem, 절대 혐기균엔 metronidazole → 그래서 **"cephalosporin + metronidazole"** 또는 **단독 광범위(piperacillin-tazobactam, carbapenem)** 병용 논리가 성립.
-- **metronidazole은 통성혐기균에 무효**(산소 존재 시 nitro 환원 안 됨) → 장내세균과·장구균 감염엔 쓰지 않음. 이는 앞 *Actinomyces*·*Aggregatibacter*에서 본 논리의 연장.
-
-### 항생제 감수성 — 4대 분류 밖 통성혐기균 (ciprofloxacin의 진짜 무대)
-혐기 4대 분류에선 cipro가 "부적합"이었지만, **여기 통성혐기 그람음성균에서는 cipro가 전통적 주력약**이다. 대비가 핵심.
-
-| 균 (계통) | Ciprofloxacin | 1차/주력 | 내성·주의 |
-| --- | --- | --- | --- |
-| ***E. coli* / 장내세균과** (Pseudomonadota) | **활성 있음 (S)** 이나 **내성 급증** | 3세대 cephalosporin·pip-tazo·carbapenem | **ESBL·FQ 내성** 지역별 20~40%+ → 경험적 cipro 단독 신뢰 하락. **ESBL이면 carbapenem** |
-| ***Klebsiella*** (Pseudomonadota) | 활성 있으나 내성 흔함 | 3세대 ceph·carbapenem | ESBL·**CRE(carbapenem 내성)** 확산 |
-| ***Pseudomonas aeruginosa*** (Pseudomonadota, 장 소수) | **활성 (S), 항녹농 FQ** | cipro/levo·ceftazidime·pip-tazo·carbapenem | FQ는 **항녹농 활성 있는 몇 안 되는 경구약** → 임상 가치 큼. 단 내성 발현 빠름 |
-| ***Proteus*, *Enterobacter*, *Citrobacter*, *Serratia*** (Pseudomonadota) | 활성 (S), 가변 | 3세대 ceph·carbapenem·pip-tazo | *Enterobacter*·*Serratia*는 **AmpC** 유도 내성 주의 |
-| **장구균 *Enterococcus faecalis*** (Bacillota) | **가변·신뢰 낮음** (I/R), 1차 아님 | ampicillin (faecalis 감수) | UTI 외엔 FQ 권장 안 함 |
-| **장구균 *E. faecium* / VRE** (Bacillota) | **내성 (R)** | linezolid·daptomycin (VRE) | ampicillin·vancomycin 흔히 R |
-| **연쇄상구균 (*S. gallolyticus*)** (Bacillota) | 활성 가변, 1차 아님 | penicillin | FQ는 보조 |
-| ***Lactobacillus*** (Bacillota, 회색지대) | 흔히 내성 (R) | (감염 드묾) penicillin·clindamycin | FQ 대체로 무효 |
-| ***Staphylococcus*** (Bacillota, 회색지대) | 활성 가변, **MRSA는 흔히 R** | (MSSA) cefazolin·nafcillin / (MRSA) vancomycin | FQ 단독은 내성 급속 발현 → 지양 |
-
-**핵심 임상 원칙 (통성혐기균)**
-- **Ciprofloxacin = 그람음성 통성혐기균(특히 장내세균과·*Pseudomonas*)의 전통적 주력**. 경구 생체이용률 높아 외래 UTI·복강내감염 경구 전환에 유용.
-- 단 **FQ 내성이 전 세계적으로 급증**(특히 *E. coli*) → **경험적 cipro 단독의 신뢰도 하락**, 지역 감수성 데이터·배양 결과에 따라 선택.
-- **cipro는 혐기 커버가 거의 없음** → 복강내감염처럼 혐기균이 섞이면 **metronidazole 병용 필수**("cipro + metronidazole"이 고전적 복강내감염 경구 조합).
-- **그람양성(장구균·포도상구균)엔 cipro 신뢰 낮음** → 장구균·MRSA엔 쓰지 않음.
-- **한 문장 요약**: cipro는 **"그람음성 호기/통성혐기균용"** 약. 혐기균(4대 분류)엔 R, 통성혐기 그람음성엔 S(단 내성 증가), 그람양성엔 부적합.
-
-### 한 줄 정리
-- 장은 **99% 절대 혐기균** 세상, 나머지 소수파가 **통성혐기균(장내세균과 E. coli·Klebsiella + 장구균)** 과 **호기내성(*Lactobacillus*)**.
-- 이들은 **4대 혐기 분류 밖**이고 **일반 호기 배양으로 검출**, **metronidazole 무효**.
-- 수는 적어도 **UTI·균혈증·심내막염·복강내감염의 실질적 주역** → 임상 비중은 큼.
 
 ---
 
