@@ -138,7 +138,7 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 ※ 참고: *C. tetani* → 파상풍(tetanus)
 
 ### 오염 가능 식품 예 5가지
-1. 재가열 부실한 육류·그레이비 (*C. perfringens*)
+1. 재가열 부실한 육류·그레이비, 대량조리 국·탕(육개장·곰탕)·카레·찜조림류(갈비찜·찜닭) (*C. perfringens*)
 2. 가정용 통조림·병조림 (*C. botulinum*)
 3. 훈제·염장 생선 (*C. botulinum type E*)
 4. 진공포장 저산소 식품
