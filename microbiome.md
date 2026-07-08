@@ -546,18 +546,18 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 - **감수성**: *Campylobacter*속은 **macrolide(azithromycin·clarithromycin)에 탁월한 활성**(erythromycin이 전통적 1차). 반면 **fluoroquinolone(cipro) 내성이 속 전체에서 증가 추세**. 치주 분리주는 broth상 tetracycline·metronidazole·penicillin·cipro에도 감수성으로 보고되나(planktonic), **침습·심부 biofilm 상태에서는 Aa와 동일 논리로 macrolide가 유리**.
 - **요점**: Aa 가설의 자연스러운 확장. "macrolide만 듣는" 난치성 구취의 원인균 후보로 Aa와 ***C. rectus*를 함께** 놓는 것이 합리적.
 
-### Doxycycline만 듣는 경우 — 감별 (숙주조절 &gt; tetracycline 감수 균주 &gt; *Mycoplasma*)
+### Doxycycline만 듣는 경우 — 감별
 
-드물게 doxycycline에만 반응하는 환자군. **"doxy-only"는 특정 종을 가장 약하게 가리키는 패턴**이므로(clari-only보다 균 특이성이 낮다) 유력순으로 셋을 함께 놓는다.
+드물게 doxycycline에만 반응하는 환자군. **"doxy-only"는 특정 종을 가장 약하게 가리키는 패턴**이므로(clari-only보다 균 특이성이 낮다) 가능성 있는 셋을 함께 놓는다.
 
-1. **(최유력) doxycycline 자체의 숙주조절(항-MMP) 효과 — 균과 무관.**
+1. **doxycycline 자체의 숙주조절(항-MMP) 효과 — 균과 무관.**
    - Tetracycline계는 항균과 **독립된** 기전으로 **MMP(collagenase·MMP-8)를 억제**한다(항균·항-MMP 활성이 분자의 서로 다른 부위). FDA 승인 저용량 doxycycline(20 mg, Periostat)은 **항균이 아니라 숙주 염증조절 목적**으로 치주염에 쓴다.
    - 즉 "doxy만 듣는다"는 균을 죽여서가 아니라 **조직파괴·염증을 눌러 VSC 생산균이 번성할 환경 자체를 줄여서**일 수 있다. 나머지 4제(metro·amox·cipro·clari)엔 이 항-MMP 효과가 없다는 점이 이 가설을 특히 강하게 만든다.
-2. **(차순위) tetracycline 감수 균주 — Aa 자신일 수도.**
+2. **tetracycline 감수 균주 — Aa 자신일 수도.**
    - Doxycycline은 치은열구액(GCF)에서 혈청보다 높은 농도(~6 µg/mL, 치주 병원균 MIC90 상회)에 도달하고 지질친화성이 높아 세포·biofilm 침투가 좋다.
    - **국소침습성 치주염(Aa)의 역사적 1차약이 tetracycline**이었다(Aa가 잘 듣는다). "doxy만 듣는" 환자는 **다른 약엔 내성이나 tetracycline엔 감수인 균주**일 수 있고, 그 균이 mycoplasma가 아니라 **macrolide 내성·tetracycline 감수 Aa strain**일 수도 있다.
    - 핵심: **어떤 약이 듣느냐는 "종(species)"보다 "그 균주의 내성 프로파일"에 더 좌우된다** — 같은 Aa도 strain에 따라 clari-반응자/doxy-반응자로 갈린다.
-3. **(가설) *Mycoplasma salivarium*.**
+3. ***Mycoplasma salivarium*.**
    - 구강 상재 mycoplasma로 치태·치은열구에 서식하며 치주질환과 연관(염증세포 침윤 촉진). 세포벽이 없어 **β-lactam·metronidazole 본질 무효**, 구강 분리주는 **macrolide(erythromycin, 23S rRNA 2057A)·fluoroquinolone(levofloxacin 25.7%) 내성이 흔하고 tetracycline은 감수** → "doxy만 듣는" 거울상 프로파일에 부합.
    - **단 약점 셋**: ① **직접 VSC 생산균이 아니다** — 대사는 glucose 발효 + arginine→**암모니아**이고 황화합물 생산 근거가 없어, 관여해도 Aa처럼 **간접·상류** 기여자에 가깝다. ② **일반 배양에 안 잡혀 확증이 사실상 불가**(특수 배지 필요). ③ tetracycline 내성도 ~34%에 존재해 절대적이지 않음.
 
@@ -566,7 +566,7 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 | 반응 약제 | 시사 원인균(가설) | 핵심 기전 |
 | --- | --- | --- |
 | **clarithromycin(macrolide)만** | *A. actinomycetemcomitans*, *Campylobacter rectus* | 침습성 세포내 은신 + macrolide 세포내 초농축·항염 |
-| **doxycycline만** | doxy의 항-MMP 숙주조절(최유력) &gt; tetracycline 감수 균주(Aa 등) &gt; *M. salivarium* | 균 특이성 약함 — 항염(항-MMP) 효과 + tetracycline 고농도 GCF·strain 감수성이 주 설명 |
+| **doxycycline만** | doxy의 항-MMP 숙주조절 · tetracycline 감수 균주(Aa 등) · *M. salivarium* | 균 특이성 약함 — 항염(항-MMP) 효과 + tetracycline 고농도 GCF·strain 감수성이 주 설명 |
 | *metronidazole·amox 등 표준에 반응* | 절대혐기 VSC 생산균(red complex·*Fusobacterium*·*Solobacterium* 등) | 표준 혐기 커버로 해결 |
 
 *(모두 임상 관찰 + 문헌 종합에 기반한 감별 **가설**이며, 균 배양·확증 없이 단정하지 않는다.)*
