@@ -294,6 +294,15 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 | **유산균 (*Lactobacillus*)**    | **Bacillota** | **호기내성/미세호기성**, 대체로 발효성 | 정상 상재. 절대 혐기균 아님          |
 | **포도상구균 (*Staphylococcus*)** | **Bacillota** | 통성혐기성                   | 장엔 소수. 주로 피부·비강. 식중독(장독소) |
 
+> **⚠️ *Lactobacillus*의 병원성 — "유산균은 무해"의 예외**
+>
+> 유산균은 병원성이 매우 낮은 상재균·프로바이오틱(GRAS)이지만, **무균 부위(혈액·심내막·CSF)에서 분리되면 기회감염균**이 된다.
+>
+> - **대표 감염**: 균혈증·감염성 심내막염(특히 *L. rhamnosus*·*L. casei*).
+> - **위험군**: 중증 기저질환·면역억제(당뇨·암·화학요법·장기이식·HIV·스테로이드), ICU·중심정맥관(CVC), 구조적 심질환/인공판막, 비대상성 간경변, 불량한 구강위생, **과도한 프로바이오틱 섭취**. (단, 면역억제 환자에서 프로바이오틱이 기회감염을 늘린다는 명확한 근거는 없다.)
+> - **⚠️ 치료 핵심 — 내재적 vancomycin 내성**: 대부분 *Lactobacillus*는 **vancomycin에 본질 내성**(한 리뷰에서 감수 22.5%뿐)이라 "그람양성이니 vancomycin"으로 접근하면 실패한다. **1차 = penicillin/ampicillin(± gentamicin 상승작용)**, 대안 clindamycin·moxifloxacin·daptomycin. **중심정맥관 제거 등 source control** 병행.
+> - 앞 표의 "감염 드묾" 표기와 연결 — 드물지만 발생 시 **vancomycin 함정**을 기억.
+
 ### "혐기균 vs 통성혐기균" 구분 포인트 (앞 4대 분류와 연결)
 - **절대 혐기균(obligate anaerobe)**: 산소 = 독. *Bacteroides*, *Clostridium*, *Fusobacterium* 등 → **본 문서 4대 분류(GPAC/GPAB/GNAC/GNAB)의 대상**.
 - **통성혐기균(facultative anaerobe)**: 산소 있으면 호흡, 없으면 발효 → **위 표의 장내세균과·장구균** → **4대 분류 밖**. 배양이 쉽고(일반 호기 배지) 흔히 분리됨.
