@@ -326,7 +326,6 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 > - **위험군**: 중증 기저질환·면역억제(당뇨·암·화학요법·장기이식·HIV·스테로이드), ICU·중심정맥관(CVC), 구조적 심질환/인공판막, 비대상성 간경변, 불량한 구강위생, **과도한 프로바이오틱 섭취**.
 > - **⚠️ 치료 핵심 — 내재적 vancomycin 내성**: 대부분 *Lactobacillus*는 **vancomycin에 본질 내성**(한 리뷰에서 감수 22.5%뿐). **1차 = penicillin/ampicillin(± gentamicin 상승작용)**, 대안 clindamycin·moxifloxacin·daptomycin. **중심정맥관 제거 등 source control** 병행.
 > - **⚠️ D-lactic acidosis (비감염성 합병증)**: **단장증후군(short bowel)·비만수술 후** 등 탄수화물 흡수장애가 있으면 대장에서 *Lactobacillus* 등이 **D-lactate**를 과발효 → 고음이온차 대사성 산증 + **발작성 신경증상**(혼돈·실조·어눌한 말, "취한 듯"). ⚠️ 일반 lactate 검사는 **L-lactate만 측정**해 정상으로 나올 수 있어 **D-lactate 특이검사가 필요**(진단 함정).
-> - 앞 표의 "감염 드묾" 표기와 연결 — 드물지만 발생 시 **vancomycin 함정**을 기억.
 
 ### "혐기균 vs 통성혐기균" 구분 포인트 (앞 4대 분류와 연결)
 - **절대 혐기균(obligate anaerobe)**: 산소 = 독. *Bacteroides*, *Clostridium*, *Fusobacterium* 등 → **본 문서 4대 분류(GPAC/GPAB/GNAC/GNAB)의 대상**.
