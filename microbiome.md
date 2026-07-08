@@ -517,6 +517,63 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 
 ---
 
+## 임상 심화: "특정 항생제에만 반응하는" 난치성 구취 — 원인균 감별
+
+*(임상 관찰 기반 가설. 표준 기계적 치료·구강위생에 더해 통상적 항생제(doxycycline·metronidazole·amoxicillin-clavulanate·ciprofloxacin)에 반응하지 않던 구취 환자가 특정 약제에만 반응하는 경우가 있다. "무엇이 듣는가"는 "어떤 균이 어디에 숨어 있는가"를 역추적하는 단서다. H. pylori 등 위 유래 원인은 별도 검사로 배제한 전제.)*
+
+### 왜 clarithromycin만 듣는가 — 세포내 은신 + macrolide 약동학
+
+관찰: doxycycline·metronidazole·amoxicillin-clavulanate·ciprofloxacin이 모두 실패한 환자가 clarithromycin에 반응하는 경우가 적지 않다.
+
+- **다른 약이 실패하는 이유**
+  - *metronidazole*: 원인균이 절대혐기균이 아니라 **미세호기·capnophilic 그람음성**이면 metronidazole은 본질적으로 무효(*A. actinomycetemcomitans*는 임상 분리주 사실상 전부 내성).
+  - *amoxicillin-clavulanate*: 균이 **상피세포 안으로 침입**해 숨으면 β-lactam은 세포막 투과가 나빠 **세포내 균에 못 닿는다** → in vitro 감수성과 무관하게 실패.
+  - *ciprofloxacin*: broth상 감수성이어도 **biofilm·세포내·심부 치주낭**에 있으면 도달·지속농도가 부족할 수 있다.
+- **macrolide가 성공하는 이유**
+  - **세포내 초농축**: clarithromycin은 치은 섬유아세포·상피세포 안에 능동수송으로 축적(배지 2 µg/mL → 섬유아세포 내 ~76 µg/mL, 포화·염증 시 140 µg/mL 초과). 섬유아세포가 저장고로 서방출 → β-lactam이 못 닿는 세포내 저장고를 타격.
+  - **조직 > 혈청, 염증조직에서 더 높음**: 잇몸 clarithromycin 2.4~3.0 µg/g vs 혈청 0.5 µg/mL. 약이 염증(=균이 사는 곳)을 따라간다.
+  - **In vitro MIC가 실제 효능을 과소평가**: 세포내 실측농도(>100 µg/mL)가 broth 내성 수치를 압도. **감수성 검사에서 "내성"이 나와도 세포내 균에는 임상적으로 들을 수 있다** — 결정적 뉘앙스.
+  - **항염·항biofilm·탐식 강화**: NF-κB·사이토카인 억제, biofilm 투과, 호중구 탐식살균 강화 → 치주낭·설태 biofilm 생태 자체를 누른다.
+- **상류 driver 가설과의 연결**: *A. actinomycetemcomitans*는 직접 악취균이 아니라 치주낭을 파괴·혐기화해 **진짜 VSC 생산균이 번성할 환경을 만드는 상류 병원체**다. clarithromycin이 세포내 상류 driver를 제거 + 염증을 누르면 하류 VSC 생산 생태가 무너져 구취가 해소된다 → **악취를 안 만드는 균을 잡는 약이 악취를 낫게 한다**는 역설이 설명됨.
+- **단서/한계**: 반응 환자가 전부 특정 단일균 보유라는 보장은 없다. macrolide의 광범위 세포내 효과·항염 효과 자체가 "균 특이성 없이" 생태를 눌러 듣는 것일 수도 있다. Aa-상피 살균 직접근거는 **azithromycin**이 가장 두꺼워, clarithromycin 반응이 시원찮으면 azithromycin 전환을 고려할 근거가 된다.
+
+### *Campylobacter rectus* — Aa와 같은 "침습성 구강 그람음성"
+
+*A. actinomycetemcomitans* 외에 같은 표현형(침습성 + macrolide 반응)을 보일 수 있는 대표 후보.
+
+- **정체**: 구강 전용 그람음성·운동성·미세호기/혐기 간균. 치주염 병소에서 흔함(대규모 코호트에서 치주염 환자의 ~80%에서 검출). 설태 미생물총 구취 연구에서도 *Campylobacter*가 유의하게 증가하는 속으로 보고(본 문서 상단 역학 표지와 일치).
+- **침습성**: *Campylobacter jejuni*의 세포침입 인자 **ciaB(Campylobacter invasion antigen B) 유전자를 보유** → 상피세포 침입 능력. 게다가 **편모 운동성으로 심부 치주낭까지 도달** → 기계적 치료·비침투 항생제로 제거가 어렵다.
+- **감수성**: *Campylobacter*속은 **macrolide(azithromycin·clarithromycin)에 탁월한 활성**(erythromycin이 전통적 1차). 반면 **fluoroquinolone(cipro) 내성이 속 전체에서 증가 추세**. 치주 분리주는 broth상 tetracycline·metronidazole·penicillin·cipro에도 감수성으로 보고되나(planktonic), **침습·심부 biofilm 상태에서는 Aa와 동일 논리로 macrolide가 유리**.
+- **요점**: Aa 가설의 자연스러운 확장. "macrolide만 듣는" 난치성 구취의 원인균 후보로 Aa와 ***C. rectus*를 함께** 놓는 것이 합리적.
+
+### Doxycycline만 듣는 경우 — *Mycoplasma*(특히 *M. salivarium*) 가설
+
+드물게 doxycycline에만 반응하는 환자군은 **거울상 프로파일**로 설명될 수 있다.
+
+- **정체**: *Mycoplasma salivarium*은 구강 상재 mycoplasma로 **치태·치은열구에 서식**하며 치주질환과 연관(염증세포 침윤 촉진). **세포벽이 없다.**
+- **왜 doxy만 듣나 (프로파일 일치)**
+  - **β-lactam(amox/clav) 무효**: 세포벽이 없어 **본질 내성**.
+  - **metronidazole 무효**: mycoplasma에 활성 없음.
+  - **macrolide 흔히 실패**: 구강 *M. salivarium* 분리주에서 erythromycin 내성이 흔함(23S rRNA 2057A) → clarithromycin이 안 들을 수 있다.
+  - **fluoroquinolone 흔히 실패**: 같은 연구에서 levofloxacin 내성이 최다(25.7%).
+  - **tetracycline(doxycycline) 감수 유지**: mycoplasma는 대체로 tetracycline 감수 → **doxycycline이 유일하게 듣는** 그림이 성립.
+- **주의·감별**
+  - tetracycline 내성도 존재(분리주의 ~34%가 clindamycin/tetracycline/levofloxacin 중 하나 이상 내성) → 절대적이지 않음.
+  - mycoplasma는 **일반 배양에서 잘 안 잡힘**(특수 배지 필요) → 놓치기 쉬움. "doxy만 듣는다"는 임상 반응 자체가 간접 단서.
+  - **교란요인**: doxycycline은 항균 외에 **MMP(콜라게나제) 억제·숙주 조절** 효과가 있어(치주염에서 sub-antimicrobial-dose doxycycline 사용) "doxy 반응"이 균 근절이 아니라 **숙주 염증조절**일 수도 있다 → mycoplasma 확증이 아닌 **가설**로 취급.
+
+### 감별 요약 — "무엇이 듣는가"로 역추적
+
+| 반응 약제 | 시사 원인균(가설) | 핵심 기전 |
+| --- | --- | --- |
+| **clarithromycin(macrolide)만** | *A. actinomycetemcomitans*, *Campylobacter rectus* | 침습성 세포내 은신 + macrolide 세포내 초농축·항염 |
+| **doxycycline만** | *Mycoplasma salivarium* (또는 doxy의 숙주 MMP 억제) | 세포벽 없음(β-lactam·metro 무효) + macrolide/FQ 내성 흔함, tetracycline 감수 |
+| *metronidazole·amox 등 표준에 반응* | 절대혐기 VSC 생산균(red complex·*Fusobacterium*·*Solobacterium* 등) | 표준 혐기 커버로 해결 |
+
+*(모두 임상 관찰 + 문헌 종합에 기반한 감별 **가설**이며, 균 배양·확증 없이 단정하지 않는다.)*
+
+---
+
 ## 심화: 혐기균이 아니면서 장에 많은 세균들 — "통성혐기성" 소수파
 
 ### 큰 그림: 장은 압도적으로 혐기균 세상
