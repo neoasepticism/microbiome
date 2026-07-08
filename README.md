@@ -8,7 +8,7 @@ A clinical reference that classifies anaerobic bacteria into the four major grou
 |------|----------|-------------|
 | [`index.html`](index.html) | Korean | Full text (Korean edition) |
 | [`index-en.html`](index-en.html) | English | Full text (English edition) |
-| [`20260707-Anaerobic-bacteria-4class-diseases-foods-antibiotics.md`](20260707-Anaerobic-bacteria-4class-diseases-foods-antibiotics.md) | Korean | Original Markdown source |
+| [`microbiome.md`](microbiome.md) | Korean | Original Markdown source |
 
 Use the **KO / EN toggle** at the top of either HTML page to switch languages. No build step required — just open the file in a browser.
 

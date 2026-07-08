@@ -65,11 +65,14 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ### 대표 세균 5종
 *(계통: 전부 **Bacillota**(구 Firmicutes) — Clostridia/Tissierellia 강)*
-1. *Peptostreptococcus anaerobius* — Bacillota
-2. *Finegoldia magna* (구 *Peptostreptococcus magnus*) — Bacillota
-3. *Parvimonas micra* (구 *Peptostreptococcus micros*) — Bacillota
-4. *Peptoniphilus asaccharolyticus* — Bacillota
-5. *Anaerococcus prevotii* — Bacillota
+
+| # | 대표 세균 | 계통 |
+|---|-----------|------|
+| 1 | *Peptostreptococcus anaerobius* | Bacillota |
+| 2 | *Finegoldia magna* (구 *Peptostreptococcus magnus*) | Bacillota |
+| 3 | *Parvimonas micra* (구 *Peptostreptococcus micros*) | Bacillota |
+| 4 | *Peptoniphilus asaccharolyticus* | Bacillota |
+| 5 | *Anaerococcus prevotii* | Bacillota |
 
 ### 주요 관련 질병 5가지
 1. 만성 부비동염·중이염 등 두경부 감염
@@ -107,11 +110,14 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ### 대표 세균 5종
 *(계통: *Clostridium* 3종 = **Bacillota** / *Actinomyces*·*Cutibacterium* = **Actinomycetota**(구 Actinobacteria))*
-1. *Clostridium perfringens* — Bacillota
-2. *Clostridioides (Clostridium) difficile* — Bacillota
-3. *Clostridium botulinum* — Bacillota
-4. *Actinomyces israelii* — **Actinomycetota**
-5. *Cutibacterium (Propionibacterium) acnes* — **Actinomycetota**
+
+| # | 대표 세균 | 계통 |
+|---|-----------|------|
+| 1 | *Clostridium perfringens* | Bacillota |
+| 2 | *Clostridioides (Clostridium) difficile* | Bacillota |
+| 3 | *Clostridium botulinum* | Bacillota |
+| 4 | *Actinomyces israelii* | **Actinomycetota** |
+| 5 | *Cutibacterium (Propionibacterium) acnes* | **Actinomycetota** |
 
 ### 주요 관련 질병 5가지
 1. 가스괴저(gas gangrene)·식중독 (*C. perfringens*)
@@ -149,11 +155,14 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ### 대표 세균 5종
 *(계통: **전부 Bacillota**(구 Firmicutes) — Negativicutes 강. ⚠️ 그람음성 염색이지만 진화적으로는 그람양성 계통 소속)*
-1. *Veillonella parvula* — Bacillota (Negativicutes)
-2. *Veillonella dispar* — Bacillota (Negativicutes)
-3. *Acidaminococcus fermentans* — Bacillota (Negativicutes)
-4. *Megasphaera elsdenii* — Bacillota (Negativicutes)
-5. *Anaeroglobus geminatus* — Bacillota (Negativicutes)
+
+| # | 대표 세균 | 계통 |
+|---|-----------|------|
+| 1 | *Veillonella parvula* | Bacillota (Negativicutes) |
+| 2 | *Veillonella dispar* | Bacillota (Negativicutes) |
+| 3 | *Acidaminococcus fermentans* | Bacillota (Negativicutes) |
+| 4 | *Megasphaera elsdenii* | Bacillota (Negativicutes) |
+| 5 | *Anaeroglobus geminatus* | Bacillota (Negativicutes) |
 
 ### 주요 관련 질병 5가지
 1. 치주염·치성 감염 및 구강 농양
@@ -190,11 +199,14 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 ### 대표 세균 5종
 *(계통: *Bacteroides*·*Prevotella*·*Porphyromonas* = **Bacteroidota**(구 Bacteroidetes) / *Fusobacterium* 2종 = **Fusobacteriota**(구 Fusobacteria))*
-1. *Bacteroides fragilis* — **Bacteroidota**
-2. *Prevotella melaninogenica* — **Bacteroidota**
-3. *Porphyromonas gingivalis* — **Bacteroidota**
-4. *Fusobacterium nucleatum* — **Fusobacteriota**
-5. *Fusobacterium necrophorum* — **Fusobacteriota**
+
+| # | 대표 세균 | 계통 |
+|---|-----------|------|
+| 1 | *Bacteroides fragilis* | **Bacteroidota** |
+| 2 | *Prevotella melaninogenica* | **Bacteroidota** |
+| 3 | *Porphyromonas gingivalis* | **Bacteroidota** |
+| 4 | *Fusobacterium nucleatum* | **Fusobacteriota** |
+| 5 | *Fusobacterium necrophorum* | **Fusobacteriota** |
 
 > **+ *Desulfovibrio* spp. (황산염환원균, SRB)** — 그람음성·절대혐기·곡간균이므로 **GNAB에 속한다**. 다만 계통은 위 두 문과 다른 **Thermodesulfobacteriota**(구 Proteobacteria의 Deltaproteobacteria)이고, 병원성 기전도 아미노산 분해가 아니라 **이화적 황산염 환원(SO₄²⁻→H₂S)** 이라 임상에서 흔히 다루는 GNAB 3속(*Bacteroides*·*Prevotella*·*Fusobacterium*)과는 별개로 취급된다. 장·치주낭·설태에 서식하며 H₂S 생성으로 구취·장 점막 손상에 관여(*Bilophila wadsworthia*와 동일 문).
 
@@ -467,7 +479,6 @@ metronidazole은 엄격 혐기 대사(nitro기 환원)로 활성화되는 전구
 → **한 줄 요약:** Aa는 구취를 *직접 뿜는* 균이 아니라, 치주낭을 파괴·혐기화하여 *진짜 VSC 생산균이 번성할 환경을 만드는* 상류 병원체다. 그래서 Aa가 많은 사람(특히 침습성 치주염 환자)의 설태·치주낭에서 VSC와 구취가 동반 상승한다.
 
 ### 항생제 감수성 — clarithromycin/macrolide는 "조건부 효과"
-사용자 지적대로 **macrolide가 효과가 있는 맥락이 분명히 있으나, 뉘앙스가 중요**하다.
 
 - **Macrolide(azithromycin·clarithromycin)의 강점 = 세포내(intracellular) 침습균 사멸.**
   - *A. actinomycetemcomitans*는 치은 상피·조직 안으로 **침습(invasion)**하는데, azithromycin은 여러 포유류 세포에 잘 **축적**되어 **조직·세포 내부에 숨은 균까지 죽인다**(*Azithromycin Kills Invasive A. actinomycetemcomitans* 연구). β-lactam이 못 닿는 세포내 균에 대한 이점.
@@ -625,8 +636,7 @@ VSC 파트에 열거된 8종의 감수성을 정리. **혐기균 대부분 metro
 - **red complex(*P. gingivalis*·*T. denticola*·*T. forsythia*) 치주염 표준 보조요법 = amoxicillin + metronidazole 병용**(scaling/root planing에 더해). 두 약의 상승효과로 치주낭 심부 균 근절률↑.
 - ***P. gingivalis*·*P. intermedia*는 β-lactamase(cepA 등) 생산주 존재** → **penicillin 단독 R, amoxicillin-clavulanate로 극복**.
 - ***Desulfovibrio*(SRB)**: 임상 감염(균혈증·복강내) 시 **metronidazole 감수** 보고가 다수이나 **표준 요법이 정립되지 않았고 배양·감수성 데이터가 제한적**. β-lactam 반응은 균주별 가변. → 감수성 검사 기반 치료 권장.
-- ***Solobacterium moorei***: 혐기 그람양성 간균으로 penicillin·metronidazole·clindamycin 대체로 감수. 다만 **구취 치료의 1차는 항생제가 아니라 혀 세정·기계적 치태 제거·구강위생**.
-- **공통**: 8종 전부 **ciprofloxacin 부적합(R)** — 혐기·그람양성 커버 빈약. 구취/치주염 치료에 FQ는 쓰지 않음(문서 상단 원칙과 일치).
+- ***Solobacterium moorei***: 혐기 그람양성 간균으로 penicillin·metronidazole·clindamycin 대체로 감수.
 - **비항생제 관리**: VSC 감소엔 **혀 클리너, CHX(클로르헥시딘)·CPC 함수, ZnCl₂ 함유 제품(아연이 황과 결합해 VSC 중화)**, 설태 관리가 실질적으로 중요.
 
 ---
@@ -810,6 +820,6 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ---
 
-*저자 — 가정의학과 의사 양준상*
+*저자 — 가정의학과 의사 양준상* · 문의 [drisland@naver.com](mailto:drisland@naver.com)
 
 © 2026 양준상. 이 문서의 저작권은 저자에게 있습니다. 저자의 사전 서면 동의 없이 무단 복제·배포·전재·상업적 이용을 금합니다. 인용 시 출처(저자·문서명)를 명시해 주십시오.
