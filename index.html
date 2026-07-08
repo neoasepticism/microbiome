@@ -2209,6 +2209,9 @@ tb.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 const sb=document.getElementById('sidebar'),mb=document.getElementById('mtoc');
 mb.onclick=()=>sb.classList.toggle('open');
 document.querySelectorAll('.toc-list a').forEach(a=>a.onclick=()=>sb.classList.remove('open'));
+// Overview link → scroll to the very top so the page title is visible
+const ovLink=document.querySelector('.toc-list a[href="#_1"]');
+if(ovLink)ovLink.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
 </script>
 </body>
 </html>
