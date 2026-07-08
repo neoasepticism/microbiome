@@ -30,7 +30,12 @@ a:hover{text-decoration:underline;}
 /* content */
 .content{flex:1;min-width:0;padding:0 8px;}
 .container{background:var(--card);border-radius:16px;box-shadow:0 2px 24px rgba(0,0,0,.06);overflow:hidden;margin:20px 12px;}
-.header{background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.header{position:relative;background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.lang-switch{position:absolute;top:16px;right:20px;display:flex;gap:2px;background:#fff;border:1px solid var(--accent);border-radius:20px;padding:3px;box-shadow:0 1px 5px rgba(0,0,0,.08);z-index:5;}
+.lang-switch a{font-size:12px;font-weight:800;padding:5px 13px;border-radius:16px;color:var(--accent);letter-spacing:.5px;transition:background .15s;}
+.lang-switch a:hover{background:#f3edd8;text-decoration:none;}
+.lang-switch a.active{background:var(--accent);color:#fff;}
+@media(max-width:600px){.lang-switch{top:12px;right:12px;}.header{padding-top:52px;}}
 .header h1{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px;line-height:1.4;}
 .header .tags{margin-top:6px;}
 .body-wrap{padding:8px 34px 40px;}
@@ -56,7 +61,8 @@ hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
 /* tables */
 .tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--border);}
 table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px;}
-.body-wrap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.body-wrap table{display:table;width:100%;}
+@media(max-width:600px){.body-wrap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}}
 th{background:#f3edd8;padding:11px 14px;text-align:left;font-weight:700;color:#5a4a10;
   border-bottom:2px solid var(--accent);white-space:nowrap;}
 td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
@@ -300,11 +306,12 @@ tbody tr:hover{background:#fffdf5;}
   <div class="content">
     <div class="container">
       <div class="header">
+        <div class="lang-switch"><a href="index.html">KO</a><a href="index-en.html" class="active">EN</a></div>
         <h1>Everything You Need to Know About the Microbiome</h1>
         <div class="tags"><span class="tag tag-blue">#bacteria</span> <span class="tag tag-blue">#gram-staining</span> <span class="tag tag-blue">#anaerobes</span> <span class="tag tag-blue">#antibiotics</span> <span class="tag tag-blue">#foodborne</span> <span class="tag tag-blue">#clinical-infection</span></div>
       </div>
       <div class="body-wrap">
-        <p><em>Author — Junsang Yang, Family Medicine physician</em></p>
+        <p><em>Author — June-sang Yang, Family Medicine physician</em></p>
 <h2 id="_1">Overview</h2>
 <p>A reference document that divides anaerobic bacteria into the <strong>four major classes GPAC / GPAB / GNAC / GNAB</strong> based on Gram stain + morphology (cocci/bacilli), and organizes each group's representative species, associated diseases, potentially contaminated foods, and antibiotic susceptibility.</p>
 <table>
@@ -312,29 +319,24 @@ tbody tr:hover{background:#fffdf5;}
 <tr>
 <th>Abbreviation</th>
 <th>Full name</th>
-<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>GPAC</strong></td>
 <td>Gram-Positive Anaerobic <strong>C</strong>occi</td>
-<td>Gram-positive anaerobic <strong>cocci</strong></td>
 </tr>
 <tr>
 <td><strong>GPAB</strong></td>
 <td>Gram-Positive Anaerobic <strong>B</strong>acilli</td>
-<td>Gram-positive anaerobic <strong>bacilli</strong></td>
 </tr>
 <tr>
 <td><strong>GNAC</strong></td>
 <td>Gram-Negative Anaerobic <strong>C</strong>occi</td>
-<td>Gram-negative anaerobic <strong>cocci</strong></td>
 </tr>
 <tr>
 <td><strong>GNAB</strong></td>
 <td>Gram-Negative Anaerobic <strong>B</strong>acilli</td>
-<td>Gram-negative anaerobic <strong>bacilli</strong></td>
 </tr>
 </tbody>
 </table>
@@ -443,12 +445,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="1-gpac">1. GPAC — Gram-Positive Anaerobic Cocci</h2>
 <h3 id="5">5 representative species</h3>
-<p><em>(Phylogeny: all </em><em>Bacillota</em><em> (formerly Firmicutes) — classes Clostridia/Tissierellia)</em>
-1. <em>Peptostreptococcus anaerobius</em> — Bacillota
-2. <em>Finegoldia magna</em> (formerly <em>Peptostreptococcus magnus</em>) — Bacillota
-3. <em>Parvimonas micra</em> (formerly <em>Peptostreptococcus micros</em>) — Bacillota
-4. <em>Peptoniphilus asaccharolyticus</em> — Bacillota
-5. <em>Anaerococcus prevotii</em> — Bacillota</p>
+<p><em>(Phylogeny: all Bacillota (formerly Firmicutes) — classes Clostridia/Tissierellia)</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>Representative species</th><th>Phylogeny</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Peptostreptococcus anaerobius</em></td><td>Bacillota</td></tr>
+<tr><td>2</td><td><em>Finegoldia magna</em> (formerly <em>Peptostreptococcus magnus</em>)</td><td>Bacillota</td></tr>
+<tr><td>3</td><td><em>Parvimonas micra</em> (formerly <em>Peptostreptococcus micros</em>)</td><td>Bacillota</td></tr>
+<tr><td>4</td><td><em>Peptoniphilus asaccharolyticus</em></td><td>Bacillota</td></tr>
+<tr><td>5</td><td><em>Anaerococcus prevotii</em></td><td>Bacillota</td></tr>
+</tbody>
+</table>
 <h3 id="5_1">5 major associated diseases</h3>
 <ol>
 <li>Head and neck infections such as chronic sinusitis and otitis media</li>
@@ -558,12 +567,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="2-gpab">2. GPAB — Gram-Positive Anaerobic Bacilli</h2>
 <h3 id="5_3">5 representative species</h3>
-<p><em>(Phylogeny: the 3 </em>Clostridium<em> species = </em><em>Bacillota</em><em> / </em>Actinomyces<em>·</em>Cutibacterium<em> = </em><em>Actinomycetota</em><em> (formerly Actinobacteria))</em>
-1. <em>Clostridium perfringens</em> — Bacillota
-2. <em>Clostridioides (Clostridium) difficile</em> — Bacillota
-3. <em>Clostridium botulinum</em> — Bacillota
-4. <em>Actinomyces israelii</em> — <strong>Actinomycetota</strong>
-5. <em>Cutibacterium (Propionibacterium) acnes</em> — <strong>Actinomycetota</strong></p>
+<p><em>(Phylogeny: the 3 Clostridium species = Bacillota / Actinomyces·Cutibacterium = Actinomycetota (formerly Actinobacteria))</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>Representative species</th><th>Phylogeny</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Clostridium perfringens</em></td><td>Bacillota</td></tr>
+<tr><td>2</td><td><em>Clostridioides (Clostridium) difficile</em></td><td>Bacillota</td></tr>
+<tr><td>3</td><td><em>Clostridium botulinum</em></td><td>Bacillota</td></tr>
+<tr><td>4</td><td><em>Actinomyces israelii</em></td><td><strong>Actinomycetota</strong></td></tr>
+<tr><td>5</td><td><em>Cutibacterium (Propionibacterium) acnes</em></td><td><strong>Actinomycetota</strong></td></tr>
+</tbody>
+</table>
 <h3 id="5_4">5 major associated diseases</h3>
 <ol>
 <li>Gas gangrene / food poisoning (<em>C. perfringens</em>)</li>
@@ -635,12 +651,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="3-gnac">3. GNAC — Gram-Negative Anaerobic Cocci</h2>
 <h3 id="5_6">5 representative species</h3>
-<p><em>(Phylogeny: </em><em>all Bacillota</em><em> (formerly Firmicutes) — class Negativicutes. ⚠️ They stain Gram-negative but evolutionarily belong to the Gram-positive lineage)</em>
-1. <em>Veillonella parvula</em> — Bacillota (Negativicutes)
-2. <em>Veillonella dispar</em> — Bacillota (Negativicutes)
-3. <em>Acidaminococcus fermentans</em> — Bacillota (Negativicutes)
-4. <em>Megasphaera elsdenii</em> — Bacillota (Negativicutes)
-5. <em>Anaeroglobus geminatus</em> — Bacillota (Negativicutes)</p>
+<p><em>(Phylogeny: all Bacillota (formerly Firmicutes) — class Negativicutes. ⚠️ They stain Gram-negative but evolutionarily belong to the Gram-positive lineage)</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>Representative species</th><th>Phylogeny</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Veillonella parvula</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>2</td><td><em>Veillonella dispar</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>3</td><td><em>Acidaminococcus fermentans</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>4</td><td><em>Megasphaera elsdenii</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>5</td><td><em>Anaeroglobus geminatus</em></td><td>Bacillota (Negativicutes)</td></tr>
+</tbody>
+</table>
 <h3 id="5_7">5 major associated diseases</h3>
 <ol>
 <li>Periodontitis, odontogenic infections, and oral abscess</li>
@@ -708,12 +731,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="4-gnab">4. GNAB — Gram-Negative Anaerobic Bacilli</h2>
 <h3 id="5_9">5 representative species</h3>
-<p><em>(Phylogeny: </em>Bacteroides<em>·</em>Prevotella<em>·</em>Porphyromonas<em> = </em><em>Bacteroidota</em><em> (formerly Bacteroidetes) / the 2 </em>Fusobacterium<em> species = </em><em>Fusobacteriota</em><em> (formerly Fusobacteria))</em>
-1. <em>Bacteroides fragilis</em> — <strong>Bacteroidota</strong>
-2. <em>Prevotella melaninogenica</em> — <strong>Bacteroidota</strong>
-3. <em>Porphyromonas gingivalis</em> — <strong>Bacteroidota</strong>
-4. <em>Fusobacterium nucleatum</em> — <strong>Fusobacteriota</strong>
-5. <em>Fusobacterium necrophorum</em> — <strong>Fusobacteriota</strong></p>
+<p><em>(Phylogeny: Bacteroides·Prevotella·Porphyromonas = Bacteroidota (formerly Bacteroidetes) / the 2 Fusobacterium species = Fusobacteriota (formerly Fusobacteria))</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>Representative species</th><th>Phylogeny</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Bacteroides fragilis</em></td><td><strong>Bacteroidota</strong></td></tr>
+<tr><td>2</td><td><em>Prevotella melaninogenica</em></td><td><strong>Bacteroidota</strong></td></tr>
+<tr><td>3</td><td><em>Porphyromonas gingivalis</em></td><td><strong>Bacteroidota</strong></td></tr>
+<tr><td>4</td><td><em>Fusobacterium nucleatum</em></td><td><strong>Fusobacteriota</strong></td></tr>
+<tr><td>5</td><td><em>Fusobacterium necrophorum</em></td><td><strong>Fusobacteriota</strong></td></tr>
+</tbody>
+</table>
 <blockquote>
 <p><strong>+ <em>Desulfovibrio</em> spp. (sulfate-reducing bacteria, SRB)</strong> — being Gram-negative, obligate anaerobic curved rods, they <strong>belong to GNAB</strong>. However, their lineage is <strong>Thermodesulfobacteriota</strong> (the old Proteobacteria Deltaproteobacteria), different from the two phyla above, and their pathogenic mechanism is not amino-acid degradation but <strong>dissimilatory sulfate reduction (SO₄²⁻→H₂S)</strong>, so they are treated separately from the 3 GNAB genera commonly dealt with clinically (<em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em>). They inhabit the gut, periodontal pockets, and tongue coating, contributing to halitosis and gut mucosal damage through H₂S production (same phylum as <em>Bilophila wadsworthia</em>).</p>
 </blockquote>
@@ -1237,7 +1267,6 @@ tbody tr:hover{background:#fffdf5;}
 </table>
 <p>→ <strong>One-line summary:</strong> Aa is not a bacterium that <em>directly emits</em> halitosis, but an upstream pathogen that destroys and anaerobizes periodontal pockets, <em>creating the environment in which the true VSC producers flourish</em>. This is why VSC and halitosis rise together in the tongue coating/pockets of people with abundant Aa (especially aggressive periodontitis patients).</p>
 <h3 id="clarithromycinmacrolide">Antibiotic susceptibility — clarithromycin/macrolides are "conditionally effective"</h3>
-<p>As correctly noted, <strong>there is clearly a context where macrolides are effective, but the nuance matters</strong>.</p>
 <ul>
 <li><strong>The strength of macrolides (azithromycin·clarithromycin) = killing intracellularly invasive bacteria.</strong></li>
 <li><em>A. actinomycetemcomitans</em> <strong>invades</strong> the gingival epithelium and tissue, and azithromycin <strong>accumulates</strong> well in many mammalian cells, <strong>killing even bacteria hidden inside tissue/cells</strong> (the <em>Azithromycin Kills Invasive A. actinomycetemcomitans</em> study). An advantage over β-lactams, which cannot reach intracellular bacteria.</li>
@@ -1676,8 +1705,7 @@ tbody tr:hover{background:#fffdf5;}
 - <strong>red complex (<em>P. gingivalis</em>·<em>T. denticola</em>·<em>T. forsythia</em>) standard adjunctive periodontitis regimen = amoxicillin + metronidazole combination</strong> (in addition to scaling/root planing). Their synergy raises the eradication rate of deep-pocket bacteria.
 - <strong><em>P. gingivalis</em>·<em>P. intermedia</em> have β-lactamase (cepA etc.)-producing strains</strong> → penicillin alone R, overcome with amoxicillin-clavulanate.
 - <strong><em>Desulfovibrio</em> (SRB)</strong>: in clinical infection (bacteremia/intra-abdominal), <strong>metronidazole susceptibility</strong> is frequently reported, but <strong>a standard regimen is not established and culture/susceptibility data are limited</strong>. β-lactam response is strain-variable. → susceptibility-testing-based treatment recommended.
-- <strong><em>Solobacterium moorei</em></strong>: an anaerobic Gram-positive bacillus, generally susceptible to penicillin·metronidazole·clindamycin. However, <strong>the first-line for halitosis is not antibiotics but tongue cleaning·mechanical plaque removal·oral hygiene</strong>.
-- <strong>Common</strong>: all 8 species are <strong>ciprofloxacin-unsuitable (R)</strong> — poor anaerobic/Gram-positive coverage. FQs are not used for halitosis/periodontitis treatment (consistent with the top-of-document principle).
+- <strong><em>Solobacterium moorei</em></strong>: an anaerobic Gram-positive bacillus, generally susceptible to penicillin·metronidazole·clindamycin.
 - <strong>Non-antibiotic management</strong>: for reducing VSC, <strong>tongue cleaners, CHX (chlorhexidine)·CPC rinses, ZnCl₂-containing products (zinc binds sulfur to neutralize VSC)</strong>, and tongue-coating management are practically important.</p>
 <hr />
 <h2 id="vsc-substrate">Foods that serve as substrates for VSC production</h2>
@@ -2037,10 +2065,9 @@ Plant sulfur foods like garlic, onion, and cabbage <strong>serve both as "direct
 <p><strong>One-line summary</strong>: all three are GNAB (Gram-negative anaerobic bacilli); <em>P. gingivalis</em>·<em>F. nucleatum</em> contribute to neurodegeneration via <strong>oral lesion → AD</strong>, and <em>Desulfovibrio</em> via <strong>gut H₂S → PD</strong> — two axes. This is why oral hygiene and gut sulfur-metabolism management connect to neurological health.</p>
 </blockquote>
 <hr />
-<p><em>Author — Junsang Yang, Family Medicine physician</em></p>
-<p>© 2026 Junsang Yang. All rights reserved. No part of this document may be reproduced, distributed, transmitted, or used commercially without the author's prior written consent. When citing, please indicate the source (author·document title).</p>
+<p><em>Author — June-sang Yang, Family Medicine physician</em> · Contact <a href="mailto:drisland@naver.com">drisland@naver.com</a></p>
+<p>© 2026 June-sang Yang. All rights reserved. No part of this document may be reproduced, distributed, transmitted, or used commercially without the author's prior written consent. When citing, please indicate the source (author·document title).</p>
       </div>
-      <div class="footer">Obsidian NS vault · light theme · auto-generated</div>
     </div>
   </div>
 </div>

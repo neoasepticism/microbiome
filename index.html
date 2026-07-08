@@ -30,7 +30,12 @@ a:hover{text-decoration:underline;}
 /* content */
 .content{flex:1;min-width:0;padding:0 8px;}
 .container{background:var(--card);border-radius:16px;box-shadow:0 2px 24px rgba(0,0,0,.06);overflow:hidden;margin:20px 12px;}
-.header{background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.header{position:relative;background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.lang-switch{position:absolute;top:16px;right:20px;display:flex;gap:2px;background:#fff;border:1px solid var(--accent);border-radius:20px;padding:3px;box-shadow:0 1px 5px rgba(0,0,0,.08);z-index:5;}
+.lang-switch a{font-size:12px;font-weight:800;padding:5px 13px;border-radius:16px;color:var(--accent);letter-spacing:.5px;transition:background .15s;}
+.lang-switch a:hover{background:#f3edd8;text-decoration:none;}
+.lang-switch a.active{background:var(--accent);color:#fff;}
+@media(max-width:600px){.lang-switch{top:12px;right:12px;}.header{padding-top:52px;}}
 .header h1{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px;line-height:1.4;}
 .header .tags{margin-top:6px;}
 .body-wrap{padding:8px 34px 40px;}
@@ -56,7 +61,8 @@ hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
 /* tables */
 .tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--border);}
 table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px;}
-.body-wrap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.body-wrap table{display:table;width:100%;}
+@media(max-width:600px){.body-wrap table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}}
 th{background:#f3edd8;padding:11px 14px;text-align:left;font-weight:700;color:#5a4a10;
   border-bottom:2px solid var(--accent);white-space:nowrap;}
 td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
@@ -300,6 +306,7 @@ tbody tr:hover{background:#fffdf5;}
   <div class="content">
     <div class="container">
       <div class="header">
+        <div class="lang-switch"><a href="index.html" class="active">KO</a><a href="index-en.html">EN</a></div>
         <h1>마이크로바이옴에 대해 알아야 할 모든 것</h1>
         <div class="tags"><span class="tag tag-blue">#bacteria</span> <span class="tag tag-blue">#gram-staining</span> <span class="tag tag-blue">#anaerobes</span> <span class="tag tag-blue">#antibiotics</span> <span class="tag tag-blue">#foodborne</span> <span class="tag tag-blue">#clinical-infection</span></div>
       </div>
@@ -443,12 +450,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="1-gpac">1. GPAC — 그람양성 혐기성 구균</h2>
 <h3 id="5">대표 세균 5종</h3>
-<p><em>(계통: 전부 </em><em>Bacillota</em><em>(구 Firmicutes) — Clostridia/Tissierellia 강)</em>
-1. <em>Peptostreptococcus anaerobius</em> — Bacillota
-2. <em>Finegoldia magna</em> (구 <em>Peptostreptococcus magnus</em>) — Bacillota
-3. <em>Parvimonas micra</em> (구 <em>Peptostreptococcus micros</em>) — Bacillota
-4. <em>Peptoniphilus asaccharolyticus</em> — Bacillota
-5. <em>Anaerococcus prevotii</em> — Bacillota</p>
+<p><em>(계통: 전부 Bacillota(구 Firmicutes) — Clostridia/Tissierellia 강)</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>대표 세균</th><th>계통</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Peptostreptococcus anaerobius</em></td><td>Bacillota</td></tr>
+<tr><td>2</td><td><em>Finegoldia magna</em> (구 <em>Peptostreptococcus magnus</em>)</td><td>Bacillota</td></tr>
+<tr><td>3</td><td><em>Parvimonas micra</em> (구 <em>Peptostreptococcus micros</em>)</td><td>Bacillota</td></tr>
+<tr><td>4</td><td><em>Peptoniphilus asaccharolyticus</em></td><td>Bacillota</td></tr>
+<tr><td>5</td><td><em>Anaerococcus prevotii</em></td><td>Bacillota</td></tr>
+</tbody>
+</table>
 <h3 id="5_1">주요 관련 질병 5가지</h3>
 <ol>
 <li>만성 부비동염·중이염 등 두경부 감염</li>
@@ -558,12 +572,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="2-gpab">2. GPAB — 그람양성 혐기성 간균</h2>
 <h3 id="5_3">대표 세균 5종</h3>
-<p><em>(계통: </em>Clostridium<em> 3종 = </em><em>Bacillota</em><em> / </em>Actinomyces<em>·</em>Cutibacterium<em> = </em><em>Actinomycetota</em><em>(구 Actinobacteria))</em>
-1. <em>Clostridium perfringens</em> — Bacillota
-2. <em>Clostridioides (Clostridium) difficile</em> — Bacillota
-3. <em>Clostridium botulinum</em> — Bacillota
-4. <em>Actinomyces israelii</em> — <strong>Actinomycetota</strong>
-5. <em>Cutibacterium (Propionibacterium) acnes</em> — <strong>Actinomycetota</strong></p>
+<p><em>(계통: Clostridium 3종 = Bacillota / Actinomyces·Cutibacterium = Actinomycetota(구 Actinobacteria))</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>대표 세균</th><th>계통</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Clostridium perfringens</em></td><td>Bacillota</td></tr>
+<tr><td>2</td><td><em>Clostridioides (Clostridium) difficile</em></td><td>Bacillota</td></tr>
+<tr><td>3</td><td><em>Clostridium botulinum</em></td><td>Bacillota</td></tr>
+<tr><td>4</td><td><em>Actinomyces israelii</em></td><td><strong>Actinomycetota</strong></td></tr>
+<tr><td>5</td><td><em>Cutibacterium (Propionibacterium) acnes</em></td><td><strong>Actinomycetota</strong></td></tr>
+</tbody>
+</table>
 <h3 id="5_4">주요 관련 질병 5가지</h3>
 <ol>
 <li>가스괴저(gas gangrene)·식중독 (<em>C. perfringens</em>)</li>
@@ -635,12 +656,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="3-gnac">3. GNAC — 그람음성 혐기성 구균</h2>
 <h3 id="5_6">대표 세균 5종</h3>
-<p><em>(계통: </em><em>전부 Bacillota</em><em>(구 Firmicutes) — Negativicutes 강. ⚠️ 그람음성 염색이지만 진화적으로는 그람양성 계통 소속)</em>
-1. <em>Veillonella parvula</em> — Bacillota (Negativicutes)
-2. <em>Veillonella dispar</em> — Bacillota (Negativicutes)
-3. <em>Acidaminococcus fermentans</em> — Bacillota (Negativicutes)
-4. <em>Megasphaera elsdenii</em> — Bacillota (Negativicutes)
-5. <em>Anaeroglobus geminatus</em> — Bacillota (Negativicutes)</p>
+<p><em>(계통: 전부 Bacillota(구 Firmicutes) — Negativicutes 강. ⚠️ 그람음성 염색이지만 진화적으로는 그람양성 계통 소속)</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>대표 세균</th><th>계통</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Veillonella parvula</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>2</td><td><em>Veillonella dispar</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>3</td><td><em>Acidaminococcus fermentans</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>4</td><td><em>Megasphaera elsdenii</em></td><td>Bacillota (Negativicutes)</td></tr>
+<tr><td>5</td><td><em>Anaeroglobus geminatus</em></td><td>Bacillota (Negativicutes)</td></tr>
+</tbody>
+</table>
 <h3 id="5_7">주요 관련 질병 5가지</h3>
 <ol>
 <li>치주염·치성 감염 및 구강 농양</li>
@@ -708,12 +736,19 @@ tbody tr:hover{background:#fffdf5;}
 <hr />
 <h2 id="4-gnab">4. GNAB — 그람음성 혐기성 간균</h2>
 <h3 id="5_9">대표 세균 5종</h3>
-<p><em>(계통: </em>Bacteroides<em>·</em>Prevotella<em>·</em>Porphyromonas<em> = </em><em>Bacteroidota</em><em>(구 Bacteroidetes) / </em>Fusobacterium<em> 2종 = </em><em>Fusobacteriota</em><em>(구 Fusobacteria))</em>
-1. <em>Bacteroides fragilis</em> — <strong>Bacteroidota</strong>
-2. <em>Prevotella melaninogenica</em> — <strong>Bacteroidota</strong>
-3. <em>Porphyromonas gingivalis</em> — <strong>Bacteroidota</strong>
-4. <em>Fusobacterium nucleatum</em> — <strong>Fusobacteriota</strong>
-5. <em>Fusobacterium necrophorum</em> — <strong>Fusobacteriota</strong></p>
+<p><em>(계통: Bacteroides·Prevotella·Porphyromonas = Bacteroidota(구 Bacteroidetes) / Fusobacterium 2종 = Fusobacteriota(구 Fusobacteria))</em></p>
+<table>
+<thead>
+<tr><th>#</th><th>대표 세균</th><th>계통</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><em>Bacteroides fragilis</em></td><td><strong>Bacteroidota</strong></td></tr>
+<tr><td>2</td><td><em>Prevotella melaninogenica</em></td><td><strong>Bacteroidota</strong></td></tr>
+<tr><td>3</td><td><em>Porphyromonas gingivalis</em></td><td><strong>Bacteroidota</strong></td></tr>
+<tr><td>4</td><td><em>Fusobacterium nucleatum</em></td><td><strong>Fusobacteriota</strong></td></tr>
+<tr><td>5</td><td><em>Fusobacterium necrophorum</em></td><td><strong>Fusobacteriota</strong></td></tr>
+</tbody>
+</table>
 <blockquote>
 <p><strong>+ <em>Desulfovibrio</em> spp. (황산염환원균, SRB)</strong> — 그람음성·절대혐기·곡간균이므로 <strong>GNAB에 속한다</strong>. 다만 계통은 위 두 문과 다른 <strong>Thermodesulfobacteriota</strong>(구 Proteobacteria의 Deltaproteobacteria)이고, 병원성 기전도 아미노산 분해가 아니라 <strong>이화적 황산염 환원(SO₄²⁻→H₂S)</strong> 이라 임상에서 흔히 다루는 GNAB 3속(<em>Bacteroides</em>·<em>Prevotella</em>·<em>Fusobacterium</em>)과는 별개로 취급된다. 장·치주낭·설태에 서식하며 H₂S 생성으로 구취·장 점막 손상에 관여(<em>Bilophila wadsworthia</em>와 동일 문).</p>
 </blockquote>
@@ -1237,7 +1272,6 @@ tbody tr:hover{background:#fffdf5;}
 </table>
 <p>→ <strong>한 줄 요약:</strong> Aa는 구취를 <em>직접 뿜는</em> 균이 아니라, 치주낭을 파괴·혐기화하여 <em>진짜 VSC 생산균이 번성할 환경을 만드는</em> 상류 병원체다. 그래서 Aa가 많은 사람(특히 침습성 치주염 환자)의 설태·치주낭에서 VSC와 구취가 동반 상승한다.</p>
 <h3 id="clarithromycinmacrolide">항생제 감수성 — clarithromycin/macrolide는 "조건부 효과"</h3>
-<p>사용자 지적대로 <strong>macrolide가 효과가 있는 맥락이 분명히 있으나, 뉘앙스가 중요</strong>하다.</p>
 <ul>
 <li><strong>Macrolide(azithromycin·clarithromycin)의 강점 = 세포내(intracellular) 침습균 사멸.</strong></li>
 <li><em>A. actinomycetemcomitans</em>는 치은 상피·조직 안으로 <strong>침습(invasion)</strong>하는데, azithromycin은 여러 포유류 세포에 잘 <strong>축적</strong>되어 <strong>조직·세포 내부에 숨은 균까지 죽인다</strong>(<em>Azithromycin Kills Invasive A. actinomycetemcomitans</em> 연구). β-lactam이 못 닿는 세포내 균에 대한 이점.</li>
@@ -1676,8 +1710,7 @@ tbody tr:hover{background:#fffdf5;}
 - <strong>red complex(<em>P. gingivalis<em>·</em>T. denticola<em>·</em>T. forsythia<em>) 치주염 표준 보조요법 = amoxicillin + metronidazole 병용</em>*(scaling/root planing에 더해). 두 약의 상승효과로 치주낭 심부 균 근절률↑.
 - </em></strong>P. gingivalis<em>·</em>P. intermedia<em>는 β-lactamase(cepA 등) 생산주 존재</em><em> → </em><em>penicillin 단독 R, amoxicillin-clavulanate로 극복</em><em>.
 - </em><strong>Desulfovibrio<em>(SRB)<strong>: 임상 감염(균혈증·복강내) 시 </strong>metronidazole 감수<strong> 보고가 다수이나 </strong>표준 요법이 정립되지 않았고 배양·감수성 데이터가 제한적**. β-lactam 반응은 균주별 가변. → 감수성 검사 기반 치료 권장.
-- </em></strong>Solobacterium moorei<strong><em>: 혐기 그람양성 간균으로 penicillin·metronidazole·clindamycin 대체로 감수. 다만 </em>*구취 치료의 1차는 항생제가 아니라 혀 세정·기계적 치태 제거·구강위생</strong>.
-- <strong>공통</strong>: 8종 전부 <strong>ciprofloxacin 부적합(R)</strong> — 혐기·그람양성 커버 빈약. 구취/치주염 치료에 FQ는 쓰지 않음(문서 상단 원칙과 일치).
+- </em></strong>Solobacterium moorei<strong><em>: 혐기 그람양성 간균으로 penicillin·metronidazole·clindamycin 대체로 감수.</em></strong>
 - <strong>비항생제 관리</strong>: VSC 감소엔 <strong>혀 클리너, CHX(클로르헥시딘)·CPC 함수, ZnCl₂ 함유 제품(아연이 황과 결합해 VSC 중화)</strong>, 설태 관리가 실질적으로 중요.</p>
 <hr />
 <h2 id="vsc-substrate">VSC의 기질(substrate)이 되는 원인 음식</h2>
@@ -2037,10 +2070,9 @@ tbody tr:hover{background:#fffdf5;}
 <p><strong>한 줄 요약</strong>: 세 균 모두 GNAB(그람음성 혐기 간균)이며, <em>P. gingivalis</em>·<em>F. nucleatum</em> 은 <strong>구강 병소 → AD</strong>, <em>Desulfovibrio</em> 는 <strong>장내 H₂S → PD</strong> 라는 두 축으로 신경퇴행에 기여한다. 구강 위생과 장내 황 대사 관리가 신경 건강과 연결되는 이유다.</p>
 </blockquote>
 <hr />
-<p><em>저자 — 가정의학과 의사 양준상</em></p>
+<p><em>저자 — 가정의학과 의사 양준상</em> · 문의 <a href="mailto:drisland@naver.com">drisland@naver.com</a></p>
 <p>© 2026 양준상. 이 문서의 저작권은 저자에게 있습니다. 저자의 사전 서면 동의 없이 무단 복제·배포·전재·상업적 이용을 금합니다. 인용 시 출처(저자·문서명)를 명시해 주십시오.</p>
       </div>
-      <div class="footer">Obsidian NS vault · 라이트테마 · 자동 생성</div>
     </div>
   </div>
 </div>
