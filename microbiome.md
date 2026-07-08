@@ -836,7 +836,7 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ---
 
-## 심화 F — 신경퇴행성 질환(파킨슨병·알츠하이머병)과의 관계
+## 심화 — 신경퇴행성 질환(파킨슨병·알츠하이머병)과의 관계
 
 구강·장내 혐기균이 **뇌–장축(gut–brain axis)** 과 **구강–뇌축(oral–brain axis)** 을 통해 신경퇴행에 관여한다는 증거가 축적되고 있다. 핵심 3속 — _Porphyromonas gingivalis_(Bacteroidota, GNAB), _Fusobacterium nucleatum_(Fusobacteriota, GNAB), _Desulfovibrio_(Thermodesulfobacteriota, GNAB) — 은 모두 본 문서의 GNAB(그람음성 혐기 간균) 군에 속하며, 서로 다른 경로로 알츠하이머병(AD)·파킨슨병(PD)에 기여한다.
 
