@@ -210,6 +210,14 @@ tags: [bacteria, gram-staining, anaerobes, antibiotics, foodborne, clinical-infe
 
 > **+ *Desulfovibrio* spp. (황산염환원균, SRB)** — 그람음성·절대혐기·곡간균이므로 **GNAB에 속한다**. 다만 계통은 위 두 문과 다른 **Thermodesulfobacteriota**(구 Proteobacteria의 Deltaproteobacteria)이고, 병원성 기전도 아미노산 분해가 아니라 **이화적 황산염 환원(SO₄²⁻→H₂S)** 이라 임상에서 흔히 다루는 GNAB 3속(*Bacteroides*·*Prevotella*·*Fusobacterium*)과는 별개로 취급된다. 장·치주낭·설태에 서식하며 H₂S 생성으로 구취·장 점막 손상에 관여(*Bilophila wadsworthia*와 동일 문).
 
+> **➕ *Bilophila wadsworthia* — 담즙을 좋아하는 H₂S 생산 혐기균 (*Desulfovibrio*의 사촌)**
+>
+> 그람음성·절대혐기·**담즙 내성**('Bilophila'=담즙 애호)·asaccharolytic 간균으로, 위 *Desulfovibrio*와 같은 **Desulfovibrionaceae과 / Thermodesulfobacteriota문**. 단 황산염은 환원하지 않고 **타우린 등 유기황(organosulfonate)을 호흡 기질로 써 H₂S를 생성**한다(자세한 H₂S 경로는 뒤 "H₂S 생성의 3대 경로" 심화 참조).
+>
+> - **대표 감염**: **충수염** — 천공·괴저성 충수염 검체에서 **세 번째로 흔한 혐기균**(원래 Wadsworth VA에서 분리). 복강내 농양, 드물게 균혈증·간농양(복강내 악성종양·복부수술·이식 등 고위험).
+> - **식이–담즙–대장염 축**: 포화(우유)지방 → 간 **타우린 포합 담즙산(taurocholic acid)** ↑ → 유기황 공급 → *B. wadsworthia* 증식 → **H₂S**(유전독성) → TH1 염증 → 유전 감수성 숙주(*Il10*⁻/⁻)에서 **대장염**(Devkota, *Nature* 2012). H₂S는 IBD·대장암과도 연관.
+> - **항생제**: **β-lactamase 생산주가 흔해 penicillin·ampicillin 내성**. **metronidazole(유일하게 균일한 살균력)·carbapenem·β-lactam/BLI 병합(amox-clav·pip-tazo·amp-sulbactam)에 감수** → GNAB 표준 커버(혐기 metronidazole + β-lactamase엔 BLI) 논리와 일치.
+
 ### 주요 관련 질병 5가지
 1. 복강내 농양·복막염 (*B. fragilis*) — 가장 흔한 임상 혐기성 감염
 2. 흡인성 폐렴·폐농양 (*Prevotella*, *Fusobacterium*)
