@@ -870,7 +870,7 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 
 ### 절대위험은 낮다 (숫자)
 - 미국 대규모 코호트(2008–2020): **외래 항생제를 받은 3,662만 명 중 지역사회 CDI(CA-CDI)는 0.03%**(약 3/10,000). 90일 발생률은 최악(clindamycin)도 ~1,000명당 1명.
-- **NNH(1건 유발에 필요한 처방 수)**: 고위험 항생제 **≈ 300**, 저위험 항생제일수록 훨씬 큼(doxycycline 대비 clindamycin 1,164·FQ 1,828).
+- **NNH(1건 유발에 필요한 처방 수)**: 고위험 항생제도 **약 300명당 1명**. **doxycycline은 위험이 가장 낮은 기준약**이라, doxycycline 대신 고위험약을 써서 1건을 *더* 유발하려면 clindamycin 1,164명·FQ 1,828명이 필요 — 즉 저위험약 대비 초과위험조차 절대값은 작다.
 
 ### 경계가 필요한 곳 — 고위험 항생제 × 고위험 환자
 - **고위험 항생제**: clindamycin ≫ 후세대 cephalosporin(cefdinir·cefuroxime 등)·amox-clav > fluoroquinolone. (**저위험**: doxycycline·좁은 penicillin·macrolide·TMP-SMX·nitrofurantoin.)
