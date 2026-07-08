@@ -876,10 +876,11 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 - **고위험 항생제**: clindamycin ≫ 후세대 cephalosporin(cefdinir·cefuroxime 등)·amox-clav > fluoroquinolone. (**저위험**: doxycycline·좁은 penicillin·macrolide·TMP-SMX·nitrofurantoin.)
 - **고위험 환자**: 고령(>65)·최근 입원/의료 노출·PPI·과거 CDI·면역억제·IBD. (발생 시 재발·중증화 가능.)
 
-### 예방적 metronidazole 병용 — 근거와 저자 임상 경험
+### CDI를 낮추는 병용 — metronidazole·doxycycline (근거와 저자 경험)
 - **후향 근거(보호 신호)**: 고위험 입원환자 12,026명 코호트에서 비-CDI 목적 metronidazole을 병용한 군의 CDI가 **1.4% vs 미병용 6.5%** — **약 80% 감소(OR 0.21, 95% CI 0.11–0.38)**(Rodríguez 등). 즉 항생제 사용 시 metronidazole 병용이 CDI를 낮춘다는 실제 임상 신호가 있다.
 - **근거 수준(유보)**: 후향적이라 교란 가능성, **현 가이드라인 미채택**, 전향 RCT로 확인 필요 — "신호는 강하나 공식 권고는 아직 아님." (metronidazole 자체의 장기 독성·내성은 별개 고려.)
-- **저자 임상 경험(anecdotal, 근거 아님)**: 저자는 고위험 항생제 처방 시 metronidazole 병용을 일상적으로 시행하며, 이 기간 외래에서 CDI를 경험하지 않았다. 단일 임상의의 비대조 관찰이라 인과의 증거는 아니지만, 위 후향 근거와 방향이 일치한다.
+- **doxycycline (저위험 + 보호 신호)**: 테트라사이클린계는 CDI 위험 **38%↓**, doxycycline은 비-테트라사이클린 대비 **45%↓**(*CID* 2018 메타분석). 기전: C. diff에 **in vitro 활성** + 단백합성 억제로 **독소 생산 감쇠**. 지역사회폐렴 환자에서 doxycycline 포함 요법군 CDI 감소. → 저자가 자주 쓰는 doxycycline 병용도 CDI를 낮추는 방향.
+- **저자 임상 경험(anecdotal, 근거 아님)**: 저자는 **많은 경우 doxycycline으로 시작**하고, 고위험 항생제 처방 시 **경우에 따라 metronidazole을 병용**하며, 이 기간 외래에서 CDI를 경험하지 않았다. 단일 임상의의 비대조 관찰이라 인과의 증거는 아니지만, 위 doxycycline·metronidazole 후향 근거와 방향이 일치한다.
 
 ---
 
