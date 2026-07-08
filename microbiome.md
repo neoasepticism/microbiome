@@ -875,7 +875,7 @@ VSC는 결국 세균이 **황 함유 아미노산·황 화합물을 분해**해 
 ### 경계가 필요한 곳 — 고위험 항생제 × 고위험 환자
 - **고위험 항생제**: clindamycin ≫ 후세대 cephalosporin(cefdinir·cefuroxime 등)·amox-clav > fluoroquinolone. (**저위험**: doxycycline·좁은 penicillin·macrolide·TMP-SMX·nitrofurantoin.)
 - **고위험 환자**: 고령(>65)·최근 입원/의료 노출·PPI·과거 CDI·면역억제·IBD. (발생 시 재발·중증화 가능.)
-- **실천**: 동등 효과면 **저-CDI 항생제 우선**, 각별한 주의는 **고위험 항생제·고위험 환자에만 집중** — CDI뿐 아니라 내성·마이크로바이옴 보존(스튜어드십)에도 부합.
+- **고위험 환자에서만 주의하면 된다.**
 
 ---
 
