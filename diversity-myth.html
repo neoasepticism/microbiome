@@ -15,19 +15,7 @@
 body{font-family:'Apple SD Gothic Neo','Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;}
 a{color:var(--water);text-decoration:none;}
 a:hover{text-decoration:underline;}
-.layout{display:flex;max-width:1280px;margin:0 auto;gap:0;align-items:flex-start;}
-/* sidebar */
-.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;width:290px;flex-shrink:0;
-  background:linear-gradient(180deg,#fdf9ef 0%,#f3edd8 100%);border-right:2px solid var(--accent);
-  padding:24px 18px 40px;}
-.sidebar h2{font-size:15px;color:var(--accent);font-weight:800;letter-spacing:1px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
-.toc-list{list-style:none;}
-.toc-list .toc-list{margin-left:12px;border-left:1px solid var(--border);padding-left:10px;}
-.toc-list li{margin:2px 0;}
-.toc-h2>a{font-weight:700;font-size:13.5px;color:var(--text);display:block;padding:5px 6px;border-radius:6px;}
-.toc-h3>a{font-weight:500;font-size:12px;color:var(--text2);display:block;padding:3px 6px;border-radius:6px;}
-.toc-list a:hover{background:#fffdf5;text-decoration:none;color:var(--accent);}
-.toc-list a.active{background:var(--accent);color:#fff;font-weight:700;}
+.layout{display:flex;max-width:900px;margin:0 auto;gap:0;align-items:flex-start;}
 .thesis-tag{color:var(--accent);font-size:13px;margin:-2px 0 14px;opacity:.9;}
 /* content */
 .content{flex:1;min-width:0;padding:0 8px;}
@@ -67,12 +55,7 @@ hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
 .top-btn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--accent);
   color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transition:.25s;z-index:50;}
 .top-btn.show{opacity:.9;}
-.mobile-toc-btn{display:none;}
 @media(max-width:900px){
-  .sidebar{position:fixed;left:0;top:0;z-index:100;transform:translateX(-100%);transition:.3s;box-shadow:4px 0 20px rgba(0,0,0,.2);}
-  .sidebar.open{transform:translateX(0);}
-  .mobile-toc-btn{display:block;position:fixed;left:14px;top:14px;z-index:60;background:var(--accent);color:#fff;
-    border:none;border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);}
   .content{padding:0;}
   .container{margin:8px;}
   .header{padding:56px 20px 26px;}
@@ -81,29 +64,11 @@ hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
 </style>
 </head>
 <body>
-<button class="mobile-toc-btn" id="mtoc">☰ 목차</button>
 <div class="layout">
-  <nav class="sidebar" id="sidebar">
-    <h2>목 차</h2>
-    <ul class="toc-list">
-<li class="toc-h3"><a href="#diversity-too-low">너무 낮으면 문제인 건 맞다 — 대장의 특성</a>
-</li>
-<li class="toc-h3"><a href="#diversity-plateau">&quot;일정 이상이면 높을수록 좋다&quot;는 근거는 없다 — 역치·포화</a>
-</li>
-<li class="toc-h3"><a href="#diversity-counter">대장 안의 반례 + 조잡한 지표</a>
-</li>
-<li class="toc-h3"><a href="#diversity-skin">피부 미생물에서도 같은 패턴</a>
-</li>
-<li class="toc-h3"><a href="#fb-ratio-myth">곁가지: &quot;F/B 비율 = 비만 지표&quot; 유행의 흥망</a>
-</li>
-<li class="toc-h3"><a href="#diversity-commercial">&quot;가스라이팅&quot;의 실체 = 상업적 검사</a>
-</li>
-</ul>
-  </nav>
   <div class="content">
     <div class="container">
       <div class="header">
-        <div class="lang-switch"><a href="diversity-myth.html" class="active">KO</a><a href="index-en.html#diversity-myth">EN</a></div>
+        <div class="lang-switch"><a href="diversity-myth.html" class="active">KO</a><a href="diversity-myth-en.html">EN</a></div>
         <h1>"대장 미생물은 다양할수록 좋다"는 통념 해체</h1>
         <div class="tags"><span class="tag tag-blue">#microbiome</span> <span class="tag tag-blue">#diversity</span> <span class="tag tag-blue">#dysbiosis</span> <span class="tag tag-blue">#skin-microbiome</span> <span class="tag tag-blue">#critical-appraisal</span></div>
       </div>
@@ -165,26 +130,10 @@ document.querySelectorAll('.body-wrap table').forEach(tb=>{
   const w=document.createElement('div');w.className='tbl-wrap';
   tb.parentNode.insertBefore(w,tb);w.appendChild(tb);
 });
-// scrollspy
-const links=[...document.querySelectorAll('.toc-list a')];
-const map={};links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
-const heads=[...document.querySelectorAll('.body-wrap h2, .body-wrap h3')];
-const spy=()=>{
-  let cur=null;const y=window.scrollY+90;
-  for(const h of heads){if(h.offsetTop<=y)cur=h.id;}
-  links.forEach(a=>a.classList.remove('active'));
-  if(cur&&map[cur]){map[cur].classList.add('active');
-    map[cur].scrollIntoView({block:'nearest'});}
-};
-window.addEventListener('scroll',spy);spy();
 // top button
 const tb=document.getElementById('topBtn');
 window.addEventListener('scroll',()=>{tb.classList.toggle('show',window.scrollY>400);});
 tb.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-// mobile toc toggle
-const sb=document.getElementById('sidebar'),mb=document.getElementById('mtoc');
-mb.onclick=()=>sb.classList.toggle('open');
-document.querySelectorAll('.toc-list a').forEach(a=>a.onclick=()=>sb.classList.remove('open'));
 </script>
 </body>
 </html>

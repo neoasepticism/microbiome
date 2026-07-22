@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deconstructing the "more colon diversity is better" myth — Microbiome</title>
+<meta name="description" content="Too low diversity genuinely is a problem in the colon. But there is no evidence that higher is always better. Counterexamples from CRC, Parkinson's, and skin microbiome, the rise and fall of the F/B ratio myth, and the reality of commercial tests.">
+<style>
+:root{
+  --bg:#f8f6f1; --card:#ffffff; --border:#ddd9d0; --accent:#8b6914;
+  --wood:#2e7d32; --fire:#c62828; --earth:#e65100; --metal:#455a64; --water:#1565c0;
+  --text:#2c2c2c; --text2:#6b6b6b; --muted:#9e9e9e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Apple SD Gothic Neo','Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;}
+a{color:var(--water);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.layout{display:flex;max-width:900px;margin:0 auto;gap:0;align-items:flex-start;}
+.thesis-tag{color:var(--accent);font-size:13px;margin:-2px 0 14px;opacity:.9;}
+/* content */
+.content{flex:1;min-width:0;padding:0 8px;}
+.container{background:var(--card);border-radius:16px;box-shadow:0 2px 24px rgba(0,0,0,.06);overflow:hidden;margin:20px 12px;}
+.header{position:relative;background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.lang-switch{position:absolute;top:16px;right:20px;display:flex;gap:2px;background:#fff;border:1px solid var(--accent);border-radius:20px;padding:3px;box-shadow:0 1px 5px rgba(0,0,0,.08);z-index:5;}
+.lang-switch a{font-size:12px;font-weight:800;padding:5px 13px;border-radius:16px;color:var(--accent);letter-spacing:.5px;transition:background .15s;}
+.lang-switch a:hover{background:#f3edd8;text-decoration:none;}
+.lang-switch a.active{background:var(--accent);color:#fff;}
+@media(max-width:600px){.lang-switch{top:12px;right:12px;}.header{padding-top:52px;}}
+.header h1{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px;line-height:1.4;}
+.header .tags{margin-top:6px;}
+.body-wrap{padding:8px 34px 40px;}
+.body-wrap h2{font-size:20px;font-weight:800;margin:40px 0 18px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);
+  background:linear-gradient(90deg,#fdf9ef,transparent);color:var(--text);scroll-margin-top:12px;border-radius:0 8px 8px 0;}
+.body-wrap h2:first-child{margin-top:16px;}
+.body-wrap h3{font-size:16px;font-weight:700;margin:26px 0 10px;color:var(--accent);scroll-margin-top:12px;
+  padding-bottom:5px;border-bottom:1px dashed var(--border);}
+.body-wrap h4{font-size:14.5px;font-weight:700;margin:18px 0 8px;color:var(--metal);}
+.body-wrap p{margin:12px 0;font-size:14.5px;}
+.body-wrap ul,.body-wrap ol{margin:12px 0 12px 24px;font-size:14.5px;}
+.body-wrap li{margin:6px 0;}
+.body-wrap strong{color:#1a1a1a;font-weight:700;}
+.body-wrap em{color:var(--water);font-style:italic;}
+.body-wrap code{background:#f3edd8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#7a5a10;
+  font-family:'SF Mono',Menlo,monospace;}
+hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
+/* blockquote -> callout */
+.body-wrap blockquote{background:#fff8e1;border-left:4px solid var(--earth);padding:14px 20px;margin:18px 0;
+  border-radius:0 10px 10px 0;font-size:14px;color:#5a4a20;}
+.body-wrap blockquote p{margin:8px 0;}
+.body-wrap blockquote strong{color:#8a5a00;}
+/* tags */
+.tag{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;margin:2px 3px 2px 0;}
+.tag-blue{background:#e3f2fd;color:#1565c0;}
+.footer{padding:22px 34px;text-align:center;font-size:12px;color:var(--text2);border-top:1px solid var(--border);background:var(--bg);}
+.top-btn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--accent);
+  color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transition:.25s;z-index:50;}
+.top-btn.show{opacity:.9;}
+@media(max-width:900px){
+  .content{padding:0;}
+  .container{margin:8px;}
+  .header{padding:56px 20px 26px;}
+  .body-wrap{padding:8px 18px 40px;}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="lang-switch"><a href="diversity-myth.html">KO</a><a href="diversity-myth-en.html" class="active">EN</a></div>
+        <h1>Deconstructing the "more colon diversity is better" myth</h1>
+        <div class="tags"><span class="tag tag-blue">#microbiome</span> <span class="tag tag-blue">#diversity</span> <span class="tag tag-blue">#dysbiosis</span> <span class="tag tag-blue">#skin-microbiome</span> <span class="tag tag-blue">#critical-appraisal</span></div>
+      </div>
+      <div class="body-wrap">
+<p class="thesis-tag">▸ <em>Thesis in action — A head-on deconstruction of the "diversity = health" dogma.</em></p>
+<blockquote>
+<p><em>In the colon, diversity that is <strong>too low</strong> genuinely is a problem (colonization resistance, resilience). But <strong>there is no evidence that "above a certain level, more is better."</strong> "Low diversity = disease" is only partly true, and "high diversity = health" is an overstated, commercialized frame.</em></p>
+</blockquote>
+<h3 id="diversity-too-low">Too low IS a problem — the nature of the colon</h3>
+<ul>
+<li>The colon is a <strong>high-biomass, open ecosystem</strong>, so low diversity weakens <strong>colonization resistance</strong> → vulnerability to pathogens such as <em>C. difficile</em> and reduced resilience.</li>
+<li>Mechanism: a diverse community <strong>pre-empts the nutrients a pathogen needs (nutrient blocking)</strong>, blocking invasion (<em>Science</em> 2024). Diversity loss is reproducible in <strong>active IBD, recurrent C. difficile, and after broad-spectrum antibiotics</strong>. That said, for antibiotics the drop doesn't mean the bacteria are dead — much of it recovers within weeks as taxa suppressed below the detection limit regrow, and species recorded as "absent" are only below sequencing detection, not proven extinct (Palleja et al. 2018, <em>Nat Microbiol</em>).</li>
+</ul>
+<h3 id="diversity-plateau">But there is no evidence that "above a threshold, higher is better" — plateau</h3>
+<ul>
+<li><strong>There is no upper "this-much-is-healthy" cutoff.</strong> No validated threshold says higher diversity means healthier.</li>
+<li><strong>Colonization resistance saturates once functional coverage is "enough."</strong> What matters is not the raw number but <strong>functional redundancy covering the pathogen's nutrient niches</strong> → once niches are covered, adding rare taxa adds little benefit (<strong>diminishing returns</strong>).</li>
+<li>Shannon diversity is <strong>non-linear, maximized</strong> at a specific Bacteroidetes/Firmicutes ratio (~15%/80%) → not "more is better" but an <strong>optimal range</strong>; "<strong>excessive diversity can also be a problem</strong>."</li>
+<li>Functional redundancy means even a "minimum healthy diversity" can't be pinned to a number → a <strong>U-shaped / saturating curve</strong>: too low is bad, but above a point, higher is not better.</li>
+</ul>
+<h3 id="diversity-counter">Counterexamples within the colon + a crude metric</h3>
+<ul>
+<li><strong>Colorectal cancer (CRC)</strong>: tumors are enriched in <strong>oral pathobionts (<em>Fusobacterium</em>·<em>Parvimonas</em>, etc.)</strong>, yet <strong>fecal alpha-diversity often does not differ significantly</strong> from controls (beta-dispersion is higher) → the diversity number cannot flag cancer.</li>
+<li><strong>Parkinson's disease</strong>: alpha-diversity is inconsistent, with some studies reporting <strong>higher richness (more rare taxa)</strong> — a bloom of miscellaneous/opportunistic taxa that raises the diversity number, a case where higher diversity was actually the worse outcome. "Alpha-diversity is not a marker of PD/MS."</li>
+<li><strong>Association ≠ causation</strong>: mostly cross-sectional. Even for IBD it is unresolved whether dysbiosis is cause or consequence. Diversity is driven <strong>more by diet than by disease</strong>, and all non-genetic factors explain only <strong>~16% of the variance</strong>.</li>
+</ul>
+<h3 id="diversity-skin">The same pattern shows up on skin — young adulthood has the lowest diversity</h3>
+<ul>
+<li><strong>The paradox</strong>: young-adult skin has <strong>the best barrier function, immune competence, and tissue resilience of any life stage</strong>, yet <strong>the lowest species richness of any life stage.</strong> Post-puberty sebum creates a lipid-saturated habitat that both lets one species (<em>Cutibacterium acnes</em>) dominate and drives antimicrobial fatty-acid production — diversity and health are simply <strong>two different outcomes of the same cause (sebum)</strong>.</li>
+<li><strong>Reinterpretation (atopic dermatitis)</strong>: the real problem isn't diversity loss itself, but <strong>a beneficial species (<em>S. epidermidis</em>) being competitively excluded by a pathogen (<em>S. aureus</em>).</strong> Diversity loss is just a byproduct of that functional damage.</li>
+<li><strong>The ecological error</strong>: taxonomic diversity only reflects <strong>community structure</strong> — it does not capture the actual <strong>function</strong> microbes perform for the host (defense, antimicrobial activity, homeostasis). "Diversity = health" reaches a conclusion from a single metric that skips over habitat conditions and ecosystem services (<em>British Journal of Dermatology</em>, "Microbial diversity as a proxy for skin health: an ecological framework misapplied").</li>
+<li><strong>Acne is mixed</strong>: some studies (especially moderate-to-severe cases) report <strong>higher</strong> alpha-diversity in lesional skin than controls — the same pattern seen in Parkinson's — while others report <strong>lower</strong> diversity in inflammatory lesions. With such conflicting results, it's hard to use acne as evidence that "higher diversity is better."</li>
+</ul>
+<h3 id="fb-ratio-myth">Aside: the rise and fall of "F/B ratio = obesity marker" (a textbook oversimplification)</h3>
+<ul>
+<li><strong>Rise</strong>: in 2006, Ley·Turnbaugh·Gordon (<em>Nature</em>), from mice and a small human study, reported that <strong>obese subjects had more Firmicutes and less Bacteroidetes (higher F/B ratio)</strong>, with the reverse in lean subjects → the catchy claim that <strong>"one F/B ratio tells you about obesity and gut health"</strong> spread widely and was cited across diet, probiotic, and testing marketing.</li>
+<li><strong>Fall</strong>: larger studies and meta-analyses <strong>failed to reproduce it</strong>. One meta-analysis found <strong>no signal in the F/B ratio to distinguish obese from normal weight</strong> (data clustered by <strong>study/batch</strong>, not BMI); a 2020 review concluded the <strong>F/B ratio has no validity as an obesity biomarker</strong> (lifestyle confounders + methodological noise).</li>
+<li><strong>Why it collapsed</strong>: ① <strong>phylum is far too coarse</strong> — each phylum lumps thousands of species with opposite functions, so a single ratio loses the information. It's like claiming that if Earth has more mammals than reptiles, the planet becomes obese — the same nonsensical logic. ② huge inter-individual variability; ③ heavily affected by sequencing/primers/taxonomy; ④ correlation, not causation. (Bonus: a 2021 reclassification even renamed them <strong>Firmicutes→Bacillota, Bacteroidetes→Bacteroidota</strong>.)</li>
+<li><strong>Lesson</strong>: a textbook case of <strong>reducing gut health to one catchy number (F/B ratio, diversity score)</strong> — widely believed by the public but overturned by science. The "diversity score" is the same trap.</li>
+</ul>
+<h3 id="diversity-commercial">The real "gaslighting" — commercial tests</h3>
+<ul>
+<li>Direct-to-consumer microbiome tests are <strong>not clinically validated</strong> and there is no established diagnostic standard.</li>
+<li><strong>The same sample is rated "excellent," "average," or "unfavorable" by different companies</strong> — "high/low" is judged against the company's own database, not a scientific baseline. Many companies then <strong>sell their own probiotics</strong> based on the result (conflict of interest). International consensus: limited clinical utility.</li>
+<li><strong>Bottom line</strong>: a "diversity score = health report card" has never been validated. What matters is not the number but <strong>① what grows (composition, keystones, pathobionts) ② what function (colonization resistance, butyrate vs H₂S/toxins) ③ context (diet, site).</strong></li>
+</ul>
+<hr />
+<p><em>Author — Dr. Junsang Yang, Family Medicine</em> · Contact <a href="mailto:drisland@naver.com">drisland@naver.com</a></p>
+<p>© 2026 Junsang Yang. Copyright of this document belongs to the author. Reproduction, redistribution, republication, or commercial use without the author's prior written consent is prohibited. Please cite the source (author, document title) when quoting.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="top-btn" id="topBtn">↑</button>
+<script>
+// wrap tables for horizontal scroll (none in this page, kept for consistency)
+document.querySelectorAll('.body-wrap table').forEach(tb=>{
+  if(tb.parentElement.classList.contains('tbl-wrap'))return;
+  const w=document.createElement('div');w.className='tbl-wrap';
+  tb.parentNode.insertBefore(w,tb);w.appendChild(tb);
+});
+// top button
+const tb=document.getElementById('topBtn');
+window.addEventListener('scroll',()=>{tb.classList.toggle('show',window.scrollY>400);});
+tb.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+</script>
+</body>
+</html>
