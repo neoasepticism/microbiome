@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"대장 미생물은 다양할수록 좋다"는 통념 해체 — 마이크로바이옴</title>
+<meta name="description" content="대장에서 다양성이 너무 낮으면 문제인 건 맞다. 하지만 '높을수록 좋다'는 근거는 없다. CRC·파킨슨병·피부 미생물의 반례, F/B 비율 신화의 흥망, 상업적 검사의 실체까지.">
+<style>
+:root{
+  --bg:#f8f6f1; --card:#ffffff; --border:#ddd9d0; --accent:#8b6914;
+  --wood:#2e7d32; --fire:#c62828; --earth:#e65100; --metal:#455a64; --water:#1565c0;
+  --text:#2c2c2c; --text2:#6b6b6b; --muted:#9e9e9e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Apple SD Gothic Neo','Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;}
+a{color:var(--water);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.layout{display:flex;max-width:1280px;margin:0 auto;gap:0;align-items:flex-start;}
+/* sidebar */
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;width:290px;flex-shrink:0;
+  background:linear-gradient(180deg,#fdf9ef 0%,#f3edd8 100%);border-right:2px solid var(--accent);
+  padding:24px 18px 40px;}
+.sidebar h2{font-size:15px;color:var(--accent);font-weight:800;letter-spacing:1px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+.toc-list{list-style:none;}
+.toc-list .toc-list{margin-left:12px;border-left:1px solid var(--border);padding-left:10px;}
+.toc-list li{margin:2px 0;}
+.toc-h2>a{font-weight:700;font-size:13.5px;color:var(--text);display:block;padding:5px 6px;border-radius:6px;}
+.toc-h3>a{font-weight:500;font-size:12px;color:var(--text2);display:block;padding:3px 6px;border-radius:6px;}
+.toc-list a:hover{background:#fffdf5;text-decoration:none;color:var(--accent);}
+.toc-list a.active{background:var(--accent);color:#fff;font-weight:700;}
+.thesis-tag{color:var(--accent);font-size:13px;margin:-2px 0 14px;opacity:.9;}
+/* content */
+.content{flex:1;min-width:0;padding:0 8px;}
+.container{background:var(--card);border-radius:16px;box-shadow:0 2px 24px rgba(0,0,0,.06);overflow:hidden;margin:20px 12px;}
+.header{position:relative;background:linear-gradient(135deg,#fdf9ef 0%,#f3edd8 100%);padding:38px 34px;border-bottom:3px solid var(--accent);}
+.lang-switch{position:absolute;top:16px;right:20px;display:flex;gap:2px;background:#fff;border:1px solid var(--accent);border-radius:20px;padding:3px;box-shadow:0 1px 5px rgba(0,0,0,.08);z-index:5;}
+.lang-switch a{font-size:12px;font-weight:800;padding:5px 13px;border-radius:16px;color:var(--accent);letter-spacing:.5px;transition:background .15s;}
+.lang-switch a:hover{background:#f3edd8;text-decoration:none;}
+.lang-switch a.active{background:var(--accent);color:#fff;}
+@media(max-width:600px){.lang-switch{top:12px;right:12px;}.header{padding-top:52px;}}
+.header h1{font-size:26px;font-weight:800;color:var(--accent);letter-spacing:1px;margin-bottom:12px;line-height:1.4;}
+.header .tags{margin-top:6px;}
+.body-wrap{padding:8px 34px 40px;}
+.body-wrap h2{font-size:20px;font-weight:800;margin:40px 0 18px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);
+  background:linear-gradient(90deg,#fdf9ef,transparent);color:var(--text);scroll-margin-top:12px;border-radius:0 8px 8px 0;}
+.body-wrap h2:first-child{margin-top:16px;}
+.body-wrap h3{font-size:16px;font-weight:700;margin:26px 0 10px;color:var(--accent);scroll-margin-top:12px;
+  padding-bottom:5px;border-bottom:1px dashed var(--border);}
+.body-wrap h4{font-size:14.5px;font-weight:700;margin:18px 0 8px;color:var(--metal);}
+.body-wrap p{margin:12px 0;font-size:14.5px;}
+.body-wrap ul,.body-wrap ol{margin:12px 0 12px 24px;font-size:14.5px;}
+.body-wrap li{margin:6px 0;}
+.body-wrap strong{color:#1a1a1a;font-weight:700;}
+.body-wrap em{color:var(--water);font-style:italic;}
+.body-wrap code{background:#f3edd8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#7a5a10;
+  font-family:'SF Mono',Menlo,monospace;}
+hr{border:none;border-top:2px dashed var(--border);margin:34px 0;}
+/* blockquote -> callout */
+.body-wrap blockquote{background:#fff8e1;border-left:4px solid var(--earth);padding:14px 20px;margin:18px 0;
+  border-radius:0 10px 10px 0;font-size:14px;color:#5a4a20;}
+.body-wrap blockquote p{margin:8px 0;}
+.body-wrap blockquote strong{color:#8a5a00;}
+/* tags */
+.tag{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;margin:2px 3px 2px 0;}
+.tag-blue{background:#e3f2fd;color:#1565c0;}
+.footer{padding:22px 34px;text-align:center;font-size:12px;color:var(--text2);border-top:1px solid var(--border);background:var(--bg);}
+.top-btn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--accent);
+  color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);opacity:0;transition:.25s;z-index:50;}
+.top-btn.show{opacity:.9;}
+.mobile-toc-btn{display:none;}
+@media(max-width:900px){
+  .sidebar{position:fixed;left:0;top:0;z-index:100;transform:translateX(-100%);transition:.3s;box-shadow:4px 0 20px rgba(0,0,0,.2);}
+  .sidebar.open{transform:translateX(0);}
+  .mobile-toc-btn{display:block;position:fixed;left:14px;top:14px;z-index:60;background:var(--accent);color:#fff;
+    border:none;border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+  .content{padding:0;}
+  .container{margin:8px;}
+  .header{padding:56px 20px 26px;}
+  .body-wrap{padding:8px 18px 40px;}
+}
+</style>
+</head>
+<body>
+<button class="mobile-toc-btn" id="mtoc">☰ 목차</button>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <h2>목 차</h2>
+    <ul class="toc-list">
+<li class="toc-h3"><a href="#diversity-too-low">너무 낮으면 문제인 건 맞다 — 대장의 특성</a>
+</li>
+<li class="toc-h3"><a href="#diversity-plateau">&quot;일정 이상이면 높을수록 좋다&quot;는 근거는 없다 — 역치·포화</a>
+</li>
+<li class="toc-h3"><a href="#diversity-counter">대장 안의 반례 + 조잡한 지표</a>
+</li>
+<li class="toc-h3"><a href="#diversity-skin">피부 미생물에서도 같은 패턴</a>
+</li>
+<li class="toc-h3"><a href="#fb-ratio-myth">곁가지: &quot;F/B 비율 = 비만 지표&quot; 유행의 흥망</a>
+</li>
+<li class="toc-h3"><a href="#diversity-commercial">&quot;가스라이팅&quot;의 실체 = 상업적 검사</a>
+</li>
+</ul>
+  </nav>
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="lang-switch"><a href="diversity-myth.html" class="active">KO</a><a href="index-en.html#diversity-myth">EN</a></div>
+        <h1>"대장 미생물은 다양할수록 좋다"는 통념 해체</h1>
+        <div class="tags"><span class="tag tag-blue">#microbiome</span> <span class="tag tag-blue">#diversity</span> <span class="tag tag-blue">#dysbiosis</span> <span class="tag tag-blue">#skin-microbiome</span> <span class="tag tag-blue">#critical-appraisal</span></div>
+      </div>
+      <div class="body-wrap">
+<p class="thesis-tag">▸ <em>논지 적용 — "다양성 = 건강" 도그마의 정면 해체.</em></p>
+<blockquote>
+<p><em>대장에서 다양성이 <strong>너무 낮으면</strong> 문제인 건 맞다(정착저항·회복탄력성). 하지만 <strong>"일정 수준 이상이면 높을수록 더 좋다"는 근거는 없다.</strong> "저다양성=질병"은 일부만 참이고, "고다양성=건강"은 과장·상업화된 프레임이다.</em></p>
+</blockquote>
+<h3 id="diversity-too-low">너무 낮으면 문제인 건 맞다 — 대장의 특성</h3>
+<ul>
+<li>대장은 <strong>고부하 개방 생태계</strong>라, 다양성이 낮으면 <strong>정착저항</strong>이 약화 → <em>C. difficile</em> 등 병원균 침입에 취약하고 회복탄력성↓.</li>
+<li>기전: 다양한 균이 <strong>병원균이 쓸 영양소를 선점</strong>해 침입을 막는다(<em>Science</em> 2024). 실제로 <strong>활동성 IBD·재발성 C. difficile·광범위 항생제 후</strong>에 다양성 저하가 재현적. 단, 항생제의 경우엔 저하가 균의 완전 사멸을 뜻하진 않는다 — 상당수는 수주 내 검출 한계 아래로 억눌렸다가 재증식해 원래 조성에 가깝게 돌아오며, "부재"로 기록된 종도 시퀀싱 검출 한계 이하일 뿐 절멸이 증명된 건 아니다(Palleja et al. 2018, <em>Nat Microbiol</em>).</li>
+</ul>
+<h3 id="diversity-plateau">그런데 "일정 이상이면 높을수록 좋다"는 근거는 없다 — 역치·포화</h3>
+<ul>
+<li><strong>"이 이상이면 건강"이라는 상한 기준이 없다.</strong> 다양성이 높을수록 더 건강하다는 검증된 임계값은 부재.</li>
+<li><strong>정착저항은 '충분한 기능 포괄'에서 포화</strong>한다. 핵심은 단순 숫자가 아니라 <strong>병원균이 쓸 영양소 자리를 덮는 기능적 중복</strong> → 그 자리가 채워지면 희귀종을 더해도 이득이 거의 안 붙는 <strong>수확 체감.</strong></li>
+<li>Shannon 다양성은 Bacteroidetes/Firmicutes 비율이 특정 지점(~15%/80%)일 때 <strong>최대가 되는 비선형</strong> 관계 → "많을수록 좋다"가 아니라 <strong>최적 구간</strong>. "<strong>과도한 다양성도 문제</strong>일 수 있다"는 지적.</li>
+<li>기능적 중복 때문에 "건강에 필요한 최소 다양성"조차 숫자로 못 박지 못함 → <strong>U자/포화 곡선</strong>: 너무 낮으면 나쁘고, 일정 이상은 더 높다고 더 좋지 않다.</li>
+</ul>
+<h3 id="diversity-counter">대장 안의 반례 + 조잡한 지표</h3>
+<ul>
+<li><strong>대장암(CRC)</strong>: 종양에 <strong>구강 유해균(<em>Fusobacterium</em>·<em>Parvimonas</em> 등) 유입</strong>. 그런데 <strong>대변 알파 다양성은 정상과 유의차 없는 경우가 많고</strong>, 오히려 군집 변동성(β-산포)↑ → 다양성 숫자로 암을 못 가림.</li>
+<li><strong>파킨슨병</strong>: 알파 다양성 비일관, <strong>오히려 종 풍부도(richness) 증가(희귀종 증가)</strong> 보고도 — 잡균이 많아져서 다양성이 높은 상태로, 다양성이 높은 게 오히려 안 좋았던 결과다. "알파 다양성은 파킨슨병·다발성경화증의 마커가 아니다."</li>
+<li><strong>상관 ≠ 인과</strong>: 대부분 단면연구. IBD조차 불균형이 원인인지 결과인지 미확정. 다양성은 <strong>질병보다 '식이'가 더 좌우</strong>하고, 비유전 요인 전부가 변동의 <strong>16%만 설명</strong>.</li>
+</ul>
+<h3 id="diversity-skin">피부 미생물에서도 같은 패턴 — 청년기가 가장 낮은 다양성</h3>
+<ul>
+<li><strong>역설</strong>: 청년기 피부는 <strong>장벽 기능·면역 경쟁력·조직 회복력이 평생 중 최고 수준</strong>인데, <strong>종 풍부도는 평생 중 가장 낮다.</strong> 사춘기 이후 피지가 지질 포화 서식지를 만들어 한 종(<em>Cutibacterium acnes</em>)을 우점시키는 동시에 항균 지방산 생성을 유도 — 다양성과 건강은 <strong>같은 원인(피지)의 서로 다른 결과</strong>일 뿐.</li>
+<li><strong>재해석(아토피 피부염)</strong>: 진짜 문제는 다양성이 낮아진 것 자체가 아니라, <strong>유익균(<em>S. epidermidis</em>)이 병원균(<em>S. aureus</em>)에게 경쟁 배제당한 것.</strong> 다양성 손실은 그 기능적 손상이 남긴 부산물일 뿐이다.</li>
+<li><strong>생태학적 오류</strong>: 분류학적 다양성은 <strong>군집 구조</strong>만 반영할 뿐, 미생물이 실제로 숙주에게 해주는 <strong>기능</strong>(방어·항균·항상성)은 잡아내지 못한다. "다양성=건강"은 서식지 조건과 생태계 서비스를 건너뛴 지표 하나로 결론을 내린 것이다(<em>British Journal of Dermatology</em>, "Microbial diversity as a proxy for skin health: an ecological framework misapplied").</li>
+<li><strong>여드름은 엇갈린다</strong>: 일부 연구(특히 중등도~중증)는 병변부 알파 다양성이 오히려 대조군보다 <strong>높게</strong> 나와 파킨슨병과 같은 패턴을 보이지만, 다른 연구는 염증성 병변에서 다양성이 <strong>더 낮게</strong> 나온다. 이렇게 상반된 결과가 함께 보고되는 이상, 여드름을 근거로 "다양성이 높을수록 좋다"고 주장하기는 무리가 있다.</li>
+</ul>
+<h3 id="fb-ratio-myth">곁가지: "F/B 비율 = 비만 지표" 유행의 흥망 (단순화의 교과서)</h3>
+<ul>
+<li>2006년 Ley·Turnbaugh·Gordon(<em>Nature</em>)의 마우스+소수 인간 연구에서 <strong>비만인은 Firmicutes↑·Bacteroidetes↓(=F/B 비율↑)</strong>, 마른 사람은 반대 → <strong>"F/B 비율 하나로 비만·장 건강을 안다"</strong>는 명제가 대중화. 다이어트·프로바이오틱·검사 마케팅에 광범위 인용.</li>
+<li>이후 대규모·메타분석에서 <strong>재현 실패</strong>. 한 메타분석은 <strong>F/B 비율로 비만/정상을 구분하는 신호가 없음</strong>을 보고했고(데이터가 BMI가 아니라 <strong>연구(batch)별로 뭉침</strong>), 2020년 종설은 <strong>"F/B 비율은 비만 바이오마커로서 타당성이 없다"</strong>고 결론(생활습관 교란 + 방법론적 잡음).</li>
+<li><strong>왜 무너졌나</strong>: ① <strong>문(門, phylum)은 너무 큰 단위</strong> — 한 문 안에 상반된 기능의 수천 종이 섞여 있어 "비율 하나"로 뭉치면 정보가 소실. 마치 지구에 포유류가 파충류보다 많으면 지구가 비만해진다는 말도 안되는 논리다. ② 개인 간 변동 극심 ③ 시퀀싱·프라이머·분류 방법에 좌우 ④ 상관이지 인과 아님. (덤: 2021년 분류 개정으로 <strong>Firmicutes→Bacillota, Bacteroidetes→Bacteroidota</strong>로 이름까지 바뀜.)</li>
+<li><strong>교훈</strong>: <strong>"눈에 띄는 숫자 하나(F/B 비율·다양성 점수)로 장 건강을 재단"하는 단순화의 대표 사례.</strong> 대중이 널리 믿었지만 과학은 뒤집혔다 — 다양성 점수도 같은 함정.</li>
+</ul>
+<h3 id="diversity-commercial">"가스라이팅"의 실체 = 상업적 검사</h3>
+<ul>
+<li>시판(소비자 직접판매·DTC) 마이크로바이옴 검사는 <strong>임상적으로 검증되지 않았고</strong> 공인 진단 기준도 없다.</li>
+<li><strong>같은 샘플을 회사마다 "우수"~"보통"~"불량"로 제각각</strong> 판정 — "높음/낮음"은 과학적 기준이 아니라 <strong>그 회사 자체 데이터베이스</strong> 기준. 다수 업체가 결과로 <strong>자사 프로바이오틱을 판매</strong>(이해상충). 국제 컨센서스: 임상적 유용성 제한적.</li>
+<li><strong>결론</strong>: "다양성 점수 = 건강 성적표"는 검증된 적 없다. 핵심은 숫자보다 <strong>① 무엇이 자라는가(조성·핵심종·유해균) ② 무슨 기능인가(정착저항·butyrate vs H₂S·독소) ③ 맥락(식이·부위).</strong></li>
+</ul>
+<hr />
+<p><em>저자 — 가정의학과 의사 양준상</em> · 문의 <a href="mailto:drisland@naver.com">drisland@naver.com</a></p>
+<p>© 2026 양준상. 이 문서의 저작권은 저자에게 있습니다. 저자의 사전 서면 동의 없이 무단 복제·배포·전재·상업적 이용을 금합니다. 인용 시 출처(저자·문서명)를 명시해 주십시오.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="top-btn" id="topBtn">↑</button>
+<script>
+// wrap tables for horizontal scroll (none in this page, kept for consistency)
+document.querySelectorAll('.body-wrap table').forEach(tb=>{
+  if(tb.parentElement.classList.contains('tbl-wrap'))return;
+  const w=document.createElement('div');w.className='tbl-wrap';
+  tb.parentNode.insertBefore(w,tb);w.appendChild(tb);
+});
+// scrollspy
+const links=[...document.querySelectorAll('.toc-list a')];
+const map={};links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
+const heads=[...document.querySelectorAll('.body-wrap h2, .body-wrap h3')];
+const spy=()=>{
+  let cur=null;const y=window.scrollY+90;
+  for(const h of heads){if(h.offsetTop<=y)cur=h.id;}
+  links.forEach(a=>a.classList.remove('active'));
+  if(cur&&map[cur]){map[cur].classList.add('active');
+    map[cur].scrollIntoView({block:'nearest'});}
+};
+window.addEventListener('scroll',spy);spy();
+// top button
+const tb=document.getElementById('topBtn');
+window.addEventListener('scroll',()=>{tb.classList.toggle('show',window.scrollY>400);});
+tb.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+// mobile toc toggle
+const sb=document.getElementById('sidebar'),mb=document.getElementById('mtoc');
+mb.onclick=()=>sb.classList.toggle('open');
+document.querySelectorAll('.toc-list a').forEach(a=>a.onclick=()=>sb.classList.remove('open'));
+</script>
+</body>
+</html>
